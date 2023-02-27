@@ -1,0 +1,1 @@
+type MoveVector = ReadonlyArray<number>;
