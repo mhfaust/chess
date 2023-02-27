@@ -1,6 +1,6 @@
 import { unicodeSymbols }  from 'rules/constants/pieces';
 import { rotateCounterClockwise }  from 'rules/board';
-import chalk   from 'rules/chalk';
+import chalk   from 'chalk';
 import { Board }  from 'rules/types/Board';
 import { Piece }  from 'rules/positions/piece';
 
