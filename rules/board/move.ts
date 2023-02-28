@@ -11,11 +11,12 @@ function move (
     to: PositionName
 ) : Board {
 
-    const boardCache = cache.get(previousBoard) ?? cache.set(previousBoard, new Map()).get(previousBoard);
+    const boardCache = cache.get(previousBoard) ?? cache.set(previousBoard, new Map()).get(previousBoard) as Map<string, Board>;
 
     const moveHash = from + to;
-    if(boardCache.get(moveHash)){
-        return boardCache.get(moveHash);
+    const cachedBoard = boardCache.get(moveHash);
+    if(cachedBoard){
+        return cachedBoard;
     }
 
     const newBoard : Board = [

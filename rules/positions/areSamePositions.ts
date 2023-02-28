@@ -1,4 +1,5 @@
 import { positionName } from 'rules/positions';
+import { GridCoordinates } from 'rules/types/GridCoordinates';
 
 function areSamePositions  (
     posA: GridCoordinates, 

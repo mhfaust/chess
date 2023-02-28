@@ -12,12 +12,17 @@ import { move }  from 'rules/board';
 import { PositionName }  from 'rules/positions/positionName';
 import { Board }  from 'rules/types/Board';
 
+const emptySet = new Set<PositionName>();
+
 function pawn(
     board: Board, 
     moveFrom: PositionName, 
-    enPassantSquare: PositionName)
+    enPassantSquare: PositionName | null)
     : Set<PositionName> {
     const player = playerAt(board, moveFrom);
+    if(!player){
+        return emptySet;
+    }
     const legalMoves: Set<PositionName> = new Set();
     const forwardDirection = player === 'White' ? 1 : -1;
     const initialRank = rank(moveFrom);

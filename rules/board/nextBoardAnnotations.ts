@@ -9,10 +9,17 @@ import { BoardAnnotations }  from 'rules/types/Game';
 
 const makeCapturedPieces = (board: Board, prevCaptures: Array<Piece>, defender: Player, moveTo: PositionName) : Array<Piece> => {
     
-    return playerAt(board, moveTo) === defender 
-        ? [...prevCaptures, pieceAt(board, moveTo)]
-        : prevCaptures
-    ;
+    if (playerAt(board, moveTo) !== defender) {
+        return prevCaptures;
+    }
+    const pieceAtTarget = pieceAt(board, moveTo);
+    if (pieceAtTarget){
+        return [
+            ...prevCaptures, 
+            pieceAtTarget
+        ]
+    }
+    return prevCaptures;
 }
 
 function nextBoardAnnotations(

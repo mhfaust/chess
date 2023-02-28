@@ -19,9 +19,13 @@
   align-items: center;
 
 }
-.even {
+.light {
   background-color: white;
 }
-.odd {
+.dark {
   background-color: #ccc;
+}
+.selected {
+  z-index: 1;
+  outline: 2px dotted green;
 }

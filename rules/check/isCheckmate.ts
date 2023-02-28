@@ -15,6 +15,7 @@ import { Board }  from 'rules/types/Board';
 import { Player }  from 'rules/types/Player';
 import kingPosition  from 'rules/positions/kingPosition';
 import { PositionName } from 'rules/positions/positionName';
+import { GridCoordinates } from 'rules/types/GridCoordinates';
 
 const cache = new Map<Player, Map<Board, boolean>>()
     .set("Black", new Map())

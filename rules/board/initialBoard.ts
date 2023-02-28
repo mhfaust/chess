@@ -1,7 +1,7 @@
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
 import { Board }  from 'rules/types/Board';
 
-export default (): Board => [
+const initilBoard = (): Board => [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [WR,WP,__,__,__,__,BP,BR],
 /*  B  */ [WN,WP,__,__,__,__,BP,BN],
@@ -12,3 +12,5 @@ export default (): Board => [
 /*  G  */ [WN,WP,__,__,__,__,BP,BN],
 /*  H  */ [WR,WP,__,__,__,__,BP,BR],
 ];
+
+export default initilBoard;

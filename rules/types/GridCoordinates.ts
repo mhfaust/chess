@@ -1,1 +1,1 @@
-type GridCoordinates = ReadonlyArray<number>;
+export type GridCoordinates = ReadonlyArray<number>;
