@@ -1,5 +1,5 @@
 
-import styles from './ChessBoard.module.css'
+import styles from './Grid.module.css'
 import { unicodeSymbols }  from 'rules/constants/pieces';
 import { positionName } from 'rules/positions';
 import { Board, PieceOrEmpty } from 'rules/types/Board';
@@ -67,10 +67,6 @@ const ChessBoard = ({
   const handleSquareClick = (pos: PositionName): MouseEventHandler => {
     return () => onClickSquare(pos);
   };
-
-  // const validMoves = selectedSquare 
-  //   ? allPieceMoves(board, selectedSquare) 
-  //   : noMoves;
 
   return (
     <div className={styles.main}>

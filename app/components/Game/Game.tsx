@@ -1,6 +1,6 @@
 'use client'
 
-import ChessBoard from 'app/components/ChessBoard/ChessBoard';
+import ChessBoard from 'app/components/Grid/Grid';
 import { useGameStore } from 'app/state/gameStore';
 import { PositionName } from 'rules/positions/positionName';
 import { canMoveTo } from 'rules/moves';
@@ -73,7 +73,6 @@ export default function Game() {
     } 
     
     if(currentPlayer === playerAt(currentBoard, clickedSquare)){
-      console.log('Tansferring selected square to another piece')
       return toggleSquare(clickedSquare)
     }
 
