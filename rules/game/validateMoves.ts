@@ -9,23 +9,27 @@ import { canMoveTo }  from 'rules/moves';
 import enPassantSquare  from 'rules/moves/enPassantSquare';
 import { playerAt }  from 'rules/positions';
 import { PositionName }  from 'rules/positions/positionName';
+import { BoardAnnotations } from 'rules/types/Game';
+import { Board } from 'rules/types/Board';
 
 export type Move = [PositionName, PositionName];
 
-function validateGameMoves(gameMoves: Array<[PositionName, PositionName]>){
+function validateGameMoves(gameMoves: [PositionName, PositionName][]){
 
     let error: string | null = null;
 
-    const annotatedMoves = [{ 
-        board: initialBoard(),
-        annotations: initialBoardAnnotations()
-    }];
+    const annotatedMoves: { board: Board, annotations: BoardAnnotations }[] = [
+        { 
+            board: initialBoard(),
+            annotations: initialBoardAnnotations()
+        }
+    ];
 
     for(let [from, to] of gameMoves){
         const { 
             board: prevBoard,
             annotations: prevAnnotations 
-        } = annotatedMoves.slice(-1)[0];
+        } = [...annotatedMoves].pop()!;
 
         const playerMoving = playerAt(prevBoard, from);
         const expectedMover: Player = annotatedMoves.length % 2 === 1 ? 'White' : 'Black';
@@ -48,7 +52,7 @@ function validateGameMoves(gameMoves: Array<[PositionName, PositionName]>){
         }
 
         const board = move(prevBoard, from, to);
-        const annotations = nextBoardAnnotations(prevBoard, board, prevAnnotations, from, to);
+        const annotations = nextBoardAnnotations(prevBoard, board, prevAnnotations as BoardAnnotations, from, to);
         annotatedMoves.push( {
             board,
             annotations

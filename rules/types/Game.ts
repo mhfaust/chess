@@ -18,11 +18,11 @@ export type BoardAnnotations = {
   whoseTurn: Player;
   isInCheck: boolean;
   isCheckmate: boolean;
-  capturedBlackPieces: Array<Piece>,
-  capturedWhitePieces: Array<Piece>,
+  capturedBlackPieces: Piece[],
+  capturedWhitePieces: Piece[],
   castlingPreclusions: CastlingPreclusions
 }
 
-export type Game = Array<Turn>
+export type Game = Turn[]
 
 

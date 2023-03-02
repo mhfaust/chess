@@ -1,6 +1,6 @@
 import { BoardAnnotations }  from 'rules/types/Game';
 
-function initialBoardAnnotations(): BoardAnnotations {
+const initialBoardAnnotations = (): BoardAnnotations => {
     return {
         // lastPlayerMoved: null,
         lastPieceMoved: null,
