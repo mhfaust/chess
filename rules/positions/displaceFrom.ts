@@ -4,6 +4,7 @@ position is on the board
 */
 
 import { rank, file }  from 'rules/positions';
+import { MoveVector } from 'rules/types/MoveVector';
 import positionName, { PositionName } from './positionName';
     
 function displaceFrom  (

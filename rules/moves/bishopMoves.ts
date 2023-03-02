@@ -11,6 +11,9 @@ import { bishopVectors }  from 'rules/constants/move-vectors'
 import { movesIntoCheck }  from 'rules/check';
 import { PositionName }  from 'rules/positions/positionName';
 import { Board }  from 'rules/types/Board';
+import { MoveVector } from 'rules/types/MoveVector';
+
+const emptySet = new Set<PositionName>();
 
 function bishop(
     board: Board, 
@@ -18,17 +21,20 @@ function bishop(
 ): Set<PositionName> {
 
     const player = playerAt(board, moveFrom);
+    if(!player){
+        return emptySet;
+    }
     const legalMoves: Array<PositionName> = [];
 
     bishopVectors.forEach((vector: MoveVector): void => {
 
         let examinedPosition = displaceTo(moveFrom, vector);
 
-        while(isOnBoard(examinedPosition) && isUnOccupied(board, examinedPosition)){
+        while(examinedPosition && isUnOccupied(board, examinedPosition)){
             legalMoves.push(examinedPosition);
             examinedPosition = displaceTo(examinedPosition, vector);
         }
-        if(isOnBoard(examinedPosition) && isOccupiedByPlayer(board, examinedPosition, otherPlayer(player))){
+        if(examinedPosition && isOccupiedByPlayer(board, examinedPosition, otherPlayer(player))){
             legalMoves.push(examinedPosition);
         }
     });

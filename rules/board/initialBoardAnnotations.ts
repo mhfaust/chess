@@ -1,8 +1,8 @@
 import { BoardAnnotations }  from 'rules/types/Game';
 
-function initialBoardAnnotations(): BoardAnnotations{
-    return{
-        lastPlayerMoved: null,
+function initialBoardAnnotations(): BoardAnnotations {
+    return {
+        // lastPlayerMoved: null,
         lastPieceMoved: null,
         lastMoveFrom: null,
         lastMoveTo: null,

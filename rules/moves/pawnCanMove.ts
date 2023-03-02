@@ -19,6 +19,9 @@ function pawnCanMove (
     : boolean {
 
     const player = playerAt(board, from);
+    if (!player) {
+        return false;
+    }
     const forwardDirection = player === 'White' ? 1 : -1;
     const stepsForward = (rank(to) - rank(from)) * forwardDirection;
     const stepsSideways = file(to) - file(from);
@@ -41,7 +44,7 @@ function pawnCanMove (
             }
             //cannot jump over any piece
             const jumpedCoords = [file(from), rank(from) + forwardDirection];
-            if(isOccupied(board, positionName(jumpedCoords))){
+            if(isOccupied(board, positionName(jumpedCoords)!)){
                 return false;
             }
         }

@@ -21,6 +21,7 @@ import { Player }  from 'rules/types/Player';
 import { Piece }  from 'rules/positions/piece';
 import COORDS  from 'rules/positions/coordinates';
 import { GridCoordinates } from 'rules/types/GridCoordinates';
+import { MoveVector } from 'rules/types/MoveVector';
 
 export type AttackPattern = {
     vectors: ReadonlyArray<MoveVector>; 

@@ -1,1 +1,1 @@
-type MoveVector = ReadonlyArray<number>;
+export type MoveVector = ReadonlyArray<number>;

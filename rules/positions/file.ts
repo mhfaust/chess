@@ -1,5 +1,5 @@
-import COORDS from "rules/positions/coordinates";
-import { PositionName } from "rules/positions/positionName";
+import COORDS from 'rules/positions/coordinates';
+import { PositionName } from 'rules/positions/positionName';
 
 function file (position: PositionName): number {
     if(!COORDS[position]){

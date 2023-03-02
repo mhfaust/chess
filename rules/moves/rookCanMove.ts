@@ -39,7 +39,7 @@ function rookCanMove (
 
     let step = displaceTo(from, moveVector);
         
-    while(step !== to){
+    while(step && step !== to){
         
         if(isOccupied(board, step)){
             return false;

@@ -11,10 +11,10 @@ export type Turn = {
 }
 
 export type BoardAnnotations = {
-  lastPlayerMoved: Player;
-  lastPieceMoved: Piece;
-  lastMoveFrom: PositionName;
-  lastMoveTo: PositionName;
+  // lastPlayerMoved: Player;
+  lastPieceMoved: Piece | null;
+  lastMoveFrom: PositionName | null;
+  lastMoveTo: PositionName | null;
   whoseTurn: Player;
   isInCheck: boolean;
   isCheckmate: boolean;

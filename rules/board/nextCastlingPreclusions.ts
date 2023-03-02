@@ -2,12 +2,12 @@ import { CastlingPreclusions }  from 'rules/types/CastlingPreclusions';
 import { PositionName }  from 'rules/positions/positionName';
 
 const castleAndKingStartsArray = [
-    'A1',
-    'E1',
-    'H1',
-    'A8',
-    'E8',
-    'H8'
+    'A1', // White Rook
+    'E1', // White King
+    'H1', // White Rook
+    'A8', // Black Rook
+    'E8', // Black King
+    'H8', // Black Rook
 ] as const;
 
 const castleAndKingStartsSet = new Set(castleAndKingStartsArray) as Set<string>;
@@ -27,7 +27,7 @@ const addPreclusions: Record<CastleAndKingStarts, AddPreclusions> = {
 
 function nextCastlingPreclusions(
     movedFrom: PositionName,
-    prev: CastlingPreclusions
+    prev?: CastlingPreclusions
 ): CastlingPreclusions {
 
     const nextSet = new Set(prev);
@@ -37,5 +37,7 @@ function nextCastlingPreclusions(
     return nextSet;
 
 }
+
+
 
 export default nextCastlingPreclusions;

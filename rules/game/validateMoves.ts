@@ -2,7 +2,8 @@ import {
     initialBoard, 
     move, 
     initialBoardAnnotations, 
-    nextBoardAnnotations } from 'rules/board';
+    nextBoardAnnotations 
+} from 'rules/board';
 import { Player }  from 'rules/types/Player';
 import { canMoveTo }  from 'rules/moves';  
 import enPassantSquare  from 'rules/moves/enPassantSquare';

@@ -15,10 +15,9 @@ function allPlayerPositions(board: Board, player: Player): Array<PiecePosition>{
     const allPlayerPieces = player === 'Black' ? BLACK_PIECES : WHITE_PIECES;
 
     board.forEach((file, i) => file.forEach((piece, j) => {
-
         if(piece && allPlayerPieces.has(piece)){
             occupiedPositions.push({
-                position: positionName([i, j]),
+                position: (positionName([i, j]) as PositionName),
                 piece
             });
         }

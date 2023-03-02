@@ -1,6 +1,7 @@
 import { Piece }  from 'rules/positions/piece';
+import { PieceOrEmpty } from 'rules/types/Board';
 
-export const __ : Piece = null;
+export const __ : PieceOrEmpty = null;
 export const WK : Piece = 'White King';
 export const WQ : Piece = 'White Queen';
 export const WB : Piece = 'White Bishop';

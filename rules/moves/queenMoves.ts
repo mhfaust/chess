@@ -5,10 +5,11 @@ import { Board }  from 'rules/types/Board';
 function queen(
     board: Board, 
     moveFrom: PositionName, 
-): Set<PositionName>{
+): Set<PositionName> {
+
     return new Set([
-        ...rookMoves(board, moveFrom), 
-        ...bishopMoves(board, moveFrom)
+        ...Array.from(rookMoves(board, moveFrom)),
+        ...Array.from(bishopMoves(board, moveFrom))
     ]);
 }
 

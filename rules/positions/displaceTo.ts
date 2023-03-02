@@ -4,17 +4,20 @@ position is on the board
 */
 
 import { rank, file }  from 'rules/positions';
+import { GridCoordinates } from 'rules/types/GridCoordinates';
+import { MoveVector } from 'rules/types/MoveVector';
 import positionName, { PositionName } from './positionName';
     
 function displaceTo  (
     currentPosition: PositionName, 
     vector: MoveVector)
-    : PositionName {
+    : PositionName | null {
 
-    return positionName([
-        file(currentPosition) + vector[0],
-        rank(currentPosition) + vector[1]
-    ]);
+    const newFile = file(currentPosition) + vector[0];
+    const newRank = rank(currentPosition) + vector[1];
+    const g: GridCoordinates = [newFile, newRank];
+
+    return positionName(g);
 };
 
 export default displaceTo;

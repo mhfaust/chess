@@ -1,7 +1,7 @@
 import { unicodeSymbols }  from 'rules/constants/pieces';
 import { rotateCounterClockwise }  from 'rules/board';
 import chalk   from 'chalk';
-import { Board }  from 'rules/types/Board';
+import { Board, BoardFile, PieceOrEmpty }  from 'rules/types/Board';
 import { Piece }  from 'rules/positions/piece';
 
 const { bgWhite, black, blue } = chalk;
@@ -11,9 +11,9 @@ const separLine   = '   ├───┼───┼───┼───┼─�
 const bottomLine  = '   └───┴───┴───┴───┴───┴───┴───┴───┘  \n';
 const filesLine   = '     A   B   C   D   E   F   G   H    \n';
 
-const pieceLine = (row: string[], i: number) => {
-    const drawPiece = (p: Piece) => {
-        return blue(unicodeSymbols[p] ?? ' ')
+const pieceLine = (row: BoardFile, i: number) => {
+    const drawPiece = (p: PieceOrEmpty) => {
+        return blue(unicodeSymbols[p as Piece] ?? ' ')
     };
     return ` ${7-i+1} │ ${row.map(drawPiece).join(' │ ')} │  \n`
 };

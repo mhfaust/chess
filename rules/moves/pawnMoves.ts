@@ -11,6 +11,7 @@ import { isInCheck }  from 'rules/check';
 import { move }  from 'rules/board';
 import { PositionName }  from 'rules/positions/positionName';
 import { Board }  from 'rules/types/Board';
+import { MoveVector } from 'rules/types/MoveVector';
 
 const emptySet = new Set<PositionName>();
 
@@ -31,7 +32,7 @@ function pawn(
     const moveNotInCheck = (moveTo: PositionName): boolean => !isInCheck(move(board, moveFrom, moveTo), player)
      
     //advance moves
-    if(isOnBoard(forward1) && isUnOccupied(board, forward1) && moveNotInCheck(forward1)){
+    if(forward1 && isUnOccupied(board, forward1) && moveNotInCheck(forward1)){
         legalMoves.add(forward1);
         
         //can only advance if the pawn has never moved.
@@ -39,7 +40,7 @@ function pawn(
         const pawnHasNotMoved = (player === 'White' && initialRank === 1) || (player === 'Black' && initialRank === 6)
         if(pawnHasNotMoved){
             const forward2 = displaceTo(moveFrom, [0, 2 * forwardDirection]);
-            if(isOnBoard(forward1) && isUnOccupied(board, forward2) && moveNotInCheck(forward2)){
+            if(forward1 && forward2 && isUnOccupied(board, forward2) && moveNotInCheck(forward2)){
                 legalMoves.add(forward2);
             }
         }
@@ -50,7 +51,7 @@ function pawn(
     //attack moves
     moveVectors.forEach(vector => {
         const attackedPosition = displaceTo(moveFrom, vector);
-        if(!isOnBoard(attackedPosition)){
+        if(!attackedPosition){
             return;
         }
         if(

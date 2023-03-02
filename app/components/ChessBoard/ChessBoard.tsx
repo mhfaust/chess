@@ -7,6 +7,7 @@ import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
 import { PositionName, squareColor } from 'rules/positions/positionName';
 import { rotate8by8 } from 'rules/board/rotateCounterClockwise';
+import { Player } from 'rules/types/Player';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -47,13 +48,16 @@ type ChessBoardProps = {
   orientation: Orientation;
   onClickSquare: (PositionName: PositionName) => void;
   selectedSquare: PositionName | null;
+  validMoves?: Set<PositionName>;
 }
+const noMoves = new Set<PositionName>();
 
 const ChessBoard = ({ 
   board, 
   orientation = 0, 
   onClickSquare,
-  selectedSquare
+  selectedSquare,
+  validMoves = noMoves,
  }: ChessBoardProps) => {
 
   const rotated = useMemo(() => {
@@ -64,23 +68,31 @@ const ChessBoard = ({
     return () => onClickSquare(pos);
   };
 
+  // const validMoves = selectedSquare 
+  //   ? allPieceMoves(board, selectedSquare) 
+  //   : noMoves;
+
   return (
-    <div className={styles.div}>
+    <div className={styles.main}>
       {rotated.map((file, i) => (
-        <div className={styles.file} key={i}>
-           {file.map(({positionName, piece}, j) => {
+        <div className={styles.row} key={i}>
+           {file.map(({ positionName, piece }, j) => {
              return (
                <div 
                  className={clsx(
                   styles.square, 
                   styles[squareColor(positionName!)!],
-                  { [styles.selected]: selectedSquare === positionName },
+                  { 
+                    [styles.selected]: selectedSquare === positionName,
+                    [styles.canMoveTo]: validMoves.has(positionName)
+                  },
                 )} 
                  key={j}
-                 id={positionName!}
                  onClick={handleSquareClick(positionName)}
                >
-                 {(piece && unicodeSymbols[piece]) ?? ' '}
+                 {(piece && (
+                  <span className={styles.piece} >{unicodeSymbols[piece]}</span>
+                  )) ?? <>&nbsp;</>}
                </div> 
              )
            })}

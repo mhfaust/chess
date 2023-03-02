@@ -16,6 +16,7 @@ import { Player }  from 'rules/types/Player';
 import kingPosition  from 'rules/positions/kingPosition';
 import { PositionName } from 'rules/positions/positionName';
 import { GridCoordinates } from 'rules/types/GridCoordinates';
+import { MoveVector } from 'rules/types/MoveVector';
 
 const cache = new Map<Player, Map<Board, boolean>>()
     .set("Black", new Map())
@@ -24,11 +25,12 @@ const cache = new Map<Player, Map<Board, boolean>>()
 function isCheckmate(
     board: Board, 
     defender: Player
-) {
+): boolean {
 
     const playerCache = cache.get(defender);
-    if(playerCache?.get(board)){
-        return playerCache.get(board);
+    const cached = playerCache?.get(board);
+    if(cached){
+        return cached;
     }
 
     const kingPos = kingPosition(board, defender);
@@ -38,7 +40,7 @@ function isCheckmate(
         const vector: MoveVector = kingVectors[i];
         const kingMovesTo = displaceTo(kingPos, vector);
 
-        if(isOnBoard(kingMovesTo) && playerAt(board, kingMovesTo) !== defender){
+        if(kingMovesTo && playerAt(board, kingMovesTo) !== defender){
             if( !movesIntoCheck(board, kingPos, kingMovesTo)){
                 playerCache?.set(board, false);
                 return false;

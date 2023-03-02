@@ -22,11 +22,11 @@ function rook(board: Board, moveFrom: PositionName): Set<PositionName> {
     directions.forEach((direction) => {
         let examinedPosition = displaceTo(moveFrom, direction);
 
-        while(isOnBoard(examinedPosition) && isUnOccupied(board, examinedPosition)){
+        while(examinedPosition && isUnOccupied(board, examinedPosition)){
             legalMoves.push(examinedPosition);
             examinedPosition = displaceTo(examinedPosition, direction);
         }
-        if(isOnBoard(examinedPosition) && isOccupiedByPlayer(board, examinedPosition, otherPlayer(player)))
+        if(examinedPosition && isOccupiedByPlayer(board, examinedPosition, otherPlayer(player)))
             legalMoves.push(examinedPosition);
     });
 

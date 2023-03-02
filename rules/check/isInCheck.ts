@@ -13,14 +13,14 @@ function isInCheck(
 ): boolean {
 
     const playerCache = cache.get(player);
-    if(playerCache.get(board)){
-        return playerCache.get(board);
+    if(playerCache?.get(board)){
+        return playerCache.get(board)!;
     }
 
     const attackLines = generateLinesOfAttack(board, player, kingPosition(board, player));
     const checkLine = attackLines.next()
     const isInCheck = checkLine.value !== null;
-    playerCache.set(board, isInCheck);
+    playerCache?.set(board, isInCheck);
     return isInCheck;
 }
 

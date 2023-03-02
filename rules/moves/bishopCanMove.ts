@@ -41,7 +41,7 @@ function bishopCanMove (
     let step = displaceTo(fromPosition, moveVector);
 
     //and keep checking until we run into a piece or the move-to position:
-    while(step !== toPosition){
+    while(step && step !== toPosition){
         if(isOccupied(board, step)){
             return false;
         }
