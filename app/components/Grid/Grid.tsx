@@ -1,6 +1,6 @@
 
 import styles from './Grid.module.css'
-import { unicodeSymbols }  from 'rules/constants/pieces';
+import { BLACK_PIECES, unicodeSymbols, WHITE_PIECES }  from 'rules/constants/pieces';
 import { positionName } from 'rules/positions';
 import { Board, PieceOrEmpty } from 'rules/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
@@ -49,6 +49,7 @@ type ChessBoardProps = {
   onClickSquare: (PositionName: PositionName) => void;
   selectedSquare: PositionName | null;
   validMoves?: Set<PositionName>;
+  currentPlayer: Player;
 }
 const noMoves = new Set<PositionName>();
 
@@ -58,6 +59,7 @@ const ChessBoard = ({
   onClickSquare,
   selectedSquare,
   validMoves = noMoves,
+  currentPlayer,
  }: ChessBoardProps) => {
 
   const rotated = useMemo(() => {
@@ -68,8 +70,10 @@ const ChessBoard = ({
     return () => onClickSquare(pos);
   };
 
+  const turnStyle = currentPlayer === 'Black' ? styles.blackTurn : styles.whiteTurn;
+
   return (
-    <div className={styles.main}>
+    <div className={clsx(styles.main, turnStyle)}>
       {rotated.map((file, i) => (
         <div className={styles.row} key={i}>
            {file.map(({ positionName, piece }, j) => {
@@ -80,7 +84,9 @@ const ChessBoard = ({
                   styles[squareColor(positionName!)!],
                   { 
                     [styles.selected]: selectedSquare === positionName,
-                    [styles.canMoveTo]: validMoves.has(positionName)
+                    [styles.canMoveTo]: validMoves.has(positionName),
+                    [styles.whitePiece]: piece && WHITE_PIECES.has(piece),
+                    [styles.blackPiece]: piece && BLACK_PIECES.has(piece),
                   },
                 )} 
                  key={j}

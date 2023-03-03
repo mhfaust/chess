@@ -6,9 +6,13 @@ import { PositionName } from 'rules/positions/positionName';
 import { canMoveTo } from 'rules/moves';
 import { Player } from 'rules/types/Player';
 import { playerAt } from 'rules/positions';
-import Captures from '../Captures';
+import Captures from 'app/components/Captures';
 import allPieceMoves from 'rules/moves/allPieceMoves';
-
+import pawnPromotionOptions from 'rules/board/pawnPromotionOptions';
+import { PawnPromotionOptionsProps } from 'app/components/PawnPromotionPrompt/PawnPromotionPrompt';
+import { Piece } from 'rules/positions/piece';
+import { useState } from 'react';
+import PawnPromotionPrompt from '../PawnPromotionPrompt';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -17,6 +21,7 @@ import allPieceMoves from 'rules/moves/allPieceMoves';
 export default function Game() {
 
   const { 
+    currentPlayer,
     moves, 
     boards, 
     toggleSquare, 
@@ -28,9 +33,12 @@ export default function Game() {
     capturedWhites
   } = useGameStore();
 
+  const [promptProps, setPromptProps] = useState<PawnPromotionOptionsProps>({
+    isPrompting: false,
+    onPromote: () => {},
+  });
+  
   const currentBoard = [...boards].pop()!;
-
-  const currentPlayer: Player = boards.length % 2 === 1 ? "White" : "Black";
 
   if(!currentBoard){
     return null;
@@ -49,14 +57,11 @@ export default function Game() {
     const playerAtClicked = playerAt(currentBoard, clickedSquare);
 
     if(!selectedSquare){
-      //make selection if the player has a piece there:
       const isPlayersPiece = currentPlayer === playerAtClicked;
-
       return toggleSquare(isPlayersPiece ? clickedSquare : null)
     }
 
     if (selectedSquare === clickedSquare){
-      //just re-clicked the selected square, so turn it off
       return toggleSquare(null);
     }
 
@@ -67,20 +72,28 @@ export default function Game() {
       castling.get(currentBoard),
       enPassantSquares.get(currentBoard),
     )) {
-      makeNextMove(selectedSquare, clickedSquare);
-      console.log(`valid move: ${selectedSquare} --> ${clickedSquare}`)
+
+      const promotionOptions = pawnPromotionOptions(currentBoard, selectedSquare, clickedSquare);
+      
+      if(promotionOptions) {
+        setPromptProps({
+          isPrompting: true,
+          onPromote: (option?: Piece) => {
+            makeNextMove(selectedSquare, clickedSquare, option);
+            setPromptProps({ isPrompting: false, onPromote: () => {} });
+          }
+        })
+      }
+      else {
+        makeNextMove(selectedSquare, clickedSquare);
+      }
       return toggleSquare(null)
     } 
     
-    if(currentPlayer === playerAt(currentBoard, clickedSquare)){
-      return toggleSquare(clickedSquare)
-    }
-
-    console.log(`cannot move:  ${selectedSquare} --> ${clickedSquare}`);
     return;
   }
 
-  return (
+  return (<>
     <div style={{ width: '600px'}}>
       <Captures captures={capturedWhites.get(currentBoard)!} />
       <ChessBoard 
@@ -89,11 +102,13 @@ export default function Game() {
         onClickSquare={handleClickSquare}
         selectedSquare={selectedSquare}
         validMoves={validMoves}
+        currentPlayer={currentPlayer}
       />
       <Captures captures={capturedBlacks.get(currentBoard)!} />
       <div>Turn: {currentPlayer}</div>
       <div>Selected Square: {selectedSquare}</div>
       <div>En Passant Square: {enPassantSquares.get(currentBoard)}</div>
     </div>
-  )
+    <PawnPromotionPrompt {...promptProps} />
+  </>)
 }

@@ -11,7 +11,6 @@ function isInCheck(
     board: Board, 
     player: Player
 ): boolean {
-
     const playerCache = cache.get(player);
     if(playerCache?.get(board)){
         return playerCache.get(board)!;

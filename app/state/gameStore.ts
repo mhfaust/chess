@@ -9,8 +9,10 @@ import { CastlingPreclusions } from 'rules/types/CastlingPreclusions';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
 import { Piece } from 'rules/positions/piece';
 import { BLACK_PIECES, WHITE_PIECES } from 'rules/constants/pieces';
+import { Player } from 'rules/types/Player';
 
 type GameStoreState = {
+  currentPlayer: Player;
   moves: Move[];
   boards: Board[];
   selectedSquare: PositionName | null;
@@ -19,7 +21,7 @@ type GameStoreState = {
   capturedBlacks: Map<Board, Piece[]>;
   capturedWhites: Map<Board, Piece[]>;
   toggleSquare: (PositionName: PositionName | null) => void;
-  makeNextMove: (from: PositionName, to: PositionName) => void;
+  makeNextMove: (from: PositionName, to: PositionName, promoteTo?: Piece) => void;
 }
 
 export const useGameStore = create<GameStoreState>((set) => {
@@ -27,6 +29,7 @@ export const useGameStore = create<GameStoreState>((set) => {
   const startBoard: Board = initialBoard();
 
   return {
+    currentPlayer: 'White',
     moves: [],
     boards: [startBoard],
     selectedSquare: null,
@@ -52,7 +55,7 @@ export const useGameStore = create<GameStoreState>((set) => {
         return { selectedSquare:  nextSelectedSquare }
       })
     },
-    makeNextMove: (from, to) => {
+    makeNextMove: (from, to, promoteTo) => {
       return set(({ 
           boards, 
           moves, 
@@ -62,7 +65,7 @@ export const useGameStore = create<GameStoreState>((set) => {
           capturedWhites
         }) => {
         const lastBoard = [...boards].pop()!;
-        const nextBoard = move(lastBoard, from, to, enPassantSquares.get(lastBoard));
+        const nextBoard = move(lastBoard, from, to, enPassantSquares.get(lastBoard), promoteTo);
 
         console.log(textRender(nextBoard));
 
@@ -92,7 +95,6 @@ export const useGameStore = create<GameStoreState>((set) => {
         const newWhitesMap = new Map(capturedWhites);
         const prevWhiteCaptureds = capturedWhites.get(lastBoard)!;
 
-
         const newWhiteCaptureds = playerAt(lastBoard, to) === "White"
           ? [...prevWhiteCaptureds, pieceAt(lastBoard, to)!]
           : whitePassantPawn
@@ -102,7 +104,9 @@ export const useGameStore = create<GameStoreState>((set) => {
         newBlacksMap.set(nextBoard, newBlackCaptureds);
         newWhitesMap.set(nextBoard, newWhiteCaptureds);
 
+        const currentPlayer = (['White', 'Black'] as const)[boards.length % 2];
         return ({ 
+          currentPlayer,
           moves: [...moves, [from, to] as Move],
           boards: [...boards, nextBoard],
           castling: newCastling,

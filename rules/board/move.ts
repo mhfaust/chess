@@ -3,6 +3,7 @@ import { Board }  from 'rules/types/Board';
 import { PositionName }  from 'rules/positions/positionName';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
 import COORDS from 'rules/positions/coordinates';
+import { Piece } from 'rules/positions/piece';
 
 const castlings: Record<string, [PositionName, PositionName] | undefined> = {
     'White King-E1-C1': ['A1', 'D1'],
@@ -19,17 +20,13 @@ function move (
     from: PositionName, 
     to: PositionName,
     enPassantSquare?: PositionName | null,
+    promoteTo?: Piece,
 ) : Board {
 
     const boardCache = cache.get(previousBoard) 
         ?? cache.set(previousBoard, new Map()).get(previousBoard) as Map<string, Board>;
-
-    const moveHash = from + to + (enPassantSquare || '');
+    const moveHash = `from:${from};to:${to};ep:${enPassantSquare || 'n/a'};promote-to:${promoteTo || 'n/a'}`;
     const cachedBoard = boardCache.get(moveHash);
-
- 
-
-
     if(cachedBoard){
         return cachedBoard;
     }
@@ -58,15 +55,16 @@ function move (
         return castlingBoard;
     }
 
-
-
     if(to === enPassantSquare){
         const pawnPosition = pawnPositionFromEpSquare.get(to)!;
         const [file, rank] = COORDS[pawnPosition];
         newBoard[file][rank] = null; //mutate
     }
 
-
+    if(promoteTo){
+        const [file, rank] = COORDS[to];
+        newBoard[file][rank] = promoteTo; //mutate
+    }
     
     boardCache.set(moveHash, newBoard);
     return newBoard;

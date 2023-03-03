@@ -30,7 +30,7 @@
 }
 .canMoveTo {
   z-index: 1;
-  
+  cursor: pointer;
 }
 .canMoveTo::before {
   content: ' ';
@@ -59,4 +59,11 @@
   background-color: darkblue;
   color: white;
   /* outline: 2px dotted green; */
+}
+
+.blackTurn .blackPiece {
+  cursor: pointer;
+}
+.whiteTurn .whitePiece {
+  cursor: pointer;
 }

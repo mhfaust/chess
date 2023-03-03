@@ -42,7 +42,6 @@ const enPassantSquare = (
     && rank(lastMovedFrom) === blackPawnStartRank 
     && rank(lastMovedTo) === blackPawnStartRank - 2
   ) {
-    console.log('IN HERE (BP)')
     const position = positionName([file(lastMovedFrom), blackPawnStartRank - 1])
     cache.set(currentBoard, position)
     return position;
@@ -52,7 +51,6 @@ const enPassantSquare = (
     && rank(lastMovedFrom) === whitePawnStartRank 
     && rank(lastMovedTo) === whitePawnStartRank + 2
   ){
-    console.log('IN HERE (WP)')
     const position = positionName([file(lastMovedFrom), whitePawnStartRank + 1]);
     cache.set(currentBoard, position);
     return position;
