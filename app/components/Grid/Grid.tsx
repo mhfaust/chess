@@ -8,6 +8,8 @@ import clsx from 'clsx';
 import { PositionName, squareColor } from 'rules/positions/positionName';
 import { rotate8by8 } from 'rules/board/rotateCounterClockwise';
 import { Player } from 'rules/types/Player';
+import { isInCheck } from 'rules/check';
+import isPieceKingInCheck from 'rules/check/isPieceKingInCheck';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -87,6 +89,7 @@ const ChessBoard = ({
                     [styles.canMoveTo]: validMoves.has(positionName),
                     [styles.whitePiece]: piece && WHITE_PIECES.has(piece),
                     [styles.blackPiece]: piece && BLACK_PIECES.has(piece),
+                    [styles.kingInCheck]: piece && isPieceKingInCheck(board, positionName),
                   },
                 )} 
                  key={j}

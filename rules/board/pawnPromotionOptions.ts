@@ -17,20 +17,15 @@ export const whitePromotionOptions: Piece[] =  [
   'White Bishop',
 ]
 
-const pawnPromotionOptions = (
+const isPromotingPawn = (
   board: Board, 
   from: PositionName, 
   to: PositionName
-): Piece[] | null => {
+): boolean => {
   const piece = pieceAt(board, from);
   const toRank = rank(to);
-  if (piece === 'Black Pawn' && toRank === 0) {
-    return blackPromotionOptions
-  }
-  if (piece === 'White Pawn' && toRank === 7) {
-    return whitePromotionOptions 
-  }
-  return null;
+  return (piece === 'Black Pawn' && toRank === 0)
+    || (piece === 'White Pawn' && toRank === 7);
 }
 
-export default pawnPromotionOptions;
+export default isPromotingPawn;

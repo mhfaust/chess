@@ -67,3 +67,7 @@
 .whiteTurn .whitePiece {
   cursor: pointer;
 }
+
+.kingInCheck {
+  color: darkred;
+}

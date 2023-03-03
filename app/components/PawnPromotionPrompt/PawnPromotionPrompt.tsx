@@ -5,16 +5,13 @@ import { Piece } from "rules/positions/piece";
 import styles from "./PawnPromotionPrompt.module.css";
 
 export type PawnPromotionOptionsProps = {
-  isPrompting: boolean;
-  // player: Player;
-  onPromote: (selection: Piece) => void;
+  onPromote: ((selection: Piece) => void) | null;
 }
 
-const PawnPromotionOptions = ({ isPrompting, onPromote }: PawnPromotionOptionsProps) => {
+const PawnPromotionOptions = ({ onPromote }: PawnPromotionOptionsProps) => {
 
   const { boards, currentPlayer } = useGameStore();
-  console.log({isPrompting})
-  if(!isPrompting){
+  if(!onPromote){
     return null;
   }
 

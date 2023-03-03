@@ -8,7 +8,7 @@ import { Player } from 'rules/types/Player';
 import { playerAt } from 'rules/positions';
 import Captures from 'app/components/Captures';
 import allPieceMoves from 'rules/moves/allPieceMoves';
-import pawnPromotionOptions from 'rules/board/pawnPromotionOptions';
+import isPromotingPawn from 'rules/board/pawnPromotionOptions';
 import { PawnPromotionOptionsProps } from 'app/components/PawnPromotionPrompt/PawnPromotionPrompt';
 import { Piece } from 'rules/positions/piece';
 import { useState } from 'react';
@@ -33,10 +33,7 @@ export default function Game() {
     capturedWhites
   } = useGameStore();
 
-  const [promptProps, setPromptProps] = useState<PawnPromotionOptionsProps>({
-    isPrompting: false,
-    onPromote: () => {},
-  });
+  const [promotePawn, setPromotePawn] = useState<((p:Piece )=> void) | null>(null);
   
   const currentBoard = [...boards].pop()!;
 
@@ -73,15 +70,10 @@ export default function Game() {
       enPassantSquares.get(currentBoard),
     )) {
 
-      const promotionOptions = pawnPromotionOptions(currentBoard, selectedSquare, clickedSquare);
-      
-      if(promotionOptions) {
-        setPromptProps({
-          isPrompting: true,
-          onPromote: (option?: Piece) => {
-            makeNextMove(selectedSquare, clickedSquare, option);
-            setPromptProps({ isPrompting: false, onPromote: () => {} });
-          }
+      if(isPromotingPawn(currentBoard, selectedSquare, clickedSquare)) {
+        setPromotePawn(() => (promotePawnAs: Piece) => {
+            makeNextMove(selectedSquare, clickedSquare, promotePawnAs);
+            setPromotePawn(null);
         })
       }
       else {
@@ -109,6 +101,6 @@ export default function Game() {
       <div>Selected Square: {selectedSquare}</div>
       <div>En Passant Square: {enPassantSquares.get(currentBoard)}</div>
     </div>
-    <PawnPromotionPrompt {...promptProps} />
+    <PawnPromotionPrompt onPromote={promotePawn} />
   </>)
 }
