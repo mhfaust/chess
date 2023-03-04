@@ -1,7 +1,10 @@
 import generateLinesOfAttack from './generateLinesOfAttack';
+import allLinesOfAttack from './linesOfAttack';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ } from 'rules/positions/pieces-shorthand';
 import { Board }  from 'rules/types/Board';
 import COORDS  from 'rules/positions/coordinates';
+import { GridCoordinates } from 'rules/types/GridCoordinates';
+import { areSamePositions } from 'rules/positions';
 
 describe('generateLinesOfAttack', () => {
     it('finds the line from a bishop at C3 to E5', () => {
@@ -11,7 +14,7 @@ describe('generateLinesOfAttack', () => {
 /*  B  */ [__,__,__,__,__,__,__,__],
 /*  C  */ [__,__,BB,__,__,__,__,__],
 /*  D  */ [__,__,__,__,__,__,__,__],
-/*  E  */ [__,__,__,__,WP,__,__,__],
+/*  E  */ [WK,__,__,__,WP,__,__,BK],
 /*  F  */ [__,__,__,__,__,__,__,__],
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__], 
@@ -87,15 +90,23 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,WN,__,__,__,__], 
         ];
-        const linesOfAttack = generateLinesOfAttack(board, 'Black', 'F3')
+        const linesOfAttack: GridCoordinates[][] = allLinesOfAttack(board, 'Black', 'F3')
 
-        //order of seeking attack-patterns: pawn, king, knight, bishop, rook
-        expect(linesOfAttack.next().value).toEqual([COORDS.E2])
-        expect(linesOfAttack.next().value).toEqual([COORDS.F2])
-        expect(linesOfAttack.next().value).toEqual([COORDS.H4])
-        expect(linesOfAttack.next().value).toEqual([COORDS.E4, COORDS.D5])
-        expect(linesOfAttack.next().value).toEqual([COORDS.F4, COORDS.F5, COORDS.F6, COORDS.F7])
-        expect(linesOfAttack.next().value).toEqual([COORDS.E3, COORDS.D3, COORDS.C3, COORDS.B3, COORDS.A3])     
-        expect(linesOfAttack.next().done).toBe(true)     
+        const expectedLines: GridCoordinates[][] = [
+            [COORDS.E2],
+            [COORDS.F2],
+            [COORDS.H4],
+            [COORDS.E4, COORDS.D5],
+            [COORDS.F4, COORDS.F5, COORDS.F6, COORDS.F7],
+            [COORDS.E3, COORDS.D3, COORDS.C3, COORDS.B3, COORDS.A3]
+        ]
+
+        for (let attackLine of linesOfAttack) {
+            expect(expectedLines.some(line => {
+                line.forEach((coord, i) => attackLine[i] && areSamePositions(coord, attackLine[i]))
+            }))
+        }
+
+        expect(linesOfAttack.length).toBe(expectedLines.length)
     });    
 })

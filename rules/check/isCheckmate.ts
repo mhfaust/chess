@@ -6,8 +6,7 @@ import {
     displaceTo, 
     otherPlayer, 
     playerAt, 
-    isOnBoard, 
-    positionName
+    positionName,
 } from 'rules/positions';
     
 import { kingVectors }  from 'rules/constants/move-vectors';
@@ -29,14 +28,14 @@ function isCheckmate(
 
     const playerCache = cache.get(defender);
     const cached = playerCache?.get(board);
-    if(cached){
+    if (cached) {
         return cached;
     }
 
     const kingPos = kingPosition(board, defender);
 
     //is there any way to get out of check by moving the king?
-    for(let i = 0; i < kingVectors.length; i++){
+    for (let i = 0; i < kingVectors.length; i++) {
         const vector: MoveVector = kingVectors[i];
         const kingMovesTo = displaceTo(kingPos, vector);
 
@@ -50,7 +49,7 @@ function isCheckmate(
 
     const attackLines = generateLinesOfAttack(board, defender, kingPos);
     const checkLine: IteratorResult<GridCoordinates[], GridCoordinates[]> = attackLines.next();
-    if(checkLine.value === null){
+    if (checkLine.value === null) {
         //Not checkmate if they're not in check!
         playerCache?.set(board, false);
         return false;
@@ -60,7 +59,7 @@ function isCheckmate(
     //which we just looked for, above.
     const secondLine = attackLines.next();
     //So if there's a 2nd line of attack, it's checkmate: 
-    if(secondLine.value){
+    if (secondLine.value) {
         playerCache?.set(board, true);
         return true
     }
@@ -76,29 +75,32 @@ function isCheckmate(
     //important because the blocking piece may have been pinned.
 
     for(let positionOnCheckLine of (checkLine.value)){
-        const squareOnPath = positionName(positionOnCheckLine) as PositionName;
-        const defensiveMoves = generateLinesOfAttack(board, attacker, squareOnPath);
+        const blockingPosition = positionName(positionOnCheckLine) as PositionName;
+        const movesToBlockingPosition = generateLinesOfAttack(board, defender, blockingPosition);
 
         //find any defensive moves onto this particular intervening grid-square,
         //this could either capture the checking piece or block it:
-        let defensiveMoveInfo = defensiveMoves.next();
+        let blockingMoveInfo = movesToBlockingPosition.next();
 
-        while(!defensiveMoveInfo.done){
+        while(!blockingMoveInfo.done){
             //This will be a line of grid-coordinates, starting
             //one step away from the position on the check-line and 
             //ending at a defender's piece...:
-            const defensiveMove: Array<GridCoordinates> = defensiveMoveInfo.value;
+            const blockingMove: Array<GridCoordinates> = blockingMoveInfo.value;
             //...so to get the moved piece's position, get the last coordinates from the "line-of-attck"
-            const defendingPieceMovesFrom = positionName(defensiveMove[defensiveMove.length -1]);
+            const defendingPieceMovesFrom = positionName(blockingMove[blockingMove.length -1]);
+
             
-            if(defendingPieceMovesFrom 
-                && !movesIntoCheck(board, defendingPieceMovesFrom, squareOnPath)
-            ){
+            if (defendingPieceMovesFrom 
+                && playerAt(board, defendingPieceMovesFrom) === defender
+                && !movesIntoCheck(board, defendingPieceMovesFrom, blockingPosition)
+            ) {
+                console.log(`I don't think ${defender} is in check if I move ${defendingPieceMovesFrom}  to  ${blockingPosition}`)
                 playerCache?.set(board, false);
                 return false;
             }
             
-            defensiveMoveInfo = defensiveMoves.next();
+            blockingMoveInfo = movesToBlockingPosition.next();
         }
     }
     //No blocking move = checkmate.

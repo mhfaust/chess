@@ -25,8 +25,11 @@ function rook(board: Board, moveFrom: PositionName): Set<PositionName> {
             legalMoves.push(examinedPosition);
             examinedPosition = displaceTo(examinedPosition, direction);
         }
-        if(examinedPosition && isOccupiedByPlayer(board, examinedPosition, otherPlayer(player)))
+        if (examinedPosition && 
+            isOccupiedByPlayer(board, examinedPosition, otherPlayer(player))
+        ) {
             legalMoves.push(examinedPosition);
+        }
     });
 
     return new Set(legalMoves

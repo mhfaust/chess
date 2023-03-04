@@ -5,15 +5,12 @@ import {
     pieceAt, 
 } from 'rules/positions';
 import { 
-    kingVectors, 
     knightVectors, 
-    rookVectors, 
-    bishopVectors, 
     pawnBlackAttackVectors, 
-    pawnWhiteAttackVectors 
+    pawnWhiteAttackVectors, 
+    queenVectors
 } from 'rules/constants/move-vectors'
 
-import { BK, BQ, BR, BN, BB, BP, WK, WQ, WR, WN, WB, WP }  from 'rules/positions/pieces-shorthand';
 import { PositionName }  from 'rules/positions/positionName';
 import { Board }  from 'rules/types/Board';
 import { Player }  from 'rules/types/Player';
@@ -26,24 +23,19 @@ import { canMoveTo } from 'rules/moves';
 
 export type AttackPattern = {
     vectors: ReadonlyArray<MoveVector>; 
-    canAttackLikeThis: Set<Piece>; 
     limit: number;
 }
 
 const whiteAttackPatterns: Array<AttackPattern> = [
-    { vectors: pawnWhiteAttackVectors, canAttackLikeThis: new Set([WP, WQ, WB, WK]), limit: 1 },
-    { vectors: kingVectors, canAttackLikeThis: new Set([WK, WQ]), limit: 1 },
-    { vectors: knightVectors, canAttackLikeThis: new Set([WN]), limit: 1 },
-    { vectors: bishopVectors, canAttackLikeThis: new Set([WB, WQ]), limit: 0 },
-    { vectors: rookVectors, canAttackLikeThis: new Set([WR, WQ]), limit: 0 },
+    { vectors: pawnWhiteAttackVectors, limit: 1 },
+    { vectors: knightVectors, limit: 1 },
+    { vectors: queenVectors, limit: 0 },
 ];
 
 const blackAttackPatterns: Array<AttackPattern> = [
-    { vectors: pawnBlackAttackVectors, canAttackLikeThis: new Set([BP, BQ, BB, BK]), limit: 1 },
-    { vectors: kingVectors, canAttackLikeThis: new Set([BK, BQ]), limit: 1 },
-    { vectors: knightVectors, canAttackLikeThis: new Set([BN]), limit: 1 },
-    { vectors: bishopVectors, canAttackLikeThis: new Set([BB, BQ]), limit: 0 },
-    { vectors: rookVectors, canAttackLikeThis: new Set([BR, BQ]), limit: 0 },
+    { vectors: pawnBlackAttackVectors, limit: 1 },
+    { vectors: knightVectors, limit: 1 },
+    { vectors: queenVectors, limit: 0 },
 ];
 
 const isPawn = (p: Piece) => ['Black Pawn', 'White Pawn'].includes(p)
@@ -51,10 +43,10 @@ const isPawn = (p: Piece) => ['Black Pawn', 'White Pawn'].includes(p)
 function * generateLinesOfAttack(
     board: Board, 
     defender: Player, 
-    defendedPosition: PositionName)
+    target: PositionName)
     : IterableIterator<GridCoordinates[]>
 {
-    if(!defendedPosition){
+    if(!target){
         return;
     }
     const attacker = otherPlayer(defender);
@@ -63,11 +55,11 @@ function * generateLinesOfAttack(
     const attackLines = new Map<PositionName, GridCoordinates[]>();
 
     for(let attackPattern of attackPatterns){
-        const { canAttackLikeThis: canMoveLikeThis, vectors, limit, } = attackPattern;
+        const { vectors, limit, } = attackPattern;
 
         for(let vector of vectors){   
             const attackLine: GridCoordinates[] = [];
-            let examinedPosition = displaceFrom(defendedPosition, vector);
+            let examinedPosition = displaceFrom(target, vector);
             let step = 0;
             while (examinedPosition && ++step) {
                 attackLine.push(COORDS[examinedPosition]);
@@ -76,22 +68,19 @@ function * generateLinesOfAttack(
                 if (pieceThere) {
                     
                     if (playerAt(board, examinedPosition) === attacker
-                        && canMoveLikeThis.has(pieceThere) 
                         && !attackLines.has(examinedPosition)
-                        && (!isPawn(pieceThere) || canMoveTo(board, examinedPosition, defendedPosition))
+                        && canMoveTo(board, examinedPosition, target)
                     ){
                         yield attackLine; 
                         attackLines.set(examinedPosition, attackLine);
                     }
-                    break;//found a piece, done with vector
+                    break; //found a piece, done with vector
                 }
                 else if (limit && step === limit) {
-                    break;//attack patten only goes one or two out (knight, pawn, or king). done with vector.
+                    break; //attack patten only goes one or two out (knight, pawn, or king). done with vector.
                 }
 
                 examinedPosition = displaceFrom(examinedPosition, vector);
-                
-                // console.log(examinedPosition)
             }
         }
     }
