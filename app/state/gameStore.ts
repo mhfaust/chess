@@ -1,6 +1,6 @@
 import { initialBoard, move, nextCastlingPreclusions } from 'rules/board';
 import { Move } from 'rules/game/validateMoves';
-import positionName, { PositionName } from 'rules/positions/positionName';
+import { PositionName } from 'rules/positions/positionName';
 import { Board } from 'rules/types/Board';
 import { create } from 'zustand';
 import textRender from 'rules/board/textRender';

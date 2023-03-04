@@ -51,7 +51,7 @@ function nextBoardAnnotations(
         lastPieceMoved,
         lastMoveFrom: pieceMovedFromPosition,
         lastMoveTo: pieceMovedToPosition,
-        whoseTurn: nextPlayer,
+        currentPlayer: nextPlayer,
         isInCheck: nextTurnIsInCheck,
         isCheckmate: nextTurnIsCheckmate,
         capturedBlackPieces,

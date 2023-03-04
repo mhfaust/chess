@@ -6,7 +6,7 @@ const initialBoardAnnotations = (): BoardAnnotations => {
         lastPieceMoved: null,
         lastMoveFrom: null,
         lastMoveTo: null,
-        whoseTurn: 'White',
+        currentPlayer: 'White',
         isInCheck: false,
         isCheckmate: false,
         capturedBlackPieces: [],

@@ -1,10 +1,9 @@
 'use client'
 
-import ChessBoard from 'app/components/Grid/Grid';
+import Grid from 'app/components/Grid/Grid';
 import { useGameStore } from 'app/state/gameStore';
 import { PositionName } from 'rules/positions/positionName';
 import { canMoveTo } from 'rules/moves';
-import { Player } from 'rules/types/Player';
 import { otherPlayer, playerAt } from 'rules/positions';
 import Captures from 'app/components/Captures';
 import allPieceMoves from 'rules/moves/allPieceMoves';
@@ -12,7 +11,7 @@ import isPromotingPawn from 'rules/board/pawnPromotionOptions';
 import { Piece } from 'rules/positions/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { isCheckmate } from 'rules/check';
+import { isCheckmate, isInCheck } from 'rules/check';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -92,7 +91,7 @@ export default function Game() {
   return (<>
     <div style={{ width: '600px'}}>
       <Captures captures={capturedWhites.get(currentBoard)!} />
-      <ChessBoard 
+      <Grid 
         board={currentBoard} 
         orientation={0}
         onClickSquare={handleClickSquare}
@@ -104,10 +103,15 @@ export default function Game() {
       <div>
       {isCheckmate(currentBoard, currentPlayer) ? (
           <div>
-            CHECKMATE -- {otherPlayer(currentPlayer)} WINS
+            <div>CHECKMATE -- {otherPlayer(currentPlayer)} WINS</div>
+            <button>New Game</button>
           </div>
-        ) : (
-          <div>Turn: {currentPlayer}</div>
+        ) : (<>
+            <div>{currentPlayer}'s turn</div>
+            {isInCheck(currentBoard, currentPlayer) ?? (
+              <div>{currentPlayer} is in check</div>
+            )}
+          </>
         )}
       </div>
     </div>
