@@ -1,11 +1,10 @@
 import { 
     playerAt, 
     displaceTo, 
-    isOnBoard, 
     isUnOccupied, 
     isOccupiedByPlayer,
-    otherPlayer, 
-    positionName } from 'rules/positions';
+    otherPlayer,  
+} from 'rules/positions';
 import movesIntoCheck  from 'rules/check/movesIntoCheck';
 import { PositionName }  from 'rules/positions/positionName';
 import { Board }  from 'rules/types/Board';

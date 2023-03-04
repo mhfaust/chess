@@ -31,7 +31,7 @@ function rookCanMove (
 
     //if both or neither file and rank were changed, 
     //it's not a valid rook move:
-    if(!(fileMove ^ rankMove)){
+    if(to === from || (fileMove !== 0 && rankMove !== 0)) {
         return false;
     }
 

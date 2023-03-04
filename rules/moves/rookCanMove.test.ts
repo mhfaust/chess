@@ -50,6 +50,10 @@ describe('rookCanMove', () => {
         it('cannot move onto own players piece', () => {
             expect(rookCanMove(rook1Board, 'E4', 'E8')).toBe(false);
         })
+
+        it('cannot move diagonally', () => {
+            expect(rookCanMove(rook1Board, 'E4', 'D5')).toBe(false);
+        })
     })
 
     describe('along file', () => {
