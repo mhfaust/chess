@@ -1,5 +1,5 @@
 import generateLinesOfAttack from './generateLinesOfAttack';
-import allLinesOfAttack from './linesOfAttack';
+import allLinesOfAttack from './allLinesOfAttack';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ } from 'rules/positions/pieces-shorthand';
 import { Board }  from 'rules/types/Board';
 import COORDS  from 'rules/positions/coordinates';
