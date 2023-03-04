@@ -1,12 +1,8 @@
-queening
-  prompt [done]
+Resign
+- UI to allow player to resign
 
-indicate:
-- is in check [done]
-- game-over + winner(checkmate)
-  
-  
-
+Draw
+- See draw rules at https://www.chessmatec.com/chess-rules-for-kids-draw
 
 Game Options:
   At start, select type of game (ideas)

@@ -8,7 +8,10 @@ import {
     knightVectors, 
     pawnBlackAttackVectors, 
     pawnWhiteAttackVectors, 
-    queenVectors
+    queenVectors,
+    kingVectors,
+    bishopVectors,
+    rookVectors
 } from 'rules/constants/move-vectors'
 
 import { PositionName }  from 'rules/positions/positionName';
@@ -20,22 +23,29 @@ import COORDS  from 'rules/positions/coordinates';
 import { GridCoordinates } from 'rules/types/GridCoordinates';
 import { MoveVector } from 'rules/types/MoveVector';
 import { canMoveTo } from 'rules/moves';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
+
 
 export type AttackPattern = {
     vectors: ReadonlyArray<MoveVector>; 
+    canAttackLikeThis: Set<Piece>; 
     limit: number;
 }
 
 const whiteAttackPatterns: Array<AttackPattern> = [
-    { vectors: pawnWhiteAttackVectors, limit: 1 },
-    { vectors: knightVectors, limit: 1 },
-    { vectors: queenVectors, limit: 0 },
+    { vectors: pawnWhiteAttackVectors, canAttackLikeThis: new Set([WP, WQ, WB, WK]), limit: 1 },
+    { vectors: kingVectors, canAttackLikeThis: new Set([WK, WQ]), limit: 1 },
+    { vectors: knightVectors, canAttackLikeThis: new Set([WN]), limit: 1 },
+    { vectors: bishopVectors, canAttackLikeThis: new Set([WB, WQ]), limit: 0 },
+    { vectors: rookVectors, canAttackLikeThis: new Set([WR, WQ]), limit: 0 },
 ];
 
 const blackAttackPatterns: Array<AttackPattern> = [
-    { vectors: pawnBlackAttackVectors, limit: 1 },
-    { vectors: knightVectors, limit: 1 },
-    { vectors: queenVectors, limit: 0 },
+    { vectors: pawnBlackAttackVectors, canAttackLikeThis: new Set([BP, BQ, BB, BK]), limit: 1 },
+    { vectors: kingVectors, canAttackLikeThis: new Set([BK, BQ]), limit: 1 },
+    { vectors: knightVectors, canAttackLikeThis: new Set([BN]), limit: 1 },
+    { vectors: bishopVectors, canAttackLikeThis: new Set([BB, BQ]), limit: 0 },
+    { vectors: rookVectors, canAttackLikeThis: new Set([BR, BQ]), limit: 0 },
 ];
 
 const isPawn = (p: Piece) => ['Black Pawn', 'White Pawn'].includes(p)
@@ -51,11 +61,10 @@ function * generateLinesOfAttack(
     }
     const attacker = otherPlayer(defender);
     let attackPatterns = attacker === 'Black' ? blackAttackPatterns : whiteAttackPatterns;
-
     const attackLines = new Map<PositionName, GridCoordinates[]>();
 
     for(let attackPattern of attackPatterns){
-        const { vectors, limit, } = attackPattern;
+        const { vectors, limit, canAttackLikeThis} = attackPattern;
 
         for(let vector of vectors){   
             const attackLine: GridCoordinates[] = [];
@@ -68,12 +77,14 @@ function * generateLinesOfAttack(
                 if (pieceThere) {
                     
                     if (playerAt(board, examinedPosition) === attacker
+                        && canAttackLikeThis.has(pieceThere) 
                         && !attackLines.has(examinedPosition)
-                        && canMoveTo(board, examinedPosition, target)
+                        && (!isPawn(pieceThere) || canMoveTo(board, examinedPosition, target))
+ 
                     ){
                         yield attackLine; 
                         attackLines.set(examinedPosition, attackLine);
-                    }
+                    } 
                     break; //found a piece, done with vector
                 }
                 else if (limit && step === limit) {

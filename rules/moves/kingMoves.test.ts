@@ -165,4 +165,22 @@ describe('kingMoves', () => {
 
         expect(foundLegalMoves).toContain('C8')
     });  
+
+    it('White king cannot castle out of check', () => {
+        const board: Board = [
+        /*         1  2  3  4  5  6  7  8  */
+        /*  A  */ [WR,WP,__,__,__,__,BP,BR],
+        /*  B  */ [WN,__,__,WP,__,__,BP,BN],
+        /*  C  */ [__,WP,__,WB,__,__,BP,BB],
+        /*  D  */ [WQ,__,__,BP,__,__,BP,__],
+        /*  E  */ [WK,__,__,__,__,__,BQ,BK],
+        /*  F  */ [__,WP,BP,__,__,__,__,BB],
+        /*  G  */ [__,WP,__,__,__,__,BP,BN],
+        /*  H  */ [WR,WP,__,__,__,WB,BP,BR],
+        ]; 
+
+        const foundLegalMoves = kingMoves(board, 'E1', new Set());
+
+        expect(foundLegalMoves.has('G1')).toBe(false)
+    });  
 })

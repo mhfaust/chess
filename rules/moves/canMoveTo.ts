@@ -45,7 +45,6 @@ function canMoveTo (
     castlingPreclusions: CastlingPreclusions | null = null,
     enPassantSquare: PositionName | null = null,
 ): boolean {
-
     const strategy = strategies.get(pieceAt(board, from));
     return strategy(board, from, to, castlingPreclusions, enPassantSquare);
 

@@ -1,7 +1,7 @@
 import { __ }  from 'rules/positions/pieces-shorthand'
 import { Board }  from 'rules/types/Board';
 
-export default (): Board => [
+const emptyBoard = (): Board => [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -12,3 +12,5 @@ export default (): Board => [
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__], 
 ];
+
+export default emptyBoard;

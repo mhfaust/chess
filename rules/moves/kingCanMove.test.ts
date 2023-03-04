@@ -133,4 +133,22 @@ describe('kingCanMove', () => {
 
         expect(kingCanMove(board, 'E8', 'C8', noPreclusions)).toBe(true)
     });  
+
+    it('White king cannot castle out of check', () => {
+        const board: Board = [
+        /*         1  2  3  4  5  6  7  8  */
+        /*  A  */ [WR,WP,__,__,__,__,BP,BR],
+        /*  B  */ [WN,__,__,WP,__,__,BP,BN],
+        /*  C  */ [__,WP,__,WB,__,__,BP,BB],
+        /*  D  */ [WQ,__,__,BP,__,__,BP,__],
+        /*  E  */ [WK,__,__,__,__,__,BQ,BK],
+        /*  F  */ [__,WP,BP,__,__,__,__,BB],
+        /*  G  */ [__,WP,__,__,__,__,BP,BN],
+        /*  H  */ [WR,WP,__,__,__,WB,BP,BR],
+        ]; 
+
+        const canMove = kingCanMove(board, 'E1', 'G1', new Set());
+
+        expect(canMove).toBe(false)
+    }); 
 })

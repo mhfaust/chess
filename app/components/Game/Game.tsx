@@ -12,6 +12,7 @@ import { Piece } from 'rules/positions/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { isCheckmate, isInCheck } from 'rules/check';
+import testBoard from 'rules/board/testBoard';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules

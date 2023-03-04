@@ -8,7 +8,8 @@ import movesIntoCheck  from 'rules/check/movesIntoCheck';
 import { CastlingPreclusions }  from 'rules/types/CastlingPreclusions';
 import { PositionName }  from 'rules/positions/positionName';
 import { Board }  from 'rules/types/Board';
-import areEmpty from './areEmpty';
+import areEmpty from 'rules/moves/areEmpty';
+import { isInCheck } from 'rules/check';
 
 const emptySet = new Set<PositionName>();
 
@@ -31,6 +32,11 @@ function kingMoves (
             .filter(kingTo => !movesIntoCheck(board, kingFrom, kingTo!))
         )
     ) as Set<PositionName>;
+
+    //finish & don't look for castling moves if they're in check:
+    if(isInCheck(board, player)){
+        return legalMoves;
+    }
 
     //castling moves:
     if (player === 'White' && kingFrom == 'E1') {

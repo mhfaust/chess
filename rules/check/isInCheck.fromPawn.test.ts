@@ -147,7 +147,7 @@ describe('isInCheck: false', () => {
         expect(isInCheck(board, 'White')).toBe(false)
     });
 
-    it('White King at E5 is NOT in check from Pawn at C7', () => {
+    it.only('White King at E5 is NOT in check from Pawn at C7', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],

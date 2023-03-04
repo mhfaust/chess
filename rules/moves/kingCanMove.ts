@@ -3,6 +3,8 @@ import movesIntoCheck  from 'rules/check/movesIntoCheck';
 import { CastlingPreclusions }  from 'rules/types/CastlingPreclusions';
 import { Board }  from 'rules/types/Board';
 import { PositionName }  from 'rules/positions/positionName';
+import areEmpty from 'rules/moves/areEmpty';
+import { isInCheck } from 'rules/check';
 
 
 function kingCanMove (
@@ -23,19 +25,21 @@ function kingCanMove (
         return true;
     }
 
+    //Can't castle out of check, so if they're in check & don't look for castling moves:
+    if(player && isInCheck(board, player)){
+        return false;
+    }
+
     if(from === 'E1' && player === 'White'){
         if(to === 'G1'){
             return !castlingPreclusions.has('H1') 
-                && pieceAt(board, 'F1') === null 
-                && pieceAt(board, 'G1') === null
+                && areEmpty(board, 'F1', 'G1')
                 && !movesIntoCheck(board, 'E1', 'F1')//across check
                 && !movesIntoCheck(board, 'E1', 'G1')//into check
         }
         if(to === 'C1'){
             return !castlingPreclusions.has('A1') 
-                && pieceAt(board, 'B1') === null 
-                && pieceAt(board, 'C1') === null
-                && pieceAt(board, 'D1') === null
+            && areEmpty(board, 'B1', 'C1', 'D1')
                 && !movesIntoCheck(board, 'E1', 'D1')//across check
                 && !movesIntoCheck(board, 'E1', 'C1')//into check
         }
@@ -44,16 +48,13 @@ function kingCanMove (
     if(from === 'E8' && player === 'Black'){
         if(to === 'G8'){
             return !castlingPreclusions.has('H8') 
-                && pieceAt(board, 'F8') === null
-                && pieceAt(board, 'G8') === null
+                && areEmpty(board, 'F8', 'G8')
                 && !movesIntoCheck(board, 'E8', 'F8')//across check
                 && !movesIntoCheck(board, 'E8', 'G8')//into check
         }
         if(to === 'C8'){
             return !castlingPreclusions.has('A8') 
-                && pieceAt(board, 'B8') === null
-                && pieceAt(board, 'C8') === null
-                && pieceAt(board, 'D8') === null
+                && areEmpty(board, 'B8', 'C8', 'D8')
                 && !movesIntoCheck(board, 'E8', 'D8')//across check
                 && !movesIntoCheck(board, 'E8', 'C8')//into check
         }
