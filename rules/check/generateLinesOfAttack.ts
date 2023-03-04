@@ -22,6 +22,7 @@ import { Piece }  from 'rules/positions/piece';
 import COORDS  from 'rules/positions/coordinates';
 import { GridCoordinates } from 'rules/types/GridCoordinates';
 import { MoveVector } from 'rules/types/MoveVector';
+import { canMoveTo } from 'rules/moves';
 
 export type AttackPattern = {
     vectors: ReadonlyArray<MoveVector>; 
@@ -45,12 +46,17 @@ const blackAttackPatterns: Array<AttackPattern> = [
     { vectors: rookVectors, canAttackLikeThis: new Set([BR, BQ]), limit: 0 },
 ];
 
+const isPawn = (p: Piece) => ['Black Pawn', 'White Pawn'].includes(p)
+
 function * generateLinesOfAttack(
     board: Board, 
     defender: Player, 
     defendedPosition: PositionName)
     : IterableIterator<GridCoordinates[]>
 {
+    if(!defendedPosition){
+        return;
+    }
     const attacker = otherPlayer(defender);
     let attackPatterns = attacker === 'Black' ? blackAttackPatterns : whiteAttackPatterns;
 
@@ -72,6 +78,7 @@ function * generateLinesOfAttack(
                     if (playerAt(board, examinedPosition) === attacker
                         && canMoveLikeThis.has(pieceThere) 
                         && !attackLines.has(examinedPosition)
+                        && (!isPawn(pieceThere) || canMoveTo(board, examinedPosition, defendedPosition))
                     ){
                         yield attackLine; 
                         attackLines.set(examinedPosition, attackLine);
@@ -81,7 +88,10 @@ function * generateLinesOfAttack(
                 else if (limit && step === limit) {
                     break;//attack patten only goes one or two out (knight, pawn, or king). done with vector.
                 }
+
                 examinedPosition = displaceFrom(examinedPosition, vector);
+                
+                // console.log(examinedPosition)
             }
         }
     }

@@ -147,4 +147,20 @@ describe('isCheckmate', () => {
 
         expect(isCheckmate(board, 'White')).toBe(false)
     });
+
+    it('is in checkmate and pawn cannot attack empty square (H7-G6)', () => {
+        const board: Board = [
+/*         1  2  3  4  5  6  7  8  */
+/*  A  */ [WR,WP,__,__,__,__,BP,BR],
+/*  B  */ [WN,WP,__,__,__,__,BP,BN],
+/*  C  */ [WB,WP,__,__,__,__,BP,BB],
+/*  D  */ [__,__,WP,__,__,__,BP,BQ],
+/*  E  */ [WK,__,__,WP,__,__,BP,BK],
+/*  F  */ [WB,WP,__,__,BP,__,__,BB],
+/*  G  */ [WN,WP,__,__,BP,__,__,BN],
+/*  H  */ [WR,WP,__,__,WQ,__,BP,BR],
+        ];
+
+        expect(isCheckmate(board, 'Black')).toBe(true)
+    });
 })

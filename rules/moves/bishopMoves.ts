@@ -1,7 +1,6 @@
 import { 
     playerAt, 
     displaceTo, 
-    isOnBoard, 
     isUnOccupied, 
     isOccupiedByPlayer, 
     otherPlayer, 

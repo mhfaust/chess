@@ -15,9 +15,9 @@ function bishopCanMove (
     toPosition: PositionName)
     : boolean {
 
-    if(!isOnBoard(toPosition))
+    if (!isOnBoard(toPosition)) {
         return false;
-    
+    }
     const thisPlayer = playerAt(board, toPosition);
 
     //can't move there if it's occupied by one of player's own pieces:

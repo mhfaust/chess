@@ -55,7 +55,7 @@ function pawnCanMove (
         if(stepsForward !== 1){
             return false;
         }
-        if(isUnOccupied(board, to) && (enPassantSquare !== to)){
+        if(isUnOccupied(board, to) && (to !== enPassantSquare)){
             return false;
         }
         if(isOccupiedByPlayer(board, to, player)){

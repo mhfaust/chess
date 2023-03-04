@@ -5,10 +5,11 @@ indicate:
 - is in check [done]
 - game-over + winner(checkmate)
   
+  
 
 
 Game Options:
-  At start, select type of game
+  At start, select type of game (ideas)
     - "Touched-it" mode
       - dis-allow switching selected piece
     - serious: most Annotations can't be turned on, just tells you if you're in check

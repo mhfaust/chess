@@ -1,6 +1,5 @@
 import { 
     playerAt, 
-    isOnBoard, 
     isUnOccupiedByPlayer, 
     displaceTo 
 } from 'rules/positions';

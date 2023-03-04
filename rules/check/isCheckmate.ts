@@ -76,11 +76,13 @@ function isCheckmate(
     //important because the blocking piece may have been pinned.
 
     for(let positionOnCheckLine of (checkLine.value)){
-        const posName = positionName(positionOnCheckLine) as PositionName;
-        const defensiveMoves = generateLinesOfAttack(board, attacker, posName);
+        const squareOnPath = positionName(positionOnCheckLine) as PositionName;
+        const defensiveMoves = generateLinesOfAttack(board, attacker, squareOnPath);
+
         //find any defensive moves onto this particular intervening grid-square,
         //this could either capture the checking piece or block it:
         let defensiveMoveInfo = defensiveMoves.next();
+
         while(!defensiveMoveInfo.done){
             //This will be a line of grid-coordinates, starting
             //one step away from the position on the check-line and 
@@ -90,7 +92,7 @@ function isCheckmate(
             const defendingPieceMovesFrom = positionName(defensiveMove[defensiveMove.length -1]);
             
             if(defendingPieceMovesFrom 
-                && !movesIntoCheck(board, defendingPieceMovesFrom, posName)
+                && !movesIntoCheck(board, defendingPieceMovesFrom, squareOnPath)
             ){
                 playerCache?.set(board, false);
                 return false;

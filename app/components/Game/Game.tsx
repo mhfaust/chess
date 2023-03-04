@@ -5,14 +5,14 @@ import { useGameStore } from 'app/state/gameStore';
 import { PositionName } from 'rules/positions/positionName';
 import { canMoveTo } from 'rules/moves';
 import { Player } from 'rules/types/Player';
-import { playerAt } from 'rules/positions';
+import { otherPlayer, playerAt } from 'rules/positions';
 import Captures from 'app/components/Captures';
 import allPieceMoves from 'rules/moves/allPieceMoves';
 import isPromotingPawn from 'rules/board/pawnPromotionOptions';
-import { PawnPromotionOptionsProps } from 'app/components/PawnPromotionPrompt/PawnPromotionPrompt';
 import { Piece } from 'rules/positions/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
+import { isCheckmate } from 'rules/check';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -33,7 +33,9 @@ export default function Game() {
     capturedWhites
   } = useGameStore();
 
-  const [promotePawn, setPromotePawn] = useState<((p:Piece )=> void) | null>(null);
+  const [promotePawn, setPromotePawn] = useState<
+    ((p:Piece ) => void) | null
+  >(null);
   
   const currentBoard = [...boards].pop()!;
 
@@ -50,19 +52,21 @@ export default function Game() {
     ) || undefined;
 
   const handleClickSquare = (clickedSquare: PositionName) => {
-
     const playerAtClicked = playerAt(currentBoard, clickedSquare);
 
-    if(!selectedSquare){
-      const isPlayersPiece = currentPlayer === playerAtClicked;
-      return toggleSquare(isPlayersPiece ? clickedSquare : null)
-    }
-
-    if (selectedSquare === clickedSquare){
+    if (selectedSquare && selectedSquare === clickedSquare){
       return toggleSquare(null);
     }
 
-    if (canMoveTo(
+    else if (currentPlayer === playerAtClicked) {
+      return toggleSquare(clickedSquare)
+    }
+    
+    else if (!selectedSquare){
+      return toggleSquare(null)
+    }
+
+    else if (canMoveTo(
       currentBoard, 
       selectedSquare, 
       clickedSquare,
@@ -97,9 +101,15 @@ export default function Game() {
         currentPlayer={currentPlayer}
       />
       <Captures captures={capturedBlacks.get(currentBoard)!} />
-      <div>Turn: {currentPlayer}</div>
-      <div>Selected Square: {selectedSquare}</div>
-      <div>En Passant Square: {enPassantSquares.get(currentBoard)}</div>
+      <div>
+      {isCheckmate(currentBoard, currentPlayer) ? (
+          <div>
+            CHECKMATE -- {otherPlayer(currentPlayer)} WINS
+          </div>
+        ) : (
+          <div>Turn: {currentPlayer}</div>
+        )}
+      </div>
     </div>
     <PawnPromotionPrompt onPromote={promotePawn} />
   </>)
