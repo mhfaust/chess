@@ -11,7 +11,7 @@ function movesIntoCheck(
     : boolean {
    
     const player = playerAt(board, moveFrom);
-    const nextBoard = move(board, moveFrom, moveTo, null);
+    const [nextBoard] = move(board, moveFrom, moveTo, null);
     
     return player ? isInCheck(nextBoard, player) : false;
 }

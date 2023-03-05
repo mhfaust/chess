@@ -71,8 +71,7 @@ export const useGameStore = create<GameStoreState>((set) => {
           && enPassantSquares.get(lastBoard) === to
             ? to : null;
 
-        const nextBoard = move(lastBoard, from, to, epSquare, promoteTo);
-
+        const [nextBoard, moveHash] = move(lastBoard, from, to, epSquare, promoteTo);
         const newCastling = new Map(castling).set(
           nextBoard,
           nextCastlingPreclusions(from, castling.get(lastBoard))

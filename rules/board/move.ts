@@ -14,7 +14,9 @@ const castlings: Record<string, [PositionName, PositionName] | undefined> = {
     'Black King-E8-G8': ['H8', 'F8'],
 };
 
-const cache = new Map<Board, Map<string, Board>>();
+type MoveTuple = [Board, string]
+const cache = new Map<Board, Map<string, MoveTuple>>();
+
 
 /** Does not validate the move (to may be occupied, may be in check, etc.) */
 function move ( 
@@ -23,11 +25,11 @@ function move (
     to: PositionName,
     enPassantSquare: PositionName | null,
     promoteTo?: Piece,
-) : Board {
+) : MoveTuple {
 
     const boardCache = cache.get(previousBoard) 
         ?? cache.set(previousBoard, new Map())
-            .get(previousBoard) as Map<string, Board>;
+            .get(previousBoard) as Map<string, MoveTuple>;
 
     const other = otherPlayer(playerAt(previousBoard, from)!);
     const pieceThere = pieceAt(previousBoard, to);
@@ -49,9 +51,6 @@ function move (
         return cachedBoard;
     }
 
-// console.log(moveHash)
-
-
     const newBoard : Board = [
         [...previousBoard[0]],
         [...previousBoard[1]],
@@ -71,9 +70,9 @@ function move (
     const castling = castlings[`${movedPiece}-${from}-${to}`];
     if(castling){
         //move the castle:
-        const castlingBoard = move(newBoard, castling[0], castling[1], null);
-        boardCache.set(moveHash, castlingBoard)
-        return castlingBoard;
+        const castlingTuple = move(newBoard, castling[0], castling[1], null);
+        boardCache.set(moveHash, castlingTuple)
+        return castlingTuple;
     }
 
     if(isEpCapture){
@@ -86,9 +85,9 @@ function move (
         const [file, rank] = COORDS[to];
         newBoard[file][rank] = promoteTo; //mutate
     }
-    
-    boardCache.set(moveHash, newBoard);
-    return newBoard;
+    const moveTupple: MoveTuple = [newBoard, moveHash];
+    boardCache.set(moveHash, moveTupple);
+    return moveTupple;
 }
 
 export default move;

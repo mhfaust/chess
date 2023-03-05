@@ -51,7 +51,7 @@ function validateGameMoves(gameMoves: [PositionName, PositionName][]){
             break;
         }
 
-        const board = move(prevBoard, from, to, null);
+        const [board] = move(prevBoard, from, to, null);
         const annotations = nextBoardAnnotations(prevBoard, board, prevAnnotations as BoardAnnotations, from, to);
         annotatedMoves.push( {
             board,

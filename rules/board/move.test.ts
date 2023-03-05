@@ -27,8 +27,10 @@ describe('move', () => {
 /*  F  */ [__,__,__,__,__,WP,BP,BR],
 /*  G  */ [__,__,__,__,__,BP,BQ,__],
 /*  H  */ [__,__,__,__,__,__,BP,BK],
-        ];        
+        ];   
+        
+        const [nextBoard] = move(boardBefore, 'G8', 'H8', null);
 
-        expect(move(boardBefore, 'G8', 'H8', null)).toEqual(boardAfter)
+        expect(nextBoard).toEqual(boardAfter)
     })
 })
