@@ -29,6 +29,6 @@ describe('move', () => {
 /*  H  */ [__,__,__,__,__,__,BP,BK],
         ];        
 
-        expect(move(boardBefore, 'G8', 'H8')).toEqual(boardAfter)
+        expect(move(boardBefore, 'G8', 'H8', null)).toEqual(boardAfter)
     })
 })

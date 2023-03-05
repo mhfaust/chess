@@ -29,7 +29,7 @@ function pawn(
     const initialRank = rank(moveFrom);
     const forward1 = displaceTo(moveFrom, [0, forwardDirection]);
 
-    const moveNotInCheck = (moveTo: PositionName): boolean => !isInCheck(move(board, moveFrom, moveTo), player)
+    const moveNotInCheck = (moveTo: PositionName): boolean => !isInCheck(move(board, moveFrom, moveTo, null), player)
      
     //advance moves
     if(forward1 && isUnOccupied(board, forward1) && moveNotInCheck(forward1)){

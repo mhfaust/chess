@@ -1,9 +1,11 @@
-import { file, rank, pieceAt }  from 'rules/positions';
+import { file, rank, pieceAt, playerAt, otherPlayer }  from 'rules/positions';
 import { Board }  from 'rules/types/Board';
 import { PositionName }  from 'rules/positions/positionName';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
 import COORDS from 'rules/positions/coordinates';
 import { Piece } from 'rules/positions/piece';
+import { shorthand } from 'rules/positions/pieces-shorthand';
+import isPawn from 'rules/pieces/isPawn';
 
 const castlings: Record<string, [PositionName, PositionName] | undefined> = {
     'White King-E1-C1': ['A1', 'D1'],
@@ -19,17 +21,36 @@ function move (
     previousBoard: Board, 
     from: PositionName, 
     to: PositionName,
-    enPassantSquare?: PositionName | null,
+    enPassantSquare: PositionName | null,
     promoteTo?: Piece,
 ) : Board {
 
     const boardCache = cache.get(previousBoard) 
-        ?? cache.set(previousBoard, new Map()).get(previousBoard) as Map<string, Board>;
-    const moveHash = `from:${from};to:${to};ep:${enPassantSquare || 'n/a'};promote-to:${promoteTo || 'n/a'}`;
+        ?? cache.set(previousBoard, new Map())
+            .get(previousBoard) as Map<string, Board>;
+
+    const other = otherPlayer(playerAt(previousBoard, from)!);
+    const pieceThere = pieceAt(previousBoard, to);
+
+    const isEpCapture = enPassantSquare === to && isPawn(pieceAt(previousBoard, from));
+    const captured = isEpCapture
+        ? other === "Black" ? "BP" : "WP"
+        : pieceThere ? shorthand(pieceThere) : ''
+
+    const ep = isEpCapture ? 'ep' : '';
+    const captStr = captured ? `-x${captured}${ep}` : '';
+
+    const promoStr = promoteTo ? `(${shorthand(promoteTo)})` : ''
+    
+    const moveHash = `${from}-${to}${captStr}${promoStr}`;
+
     const cachedBoard = boardCache.get(moveHash);
     if(cachedBoard){
         return cachedBoard;
     }
+
+// console.log(moveHash)
+
 
     const newBoard : Board = [
         [...previousBoard[0]],
@@ -50,14 +71,14 @@ function move (
     const castling = castlings[`${movedPiece}-${from}-${to}`];
     if(castling){
         //move the castle:
-        const castlingBoard = move(newBoard, castling[0], castling[1]);
+        const castlingBoard = move(newBoard, castling[0], castling[1], null);
         boardCache.set(moveHash, castlingBoard)
         return castlingBoard;
     }
 
-    if(to === enPassantSquare){
-        const pawnPosition = pawnPositionFromEpSquare.get(to)!;
-        const [file, rank] = COORDS[pawnPosition];
+    if(isEpCapture){
+        const capturedPawnPosition = pawnPositionFromEpSquare.get(to)!;
+        const [file, rank] = COORDS[capturedPawnPosition];
         newBoard[file][rank] = null; //mutate
     }
 

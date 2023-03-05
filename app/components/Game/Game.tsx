@@ -12,7 +12,6 @@ import { Piece } from 'rules/positions/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { isCheckmate, isInCheck } from 'rules/check';
-import testBoard from 'rules/board/testBoard';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -24,7 +23,7 @@ export default function Game() {
     currentPlayer,
     moves, 
     boards, 
-    toggleSquare, 
+    toggleSelectedSquare: toggleSquare, 
     selectedSquare, 
     makeNextMove,
     castling,
@@ -33,8 +32,8 @@ export default function Game() {
     capturedWhites
   } = useGameStore();
 
-  const [promotePawn, setPromotePawn] = useState<
-    ((p:Piece ) => void) | null
+  const [handlePromotePawn, setHandlePromotePawn] = useState<
+    ((p: Piece ) => void) | null
   >(null);
   
   const currentBoard = [...boards].pop()!;
@@ -74,10 +73,10 @@ export default function Game() {
       enPassantSquares.get(currentBoard),
     )) {
 
-      if(isPromotingPawn(currentBoard, selectedSquare, clickedSquare)) {
-        setPromotePawn(() => (promotePawnAs: Piece) => {
+      if (isPromotingPawn(currentBoard, selectedSquare, clickedSquare)) {
+        setHandlePromotePawn(() => (promotePawnAs: Piece) => {
             makeNextMove(selectedSquare, clickedSquare, promotePawnAs);
-            setPromotePawn(null);
+            setHandlePromotePawn(null);
         })
       }
       else {
@@ -108,7 +107,7 @@ export default function Game() {
             <button>New Game</button>
           </div>
         ) : (<>
-            <div>{currentPlayer}'s turn</div>
+            <div>{currentPlayer}&apos; turn</div>
             {isInCheck(currentBoard, currentPlayer) ?? (
               <div>{currentPlayer} is in check</div>
             )}
@@ -116,6 +115,6 @@ export default function Game() {
         )}
       </div>
     </div>
-    <PawnPromotionPrompt onPromote={promotePawn} />
+    <PawnPromotionPrompt onPromote={handlePromotePawn} />
   </>)
 }

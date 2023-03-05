@@ -24,6 +24,7 @@ import { GridCoordinates } from 'rules/types/GridCoordinates';
 import { MoveVector } from 'rules/types/MoveVector';
 import { canMoveTo } from 'rules/moves';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
+import isPawn from 'rules/pieces/isPawn';
 
 
 export type AttackPattern = {
@@ -47,8 +48,6 @@ const blackAttackPatterns: Array<AttackPattern> = [
     { vectors: bishopVectors, canAttackLikeThis: new Set([BB, BQ]), limit: 0 },
     { vectors: rookVectors, canAttackLikeThis: new Set([BR, BQ]), limit: 0 },
 ];
-
-const isPawn = (p: Piece) => ['Black Pawn', 'White Pawn'].includes(p)
 
 function * generateLinesOfAttack(
     board: Board, 
@@ -80,7 +79,6 @@ function * generateLinesOfAttack(
                         && canAttackLikeThis.has(pieceThere) 
                         && !attackLines.has(examinedPosition)
                         && (!isPawn(pieceThere) || canMoveTo(board, examinedPosition, target))
- 
                     ){
                         yield attackLine; 
                         attackLines.set(examinedPosition, attackLine);
