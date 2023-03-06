@@ -1,4 +1,3 @@
-import { Player }  from 'rules/types/Player';
 import { Piece }  from 'rules/positions/piece';
 
 const blackPieces : ReadonlyArray<Piece> = Object.freeze([

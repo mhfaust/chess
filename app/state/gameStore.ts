@@ -6,28 +6,15 @@ import { create } from 'zustand';
 import { otherPlayer, pieceAt, playerAt } from 'rules/positions';
 import { CastlingPreclusions } from 'rules/types/CastlingPreclusions';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
-import { Piece } from 'rules/positions/piece';
-import { Player } from 'rules/types/Player';
 import isPawn from 'rules/pieces/isPawn';
+import { GameState } from 'rules/game/gameState';
 
-type GameStoreState = {
-  currentPlayer: Player;
-  moves: Move[];
-  boards: Board[];
-  selectedSquare: PositionName | null;
-  castling: Map<Board, CastlingPreclusions>;
-  enPassantSquares: Map<Board, PositionName | null>;
-  capturedBlacks: Map<Board, Piece[]>;
-  capturedWhites: Map<Board, Piece[]>;
-  toggleSelectedSquare: (PositionName: PositionName | null) => void;
-  makeNextMove: (from: PositionName, to: PositionName, promoteTo?: Piece, captureEp?: boolean) => void;
-}
-
-export const useGameStore = create<GameStoreState>((set) => {
+export const useGameStore = create<GameState>((set) => {
   
   const startBoard: Board = initialBoard();
 
   return {
+    currentTurn: 0,
     currentPlayer: 'White',
     moves: [],
     boards: [startBoard],
