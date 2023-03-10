@@ -23,7 +23,7 @@ export default function Game() {
     currentPlayer,
     moves, 
     boards, 
-    toggleSelectedSquare: toggleSquare, 
+    toggleSelectedSquare, 
     selectedSquare, 
     makeNextMove,
     castling,
@@ -54,15 +54,15 @@ export default function Game() {
     const playerAtClicked = playerAt(currentBoard, clickedSquare);
 
     if (selectedSquare && selectedSquare === clickedSquare){
-      return toggleSquare(null);
+      return toggleSelectedSquare(null);
     }
 
     else if (currentPlayer === playerAtClicked) {
-      return toggleSquare(clickedSquare)
+      return toggleSelectedSquare(clickedSquare)
     }
     
     else if (!selectedSquare){
-      return toggleSquare(null)
+      return toggleSelectedSquare(null)
     }
 
     else if (canMoveTo(
@@ -82,7 +82,7 @@ export default function Game() {
       else {
         makeNextMove(selectedSquare, clickedSquare);
       }
-      return toggleSquare(null)
+      return toggleSelectedSquare(null)
     } 
     
     return;

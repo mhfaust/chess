@@ -7,7 +7,22 @@ import { otherPlayer, pieceAt, playerAt } from 'rules/positions';
 import { CastlingPreclusions } from 'rules/types/CastlingPreclusions';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
 import isPawn from 'rules/pieces/isPawn';
-import { GameState } from 'rules/game/gameState';
+import { Player } from 'rules/types/Player';
+import { Piece } from 'rules/positions/piece';
+
+export type GameState =   {
+  moves: Move[];
+  currentTurn: number;
+  currentPlayer: Player;
+  boards: Board[];
+  selectedSquare: PositionName | null;
+  castling: Map<Board, CastlingPreclusions>;
+  enPassantSquares: Map<Board, PositionName | null>;
+  capturedBlacks: Map<Board, Piece[]>;
+  capturedWhites: Map<Board, Piece[]>;
+  toggleSelectedSquare: (PositionName: PositionName | null) => void;
+  makeNextMove: (from: PositionName, to: PositionName, promoteTo?: Piece, captureEp?: boolean) => void;
+}
 
 export const useGameStore = create<GameState>((set) => {
   
@@ -91,7 +106,7 @@ export const useGameStore = create<GameState>((set) => {
 
         return ({ 
           currentPlayer: otherPlayer(previousPlayer),
-          moves: [...moves, [from, to] as Move],
+          moves: [...moves, [from, to, promoteTo] as Move],
           boards: [...boards, nextBoard],
           castling: newCastling,
           enPassantSquares: newEnPassantSquares,

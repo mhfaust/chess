@@ -11,10 +11,11 @@ import { playerAt }  from 'rules/positions';
 import { PositionName }  from 'rules/positions/positionName';
 import { BoardAnnotations } from 'rules/types/Game';
 import { Board } from 'rules/types/Board';
+import { Piece } from 'rules/positions/piece';
 
-export type Move = [PositionName, PositionName];
+export type Move = [PositionName, PositionName, Piece | undefined];
 
-function validateGameMoves(gameMoves: [PositionName, PositionName][]){
+function validateGameMoves(gameMoves: Move[]){
 
     let error: string | null = null;
 

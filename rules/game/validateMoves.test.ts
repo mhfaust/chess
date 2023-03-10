@@ -4,10 +4,10 @@ import textRender  from 'rules/board/textRender';
 // import asciiBoard  from 'rules/board/'
 
 const moves: Move[] = [
-  ["E2", 'E4'], ['E7', 'E6'],
-  ['D2', 'D4'], ['D7', 'D5'],
-  ['B1', 'C3'], ['F8', 'B4'],
-  ['E4', 'E5']
+  ["E2", 'E4', undefined], ['E7', 'E6', undefined],
+  ['D2', 'D4', undefined], ['D7', 'D5', undefined],
+  ['B1', 'C3', undefined], ['F8', 'B4', undefined],
+  ['E4', 'E5', undefined]
 ];
 
 describe("validateMoves", () => {
