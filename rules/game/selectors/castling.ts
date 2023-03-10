@@ -6,8 +6,10 @@ import { GameState } from "../gameState";
 import { boards } from "./boards";
 import { moves, currentMove } from "./moves";
 
+const emptyPreclusions = new Set<RookStartPosition>();
+
 const boardCache = new Map<Board, CastlingPreclusions>([
-  [firstBoard, new Set<RookStartPosition>()]
+  [firstBoard, emptyPreclusions]
 ]);
 
 /**
@@ -18,34 +20,34 @@ const boardCache = new Map<Board, CastlingPreclusions>([
  */
 const recurse = (state: GameState, i: number): CastlingPreclusions => {
 
-  if(i === 0){
-    return new Set<RookStartPosition>();
+  if (i === 0) {
+    return emptyPreclusions;
   };
 
-  const gameBoards = boards(state);
-  if (boardCache.has(gameBoards[i])) {
-    return boardCache.get(gameBoards[i])!;
-  }
+  // const gameBoards = boards(state);
+  // if (boardCache.has(gameBoards[i])) {
+  //   return boardCache.get(gameBoards[i])!;
+  // }
   
   const prev = recurse(state, i -1);
   const [from] = currentMove(state);
   const newCastling = nextCastlingPreclusions(from, prev)
 
-  boardCache.set(gameBoards[i], newCastling);
+  // boardCache.set(gameBoards[i], newCastling);
 
   return newCastling;
 }
 
-// const gameCache = new Map<string, CastlingPreclusions[]>();
+const gameCache = new Map<string, CastlingPreclusions[]>();
 
 export const castling = (state: GameState) => {
   const { history } = state;
-  // if(gameCache.has(history)){
-  //   return gameCache.get(history)!;
-  // };
+  if(gameCache.has(history)){
+    return gameCache.get(history)!;
+  };
 
   const newGameCacheEntry = moves(state).map((_, i) => recurse(state, i));
-  // gameCache.set(state.history, newGameCacheEntry);
+  gameCache.set(history, newGameCacheEntry);
   return newGameCacheEntry;
 
 }

@@ -18,7 +18,7 @@ export const moves = (state: GameState): Move[] => {
     return cache.get(state.history)!;
   }
 
-  const moveStrings = state.history.split("'");
+  const moveStrings = state.history.split(",");
   const gameMoves = moveStrings.map(str => {
     const match = str.match(moveStringRegex);
     if(!match) {

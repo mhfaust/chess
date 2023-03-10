@@ -19,12 +19,23 @@ describe('boards', () => {
 
   it('gets Boards[] from a simple first move', () => {
     const gameState: GameState = {
-      history: 'E2-E4',
+      history: 'E2-E4,E7-E5',
       boardCursor: 1,
     };
     const gameBoards = boards(gameState);
 
     gameBoards.forEach(b => console.log(textRender(b)))
-    expect(gameBoards.length).toBe(2);
+    expect(gameBoards.length).toBe(3);
+  });
+
+  it.only('Recognizes en-passant capture', () => {
+    const gameState: GameState = {
+      history: 'E2-E4,G8-H6,E4-E5,F7-F5,E5-F6',
+      boardCursor: 1,
+    };
+    const gameBoards = boards(gameState);
+
+    gameBoards.forEach(b => console.log(textRender(b)))
+    expect(gameBoards.length).toBe(6);
   });
 })

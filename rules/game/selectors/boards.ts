@@ -10,6 +10,8 @@ import nextBoard from 'rules/board/move';
 import currentEnPassantSquare, { epSquare } from './enPassant';
 import enPassantSquare from 'rules/moves/enPassantSquare';
 
+const emptyPreclusions = new Set<RookStartPosition>();
+
 const cache = new Map<string, Board[]>([
   ['', [firstBoard]]
 ]);
@@ -27,8 +29,8 @@ export const boards = (game: GameState): Board[] => {
 
       const previousBoard = [...arr].pop()!;
       const gameCastling = castling(game);
-      const prevPreclusions = i < 1 ? new Set<RookStartPosition>() : gameCastling[i - 1];
-      const ep = epSquare(game, i  )
+      const prevPreclusions = gameCastling[i - 1] ?? emptyPreclusions;
+      const ep = epSquare(game, i - 1);
 
       const [from, to, promoteTo] = move;
       if(canMoveTo(previousBoard, from, to, prevPreclusions, ep)){

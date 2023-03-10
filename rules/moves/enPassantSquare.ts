@@ -32,7 +32,7 @@ const enPassantSquare = (
   lastMovedTo: PositionName,
 ): PositionName | null => {
 
-  if(cache.has(currentBoard!)){
+  if(cache.has(currentBoard)){
     return cache.get(currentBoard)!;
   }
 
