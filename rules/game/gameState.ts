@@ -1,6 +1,6 @@
 
 export type GameState =   {
-  history: string;
+  gamePlay: string;
   boardCursor: number;
 
 

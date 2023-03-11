@@ -17,8 +17,8 @@ const cache = new Map<string, Board[]>([
 
 export const boards = (game: GameState): Board[] => {
 
-  if(cache.has(game.history)){
-    return cache.get(game.history)!;
+  if(cache.has(game.gamePlay)){
+    return cache.get(game.gamePlay)!;
   }
 
   const gameMoves = moves(game);
@@ -41,7 +41,7 @@ export const boards = (game: GameState): Board[] => {
       return arr;
     }, [firstBoard] );
 
-  cache.set(game.history, boardsArray);
+  cache.set(game.gamePlay, boardsArray);
 
   return boardsArray;
 };

@@ -41,13 +41,13 @@ const recurse = (state: GameState, i: number): CastlingPreclusions => {
 const gameCache = new Map<string, CastlingPreclusions[]>();
 
 export const castling = (state: GameState) => {
-  const { history } = state;
-  if(gameCache.has(history)){
-    return gameCache.get(history)!;
+  const { gamePlay } = state;
+  if(gameCache.has(gamePlay)){
+    return gameCache.get(gamePlay)!;
   };
 
   const newGameCacheEntry = moves(state).map((_, i) => recurse(state, i));
-  gameCache.set(history, newGameCacheEntry);
+  gameCache.set(gamePlay, newGameCacheEntry);
   return newGameCacheEntry;
 
 }

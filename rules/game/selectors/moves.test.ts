@@ -5,7 +5,7 @@ describe('moves', () => {
 
   it('gets Move[] from a simple first move', () => {
     const gameState: GameState = {
-      history: 'E2-E4',
+      gamePlay: 'E2-E4',
       boardCursor: 1,
     };
     const gameMoves = moves(gameState);
@@ -17,7 +17,7 @@ describe('moves', () => {
 
   it('gets a move with pawn promotion', () => {
     const gameState: GameState = {
-      history: 'E2-E4,E7-E5,G1-F3,F7-F5,E4-F5,E5-E4,F5-F6,E4-F3,F6-G7,F3-G2,G7-H8(N)',
+      gamePlay: 'E2-E4,E7-E5,G1-F3,F7-F5,E4-F5,E5-E4,F5-F6,E4-F3,F6-G7,F3-G2,G7-H8(N)',
       boardCursor: 1,
     };
     

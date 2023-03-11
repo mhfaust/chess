@@ -3,7 +3,6 @@ import { Move } from "rules/game/validateMoves";
 import { Piece } from "rules/positions/piece";
 import { PositionName } from "rules/positions/positionName";
 import { Player } from "rules/types/Player";
-import currentPlayer from "./players";
 
 const moveStringRegex = /([A-H][1-8])-([A-H][1-8])(\((Q|B|N|R)\))?(x(Q|B|N|R|P))?(ep)?/;
 
@@ -23,11 +22,11 @@ const cache = new Map<string, (Move)[]>();
  */
 export const moves = (state: GameState): Move[] => {
 
-  if(cache.has(state.history)){
-    return cache.get(state.history)!;
+  if(cache.has(state.gamePlay)){
+    return cache.get(state.gamePlay)!;
   }
 
-  const moveStrings = state.history.split(",");
+  const moveStrings = state.gamePlay.split(",");
   const gameMoves = moveStrings.map((str, i) => {
     const match = str.match(moveStringRegex);
     if(!match) {
@@ -45,7 +44,7 @@ export const moves = (state: GameState): Move[] => {
 
     return move;
   });
-  cache.set(state.history, gameMoves);
+  cache.set(state.gamePlay, gameMoves);
   return gameMoves;
 }
 
