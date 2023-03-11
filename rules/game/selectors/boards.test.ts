@@ -1,6 +1,7 @@
 import { firstBoard } from "rules/board/initialBoard";
 import textRender from "rules/board/textRender";
 import { GameState } from "rules/game/gameState";
+import { pieceAt } from "rules/positions";
 import { boards } from "./boards";
 
 describe('boards', () => {
@@ -24,7 +25,6 @@ describe('boards', () => {
     };
     const gameBoards = boards(gameState);
 
-    gameBoards.forEach(b => console.log(textRender(b)))
     expect(gameBoards.length).toBe(3);
   });
 
@@ -35,7 +35,6 @@ describe('boards', () => {
     };
     const gameBoards = boards(gameState);
 
-    gameBoards.forEach(b => console.log(textRender(b)))
     expect(gameBoards.length).toBe(6);
   });
 
@@ -45,5 +44,18 @@ describe('boards', () => {
       boardCursor: 1,//<-- doesn't matter
     };
     expect(() => boards(gameState)).toThrow()
+  });
+
+  it.only(`Handles pawn promotion`, () => {
+    const gameState: GameState = {
+      history: 'E2-E4,E7-E5,G1-F3,F7-F5,E4-F5,E5-E4,F5-F6,E4-F3,F6-G7,F3-G2,G7-H8(N)',
+      boardCursor: 1,//<-- doesn't matter
+    };
+    const gameBoards = boards(gameState);
+
+    const currentBoard = [...gameBoards].pop()!
+
+    expect(pieceAt(currentBoard, 'H8')).toBe('White Knight')
+    expect(gameBoards.length).toBe(12);
   });
 })

@@ -7,8 +7,7 @@ import { castling } from './castling';
 import { Move } from '../validateMoves';
 import { RookStartPosition } from 'rules/types/CastlingPreclusions';
 import nextBoard from 'rules/board/move';
-import currentEnPassantSquare, { epSquare } from './enPassant';
-import enPassantSquare from 'rules/moves/enPassantSquare';
+import { epSquare } from './enPassant';
 
 const emptyPreclusions = new Set<RookStartPosition>();
 
