@@ -1,10 +1,10 @@
-import { GameState } from 'rules/game/gameState';
+import { GameState } from 'app/state/gameState';
 import { Board } from 'rules/types/Board';
-import { moves } from 'rules/game/selectors/moves';
+import { moves } from 'app/state/selectors/moves';
 import { canMoveTo } from 'rules/moves';
 import { firstBoard } from 'rules/board/initialBoard';
 import { castling } from './castling';
-import { Move } from '../validateMoves';
+import { Move } from '../../../rules/game/validateMoves';
 import { RookStartPosition } from 'rules/types/CastlingPreclusions';
 import nextBoard from 'rules/board/move';
 import { epSquare } from './enPassant';
@@ -15,7 +15,7 @@ const cache = new Map<string, Board[]>([
   ['', [firstBoard]]
 ]);
 
-export const boards = (game: GameState): Board[] => {
+export const boards = (game: Pick<GameState, 'gamePlay'>): Board[] => {
 
   if(cache.has(game.gamePlay)){
     return cache.get(game.gamePlay)!;

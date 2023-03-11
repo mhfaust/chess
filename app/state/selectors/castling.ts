@@ -18,7 +18,7 @@ const boardCache = new Map<Board, CastlingPreclusions>([
  * @param i index of board 
  * @returns castling preclusions set
  */
-const recurse = (state: GameState, i: number): CastlingPreclusions => {
+const recurse = (state: Pick<GameState, 'gamePlay'>, i: number): CastlingPreclusions => {
 
   if (i === 0) {
     return emptyPreclusions;
@@ -30,7 +30,7 @@ const recurse = (state: GameState, i: number): CastlingPreclusions => {
   // }
   
   const prev = recurse(state, i -1);
-  const [from] = currentMove(state);
+  const [from] = moves(state)[i - 1];
   const newCastling = nextCastlingPreclusions(from, prev)
 
   // boardCache.set(gameBoards[i], newCastling);
@@ -40,7 +40,7 @@ const recurse = (state: GameState, i: number): CastlingPreclusions => {
 
 const gameCache = new Map<string, CastlingPreclusions[]>();
 
-export const castling = (state: GameState) => {
+export const castling = (state: Pick<GameState, 'gamePlay'>) => {
   const { gamePlay } = state;
   if(gameCache.has(gamePlay)){
     return gameCache.get(gamePlay)!;

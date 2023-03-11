@@ -1,4 +1,4 @@
-import { GameState } from "rules/game/gameState";
+import { GameState } from "app/state/gameState";
 import { Move } from "rules/game/validateMoves";
 import { Piece } from "rules/positions/piece";
 import { PositionName } from "rules/positions/positionName";
@@ -15,12 +15,8 @@ const promotions: Record<string, string> = {
 
 const cache = new Map<string, (Move)[]>();
 
-/**
- * 
- * @param state 
- * @returns array of moves
- */
-export const moves = (state: GameState): Move[] => {
+
+export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
 
   if(cache.has(state.gamePlay)){
     return cache.get(state.gamePlay)!;

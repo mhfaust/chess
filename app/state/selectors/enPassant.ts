@@ -2,14 +2,14 @@ import enPassantSquare from "rules/moves/enPassantSquare";
 import { file, rank } from "rules/positions";
 import positionName, { PositionName } from "rules/positions/positionName";
 import { GameState } from "../gameState";
-import { Move } from "../validateMoves";
+import { Move } from "../../../rules/game/validateMoves";
 import { boards, previousBoard } from "./boards";
 import { moves } from "./moves";
 
 
 
 //TODO: MEMOIZE.
-export const epSquares = (state: GameState) => {
+export const epSquares = (state: Pick<GameState, 'gamePlay'>) => {
   const movedPawns = new Set<PositionName>();
   const allMoves = moves(state);
   return allMoves.map(([from, to]) => {
@@ -31,7 +31,7 @@ export const epSquares = (state: GameState) => {
   })
 }
 
-export const epSquare = (state: GameState, i: number) => {
+export const epSquare = (state: Pick<GameState, 'gamePlay'>, i: number) => {
   return epSquares(state)[i] ?? null;
 }
 
