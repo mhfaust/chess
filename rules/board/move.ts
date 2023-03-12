@@ -70,8 +70,9 @@ function move (
     const castling = castlings[`${movedPiece}-${from}-${to}`];
     if(castling){
         //move the castle:
-        const castlingTuple = move(newBoard, castling[0], castling[1], null);
-        boardCache.set(moveHash, castlingTuple)
+        const [castlingBoard] = move(newBoard, castling[0], castling[1], null);
+        const castlingTuple: MoveTuple = [castlingBoard, moveHash];
+        boardCache.set(moveHash, castlingTuple);
         return castlingTuple;
     }
 

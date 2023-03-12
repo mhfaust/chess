@@ -8,6 +8,7 @@ import { Move } from '../../../rules/game/validateMoves';
 import { RookStartPosition } from 'rules/types/CastlingPreclusions';
 import nextBoard from 'rules/board/move';
 import { epSquare } from './enPassant';
+import textRender from 'rules/board/textRender';
 
 const emptyPreclusions = new Set<RookStartPosition>();
 
@@ -36,7 +37,7 @@ export const boards = (game: Pick<GameState, 'gamePlay'>): Board[] => {
           const [newBoard] = nextBoard(previousBoard, from, to, ep, promoteTo);
           arr.push(newBoard)
       } else {
-        throw Error('ILLEGAL MOVE!')
+        throw Error(`ILLEGAL MOVE: ${from}, ${to} \n${textRender(previousBoard)}`)
       }
       return arr;
     }, [firstBoard] );
