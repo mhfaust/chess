@@ -29,7 +29,7 @@ export const captures = (state: Pick<GameState, 'gamePlay'>) => {
 
   return gameMoves.reduce<Captures>((acc, [_, to], i) => {
     const prevBoard = gameBoards[i];
-    const nextBoard = gameBoards[i + 1];
+    const nextBoard = gameBoards[i + 1]!; //todo: is this assertion OK?
 
     if(boardCache.has(nextBoard)){
       return boardCache.get(nextBoard)!;
@@ -59,7 +59,8 @@ export const captures = (state: Pick<GameState, 'gamePlay'>) => {
   }, noCaptures);
 };
 
-export const currentCaptures = (state: GameState) => {
+export const currentCaptures = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
   const board = currentBoard(state);
+  captures(state);// <-- just running this to generate board-cache.
   return boardCache.get(board)!;
 }

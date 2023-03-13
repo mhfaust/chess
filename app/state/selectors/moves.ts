@@ -56,7 +56,7 @@ export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
  * @param state 
  * @returns 
  */
-export const currentMove = (state: GameState) => {
+export const currentMove = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
   const cursor = boardCursor(state)
-  return moves(state)[cursor];
+  return moves(state)[cursor - 1];
 }

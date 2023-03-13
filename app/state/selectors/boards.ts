@@ -48,12 +48,12 @@ export const boards = (game: Pick<GameState, 'gamePlay'>): Board[] => {
   return boardsArray;
 };
 
-export const currentBoard = (state: GameState): Board => {
+export const currentBoard = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>): Board => {
   const cursor = boardCursor(state)
   return boards(state)[cursor];
 };
 
-export const previousBoard = (state: GameState): Board | null => {
+export const previousBoard = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>): Board | null => {
   const cursor = boardCursor(state)
   if(cursor === 0) {
     return null;

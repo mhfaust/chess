@@ -32,12 +32,12 @@ export const epSquare = (state: Pick<GameState, 'gamePlay'>, i: number) => {
 }
 
 
-const currentEnPassantSquare = (state: GameState) => {
+const currentEnPassantSquare = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
   const cursor = boardCursor(state)
   if(cursor === 0){
     return null;
   }
-  
+
   return epSquare(state, cursor)
 }
 

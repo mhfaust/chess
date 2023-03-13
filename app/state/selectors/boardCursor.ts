@@ -1,7 +1,7 @@
 import { GameState } from "../gameState";
 import { boards } from "./boards";
 
-const boardCursor = (game: GameState) => {
+const boardCursor = (game: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
   return game.boardCursor ?? boards(game).length - 1;
 }
 

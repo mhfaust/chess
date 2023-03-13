@@ -1,7 +1,7 @@
 'use client'
 
 import Grid from 'app/components/Grid/Grid';
-import { useGameStore } from 'app/state/gameStore';
+import { useGameStore } from 'app/components/Game/gameStore';
 import { PositionName } from 'rules/positions/positionName';
 import { canMoveTo } from 'rules/moves';
 import { otherPlayer, playerAt } from 'rules/positions';

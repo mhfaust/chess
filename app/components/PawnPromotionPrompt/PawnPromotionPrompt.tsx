@@ -1,4 +1,4 @@
-import { useGameStore } from "app/state/gameStore";
+import { useGameStore } from "app/components/Game/gameStore";
 import { blackPromotionOptions, whitePromotionOptions } from "rules/board/pawnPromotionOptions";
 import { unicodeSymbols } from "rules/constants/pieces";
 import { Piece } from "rules/positions/piece";

@@ -5,7 +5,7 @@ import { move, nextCastlingPreclusions } from 'rules/board';
 import { otherPlayer, pieceAt, playerAt } from 'rules/positions';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
 import isPawn from 'rules/pieces/isPawn';
-import { OldGameState } from "app/state/gameStore";
+import { OldGameState } from "app/components/Game/gameStore";
 
 const makeNextMove = (
   from: PositionName, 
