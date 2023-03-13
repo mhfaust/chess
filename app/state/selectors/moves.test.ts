@@ -2,6 +2,14 @@ import { moves } from "./moves";
 
 describe('moves', () => {
 
+  it('Returns an empty array for a game with no moves', () => {
+    const gameMoves = moves({
+      gamePlay: '',
+    });
+
+    expect(gameMoves).toStrictEqual([])
+  })
+
   it('gets Move[] from a simple first move', () => {
 
     const gameMoves = moves({

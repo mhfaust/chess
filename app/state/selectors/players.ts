@@ -1,9 +1,9 @@
 import { GameState } from "../gameState";
-import currentTurn from "./turn";
+import boardCursor from "./boardCursor";
 
 const currentPlayer = (game: GameState, turn: number = -1) => {
 
-  const ord = currentTurn(game) % 2;
+  const ord = boardCursor(game) % 2;
   return ['Black', 'White'][ord]; 
 };
 

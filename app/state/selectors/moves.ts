@@ -3,6 +3,7 @@ import { Move } from "rules/game/validateMoves";
 import { Piece } from "rules/positions/piece";
 import { PositionName } from "rules/positions/positionName";
 import { Player } from "rules/types/Player";
+import boardCursor from "./boardCursor";
 
 const moveStringRegex = /([A-H][1-8])-([A-H][1-8])(\((Q|B|N|R)\))?(x(Q|B|N|R|P))?(ep)?/;
 
@@ -15,8 +16,14 @@ const promotions: Record<string, string> = {
 
 const cache = new Map<string, (Move)[]>();
 
+const noMoves: Move[] = [];
+
 
 export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
+
+  if(!state.gamePlay) {
+    return noMoves;
+  }
 
   if(cache.has(state.gamePlay)){
     return cache.get(state.gamePlay)!;
@@ -24,9 +31,9 @@ export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
 
   const moveStrings = state.gamePlay.split(",");
   const gameMoves = moveStrings.map((str, i) => {
-    const match = str.match(moveStringRegex);
+    const match = str.toUpperCase().match(moveStringRegex);
     if(!match) {
-      throw Error("bad!");
+      throw Error(`Illegal move: ${str}.`);
     }
     const [, start, end, , promote,] = match;
     const promo = promotions[promote];
@@ -50,6 +57,6 @@ export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
  * @returns 
  */
 export const currentMove = (state: GameState) => {
-  const { boardCursor: boardPointer} = state;
-  return moves(state)[boardPointer];
+  const cursor = boardCursor(state)
+  return moves(state)[cursor];
 }

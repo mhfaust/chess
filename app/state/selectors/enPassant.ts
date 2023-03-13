@@ -1,12 +1,8 @@
-import enPassantSquare from "rules/moves/enPassantSquare";
 import { file, rank } from "rules/positions";
 import positionName, { PositionName } from "rules/positions/positionName";
 import { GameState } from "../gameState";
-import { Move } from "../../../rules/game/validateMoves";
-import { boards, previousBoard } from "./boards";
+import boardCursor from "./boardCursor";
 import { moves } from "./moves";
-
-
 
 //TODO: MEMOIZE.
 export const epSquares = (state: Pick<GameState, 'gamePlay'>) => {
@@ -37,12 +33,12 @@ export const epSquare = (state: Pick<GameState, 'gamePlay'>, i: number) => {
 
 
 const currentEnPassantSquare = (state: GameState) => {
-  const { boardCursor } = state;
-  if(boardCursor === 0){
+  const cursor = boardCursor(state)
+  if(cursor === 0){
     return null;
   }
-
-  return epSquare(state, boardCursor)
+  
+  return epSquare(state, cursor)
 }
 
 export default currentEnPassantSquare;

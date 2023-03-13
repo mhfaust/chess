@@ -10,7 +10,7 @@ import isPawn from 'rules/pieces/isPawn';
 import { Player } from 'rules/types/Player';
 import { Piece } from 'rules/positions/piece';
 
-export type GameState =   {
+export type OldGameState =   {
   moves: Move[];
   currentTurn: number;
   currentPlayer: Player;
@@ -24,7 +24,7 @@ export type GameState =   {
   makeNextMove: (from: PositionName, to: PositionName, promoteTo?: Piece, captureEp?: boolean) => void;
 }
 
-export const useGameStore = create<GameState>((set) => {
+export const useGameStore = create<OldGameState>((set) => {
   
   const startBoard: Board = initialBoard();
 

@@ -1,6 +1,7 @@
 import { firstBoard } from "rules/board/initialBoard";
 import { pieceAt } from "rules/positions";
-import { boards } from "./boards";
+import { boards } from "app/state/selectors/boards";
+import { moves } from "app/state/selectors/moves";
 
 describe('boards', () => {
 
@@ -14,14 +15,17 @@ describe('boards', () => {
     expect(gameBoards[0]).toBe(firstBoard);
   });
 
-  it('gets Boards[] from a simple first move', () => {
+  it('presents a number of boards equal to the number of moves + 1', () => {
 
-    const gameBoards = boards({
+    const gameState = {
       gamePlay: 'E2-E4,E7-E5',
-    });
+    }; 
 
-    expect(gameBoards.length).toBe(3);
-  });
+    const gameBoards = boards(gameState);
+    const gameMoves = moves(gameState);
+
+    expect(gameBoards.length).toBe(gameMoves.length + 1)
+  })
 
   it('Recognizes en-passant capture', () => {
 
@@ -33,6 +37,17 @@ describe('boards', () => {
 
     expect(gameBoards.length).toBe(6);
     expect(pieceAt(board, 'F5')).toBe(null);
+  });
+
+  it('Presents onlly the initial board if no moves in the game', () => {
+
+    const gameBoards = boards({
+      gamePlay: '',
+    });
+    expect(gameBoards.length).toBe(1);
+
+    const board = gameBoards[0];
+    expect(board).toStrictEqual(firstBoard);
   });
 
   it(`Doesn't allow en-passant capture on move too late`, () => {
@@ -78,4 +93,5 @@ describe('boards', () => {
       gamePlay: 'E2-E3,E7-E6,F1-D3,F8-D6,G1-F3,G8-F6,H1-G1,H8-G8,G1-H1,G8-H8,E1-G1',
     })).toThrow()
   });
+
 })

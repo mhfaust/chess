@@ -1,0 +1,65 @@
+import { pieceAt } from "rules/positions";
+import { Piece } from "rules/positions/piece";
+import { Board } from "rules/types/Board";
+import { GameState } from "../gameState";
+import { boards, currentBoard } from "./boards";
+import { epSquare } from "./enPassant";
+import { moves } from "./moves";
+
+type Captures = {
+  black: Piece[];
+  white: Piece[]
+}
+
+const noCaptures: Captures = {
+  white: [],
+  black: []
+};
+
+const boardCache = new Map<Board, Captures>();
+
+export const captures = (state: Pick<GameState, 'gamePlay'>) => {
+
+  const gameBoards = boards(state);
+  const gameMoves = moves(state);
+
+  if(state.gamePlay === ''){
+    return noCaptures;
+  }
+
+  return gameMoves.reduce<Captures>((acc, [_, to], i) => {
+    const prevBoard = gameBoards[i];
+    const nextBoard = gameBoards[i + 1];
+
+    if(boardCache.has(nextBoard)){
+      return boardCache.get(nextBoard)!;
+    }
+
+    const captured = pieceAt(prevBoard, to);
+    const isBlacksTurn = i % 2 === 1;
+
+    const newBlackList = [...acc.black];
+    const newWhiteList = [...acc.white];
+
+    const updatedList = isBlacksTurn ? newBlackList : newWhiteList;
+    if (captured) {
+      updatedList.push(captured)
+    } 
+    else if (to === epSquare(state, i - 1)) {
+      updatedList.push(isBlacksTurn ? 'White Pawn' : 'Black Pawn');
+    }
+    const newCaptures = {
+      black: newBlackList,
+      white: newWhiteList
+    };
+    boardCache.set(nextBoard, newCaptures);
+
+    return newCaptures;
+
+  }, noCaptures);
+};
+
+export const currentCaptures = (state: GameState) => {
+  const board = currentBoard(state);
+  return boardCache.get(board)!;
+}

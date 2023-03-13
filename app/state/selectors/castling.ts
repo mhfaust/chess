@@ -3,6 +3,7 @@ import nextCastlingPreclusions from "rules/board/nextCastlingPreclusions";
 import { Board } from "rules/types/Board";
 import { CastlingPreclusions, RookStartPosition } from "rules/types/CastlingPreclusions";
 import { GameState } from "../gameState";
+import boardCursor from "./boardCursor";
 import { boards } from "./boards";
 import { moves, currentMove } from "./moves";
 
@@ -53,5 +54,6 @@ export const castling = (state: Pick<GameState, 'gamePlay'>) => {
 }
 
 export const currentCastling = (state: GameState) => {
-  return recurse(state, state.boardCursor)
+  const cursor = boardCursor(state);
+  return recurse(state, cursor)
 }

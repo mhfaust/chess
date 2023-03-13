@@ -5,15 +5,15 @@ import { move, nextCastlingPreclusions } from 'rules/board';
 import { otherPlayer, pieceAt, playerAt } from 'rules/positions';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
 import isPawn from 'rules/pieces/isPawn';
-import { GameState } from "app/state/gameStore";
+import { OldGameState } from "app/state/gameStore";
 
 const makeNextMove = (
   from: PositionName, 
   to: PositionName, 
   promoteTo: Piece | undefined
-): (prev: GameState) => Partial<GameState> => {
+): (prev: OldGameState) => Partial<OldGameState> => {
 
-  return (previousState: GameState) => {
+  return (previousState: OldGameState) => {
 
     const { 
       boards, 

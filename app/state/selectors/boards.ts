@@ -9,6 +9,7 @@ import { RookStartPosition } from 'rules/types/CastlingPreclusions';
 import nextBoard from 'rules/board/move';
 import { epSquare } from './enPassant';
 import textRender from 'rules/board/textRender';
+import boardCursor from './boardCursor';
 
 const emptyPreclusions = new Set<RookStartPosition>();
 
@@ -48,14 +49,14 @@ export const boards = (game: Pick<GameState, 'gamePlay'>): Board[] => {
 };
 
 export const currentBoard = (state: GameState): Board => {
-  const { boardCursor: boardPointer } = state;
-  return boards(state)[boardPointer];
+  const cursor = boardCursor(state)
+  return boards(state)[cursor];
 };
 
 export const previousBoard = (state: GameState): Board | null => {
-  const { boardCursor: boardPointer } = state;
-  if(boardPointer === 0) {
+  const cursor = boardCursor(state)
+  if(cursor === 0) {
     return null;
   }
-  return boards(state)[boardPointer - 1];
+  return boards(state)[cursor - 1];
 };
