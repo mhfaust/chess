@@ -1,11 +1,11 @@
-import { playerAt, otherPlayer, pieceAt }  from 'rules/positions';
-import { isInCheck, isCheckmate }  from 'rules/check';
-import { nextCastlingPreclusions }  from 'rules/board';
-import { Board }  from 'rules/types/Board';
-import { Piece }  from 'rules/positions/piece';
-import { Player }  from 'rules/types/Player';
-import { PositionName }  from 'rules/positions/positionName';
-import { BoardAnnotations }  from 'rules/types/Game';
+import { playerAt, otherPlayer, pieceAt }  from 'logic/positions';
+import { isInCheck, isCheckmate }  from 'logic/check';
+import { nextCastlingPreclusions }  from 'logic/board';
+import { Board }  from 'logic/types/Board';
+import { Piece }  from 'logic/positions/piece';
+import { Player }  from 'logic/types/Player';
+import { PositionName }  from 'logic/positions/positionName';
+import { BoardAnnotations }  from 'logic/types/Game';
 
 export const makeCapturedPieces = (
     board: Board, 

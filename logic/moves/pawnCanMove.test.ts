@@ -1,6 +1,6 @@
-import pawnCanMove  from 'rules/moves/pawnCanMove'
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import pawnCanMove  from 'logic/moves/pawnCanMove'
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
 
 describe('pawnCanMove', () => {
 

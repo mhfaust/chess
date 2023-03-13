@@ -1,15 +1,15 @@
 
 import styles from './Grid.module.css'
-import { BLACK_PIECES, unicodeSymbols, WHITE_PIECES }  from 'rules/constants/pieces';
-import { positionName } from 'rules/positions';
-import { Board, PieceOrEmpty } from 'rules/types/Board';
+import { BLACK_PIECES, unicodeSymbols, WHITE_PIECES }  from 'logic/constants/pieces';
+import { positionName } from 'logic/positions';
+import { Board, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
-import { PositionName, squareColor } from 'rules/positions/positionName';
-import { rotate8by8 } from 'rules/board/rotateCounterClockwise';
-import { Player } from 'rules/types/Player';
-import { isInCheck } from 'rules/check';
-import isPieceKingInCheck from 'rules/check/isPieceKingInCheck';
+import { PositionName, squareColor } from 'logic/positions/positionName';
+import { rotate8by8 } from 'logic/board/rotateCounterClockwise';
+import { Player } from 'logic/types/Player';
+import { isInCheck } from 'logic/check';
+import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules

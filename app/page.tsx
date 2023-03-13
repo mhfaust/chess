@@ -1,4 +1,4 @@
-import { initialBoard } from 'rules/board'
+import { initialBoard } from 'logic/board'
 import ChessBoard from 'app/components/Grid';
 import Game from './components/Game';
 

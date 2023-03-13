@@ -1,6 +1,6 @@
-import { file, rank } from 'rules/positions';
-import positionName, { PositionName } from 'rules/positions/positionName';
-import { GameState } from 'rules/game/gameState';
+import { file, rank } from 'logic/positions';
+import positionName, { PositionName } from 'logic/positions/positionName';
+import { GameState } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 import { moves } from './moves';
 

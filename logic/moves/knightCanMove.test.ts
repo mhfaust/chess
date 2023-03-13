@@ -1,7 +1,7 @@
-import knightCanMove  from 'rules/moves/knightCanMove'
-import { initialBoard }  from 'rules/board'
-import { __, WK, WN, BK, BQ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import knightCanMove  from 'logic/moves/knightCanMove'
+import { initialBoard }  from 'logic/board'
+import { __, WK, WN, BK, BQ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
 
 describe('knightCanMove', () => {
 

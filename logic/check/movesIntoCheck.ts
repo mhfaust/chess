@@ -1,8 +1,8 @@
-import { move }  from 'rules/board';
-import { isInCheck }  from 'rules/check';
-import { playerAt }  from 'rules/positions';
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
+import { move }  from 'logic/board';
+import { isInCheck }  from 'logic/check';
+import { playerAt }  from 'logic/positions';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
 
 function movesIntoCheck(
     board: Board, 

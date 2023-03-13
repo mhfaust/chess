@@ -1,5 +1,5 @@
-import { rank, file }  from 'rules/positions'
-import { PositionName } from 'rules/positions/positionName';
+import { rank, file }  from 'logic/positions'
+import { PositionName } from 'logic/positions/positionName';
 
 const isOnBoard = (position: PositionName) => {
     if (!position) {

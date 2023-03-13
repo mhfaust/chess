@@ -1,11 +1,11 @@
-import { file, rank, pieceAt, playerAt, otherPlayer }  from 'rules/positions';
-import { Board }  from 'rules/types/Board';
-import { PositionName }  from 'rules/positions/positionName';
-import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
-import COORDS from 'rules/positions/coordinates';
-import { Piece } from 'rules/positions/piece';
-import { shorthand } from 'rules/positions/pieces-shorthand';
-import isPawn from 'rules/pieces/isPawn';
+import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/positions';
+import { Board }  from 'logic/types/Board';
+import { PositionName }  from 'logic/positions/positionName';
+import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
+import COORDS from 'logic/positions/coordinates';
+import { Piece } from 'logic/positions/piece';
+import { shorthand } from 'logic/positions/pieces-shorthand';
+import isPawn from 'logic/pieces/isPawn';
 
 const castlings: Record<string, [PositionName, PositionName] | undefined> = {
     'White King-E1-C1': ['A1', 'D1'],

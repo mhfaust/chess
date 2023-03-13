@@ -1,6 +1,6 @@
-import { canMoveTo }  from 'rules/moves'
-import { initialBoard, move }  from 'rules/board'
-import { isInCheck, isCheckmate }  from 'rules/check'
+import { canMoveTo }  from 'logic/moves'
+import { initialBoard, move }  from 'logic/board'
+import { isInCheck, isCheckmate }  from 'logic/check'
 export default {
     canMoveTo,
     initialBoard,

@@ -1,5 +1,5 @@
-import { Board, BoardFile }  from 'rules/types/Board';
-import { shorthand } from 'rules/positions/pieces-shorthand';
+import { Board, BoardFile }  from 'logic/types/Board';
+import { shorthand } from 'logic/positions/pieces-shorthand';
 
 const files = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 

@@ -1,6 +1,6 @@
-import { rank, file }  from 'rules/positions';
-import { GridCoordinates } from 'rules/types/GridCoordinates';
-import COORDS from 'rules/positions/coordinates';
+import { rank, file }  from 'logic/positions';
+import { GridCoordinates } from 'logic/types/GridCoordinates';
+import COORDS from 'logic/positions/coordinates';
 
 export const positionNames = [
     'A1', 'A2', 'A3', 'A4', 'A5', 'A6', 'A7', 'A8',

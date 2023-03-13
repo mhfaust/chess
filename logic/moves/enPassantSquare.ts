@@ -1,6 +1,6 @@
-import { file, pieceAt, rank }  from 'rules/positions'
-import positionName, { PositionName }  from 'rules/positions/positionName'
-import { Board }  from 'rules/types/Board';
+import { file, pieceAt, rank }  from 'logic/positions'
+import positionName, { PositionName }  from 'logic/positions/positionName'
+import { Board }  from 'logic/types/Board';
 
 const blackPawnStartRank = 6;
 const whitePawnStartRank = 1;

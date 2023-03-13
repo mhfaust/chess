@@ -1,6 +1,6 @@
-import queenCanMove   from 'rules/moves/queenCanMove'
-import { BP,WK,WQ,WR,BK,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import queenCanMove   from 'logic/moves/queenCanMove'
+import { BP,WK,WQ,WR,BK,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
 
 describe('queenCanMove', () => {
     const queen1Board: Board = [

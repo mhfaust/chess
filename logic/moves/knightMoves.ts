@@ -2,12 +2,12 @@ import {
     playerAt, 
     isUnOccupiedByPlayer, 
     displaceTo 
-} from 'rules/positions';
+} from 'logic/positions';
 
-import { knightVectors }  from 'rules/constants/move-vectors'
-import movesIntoCheck  from 'rules/check/movesIntoCheck';
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
+import { knightVectors }  from 'logic/constants/move-vectors'
+import movesIntoCheck  from 'logic/check/movesIntoCheck';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
 
 const emptySet = new Set<PositionName>();
 

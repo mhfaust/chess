@@ -1,8 +1,8 @@
-import { Move } from 'rules/game/validateMoves';
-import { Piece } from 'rules/positions/piece';
-import { PositionName } from 'rules/positions/positionName';
-import { Player } from 'rules/types/Player';
-import { GameState } from 'rules/game/gameState';
+import { Move } from 'logic/game/validateMoves';
+import { Piece } from 'logic/positions/piece';
+import { PositionName } from 'logic/positions/positionName';
+import { Player } from 'logic/types/Player';
+import { GameState } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 
 const moveStringRegex = /([A-H][1-8])-([A-H][1-8])(\((Q|B|N|R)\))?(x(Q|B|N|R|P))?(ep)?/;

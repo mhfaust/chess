@@ -1,4 +1,4 @@
-import { GameState } from 'rules/game/gameState';
+import { GameState } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 
 const currentPlayer = (game: GameState, turn: number = -1) => {

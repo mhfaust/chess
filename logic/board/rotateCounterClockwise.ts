@@ -1,5 +1,5 @@
-import { emptyBoard }  from 'rules/board'
-import { Board }  from 'rules/types/Board';
+import { emptyBoard }  from 'logic/board'
+import { Board }  from 'logic/types/Board';
 
 function rotateCounterClockwise(board: Board){
 

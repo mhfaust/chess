@@ -4,10 +4,10 @@ import {
     isUnOccupied, 
     isOccupiedByPlayer,
     otherPlayer,  
-} from 'rules/positions';
-import movesIntoCheck  from 'rules/check/movesIntoCheck';
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
+} from 'logic/positions';
+import movesIntoCheck  from 'logic/check/movesIntoCheck';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
 
 function rook(board: Board, moveFrom: PositionName): Set<PositionName> {
     

@@ -2,16 +2,16 @@
 
 import Grid from 'app/components/Grid/Grid';
 import { useGameStore } from 'app/components/Game/gameStore';
-import { PositionName } from 'rules/positions/positionName';
-import { canMoveTo } from 'rules/moves';
-import { otherPlayer, playerAt } from 'rules/positions';
+import { PositionName } from 'logic/positions/positionName';
+import { canMoveTo } from 'logic/moves';
+import { otherPlayer, playerAt } from 'logic/positions';
 import Captures from 'app/components/Captures';
-import allPieceMoves from 'rules/moves/allPieceMoves';
-import isPromotingPawn from 'rules/board/pawnPromotionOptions';
-import { Piece } from 'rules/positions/piece';
+import allPieceMoves from 'logic/moves/allPieceMoves';
+import isPromotingPawn from 'logic/board/pawnPromotionOptions';
+import { Piece } from 'logic/positions/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { isCheckmate, isInCheck } from 'rules/check';
+import { isCheckmate, isInCheck } from 'logic/check';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules

@@ -1,7 +1,7 @@
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
-import { Player }  from 'rules/types/Player';
-import generateLinesOfAttack from 'rules/check/generateLinesOfAttack';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
+import { Player }  from 'logic/types/Player';
+import generateLinesOfAttack from 'logic/check/generateLinesOfAttack';
 
 const allLinesOfAttack = (
   board: Board, 

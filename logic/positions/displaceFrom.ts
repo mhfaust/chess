@@ -3,9 +3,9 @@ caller is responsible for checking if the new
 position is on the board
 */
 
-import { rank, file }  from 'rules/positions';
-import { MoveVector } from 'rules/types/MoveVector';
-import positionName, { PositionName } from 'rules/positions/positionName';
+import { rank, file }  from 'logic/positions';
+import { MoveVector } from 'logic/types/MoveVector';
+import positionName, { PositionName } from 'logic/positions/positionName';
     
 function displaceFrom  (
     currentPosition: PositionName, 

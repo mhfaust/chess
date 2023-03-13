@@ -1,5 +1,5 @@
-import { pieceAt }  from 'rules/positions';
-import { Board }  from 'rules/types/Board';
+import { pieceAt }  from 'logic/positions';
+import { Board }  from 'logic/types/Board';
 
 type CastlePosition =
 |  'A1'// white, queen-side

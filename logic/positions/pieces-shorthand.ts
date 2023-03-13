@@ -1,5 +1,5 @@
-import { Piece }  from 'rules/positions/piece';
-import { PieceOrEmpty } from 'rules/types/Board';
+import { Piece }  from 'logic/positions/piece';
+import { PieceOrEmpty } from 'logic/types/Board';
 
 export const __ : PieceOrEmpty = null;
 export const WK : Piece = 'White King';

@@ -1,6 +1,6 @@
-import rookCanMove  from 'rules/moves/rookCanMove';
-import { WK,BK,BR,BP,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import rookCanMove  from 'logic/moves/rookCanMove';
+import { WK,BK,BR,BP,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
 
 const rook1Board: Board = [
 /*         1  2  3  4  5  6  7  8  */

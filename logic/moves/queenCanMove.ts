@@ -1,8 +1,8 @@
 import {
     rookCanMove,
-    bishopCanMove } from 'rules/moves';
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
+    bishopCanMove } from 'logic/moves';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
 
 function queenCanMove (
     board: Board, 

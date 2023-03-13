@@ -1,7 +1,7 @@
-import { ALL_PIECES }  from 'rules/constants/pieces';
-import { pieceAt }  from 'rules/positions';
-import { Board }  from 'rules/types/Board';
-import { PositionName } from 'rules/positions/positionName';
+import { ALL_PIECES }  from 'logic/constants/pieces';
+import { pieceAt }  from 'logic/positions';
+import { Board }  from 'logic/types/Board';
+import { PositionName } from 'logic/positions/positionName';
 
 function isUnOccupied (board: Board, position: PositionName): boolean {
     return !pieceAt(board, position);

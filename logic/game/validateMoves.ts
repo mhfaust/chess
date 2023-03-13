@@ -3,15 +3,15 @@ import {
     move, 
     initialBoardAnnotations, 
     nextBoardAnnotations 
-} from 'rules/board';
-import { Player }  from 'rules/types/Player';
-import { canMoveTo }  from 'rules/moves';  
-import enPassantSquare  from 'rules/moves/enPassantSquare';
-import { playerAt }  from 'rules/positions';
-import { PositionName }  from 'rules/positions/positionName';
-import { BoardAnnotations } from 'rules/types/Game';
-import { Board } from 'rules/types/Board';
-import { Piece } from 'rules/positions/piece';
+} from 'logic/board';
+import { Player }  from 'logic/types/Player';
+import { canMoveTo }  from 'logic/moves';  
+import enPassantSquare  from 'logic/moves/enPassantSquare';
+import { playerAt }  from 'logic/positions';
+import { PositionName }  from 'logic/positions/positionName';
+import { BoardAnnotations } from 'logic/types/Game';
+import { Board } from 'logic/types/Board';
+import { Piece } from 'logic/positions/piece';
 
 export type Move = [PositionName, PositionName, Piece | undefined];
 

@@ -3,7 +3,7 @@ import {
     displaceFrom, 
     otherPlayer, 
     pieceAt, 
-} from 'rules/positions';
+} from 'logic/positions';
 import { 
     knightVectors, 
     pawnBlackAttackVectors, 
@@ -11,19 +11,19 @@ import {
     kingVectors,
     bishopVectors,
     rookVectors
-} from 'rules/constants/move-vectors'
+} from 'logic/constants/move-vectors'
 
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
-import { Player }  from 'rules/types/Player';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
+import { Player }  from 'logic/types/Player';
 
-import { Piece }  from 'rules/positions/piece';
-import COORDS  from 'rules/positions/coordinates';
-import { GridCoordinates } from 'rules/types/GridCoordinates';
-import { MoveVector } from 'rules/types/MoveVector';
-import { canMoveTo } from 'rules/moves';
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
-import isPawn from 'rules/pieces/isPawn';
+import { Piece }  from 'logic/positions/piece';
+import COORDS  from 'logic/positions/coordinates';
+import { GridCoordinates } from 'logic/types/GridCoordinates';
+import { MoveVector } from 'logic/types/MoveVector';
+import { canMoveTo } from 'logic/moves';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import isPawn from 'logic/pieces/isPawn';
 
 
 export type AttackPattern = {

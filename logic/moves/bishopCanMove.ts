@@ -4,10 +4,10 @@ import {
     isOnBoard, 
     playerAt, 
     isOccupied, 
-    displaceTo } from 'rules/positions'
-import movesIntoCheck  from 'rules/check/movesIntoCheck';
-import { Board }  from 'rules/types/Board';
-import { PositionName }  from 'rules/positions/positionName';
+    displaceTo } from 'logic/positions'
+import movesIntoCheck  from 'logic/check/movesIntoCheck';
+import { Board }  from 'logic/types/Board';
+import { PositionName }  from 'logic/positions/positionName';
 
 function bishopCanMove (
     board: Board, 

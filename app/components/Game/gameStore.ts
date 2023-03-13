@@ -1,14 +1,14 @@
-import { initialBoard, move, nextCastlingPreclusions } from 'rules/board';
-import { Move } from 'rules/game/validateMoves';
-import { PositionName } from 'rules/positions/positionName';
-import { Board } from 'rules/types/Board';
+import { initialBoard, move, nextCastlingPreclusions } from 'logic/board';
+import { Move } from 'logic/game/validateMoves';
+import { PositionName } from 'logic/positions/positionName';
+import { Board } from 'logic/types/Board';
 import { create } from 'zustand';
-import { otherPlayer, pieceAt, playerAt } from 'rules/positions';
-import { CastlingPreclusions } from 'rules/types/CastlingPreclusions';
-import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
-import isPawn from 'rules/pieces/isPawn';
-import { Player } from 'rules/types/Player';
-import { Piece } from 'rules/positions/piece';
+import { otherPlayer, pieceAt, playerAt } from 'logic/positions';
+import { CastlingPreclusions } from 'logic/types/CastlingPreclusions';
+import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
+import isPawn from 'logic/pieces/isPawn';
+import { Player } from 'logic/types/Player';
+import { Piece } from 'logic/positions/piece';
 
 export type OldGameState =   {
   moves: Move[];

@@ -1,15 +1,15 @@
-import { Board } from 'rules/types/Board';
-import { moves } from 'rules/game/selectors/moves';
-import { canMoveTo } from 'rules/moves';
-import { firstBoard } from 'rules/board/initialBoard';
-import { castling } from 'rules/game/selectors/castling';
-import { Move } from 'rules/game/validateMoves';
-import { RookStartPosition } from 'rules/types/CastlingPreclusions';
-import nextBoard from 'rules/board/move';
-import { epSquare } from 'rules/game/selectors/enPassant';
-import textRender from 'rules/board/textRender';
-import boardCursor from 'rules/game/selectors/boardCursor';
-import { GameState } from 'rules/game/gameState';
+import { Board } from 'logic/types/Board';
+import { moves } from 'logic/game/selectors/moves';
+import { canMoveTo } from 'logic/moves';
+import { firstBoard } from 'logic/board/initialBoard';
+import { castling } from 'logic/game/selectors/castling';
+import { Move } from 'logic/game/validateMoves';
+import { RookStartPosition } from 'logic/types/CastlingPreclusions';
+import nextBoard from 'logic/board/move';
+import { epSquare } from 'logic/game/selectors/enPassant';
+import textRender from 'logic/board/textRender';
+import boardCursor from 'logic/game/selectors/boardCursor';
+import { GameState } from 'logic/game/gameState';
 
 const emptyPreclusions = new Set<RookStartPosition>();
 

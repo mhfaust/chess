@@ -1,8 +1,8 @@
 
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { kingMoves }  from 'rules/moves';
-import { Board }  from 'rules/types/Board';
-import { RookStartPosition } from 'rules/types/CastlingPreclusions';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { kingMoves }  from 'logic/moves';
+import { Board }  from 'logic/types/Board';
+import { RookStartPosition } from 'logic/types/CastlingPreclusions';
 
 
 describe('kingMoves', () => {

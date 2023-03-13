@@ -1,6 +1,6 @@
-import { PositionName }  from 'rules/positions/positionName';
-import { rookMoves, bishopMoves }  from 'rules/moves'
-import { Board }  from 'rules/types/Board';
+import { PositionName }  from 'logic/positions/positionName';
+import { rookMoves, bishopMoves }  from 'logic/moves'
+import { Board }  from 'logic/types/Board';
 
 function queen(
     board: Board, 

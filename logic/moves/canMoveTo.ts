@@ -5,11 +5,11 @@ import {
     pawnCanMove, 
     queenCanMove, 
     rookCanMove 
-} from 'rules/moves';
-import { pieceAt }  from 'rules/positions';
-import { Board }  from 'rules/types/Board';
-import { PositionName }  from 'rules/positions/positionName';
-import { CastlingPreclusions }  from 'rules/types/CastlingPreclusions';
+} from 'logic/moves';
+import { pieceAt }  from 'logic/positions';
+import { Board }  from 'logic/types/Board';
+import { PositionName }  from 'logic/positions/positionName';
+import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 
 //Each of the piece-specific can-move functions has a less-demanding signtaure for 
 //annotations than the combined canMoveTo, so we cury them to match it

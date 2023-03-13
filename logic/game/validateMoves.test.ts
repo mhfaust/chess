@@ -1,7 +1,7 @@
-import { PositionName }  from 'rules/positions/positionName';
-import validateGameMoves, { Move }  from 'rules/game/validateMoves';
-import textRender  from 'rules/board/textRender';
-// import asciiBoard  from 'rules/board/'
+import { PositionName }  from 'logic/positions/positionName';
+import validateGameMoves, { Move }  from 'logic/game/validateMoves';
+import textRender  from 'logic/board/textRender';
+// import asciiBoard  from 'logic/board/'
 
 const moves: Move[] = [
   ["E2", 'E4', undefined], ['E7', 'E6', undefined],

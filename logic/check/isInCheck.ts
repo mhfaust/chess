@@ -1,7 +1,7 @@
-import { generateLinesOfAttack }  from 'rules/check'
-import { Player }  from 'rules/types/Player';
-import { Board }  from 'rules/types/Board';
-import kingPosition  from 'rules/positions/kingPosition';
+import { generateLinesOfAttack }  from 'logic/check'
+import { Player }  from 'logic/types/Player';
+import { Board }  from 'logic/types/Board';
+import kingPosition  from 'logic/positions/kingPosition';
 
 const cache = new Map<Player, Map<Board, boolean>>()
     .set('Black', new Map())

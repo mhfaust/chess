@@ -1,5 +1,5 @@
-import COORDS from 'rules/positions/coordinates';
-import { PositionName } from 'rules/positions/positionName';
+import COORDS from 'logic/positions/coordinates';
+import { PositionName } from 'logic/positions/positionName';
 
 function rank (position: PositionName): number {
     

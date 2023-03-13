@@ -1,7 +1,7 @@
-import knightMoves  from 'rules/moves/knightMoves';
-import { initialBoard }  from 'rules/board';
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import knightMoves  from 'logic/moves/knightMoves';
+import { initialBoard }  from 'logic/board';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
 
 describe('knight', () => {
 

@@ -6,10 +6,10 @@ import {
     isUnOccupied, 
     isOccupiedByPlayer, 
     positionName
-} from 'rules/positions';
-import movesIntoCheck  from 'rules/check/movesIntoCheck';
-import { Board }  from 'rules/types/Board';
-import { PositionName }  from 'rules/positions/positionName';
+} from 'logic/positions';
+import movesIntoCheck  from 'logic/check/movesIntoCheck';
+import { Board }  from 'logic/types/Board';
+import { PositionName }  from 'logic/positions/positionName';
 
 function pawnCanMove (
         board: Board, 

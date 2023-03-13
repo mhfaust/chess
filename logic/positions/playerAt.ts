@@ -1,8 +1,8 @@
-import { pieceAt }  from 'rules/positions';
-import { BLACK_PIECES }  from 'rules/constants/pieces'
-import { Board }  from 'rules/types/Board';
-import { Player }  from 'rules/types/Player';
-import { PositionName } from 'rules/positions/positionName';
+import { pieceAt }  from 'logic/positions';
+import { BLACK_PIECES }  from 'logic/constants/pieces'
+import { Board }  from 'logic/types/Board';
+import { Player }  from 'logic/types/Player';
+import { PositionName } from 'logic/positions/positionName';
 
 const playerAt = (board: Board, position: PositionName): Player | null => {
     const piece = pieceAt(board, position);

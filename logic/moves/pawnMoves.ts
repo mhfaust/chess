@@ -5,12 +5,12 @@
     isOccupiedByPlayer, 
     otherPlayer, 
     rank
-} from 'rules/positions';
-import { isInCheck }  from 'rules/check';
-import { move }  from 'rules/board';
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
-import { MoveVector } from 'rules/types/MoveVector';
+} from 'logic/positions';
+import { isInCheck }  from 'logic/check';
+import { move }  from 'logic/board';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
+import { MoveVector } from 'logic/types/MoveVector';
 
 const emptySet = new Set<PositionName>();
 

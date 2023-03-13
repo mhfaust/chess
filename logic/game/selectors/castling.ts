@@ -1,8 +1,8 @@
-import { firstBoard } from 'rules/board/initialBoard';
-import nextCastlingPreclusions from 'rules/board/nextCastlingPreclusions';
-import { Board } from 'rules/types/Board';
-import { CastlingPreclusions, RookStartPosition } from 'rules/types/CastlingPreclusions';
-import { GameState } from 'rules/game/gameState';
+import { firstBoard } from 'logic/board/initialBoard';
+import nextCastlingPreclusions from 'logic/board/nextCastlingPreclusions';
+import { Board } from 'logic/types/Board';
+import { CastlingPreclusions, RookStartPosition } from 'logic/types/CastlingPreclusions';
+import { GameState } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 import { boards } from './boards';
 import { moves, currentMove } from './moves';

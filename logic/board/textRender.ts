@@ -1,8 +1,8 @@
-import { unicodeSymbols }  from 'rules/constants/pieces';
-import { rotateCounterClockwise }  from 'rules/board';
+import { unicodeSymbols }  from 'logic/constants/pieces';
+import { rotateCounterClockwise }  from 'logic/board';
 import chalk   from 'chalk';
-import { Board, BoardFile, PieceOrEmpty }  from 'rules/types/Board';
-import { Piece }  from 'rules/positions/piece';
+import { Board, BoardFile, PieceOrEmpty }  from 'logic/types/Board';
+import { Piece }  from 'logic/positions/piece';
 
 const { bgWhite, black, blue } = chalk;
 

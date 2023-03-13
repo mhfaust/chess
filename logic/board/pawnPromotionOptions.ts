@@ -1,7 +1,7 @@
-import { pieceAt, rank } from 'rules/positions';
-import { Piece } from 'rules/positions/piece';
-import { PositionName } from 'rules/positions/positionName';
-import { Board } from 'rules/types/Board';
+import { pieceAt, rank } from 'logic/positions';
+import { Piece } from 'logic/positions/piece';
+import { PositionName } from 'logic/positions/positionName';
+import { Board } from 'logic/types/Board';
 
 export const blackPromotionOptions: Piece[] =  [
   'Black Queen', 

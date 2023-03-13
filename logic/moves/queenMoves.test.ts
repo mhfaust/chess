@@ -1,6 +1,6 @@
 import queenMoves from './queenMoves';
-import { BQ,BP,WK,WQ,WR,BK,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import { BQ,BP,WK,WQ,WR,BK,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
 describe('queen', () => {
 
     it(`provides all possible moves from queen on queen1board: `, () => {

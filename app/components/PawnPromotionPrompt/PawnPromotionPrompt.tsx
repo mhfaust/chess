@@ -1,8 +1,8 @@
-import { useGameStore } from "app/components/Game/gameStore";
-import { blackPromotionOptions, whitePromotionOptions } from "rules/board/pawnPromotionOptions";
-import { unicodeSymbols } from "rules/constants/pieces";
-import { Piece } from "rules/positions/piece";
-import styles from "./PawnPromotionPrompt.module.css";
+import { useGameStore } from 'app/components/Game/gameStore';
+import { blackPromotionOptions, whitePromotionOptions } from 'logic/board/pawnPromotionOptions';
+import { unicodeSymbols } from 'logic/constants/pieces';
+import { Piece } from 'logic/positions/piece';
+import styles from './PawnPromotionPrompt.module.css';
 
 export type PawnPromotionOptionsProps = {
   onPromote: ((selection: Piece) => void) | null;

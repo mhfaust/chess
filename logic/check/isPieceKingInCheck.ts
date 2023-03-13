@@ -1,6 +1,6 @@
-import { pieceAt, playerAt } from 'rules/positions';
-import { PositionName } from 'rules/positions/positionName';
-import { Board, PieceOrEmpty } from 'rules/types/Board';
+import { pieceAt, playerAt } from 'logic/positions';
+import { PositionName } from 'logic/positions/positionName';
+import { Board, PieceOrEmpty } from 'logic/types/Board';
 import isInCheck from './isInCheck';
 
 const kings: [PieceOrEmpty, PieceOrEmpty] = ['Black King', 'White King'];

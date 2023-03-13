@@ -1,6 +1,6 @@
-import locatePiece  from 'rules/positions/locatePiece';
-import { initialBoard }  from 'rules/board';
-import COORDS  from 'rules/positions/coordinates'
+import locatePiece  from 'logic/positions/locatePiece';
+import { initialBoard }  from 'logic/board';
+import COORDS  from 'logic/positions/coordinates'
 
 
 describe('locatePiece', () => {

@@ -1,5 +1,5 @@
-import { CastlingPreclusions }  from 'rules/types/CastlingPreclusions';
-import { PositionName }  from 'rules/positions/positionName';
+import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
+import { PositionName }  from 'logic/positions/positionName';
 
 const castleAndKingStartsArray = [
     'A1', // White Rook

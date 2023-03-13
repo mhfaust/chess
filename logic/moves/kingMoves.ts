@@ -2,14 +2,14 @@ import {
     playerAt, 
     isUnOccupiedByPlayer, 
     displaceTo, 
-}  from 'rules/positions';
-import { kingVectors }  from 'rules/constants/move-vectors'
-import movesIntoCheck  from 'rules/check/movesIntoCheck';
-import { CastlingPreclusions }  from 'rules/types/CastlingPreclusions';
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
-import areEmpty from 'rules/moves/areEmpty';
-import { isInCheck } from 'rules/check';
+}  from 'logic/positions';
+import { kingVectors }  from 'logic/constants/move-vectors'
+import movesIntoCheck  from 'logic/check/movesIntoCheck';
+import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
+import areEmpty from 'logic/moves/areEmpty';
+import { isInCheck } from 'logic/check';
 
 const emptySet = new Set<PositionName>();
 

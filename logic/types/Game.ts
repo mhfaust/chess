@@ -1,9 +1,9 @@
 
-import { Board } from 'rules/types/Board';
-import { Piece }  from 'rules/positions/piece';
-import { Player }  from 'rules/types/Player';
-import { PositionName }  from 'rules/positions/positionName';
-import { CastlingPreclusions }  from 'rules/types/CastlingPreclusions';
+import { Board } from 'logic/types/Board';
+import { Piece }  from 'logic/positions/piece';
+import { Player }  from 'logic/types/Player';
+import { PositionName }  from 'logic/positions/positionName';
+import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 
 export type BoardAnnotations = {
   // lastPlayerMoved: Player;

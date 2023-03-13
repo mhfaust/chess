@@ -1,7 +1,7 @@
-import { isOnBoard, playerAt, file, rank }  from 'rules/positions'
-import movesIntoCheck  from 'rules/check/movesIntoCheck';
-import { Board }  from 'rules/types/Board';
-import { PositionName }  from 'rules/positions/positionName';
+import { isOnBoard, playerAt, file, rank }  from 'logic/positions'
+import movesIntoCheck  from 'logic/check/movesIntoCheck';
+import { Board }  from 'logic/types/Board';
+import { PositionName }  from 'logic/positions/positionName';
 
 function knightCanMove (
     board: Board, 

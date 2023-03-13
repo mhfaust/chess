@@ -1,10 +1,10 @@
-import { Piece } from 'rules/positions/piece';
-import { PositionName } from 'rules/positions/positionName';
-import { Move } from 'rules/game/validateMoves';
-import { move, nextCastlingPreclusions } from 'rules/board';
-import { otherPlayer, pieceAt, playerAt } from 'rules/positions';
-import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
-import isPawn from 'rules/pieces/isPawn';
+import { Piece } from 'logic/positions/piece';
+import { PositionName } from 'logic/positions/positionName';
+import { Move } from 'logic/game/validateMoves';
+import { move, nextCastlingPreclusions } from 'logic/board';
+import { otherPlayer, pieceAt, playerAt } from 'logic/positions';
+import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
+import isPawn from 'logic/pieces/isPawn';
 import { OldGameState } from 'app/components/Game/gameStore';
 
 const makeNextMove = (

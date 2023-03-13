@@ -1,6 +1,6 @@
-import bishopCanMove  from 'rules/moves/bishopCanMove'
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import bishopCanMove  from 'logic/moves/bishopCanMove'
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
     
 describe('bishopCanMove', () => {
 

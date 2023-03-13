@@ -1,9 +1,9 @@
-import { positionName }  from 'rules/positions';
-import { BLACK_PIECES, WHITE_PIECES }  from 'rules/constants/pieces';
-import { Board }  from 'rules/types/Board';
-import { Player }  from 'rules/types/Player';
-import { Piece }  from 'rules/positions/piece';
-import { PositionName }  from 'rules/positions/positionName';
+import { positionName }  from 'logic/positions';
+import { BLACK_PIECES, WHITE_PIECES }  from 'logic/constants/pieces';
+import { Board }  from 'logic/types/Board';
+import { Player }  from 'logic/types/Player';
+import { Piece }  from 'logic/positions/piece';
+import { PositionName }  from 'logic/positions/positionName';
 
 export type PiecePosition = {
     position: PositionName;

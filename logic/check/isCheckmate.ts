@@ -1,21 +1,21 @@
 import { 
     generateLinesOfAttack, 
-    movesIntoCheck } from 'rules/check';
+    movesIntoCheck } from 'logic/check';
 
 import { 
     displaceTo, 
     otherPlayer, 
     playerAt, 
     positionName,
-} from 'rules/positions';
+} from 'logic/positions';
     
-import { kingVectors }  from 'rules/constants/move-vectors';
-import { Board }  from 'rules/types/Board';
-import { Player }  from 'rules/types/Player';
-import kingPosition  from 'rules/positions/kingPosition';
-import { PositionName } from 'rules/positions/positionName';
-import { GridCoordinates } from 'rules/types/GridCoordinates';
-import { MoveVector } from 'rules/types/MoveVector';
+import { kingVectors }  from 'logic/constants/move-vectors';
+import { Board }  from 'logic/types/Board';
+import { Player }  from 'logic/types/Player';
+import kingPosition  from 'logic/positions/kingPosition';
+import { PositionName } from 'logic/positions/positionName';
+import { GridCoordinates } from 'logic/types/GridCoordinates';
+import { MoveVector } from 'logic/types/MoveVector';
 
 const cache = new Map<Player, Map<Board, boolean>>()
     .set('Black', new Map())

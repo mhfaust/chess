@@ -1,4 +1,4 @@
-import { Piece }  from 'rules/positions/piece';
+import { Piece }  from 'logic/positions/piece';
 
 export type PieceOrEmpty = Piece | null;
 

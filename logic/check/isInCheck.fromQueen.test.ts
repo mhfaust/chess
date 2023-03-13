@@ -1,6 +1,6 @@
-import isInCheck  from 'rules/check/isInCheck';
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
+import isInCheck  from 'logic/check/isInCheck';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
 
 describe('isInCheck: true', () => {
     it('White King at F3 is IN check from Black Queen at E4', () => {

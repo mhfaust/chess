@@ -1,7 +1,7 @@
-import { boards } from "rules/game/selectors/boards";
-import { currentGameView } from "rules/game/selectors/currentGameView";
-import textRender from "rules/board/textRender";
-import { KasparovVeselin } from "./historicalGames";
+import { boards } from 'logic/game/selectors/boards';
+import { currentGameView } from 'logic/game/selectors/currentGameView';
+import textRender from 'logic/board/textRender';
+import { KasparovVeselin } from './historicalGames';
 
 describe('Historical Games', () => {
 

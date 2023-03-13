@@ -4,13 +4,13 @@ import {
     isUnOccupied, 
     isOccupiedByPlayer, 
     otherPlayer, 
-} from 'rules/positions';
+} from 'logic/positions';
 
-import { bishopVectors }  from 'rules/constants/move-vectors'
-import { movesIntoCheck }  from 'rules/check';
-import { PositionName }  from 'rules/positions/positionName';
-import { Board }  from 'rules/types/Board';
-import { MoveVector } from 'rules/types/MoveVector';
+import { bishopVectors }  from 'logic/constants/move-vectors'
+import { movesIntoCheck }  from 'logic/check';
+import { PositionName }  from 'logic/positions/positionName';
+import { Board }  from 'logic/types/Board';
+import { MoveVector } from 'logic/types/MoveVector';
 
 const emptySet = new Set<PositionName>();
 

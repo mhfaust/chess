@@ -1,7 +1,7 @@
-import allPlayerPositions, { PiecePosition }  from 'rules/positions/allPlayerPositions'
-import { initialBoard }  from 'rules/board'
-import { PositionName }  from 'rules/positions/positionName';
-import { Piece }  from 'rules/positions/piece';
+import allPlayerPositions, { PiecePosition }  from 'logic/positions/allPlayerPositions'
+import { initialBoard }  from 'logic/board'
+import { PositionName }  from 'logic/positions/positionName';
+import { Piece }  from 'logic/positions/piece';
 
 describe('allPlayerPositions finds all white piecesonr initial board', () => {
 

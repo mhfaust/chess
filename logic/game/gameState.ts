@@ -1,5 +1,5 @@
-import { Piece } from 'rules/positions/piece';
-import { PositionName } from 'rules/positions/positionName';
+import { Piece } from 'logic/positions/piece';
+import { PositionName } from 'logic/positions/positionName';
 
 export type GameState =   {
   gamePlay: string;

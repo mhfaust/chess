@@ -1,4 +1,4 @@
-import positionName  from 'rules/positions/positionName'
+import positionName  from 'logic/positions/positionName'
 
 describe('positionName', () => {
     it('gets A1 for [0,0]', () => {

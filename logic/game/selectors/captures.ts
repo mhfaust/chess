@@ -1,7 +1,7 @@
-import { pieceAt } from 'rules/positions';
-import { Piece } from 'rules/positions/piece';
-import { Board } from 'rules/types/Board';
-import { GameState } from 'rules/game/gameState';
+import { pieceAt } from 'logic/positions';
+import { Piece } from 'logic/positions/piece';
+import { Board } from 'logic/types/Board';
+import { GameState } from 'logic/game/gameState';
 import { boards, currentBoard } from './boards';
 import { epSquare } from './enPassant';
 import { moves } from './moves';

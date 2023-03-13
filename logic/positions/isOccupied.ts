@@ -1,6 +1,6 @@
-import { pieceAt }  from 'rules/positions';
-import { Board }  from 'rules/types/Board';
-import { PositionName } from 'rules/positions/positionName';
+import { pieceAt }  from 'logic/positions';
+import { Board }  from 'logic/types/Board';
+import { PositionName } from 'logic/positions/positionName';
 
 function isOccupied  (
     board: Board, 

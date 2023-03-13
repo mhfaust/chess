@@ -1,4 +1,4 @@
-import { BoardAnnotations }  from 'rules/types/Game';
+import { BoardAnnotations }  from 'logic/types/Game';
 
 const initialBoardAnnotations = (): BoardAnnotations => {
     return {

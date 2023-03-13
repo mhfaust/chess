@@ -1,5 +1,5 @@
-import { __ }  from 'rules/positions/pieces-shorthand'
-import { Board }  from 'rules/types/Board';
+import { __ }  from 'logic/positions/pieces-shorthand'
+import { Board }  from 'logic/types/Board';
 
 const emptyBoard = (): Board => [
 /*         1  2  3  4  5  6  7  8  */

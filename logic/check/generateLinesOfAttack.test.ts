@@ -1,10 +1,10 @@
 import generateLinesOfAttack from './generateLinesOfAttack';
 import allLinesOfAttack from './allLinesOfAttack';
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ } from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
-import COORDS  from 'rules/positions/coordinates';
-import { GridCoordinates } from 'rules/types/GridCoordinates';
-import { areSamePositions } from 'rules/positions';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ } from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
+import COORDS  from 'logic/positions/coordinates';
+import { GridCoordinates } from 'logic/types/GridCoordinates';
+import { areSamePositions } from 'logic/positions';
 
 describe('generateLinesOfAttack', () => {
     it('finds the line from a bishop at C3 to E5', () => {

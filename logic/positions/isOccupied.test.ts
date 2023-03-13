@@ -1,5 +1,5 @@
-import isOccupied  from 'rules/positions/isOccupied'
-import { initialBoard }  from 'rules/board'
+import isOccupied  from 'logic/positions/isOccupied'
+import { initialBoard }  from 'logic/board'
 
 describe('isOccupied', () => {
     it('reports true for initially positioned rook', () => {

@@ -1,7 +1,7 @@
-import { Player }  from 'rules/types/Player';
-import { Board }  from 'rules/types/Board';
-import { PositionName, positionNames } from 'rules/positions/positionName';
-import pieceAt from 'rules/positions/pieceAt';
+import { Player }  from 'logic/types/Player';
+import { Board }  from 'logic/types/Board';
+import { PositionName, positionNames } from 'logic/positions/positionName';
+import pieceAt from 'logic/positions/pieceAt';
 
 const whiteCache: Map<Board, PositionName> = new Map();
 const blackCache: Map<Board, PositionName> = new Map();

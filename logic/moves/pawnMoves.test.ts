@@ -1,7 +1,7 @@
 import pawnMoves from './pawnMoves';
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'rules/positions/pieces-shorthand';
-import { Board }  from 'rules/types/Board';
-import { PositionName }  from 'rules/positions/positionName';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { Board }  from 'logic/types/Board';
+import { PositionName }  from 'logic/positions/positionName';
 
 type TestCases = { pawnPosition: PositionName, attackedPositions: PositionName[] }[];
 
