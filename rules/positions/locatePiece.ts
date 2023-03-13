@@ -1,6 +1,6 @@
 import { pieceAt }  from 'rules/positions'
 import { Board }  from 'rules/types/Board';
-import positionName, { PositionName } from './positionName';
+import positionName, { PositionName } from 'rules/positions/positionName';
 
 export type UniquePiece = 
     | 'White King' 

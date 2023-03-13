@@ -1,8 +1,7 @@
 import { PositionName }  from 'rules/positions/positionName';
 import { Board }  from 'rules/types/Board';
 import { Player }  from 'rules/types/Player';
-
-import generateLinesOfAttack from './generateLinesOfAttack';
+import generateLinesOfAttack from 'rules/check/generateLinesOfAttack';
 
 const allLinesOfAttack = (
   board: Board, 

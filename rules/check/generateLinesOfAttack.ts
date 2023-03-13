@@ -8,7 +8,6 @@ import {
     knightVectors, 
     pawnBlackAttackVectors, 
     pawnWhiteAttackVectors, 
-    queenVectors,
     kingVectors,
     bishopVectors,
     rookVectors

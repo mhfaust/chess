@@ -1,4 +1,4 @@
-import { GameState } from "../gameState";
+import { GameState } from "rules/game/gameState";
 import { currentBoard } from "./boards";
 import { currentCaptures } from "./captures";
 import currentEnPassantSquare from "./enPassant";

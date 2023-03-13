@@ -1,6 +1,6 @@
 import { Board, PieceOrEmpty }  from 'rules/types/Board';
-import { PositionName } from './positionName';
-import COORDS from './coordinates';
+import { PositionName } from 'rules/positions/positionName';
+import COORDS from 'rules/positions/coordinates';
 
 function pieceAt (board: Board, position?: PositionName): PieceOrEmpty {
     if (!position) {

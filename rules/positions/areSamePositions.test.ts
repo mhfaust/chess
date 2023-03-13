@@ -1,4 +1,4 @@
-import areSamePositions from './areSamePositions'
+import areSamePositions from 'rules/positions/areSamePositions'
 
 describe('areSamePositions', () => {
     it('finds two positions are the same, even though their objects by reference are different', () => {

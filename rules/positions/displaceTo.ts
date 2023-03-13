@@ -6,7 +6,7 @@ position is on the board
 import { rank, file }  from 'rules/positions';
 import { GridCoordinates } from 'rules/types/GridCoordinates';
 import { MoveVector } from 'rules/types/MoveVector';
-import positionName, { PositionName } from './positionName';
+import positionName, { PositionName } from 'rules/positions/positionName';
     
 function displaceTo  (
     currentPosition: PositionName, 

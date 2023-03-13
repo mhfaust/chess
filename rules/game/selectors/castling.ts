@@ -2,7 +2,7 @@ import { firstBoard } from "rules/board/initialBoard";
 import nextCastlingPreclusions from "rules/board/nextCastlingPreclusions";
 import { Board } from "rules/types/Board";
 import { CastlingPreclusions, RookStartPosition } from "rules/types/CastlingPreclusions";
-import { GameState } from "../gameState";
+import { GameState } from "rules/game/gameState";
 import boardCursor from "./boardCursor";
 import { boards } from "./boards";
 import { moves, currentMove } from "./moves";

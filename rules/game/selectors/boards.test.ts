@@ -1,7 +1,7 @@
 import { firstBoard } from "rules/board/initialBoard";
 import { pieceAt } from "rules/positions";
-import { boards } from "app/state/selectors/boards";
-import { moves } from "app/state/selectors/moves";
+import { boards } from "rules/game/selectors/boards";
+import { moves } from "rules/game/selectors/moves";
 
 describe('boards', () => {
 

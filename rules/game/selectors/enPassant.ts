@@ -1,6 +1,6 @@
 import { file, rank } from "rules/positions";
 import positionName, { PositionName } from "rules/positions/positionName";
-import { GameState } from "../gameState";
+import { GameState } from "rules/game/gameState";
 import boardCursor from "./boardCursor";
 import { moves } from "./moves";
 

@@ -1,5 +1,5 @@
-import { boards } from "app/state/selectors/boards";
-import { currentGameView } from "app/state/selectors/currentGameView";
+import { boards } from "rules/game/selectors/boards";
+import { currentGameView } from "rules/game/selectors/currentGameView";
 import textRender from "rules/board/textRender";
 import { KasparovVeselin } from "./historicalGames";
 

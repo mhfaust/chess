@@ -1,4 +1,4 @@
-import { GameState } from "../gameState";
+import { GameState } from "rules/game/gameState";
 import { boards } from "./boards";
 
 const boardCursor = (game: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
