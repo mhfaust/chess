@@ -1,5 +1,5 @@
-import { PositionName } from "rules/positions/positionName"
-import { Board } from "rules/types/Board"
+import { PositionName } from 'rules/positions/positionName'
+import { Board } from 'rules/types/Board'
 
 const cache = new Map<Board, ([PositionName, PositionName] | null)>;
 

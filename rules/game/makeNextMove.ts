@@ -1,11 +1,11 @@
-import { Piece } from "rules/positions/piece";
-import { PositionName } from "rules/positions/positionName";
-import { Move } from "rules/game/validateMoves";
+import { Piece } from 'rules/positions/piece';
+import { PositionName } from 'rules/positions/positionName';
+import { Move } from 'rules/game/validateMoves';
 import { move, nextCastlingPreclusions } from 'rules/board';
 import { otherPlayer, pieceAt, playerAt } from 'rules/positions';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'rules/moves/enPassantSquare';
 import isPawn from 'rules/pieces/isPawn';
-import { OldGameState } from "app/components/Game/gameStore";
+import { OldGameState } from 'app/components/Game/gameStore';
 
 const makeNextMove = (
   from: PositionName, 
@@ -48,14 +48,14 @@ const makeNextMove = (
     const epCapture = epSquare && pieceAt(lastBoard, pawnPositionFromEpSquare.get(epSquare))
     const captured = pieceAt(lastBoard, to) || epCapture;
 
-    const newBlackCaptureds = captured && playerAt(lastBoard, to) === "Black"
+    const newBlackCaptureds = captured && playerAt(lastBoard, to) === 'Black'
       ? [...prevBlackCaptureds, captured]
       : [...prevBlackCaptureds];
     
     const newWhitesMap = new Map(capturedWhites);
     const prevWhiteCaptureds = capturedWhites.get(lastBoard)!;
 
-    const newWhiteCaptureds = captured && playerAt(lastBoard, to) === "White"
+    const newWhiteCaptureds = captured && playerAt(lastBoard, to) === 'White'
       ? [...prevWhiteCaptureds, captured]
       : [...prevWhiteCaptureds];
 

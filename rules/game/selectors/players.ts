@@ -1,5 +1,5 @@
-import { GameState } from "rules/game/gameState";
-import boardCursor from "./boardCursor";
+import { GameState } from 'rules/game/gameState';
+import boardCursor from './boardCursor';
 
 const currentPlayer = (game: GameState, turn: number = -1) => {
 

@@ -36,7 +36,7 @@ function move (
 
     const isEpCapture = enPassantSquare === to && isPawn(pieceAt(previousBoard, from));
     const captured = isEpCapture
-        ? other === "Black" ? "BP" : "WP"
+        ? other === 'Black' ? 'BP' : 'WP'
         : pieceThere ? shorthand(pieceThere) : ''
 
     const ep = isEpCapture ? 'ep' : '';

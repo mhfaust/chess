@@ -11,7 +11,7 @@ const pieceLine = (row: BoardFile, i: number) => {
 function testBoard(board: Board){
     const pieceLines = board
         .map(pieceLine)
-        .join("\n");
+        .join('\n');
 
     return `\n${pieceLines}`
 }

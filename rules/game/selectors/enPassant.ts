@@ -1,8 +1,8 @@
-import { file, rank } from "rules/positions";
-import positionName, { PositionName } from "rules/positions/positionName";
-import { GameState } from "rules/game/gameState";
-import boardCursor from "./boardCursor";
-import { moves } from "./moves";
+import { file, rank } from 'rules/positions';
+import positionName, { PositionName } from 'rules/positions/positionName';
+import { GameState } from 'rules/game/gameState';
+import boardCursor from './boardCursor';
+import { moves } from './moves';
 
 //TODO: MEMOIZE.
 export const epSquares = (state: Pick<GameState, 'gamePlay'>) => {

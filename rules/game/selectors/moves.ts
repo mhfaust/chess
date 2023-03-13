@@ -1,9 +1,9 @@
-import { Move } from "rules/game/validateMoves";
-import { Piece } from "rules/positions/piece";
-import { PositionName } from "rules/positions/positionName";
-import { Player } from "rules/types/Player";
-import { GameState } from "rules/game/gameState";
-import boardCursor from "./boardCursor";
+import { Move } from 'rules/game/validateMoves';
+import { Piece } from 'rules/positions/piece';
+import { PositionName } from 'rules/positions/positionName';
+import { Player } from 'rules/types/Player';
+import { GameState } from 'rules/game/gameState';
+import boardCursor from './boardCursor';
 
 const moveStringRegex = /([A-H][1-8])-([A-H][1-8])(\((Q|B|N|R)\))?(x(Q|B|N|R|P))?(ep)?/;
 
@@ -29,7 +29,7 @@ export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
     return cache.get(state.gamePlay)!;
   }
 
-  const moveStrings = state.gamePlay.split(",");
+  const moveStrings = state.gamePlay.split(',');
   const gameMoves = moveStrings.map((str, i) => {
     const match = str.toUpperCase().match(moveStringRegex);
     if(!match) {

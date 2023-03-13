@@ -4,8 +4,8 @@ import { Board }  from 'rules/types/Board';
 import kingPosition  from 'rules/positions/kingPosition';
 
 const cache = new Map<Player, Map<Board, boolean>>()
-    .set("Black", new Map())
-    .set("White", new Map())
+    .set('Black', new Map())
+    .set('White', new Map())
 
 function isInCheck(
     board: Board, 

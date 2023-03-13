@@ -1,8 +1,8 @@
-import { GameState } from "rules/game/gameState";
-import { currentBoard } from "./boards";
-import { currentCaptures } from "./captures";
-import currentEnPassantSquare from "./enPassant";
-import { currentMove } from "./moves";
+import { GameState } from 'rules/game/gameState';
+import { currentBoard } from './boards';
+import { currentCaptures } from './captures';
+import currentEnPassantSquare from './enPassant';
+import { currentMove } from './moves';
 
 export const currentGameView = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
 

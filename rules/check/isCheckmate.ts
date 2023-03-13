@@ -18,8 +18,8 @@ import { GridCoordinates } from 'rules/types/GridCoordinates';
 import { MoveVector } from 'rules/types/MoveVector';
 
 const cache = new Map<Player, Map<Board, boolean>>()
-    .set("Black", new Map())
-    .set("White", new Map());
+    .set('Black', new Map())
+    .set('White', new Map());
 
 function isCheckmate(
     board: Board, 
@@ -70,7 +70,7 @@ function isCheckmate(
     //moving another defending piece in between.
 
     //Examine each square from the king to the attacking/checking piece, 
-    //and see if that square is under "attack" by a defender's piece,
+    //and see if that square is under 'attack' by a defender's piece,
     //and if so, be sure moving it there would fully remove the player from check,
     //important because the blocking piece may have been pinned.
 
@@ -87,7 +87,7 @@ function isCheckmate(
             //one step away from the position on the check-line and 
             //ending at a defender's piece...:
             const blockingMove: Array<GridCoordinates> = blockingMoveInfo.value;
-            //...so to get the moved piece's position, get the last coordinates from the "line-of-attck"
+            //...so to get the moved piece's position, get the last coordinates from the 'line-of-attck'
             const defendingPieceMovesFrom = positionName(blockingMove[blockingMove.length -1]);
 
             
