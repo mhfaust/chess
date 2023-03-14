@@ -5,36 +5,36 @@ import { Board }  from 'logic/types/Board';
 
 describe('knight', () => {
 
-    it('can move from initial board white queen knight to A3 and C3 only', () => {
+    it('can move from initial board white queen knight to a3 and c3 only', () => {
         
-        const legalMoves = knightMoves(initialBoard(), 'B1');
+        const legalMoves = knightMoves(initialBoard(), 'b1');
         
-        expect(legalMoves).toContain('A3')
-        expect(legalMoves).toContain('C3')
+        expect(legalMoves).toContain('a3')
+        expect(legalMoves).toContain('c3')
         expect(legalMoves.size).toBe(2)
     });
 
-    it('can move from initial board white king knight to A3 and C3 only', () => {
-        const legalMoves = knightMoves(initialBoard(), 'G1');
+    it('can move from initial board white king knight to a3 and c3 only', () => {
+        const legalMoves = knightMoves(initialBoard(), 'g1');
         
-        expect(legalMoves).toContain('F3')
-        expect(legalMoves).toContain('H3')
+        expect(legalMoves).toContain('f3')
+        expect(legalMoves).toContain('h3')
         expect(legalMoves.size).toBe(2)
     });
 
-    it('can move from initial board black queen knight to A3 and C3 only', () => {
-        const legalMoves = knightMoves(initialBoard(), 'B8');
+    it('can move from initial board black queen knight to a3 and c3 only', () => {
+        const legalMoves = knightMoves(initialBoard(), 'b8');
         
-        expect(legalMoves).toContain('A6')
-        expect(legalMoves).toContain('C6')
+        expect(legalMoves).toContain('a6')
+        expect(legalMoves).toContain('c6')
         expect(legalMoves.size).toBe(2)
     });
 
-    it('can move from initial board black king knight to A3 and C3 only', () => {
-        const legalMoves = knightMoves(initialBoard(), 'G8');
+    it('can move from initial board black king knight to a3 and c3 only', () => {
+        const legalMoves = knightMoves(initialBoard(), 'g8');
         
-        expect(legalMoves).toContain('F6')
-        expect(legalMoves).toContain('H6')
+        expect(legalMoves).toContain('f6')
+        expect(legalMoves).toContain('h6')
         expect(legalMoves.size).toBe(2)
     });
 
@@ -51,11 +51,11 @@ describe('knight', () => {
             /*  H  */ [__,__,__,__,__,__,__,__],
             ];
         const expectedLegalMoves = new Set([
-            'C6',
-            'G4'
+            'c6',
+            'g4'
         ]);
 
-        const foundLegalMoves = knightMoves(board, 'E5');
+        const foundLegalMoves = knightMoves(board, 'e5');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });
@@ -75,7 +75,7 @@ describe('knight', () => {
 
         const expectedLegalMoves = new Set([]);
     
-        const foundLegalMoves = knightMoves(board, 'E5');
+        const foundLegalMoves = knightMoves(board, 'e5');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });

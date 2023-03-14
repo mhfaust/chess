@@ -18,61 +18,61 @@ describe('bishopCanMove', () => {
 
     it('can advance left', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'C5');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'c5');
         expect(answer).toBe(true);
     });
 
     it('can advance right', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'F6');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'f6');
         expect(answer).toBe(true);
     });
 
     it('can retreat left', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'A1');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'a1');
         expect(answer).toBe(true);
     });
 
     it('can retreat right', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'G1');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'g1');
         expect(answer).toBe(true);
     });
 
     it('cannot move unequal forward and right displacements', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'H6');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'h6');
         expect(answer).toBe(false);
     });
 
     it('canot move laterally', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'H4');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'h4');
         expect(answer).toBe(false);
     });
 
     it('canot advance forward', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'D8');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'd8');
         expect(answer).toBe(false);
     });
 
     it('cannot capture own piece', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'B6');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'b6');
         expect(answer).toBe(false);
     });
 
     it('can capture opponent piece', () => { 
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'G7');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'g7');
         expect(answer).toBe(true);
     });
 
     it('cannot move beyond a piece', () => {
 
-        const answer = bishopCanMove(bishop1Board, 'D4', 'H8');
+        const answer = bishopCanMove(bishop1Board, 'd4', 'h8');
         expect(answer).toBe(false);
     });
 
@@ -90,8 +90,8 @@ describe('bishopCanMove', () => {
             /*  H  */ [__,__,__,__,__,__,__,BR],
         ];
             
-        expect(bishopCanMove(board, 'D4', 'E3')).toBe(false);  
-        expect(bishopCanMove(board, 'D4', 'C5')).toBe(false);  
+        expect(bishopCanMove(board, 'd4', 'e3')).toBe(false);  
+        expect(bishopCanMove(board, 'd4', 'c5')).toBe(false);  
     });
 
 
@@ -109,10 +109,10 @@ describe('bishopCanMove', () => {
         ];
 
 
-        expect(bishopCanMove(board, 'D4', 'C3')).toBe(true);  
-        expect(bishopCanMove(board, 'D4', 'B2')).toBe(true);  
-        expect(bishopCanMove(board, 'D4', 'E5')).toBe(true);  
-        expect(bishopCanMove(board, 'D4', 'F6')).toBe(true);  
-        expect(bishopCanMove(board, 'D4', 'G7')).toBe(true);  
+        expect(bishopCanMove(board, 'd4', 'c3')).toBe(true);  
+        expect(bishopCanMove(board, 'd4', 'b2')).toBe(true);  
+        expect(bishopCanMove(board, 'd4', 'e5')).toBe(true);  
+        expect(bishopCanMove(board, 'd4', 'f6')).toBe(true);  
+        expect(bishopCanMove(board, 'd4', 'g7')).toBe(true);  
     });
 })

@@ -20,14 +20,14 @@ const pawn1Board: Board = [
 describe('white pawn', () => {
 
     const testCases: TestCases = [
-        { pawnPosition: 'A2', attackedPositions: ['A3', 'A4'] },
-        { pawnPosition: 'B2', attackedPositions: ['B3'] },
-        { pawnPosition: 'C3', attackedPositions: ['C4', 'B4'] },
-        { pawnPosition: 'D4', attackedPositions: ['C5', 'D5', 'E5'] },
-        { pawnPosition: 'E2', attackedPositions: ['E3', 'E4'] },
-        { pawnPosition: 'F2', attackedPositions: ['F3', 'F4'] },
-        { pawnPosition: 'G2', attackedPositions: ['G3', 'G4'] },
-        { pawnPosition: 'H4', attackedPositions: ['G5'] },
+        { pawnPosition: 'a2', attackedPositions: ['a3', 'a4'] },
+        { pawnPosition: 'b2', attackedPositions: ['b3'] },
+        { pawnPosition: 'c3', attackedPositions: ['c4', 'b4'] },
+        { pawnPosition: 'd4', attackedPositions: ['c5', 'd5', 'e5'] },
+        { pawnPosition: 'e2', attackedPositions: ['e3', 'e4'] },
+        { pawnPosition: 'f2', attackedPositions: ['f3', 'f4'] },
+        { pawnPosition: 'g2', attackedPositions: ['g3', 'g4'] },
+        { pawnPosition: 'h4', attackedPositions: ['g5'] },
     ] ;
 
     testCases.forEach((testCase) => {
@@ -45,14 +45,14 @@ describe('white pawn', () => {
 describe('black pawn', () => {
 
     const testCases: TestCases = [
-        { pawnPosition: 'A7', attackedPositions: ['A6', 'A5'] },
-        { pawnPosition: 'B4', attackedPositions: ['B3', 'C3'] },
-        { pawnPosition: 'C5', attackedPositions: ['C4', 'D4'] },
-        { pawnPosition: 'D6', attackedPositions: ['D5'] },
-        { pawnPosition: 'E5', attackedPositions: ['D4', 'E4'] },
-        { pawnPosition: 'F7', attackedPositions: ['F6', 'F5'] },
-        { pawnPosition: 'G5', attackedPositions: ['G4', 'H4'] },
-        { pawnPosition: 'H5', attackedPositions: [] },
+        { pawnPosition: 'a7', attackedPositions: ['a6', 'a5'] },
+        { pawnPosition: 'b4', attackedPositions: ['b3', 'c3'] },
+        { pawnPosition: 'c5', attackedPositions: ['c4', 'd4'] },
+        { pawnPosition: 'd6', attackedPositions: ['d5'] },
+        { pawnPosition: 'e5', attackedPositions: ['d4', 'e4'] },
+        { pawnPosition: 'f7', attackedPositions: ['f6', 'f5'] },
+        { pawnPosition: 'g5', attackedPositions: ['g4', 'h4'] },
+        { pawnPosition: 'h5', attackedPositions: [] },
     ] ;
 
     testCases.forEach((testCase) => {
@@ -82,26 +82,26 @@ describe('en passant', () => {
 
     it('black pawn can attack a square passed by a white pawn moving from rank 2 to 4', () => {
 
-        const foundMoves = pawnMoves(board, 'D4', 'E3');
-        expect(foundMoves).toContain('E3');
+        const foundMoves = pawnMoves(board, 'd4', 'e3');
+        expect(foundMoves).toContain('e3');
     });
 
     it('black pawn cannot attack a passant-looking square if passant info is null', () => {
 
-        const foundMoves = pawnMoves(board, 'D4', null);
-        expect(foundMoves).not.toContain('E3');
+        const foundMoves = pawnMoves(board, 'd4', null);
+        expect(foundMoves).not.toContain('e3');
     });
 
     it('white pawn can attack a square passed by a black pawn moving from rank 2 to 4', () => {
 
-        const foundMoves = pawnMoves(board, 'H5', 'G6');
-        expect(foundMoves).toContain('G6');
+        const foundMoves = pawnMoves(board, 'h5', 'g6');
+        expect(foundMoves).toContain('g6');
     });
 
     it('white pawn cannot attack a passant-looking square if passant info is null', () => {
 
-        const foundMoves = pawnMoves(board, 'H5', null);
-        expect(foundMoves).not.toContain('G6');
+        const foundMoves = pawnMoves(board, 'h5', null);
+        expect(foundMoves).not.toContain('g6');
     });
 });
 
@@ -119,10 +119,10 @@ describe('check', () => {
             /*  H  */ [__,__,__,__,__,__,__,__],
         ];
         const expectedLegalMoves = new Set([
-            'G3',
+            'g3',
         ])
     
-        const foundLegalMoves = pawnMoves(board, 'F2', null);
+        const foundLegalMoves = pawnMoves(board, 'f2', null);
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });
@@ -141,7 +141,7 @@ describe('check', () => {
         ];
         const expectedLegalMoves = new Set([])
 
-        const foundLegalMoves = pawnMoves(board, 'F2', null);
+        const foundLegalMoves = pawnMoves(board, 'f2', null);
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });

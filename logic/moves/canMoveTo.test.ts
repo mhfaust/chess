@@ -18,8 +18,8 @@ describe('canMoveTo (Bishop)', () => {
         /*  H  */ [__,__,__,__,__,__,__,BR],
         ];
 
-        expect(canMoveTo(board, 'D4', 'C3', new Set(), null)).toBe(true);  
-        expect(canMoveTo(board, 'D4', 'C5', new Set(), null)).toBe(false);  
+        expect(canMoveTo(board, 'd4', 'c3', new Set(), null)).toBe(true);  
+        expect(canMoveTo(board, 'd4', 'c5', new Set(), null)).toBe(false);  
     });
 });
 
@@ -38,7 +38,7 @@ describe('canMoveTo (King)', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        expect(canMoveTo(board, 'E1', 'G1', new Set<RookStartPosition>(['H8', 'A8']))).toBe(false)
+        expect(canMoveTo(board, 'e1', 'g1', new Set<RookStartPosition>(['h8', 'a8']))).toBe(false)
     
 });
 
@@ -64,7 +64,7 @@ describe('canMoveTo (Pawn)', () => {
             /*  H  */ [WR,__,__,__,WP,__,BP,BR],
         ];
         
-        const answer = canMoveTo(board, 'D4', 'E3', new Set(), 'E3');
+        const answer = canMoveTo(board, 'd4', 'e3', new Set(), 'e3');
         expect(answer).toBe(true);
     });
 });
@@ -84,7 +84,7 @@ describe('canMoveTo (Queen)', () => {
         ];
 
         it('can capture opponent piece, diagonally', () => {
-            expect(canMoveTo(board, 'C2', 'F5', new Set(), null)).toBe(true)
+            expect(canMoveTo(board, 'c2', 'f5', new Set(), null)).toBe(true)
         });
     
 });

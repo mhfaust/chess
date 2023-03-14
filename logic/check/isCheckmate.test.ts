@@ -148,7 +148,7 @@ describe('isCheckmate', () => {
         expect(isCheckmate(board, 'White')).toBe(false)
     });
 
-    it('Black is in checkmate and pawn cannot attack empty square (H7-G6)', () => {
+    it('Black is in checkmate and pawn cannot attack empty square (h7-g6)', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [WR,WP,__,__,__,__,BP,BR],

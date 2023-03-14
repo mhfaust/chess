@@ -14,10 +14,10 @@ export let l = [
   // after 1st move:
   {
     boardCursor: 1,
-    history: 'E2-E4',
+    history: 'e2-e4',
     //DERIVED
-    moves: [ [ 'E2', 'E4'] ],  //-- derived from history only (not pointer)
-    currentMove: [ 'E2', 'E4'] ,
+    moves: [ [ 'e2', 'e4'] ],  //-- derived from history only (not pointer)
+    currentMove: [ 'e2', 'e4'] ,
     board: `requires: prev-board, prev-castling, prev-ep-square`,
     castling: `requires: (prev-castling, moveFrom)`,
     epSquare: `requires: (previousBoard, moveFrom, moveTo)`

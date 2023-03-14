@@ -9,13 +9,13 @@ export type NormalMove = [PositionName, PositionName, Piece | undefined];
 export type Move = NormalMove | 'RESIGN';
 
 //(x(Q|B|N|R|P))?(ep)?
-const normalMoveRegex = /([A-H][1-8])-([A-H][1-8])(\((Q|B|N|R)\))?/;
+const normalMoveRegex = /([a-h][1-8])-([a-h][1-8])(\((q|b|n|r)\))?/;
 
 const promotions: Record<string, string> = {
-  Q: 'Queen',
-  B: 'Bishop',
-  N: 'Knight',
-  R: 'Rook',
+  q: 'Queen',
+  b: 'Bishop',
+  n: 'Knight',
+  r: 'Rook',
 };
 
 const cache = new Map<string, (Move)[]>();
@@ -39,7 +39,7 @@ export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
       return 'RESIGN';
     }
 
-    const match = str.toUpperCase().match(normalMoveRegex);
+    const match = str.toLowerCase().match(normalMoveRegex);
     if(!match) {
       throw Error(`Illegal move: ${str}.`);
     }

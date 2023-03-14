@@ -39,36 +39,36 @@ function kingMoves (
     }
 
     //castling moves:
-    if (player === 'White' && kingFrom == 'E1') {
-        if(!castlingPreclusions?.has('H1') 
-            && areEmpty(board, 'F1', 'G1')
-            && !movesIntoCheck(board, 'E1', 'F1')
-            && !movesIntoCheck(board, 'E1', 'G1')
+    if (player === 'White' && kingFrom == 'e1') {
+        if(!castlingPreclusions?.has('h1') 
+            && areEmpty(board, 'f1', 'g1')
+            && !movesIntoCheck(board, 'e1', 'f1')
+            && !movesIntoCheck(board, 'e1', 'g1')
         ){
-            legalMoves.add('G1');
+            legalMoves.add('g1');
         }
-        if(!castlingPreclusions?.has('A1') 
-            && areEmpty(board, 'B1', 'C1', 'D1')
-            && !movesIntoCheck(board, 'E1', 'C1')
-            && !movesIntoCheck(board, 'E1', 'D1')
+        if(!castlingPreclusions?.has('a1') 
+            && areEmpty(board, 'b1', 'c1', 'd1')
+            && !movesIntoCheck(board, 'e1', 'c1')
+            && !movesIntoCheck(board, 'e1', 'd1')
         ){
-            legalMoves.add('C1');
+            legalMoves.add('c1');
         }
     }
-    if (player === 'Black' && kingFrom === 'E8') {
-        if(!castlingPreclusions?.has('H8') 
-            && areEmpty(board, 'F8', 'G8')
-            && !movesIntoCheck(board, 'E8', 'F8')
-            && !movesIntoCheck(board, 'E8', 'G8')
+    if (player === 'Black' && kingFrom === 'e8') {
+        if(!castlingPreclusions?.has('h8') 
+            && areEmpty(board, 'f8', 'g8')
+            && !movesIntoCheck(board, 'e8', 'f8')
+            && !movesIntoCheck(board, 'e8', 'g8')
         ){
-            legalMoves.add('G8');
+            legalMoves.add('g8');
         }
-        if(!castlingPreclusions?.has('A8') 
-            && areEmpty(board, 'B8', 'C8', 'D8')
-            && !movesIntoCheck(board, 'E8', 'C8')
-            && !movesIntoCheck(board, 'E8', 'D8')
+        if(!castlingPreclusions?.has('a8') 
+            && areEmpty(board, 'b8', 'c8', 'd8')
+            && !movesIntoCheck(board, 'e8', 'c8')
+            && !movesIntoCheck(board, 'e8', 'd8')
         ){
-            legalMoves.add('C8');
+            legalMoves.add('c8');
         }
     }
     return legalMoves;

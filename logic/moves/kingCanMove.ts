@@ -30,33 +30,33 @@ function kingCanMove (
         return false;
     }
 
-    if(from === 'E1' && player === 'White'){
-        if(to === 'G1'){
-            return !castlingPreclusions.has('H1') 
-                && areEmpty(board, 'F1', 'G1')
-                && !movesIntoCheck(board, 'E1', 'F1')//across check
-                && !movesIntoCheck(board, 'E1', 'G1')//into check
+    if(from === 'e1' && player === 'White'){
+        if(to === 'g1'){
+            return !castlingPreclusions.has('h1') 
+                && areEmpty(board, 'f1', 'g1')
+                && !movesIntoCheck(board, 'e1', 'f1')//across check
+                && !movesIntoCheck(board, 'e1', 'g1')//into check
         }
-        if(to === 'C1'){
-            return !castlingPreclusions.has('A1') 
-            && areEmpty(board, 'B1', 'C1', 'D1')
-                && !movesIntoCheck(board, 'E1', 'D1')//across check
-                && !movesIntoCheck(board, 'E1', 'C1')//into check
+        if(to === 'c1'){
+            return !castlingPreclusions.has('a1') 
+            && areEmpty(board, 'b1', 'c1', 'd1')
+                && !movesIntoCheck(board, 'e1', 'd1')//across check
+                && !movesIntoCheck(board, 'e1', 'c1')//into check
         }
         return false;
     }
-    if(from === 'E8' && player === 'Black'){
-        if(to === 'G8'){
-            return !castlingPreclusions.has('H8') 
-                && areEmpty(board, 'F8', 'G8')
-                && !movesIntoCheck(board, 'E8', 'F8')//across check
-                && !movesIntoCheck(board, 'E8', 'G8')//into check
+    if(from === 'e8' && player === 'Black'){
+        if(to === 'g8'){
+            return !castlingPreclusions.has('h8') 
+                && areEmpty(board, 'f8', 'g8')
+                && !movesIntoCheck(board, 'e8', 'f8')//across check
+                && !movesIntoCheck(board, 'e8', 'g8')//into check
         }
-        if(to === 'C8'){
-            return !castlingPreclusions.has('A8') 
-                && areEmpty(board, 'B8', 'C8', 'D8')
-                && !movesIntoCheck(board, 'E8', 'D8')//across check
-                && !movesIntoCheck(board, 'E8', 'C8')//into check
+        if(to === 'c8'){
+            return !castlingPreclusions.has('a8') 
+                && areEmpty(board, 'b8', 'c8', 'd8')
+                && !movesIntoCheck(board, 'e8', 'd8')//across check
+                && !movesIntoCheck(board, 'e8', 'c8')//into check
         }
         return false;        
     }

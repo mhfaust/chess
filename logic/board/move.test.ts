@@ -29,7 +29,7 @@ describe('move', () => {
 /*  H  */ [__,__,__,__,__,__,BP,BK],
         ];   
         
-        const [nextBoard] = move(boardBefore, 'G8', 'H8', null);
+        const [nextBoard] = move(boardBefore, 'g8', 'h8', null);
 
         expect(nextBoard).toEqual(boardAfter)
     })

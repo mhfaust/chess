@@ -7,7 +7,7 @@ import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { areSamePositions } from 'logic/positions';
 
 describe('generateLinesOfAttack', () => {
-    it('finds the line from a bishop at C3 to E5', () => {
+    it('finds the line from a bishop at c3 to e5', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
@@ -19,8 +19,8 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'E5');
-        expect(linesOfAttack.next().value).toEqual([COORDS.D4, COORDS.C3]);
+        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5');
+        expect(linesOfAttack.next().value).toEqual([COORDS.d4, COORDS.c3]);
         expect(linesOfAttack.next().done).toBe(true);       
     });
 
@@ -36,7 +36,7 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__]
         ];
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'E5')
+        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5')
         const returned = linesOfAttack.next();
         expect(returned.value).toBeNull();       
         expect(returned.done).toBe(true);       
@@ -55,7 +55,7 @@ describe('generateLinesOfAttack', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'E5')
+        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5')
         const returned = linesOfAttack.next();
         expect(returned.value).toBeNull();       
         expect(returned.done).toBe(true);       
@@ -73,8 +73,8 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'E5')
-        expect(linesOfAttack.next().value).toEqual([COORDS.D5]) ;       
+        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5')
+        expect(linesOfAttack.next().value).toEqual([COORDS.d5]) ;       
         expect(linesOfAttack.next().done).toBe(true); 
     });
 
@@ -90,15 +90,15 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,WN,__,__,__,__], 
         ];
-        const linesOfAttack: GridCoordinates[][] = allLinesOfAttack(board, 'Black', 'F3')
+        const linesOfAttack: GridCoordinates[][] = allLinesOfAttack(board, 'Black', 'f3')
 
         const expectedLines: GridCoordinates[][] = [
-            [COORDS.E2],
-            [COORDS.F2],
-            [COORDS.H4],
-            [COORDS.E4, COORDS.D5],
-            [COORDS.F4, COORDS.F5, COORDS.F6, COORDS.F7],
-            [COORDS.E3, COORDS.D3, COORDS.C3, COORDS.B3, COORDS.A3]
+            [COORDS.e2],
+            [COORDS.f2],
+            [COORDS.h4],
+            [COORDS.e4, COORDS.d5],
+            [COORDS.f4, COORDS.f5, COORDS.f6, COORDS.f7],
+            [COORDS.e3, COORDS.d3, COORDS.c3, COORDS.b3, COORDS.a3]
         ]
 
         for (let attackLine of linesOfAttack) {

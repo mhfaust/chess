@@ -8,10 +8,10 @@ import { shorthand } from 'logic/positions/pieces-shorthand';
 import isPawn from 'logic/pieces/isPawn';
 
 const castlings: Record<string, [PositionName, PositionName] | undefined> = {
-    'White King-E1-C1': ['A1', 'D1'],
-    'White King-E1-G1': ['H1', 'F1'],
-    'Black King-E8-C8': ['A8', 'D8'],
-    'Black King-E8-G8': ['H8', 'F8'],
+    'White King-e1-c1': ['a1', 'd1'],
+    'White King-e1-g1': ['h1', 'f1'],
+    'Black King-e8-c8': ['a8', 'd8'],
+    'Black King-e8-g8': ['h8', 'f8'],
 };
 
 type MoveTuple = [Board, string]

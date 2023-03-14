@@ -4,7 +4,7 @@ describe('captures', () => {
 
   it('Gets a single capture in 3 moves correctly', () => {
     const gameCaptures = captures({
-      gamePlay: 'E2-E4,D7-D5,E4-D5'
+      gamePlay: 'e2-e4,d7-d5,e4-d5'
     });
 
     expect(gameCaptures).toStrictEqual({
@@ -15,7 +15,7 @@ describe('captures', () => {
 
   it('Records an en passant capture', () => {
     const gameCaptures = captures({
-      gamePlay: 'D2-D4,G8-F6,D4-D5,E7-E5,D5-E6'
+      gamePlay: 'd2-d4,g8-f6,d4-d5,e7-e5,d5-e6'
     });
 
     expect(gameCaptures).toStrictEqual({
@@ -26,7 +26,7 @@ describe('captures', () => {
   
   it('Records multiple captures', () => {
     const gameCaptures = captures({
-      gamePlay: 'E2-E4,F7-F5,F1-C4,F5-E4,C4-G8,H8-G8,D1-G4,D7-D5,G4-E4,D5-E4'
+      gamePlay: 'e2-e4,f7-f5,f1-c4,f5-e4,c4-g8,h8-g8,d1-g4,d7-d5,g4-e4,d5-e4'
     });
   
     expect(gameCaptures).toStrictEqual({

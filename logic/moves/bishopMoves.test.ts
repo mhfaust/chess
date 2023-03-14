@@ -19,19 +19,19 @@ describe('bishop', () => {
             ];
         
         const expectedLegalMoves = new Set([
-            'E5',
-            'F6',
-            'G7',
-            'E3',
-            'F2',
-            'G1',
-            'C3',
-            'B2',
-            'A1',
-            'C5'
+            'e5',
+            'f6',
+            'g7',
+            'e3',
+            'f2',
+            'g1',
+            'c3',
+            'b2',
+            'a1',
+            'c5'
         ]);
 
-        const foundLegalMoves = bishopMoves(board, 'D4');
+        const foundLegalMoves = bishopMoves(board, 'd4');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     })
@@ -50,15 +50,15 @@ describe('bishop', () => {
             ];
             
         const expecteLegalMoves = new Set([
-            'E5',
-            'F6',
-            'G7',
-            'C3',
-            'B2',
+            'e5',
+            'f6',
+            'g7',
+            'c3',
+            'b2',
         ]);
 
 
-        const foundLegalMoves = bishopMoves(board, 'D4');
+        const foundLegalMoves = bishopMoves(board, 'd4');
 
         expect(foundLegalMoves).toEqual(expecteLegalMoves)   
     })

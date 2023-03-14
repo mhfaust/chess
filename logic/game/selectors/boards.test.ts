@@ -18,7 +18,7 @@ describe('boards', () => {
   it('presents a number of boards equal to the number of moves + 1', () => {
 
     const gameState = {
-      gamePlay: 'E2-E4,E7-E5',
+      gamePlay: 'e2-e4,e7-e5',
     }; 
 
     const gameBoards = boards(gameState);
@@ -30,13 +30,13 @@ describe('boards', () => {
   it('Recognizes en-passant capture', () => {
 
     const gameBoards = boards({
-      gamePlay: 'E2-E4,G8-H6,E4-E5,F7-F5,E5-F6',
+      gamePlay: 'e2-e4,g8-h6,e4-e5,f7-f5,e5-f6',
     });
 
     const board = [...gameBoards].pop()!;
 
     expect(gameBoards.length).toBe(6);
-    expect(pieceAt(board, 'F5')).toBe(null);
+    expect(pieceAt(board, 'f5')).toBe(null);
   });
 
   it('Presents onlly the initial board if no moves in the game', () => {
@@ -53,44 +53,44 @@ describe('boards', () => {
   it(`Doesn't allow en-passant capture on move too late`, () => {
 
     expect(() => boards({
-      gamePlay: 'E2-E4,G8-H6,E4-E5,F7-F5,F1-E2,G7-E6,E5-F6',
+      gamePlay: 'e2-e4,g8-h6,e4-e5,f7-f5,f1-e2,g7-e6,e5-f6',
     })).toThrow()
   });
   
   it(`Handles pawn promotion`, () => {
     
     const gameBoards = boards( {
-      gamePlay: 'E2-E4,E7-E5,G1-F3,F7-F5,E4-F5,E5-E4,F5-F6,E4-F3,F6-G7,F3-G2,G7-H8(N)',
+      gamePlay: 'e2-e4,e7-e5,g1-f3,f7-f5,e4-f5,e5-e4,f5-f6,e4-f3,f6-g7,f3-g2,g7-h8(n)',
     });
     
     const currentBoard = [...gameBoards].pop()!
     
-    expect(pieceAt(currentBoard, 'H8')).toBe('White Knight')
+    expect(pieceAt(currentBoard, 'h8')).toBe('White Knight')
     expect(gameBoards.length).toBe(12);
   });
   
   it(`Knows about castling`, () => {
     
     const gameBoards = boards( {
-      gamePlay: 'E2-E3,E7-E6,F1-D3,F8-D6,G1-F3,G8-F6,E1-G1',
+      gamePlay: 'e2-e3,e7-e6,f1-d3,f8-d6,g1-f3,g8-f6,e1-g1',
     });
     
     const currentBoard = [...gameBoards].pop()!
     
-    expect(pieceAt(currentBoard, 'G1')).toBe('White King');
+    expect(pieceAt(currentBoard, 'g1')).toBe('White King');
   });
   
   it(`Doesn't allow castling after the king has moved`, () => {
 
     expect(() => boards({
-      gamePlay: 'E2-E3,E7-E6,F1-D3,F8-D6,G1-F3,G8-F6,E1-F1,E8-F8,F1-E1,F8-E8,E1-G1',
+      gamePlay: 'e2-e3,e7-e6,f1-d3,f8-d6,g1-f3,g8-f6,e1-f1,e8-f8,f1-e1,f8-e8,e1-g1',
     })).toThrow()
   });
   
   it(`Doesn't allow castling after the castle has moved`, () => {
 
     expect(() => boards({
-      gamePlay: 'E2-E3,E7-E6,F1-D3,F8-D6,G1-F3,G8-F6,H1-G1,H8-G8,G1-H1,G8-H8,E1-G1',
+      gamePlay: 'e2-e3,e7-e6,f1-d3,f8-d6,g1-f3,g8-f6,h1-g1,h8-g8,g1-h1,g8-h8,e1-g1',
     })).toThrow()
   });
 

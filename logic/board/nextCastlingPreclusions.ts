@@ -2,12 +2,12 @@ import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 import { PositionName }  from 'logic/positions/positionName';
 
 const castleAndKingStartsArray = [
-    'A1', // White Rook
-    'E1', // White King
-    'H1', // White Rook
-    'A8', // Black Rook
-    'E8', // Black King
-    'H8', // Black Rook
+    'a1', // White Rook
+    'e1', // White King
+    'h1', // White Rook
+    'a8', // Black Rook
+    'e8', // Black King
+    'h8', // Black Rook
 ] as const;
 
 const castleAndKingStartsSet = new Set(castleAndKingStartsArray) as Set<string>;
@@ -17,12 +17,12 @@ export type CastleAndKingStarts = typeof castleAndKingStartsArray[number];
 type AddPreclusions = (set: CastlingPreclusions) => CastlingPreclusions;
 
 const addPreclusions: Record<CastleAndKingStarts, AddPreclusions> = {
-    'A1': (set: CastlingPreclusions) => set.add('A1'),
-    'E1': (set: CastlingPreclusions) => set.add('A1').add('H1'),
-    'H1': (set: CastlingPreclusions) => set.add('H1'),
-    'A8': (set: CastlingPreclusions) => set.add('A8'),
-    'E8': (set: CastlingPreclusions) => set.add('A8').add('H8'),
-    'H8': (set: CastlingPreclusions) => set.add('A8'),
+    'a1': (set: CastlingPreclusions) => set.add('a1'),
+    'e1': (set: CastlingPreclusions) => set.add('a1').add('h1'),
+    'h1': (set: CastlingPreclusions) => set.add('h1'),
+    'a8': (set: CastlingPreclusions) => set.add('a8'),
+    'e8': (set: CastlingPreclusions) => set.add('a8').add('h8'),
+    'h8': (set: CastlingPreclusions) => set.add('a8'),
 }
 
 function nextCastlingPreclusions(

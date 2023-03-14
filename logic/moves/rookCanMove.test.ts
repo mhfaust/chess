@@ -19,40 +19,40 @@ describe('rookCanMove', () => {
     it('cannot move to its current position', () => {
 
 
-        expect(rookCanMove(rook1Board, 'E4', 'E4')).toBe(false);
+        expect(rookCanMove(rook1Board, 'e4', 'e4')).toBe(false);
     });
 
     describe('along rank', () => {
-        it('cannot pass over opponent piece: (E4 -> E1)', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'E1')).toBe(false);
+        it('cannot pass over opponent piece: (e4 -> e1)', () => {
+            expect(rookCanMove(rook1Board, 'e4', 'e1')).toBe(false);
         });
 
-        it('can capture: (E4 -> E2)', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'E2')).toBe(true);
+        it('can capture: (e4 -> e2)', () => {
+            expect(rookCanMove(rook1Board, 'e4', 'e2')).toBe(true);
         });
 
-        it('can: (E4 -> E3)', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'E3')).toBe(true);
+        it('can: (e4 -> e3)', () => {
+            expect(rookCanMove(rook1Board, 'e4', 'e3')).toBe(true);
         });
 
-        it('can: (E4 -> E5)', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'E5')).toBe(true);
+        it('can: (e4 -> e5)', () => {
+            expect(rookCanMove(rook1Board, 'e4', 'e5')).toBe(true);
         });
 
-        it('can : (E4 -> E6)', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'E6')).toBe(true);
+        it('can : (e4 -> e6)', () => {
+            expect(rookCanMove(rook1Board, 'e4', 'e6')).toBe(true);
         });
     
-        it('can move along rank  (E4 -> E7)', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'E7')).toBe(true);
+        it('can move along rank  (e4 -> e7)', () => {
+            expect(rookCanMove(rook1Board, 'e4', 'e7')).toBe(true);
         });
     
         it('cannot move onto own players piece', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'E8')).toBe(false);
+            expect(rookCanMove(rook1Board, 'e4', 'e8')).toBe(false);
         })
 
         it('cannot move diagonally', () => {
-            expect(rookCanMove(rook1Board, 'E4', 'D5')).toBe(false);
+            expect(rookCanMove(rook1Board, 'e4', 'd5')).toBe(false);
         })
     })
 

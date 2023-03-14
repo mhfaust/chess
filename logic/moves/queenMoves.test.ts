@@ -18,23 +18,23 @@ describe('queen', () => {
             ];
         
         const expectedattackedPositions = new Set([
-            'C3',
-            'C1',
-            'D2',
-            'E2',
-            'F2',
-            'B2',
-            'A2',
-            'D3',
-            'E4',
-            'F5',
-            'D1',
-            'B1',
-            'B3',
-            'A4'
+            'c3',
+            'c1',
+            'd2',
+            'e2',
+            'f2',
+            'b2',
+            'a2',
+            'd3',
+            'e4',
+            'f5',
+            'd1',
+            'b1',
+            'b3',
+            'a4'
         ])
 
-        const foundattackedPositions = queenMoves(board, 'C2');
+        const foundattackedPositions = queenMoves(board, 'c2');
 
         expect(foundattackedPositions).toEqual(expectedattackedPositions)
     });
@@ -52,14 +52,14 @@ describe('queen', () => {
             /*  H  */ [__,__,__,WP,__,__,__,__],
             ];
         const expectedLegalMoves = new Set([
-            'E2',
-            'E3',
-            'E5',
-            'E6',
-            'E7',
+            'e2',
+            'e3',
+            'e5',
+            'e6',
+            'e7',
         ]);
 
-        const foundLegalMoves = queenMoves(board, 'E4');
+        const foundLegalMoves = queenMoves(board, 'e4');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });

@@ -19,55 +19,55 @@ describe('pawnCanMove', () => {
     describe('white', () => {
         it('can move one space forward when NOT blocked', () => {
 
-            const answer = pawnCanMove(board, 'C3', 'C4', null);
+            const answer = pawnCanMove(board, 'c3', 'c4', null);
             expect(answer).toBe(true);
         });
     
         it('cannot move one space forward when IS blocked', () => {
 
-            const answer = pawnCanMove(board, 'H4', 'H5', null);
+            const answer = pawnCanMove(board, 'h4', 'h5', null);
             expect(answer).toBe(false);
         });
     
         it('can capture forward right', () => {
 
-            const answer = pawnCanMove(board, 'D4', 'E5', null);
+            const answer = pawnCanMove(board, 'd4', 'e5', null);
             expect(answer).toBe(true);
         });
     
         it('can capture forward left', () => {
 
-            const answer = pawnCanMove(board, 'C3', 'B4', null);
+            const answer = pawnCanMove(board, 'c3', 'b4', null);
             expect(answer).toBe(true);
         });
 
         it('cannot move foward left to empty square', () => {
 
-            const answer = pawnCanMove(board, 'G2', 'F3', null);
+            const answer = pawnCanMove(board, 'g2', 'f3', null);
             expect(answer).toBe(false);
         })
 
         it('can move foward left to empty square if it is the en passant square', () => {
 
-            const answer = pawnCanMove(board, 'G2', 'F3', 'F3');
+            const answer = pawnCanMove(board, 'g2', 'f3', 'f3');
             expect(answer).toBe(true);
         })
 
         it('cannot move foward right to empty square', () => {
 
-            const answer = pawnCanMove(board, 'E2', 'F3', null);
+            const answer = pawnCanMove(board, 'e2', 'f3', null);
             expect(answer).toBe(false);
         })
 
         it('cannot move backward', () => {
 
-            const answer = pawnCanMove(board, 'G5', 'H5', null);
+            const answer = pawnCanMove(board, 'g5', 'h5', null);
             expect(answer).toBe(false);
         });
 
         it('cannot move sideways', () => {
 
-            const answer = pawnCanMove(board, 'H4', 'G4', null);
+            const answer = pawnCanMove(board, 'h4', 'g4', null);
             expect(answer).toBe(false);
         })
     });
@@ -88,37 +88,37 @@ describe('pawnCanMove', () => {
 
         it('can move one space forward when NOT blocked', () => {
 
-            const answer = pawnCanMove(board, 'E5', 'E4', null);
+            const answer = pawnCanMove(board, 'e5', 'e4', null);
             expect(answer).toBe(true);
         });
     
         it('can move one space forward when IS blocked', () => {
 
-            const answer = pawnCanMove(board, 'D5', 'D4', null);
+            const answer = pawnCanMove(board, 'd5', 'd4', null);
             expect(answer).toBe(false);
         });
     
         it('can capture forward right', () => {
 
-            const answer = pawnCanMove(board, 'E5', 'D4', null);
+            const answer = pawnCanMove(board, 'e5', 'd4', null);
             expect(answer).toBe(true);
         });
     
         it('can capture forward left', () => {
 
-            const answer = pawnCanMove(board, 'G5', 'H4', null);
+            const answer = pawnCanMove(board, 'g5', 'h4', null);
             expect(answer).toBe(true);
         });
 
         it('cannot move backward', () => {
 
-            const answer = pawnCanMove(board, 'B4', 'B5', null);
+            const answer = pawnCanMove(board, 'b4', 'b5', null);
             expect(answer).toBe(false);
         });
 
         it('cannot move sideways', () => {
 
-            const answer = pawnCanMove(board, 'H4', 'G4', null);
+            const answer = pawnCanMove(board, 'h4', 'g4', null);
             expect(answer).toBe(false);
         })
     });
@@ -138,25 +138,25 @@ describe('pawnCanMove', () => {
 
         it('black pawn can attack a square passed by a white pawn moving from rank 2 to 4', () => {
 
-            const answer = pawnCanMove(board, 'D4', 'E3', 'E3');
+            const answer = pawnCanMove(board, 'd4', 'e3', 'e3');
             expect(answer).toBe(true);
         });
 
         it('black pawn cannot attack a passant-looking square if passant info is null', () => {
             
-            const answerNullPassantInfo = pawnCanMove(board, 'D4', 'E3', null);
+            const answerNullPassantInfo = pawnCanMove(board, 'd4', 'e3', null);
             expect(answerNullPassantInfo).toBe(false);
         });
 
         it('white pawn can attack a square passed by a black pawn moving from rank 2 to 4', () => {
 
-            const answer = pawnCanMove(board, 'H5', 'G6', 'G6');
+            const answer = pawnCanMove(board, 'h5', 'g6', 'g6');
             expect(answer).toBe(true);
         });
 
         it('white pawn cannot attack a passant-looking square if passant info is null', () => {
 
-            const answerNullPassantInfo = pawnCanMove(board, 'H5', 'G6', null);
+            const answerNullPassantInfo = pawnCanMove(board, 'h5', 'g6', null);
             expect(answerNullPassantInfo).toBe(false);
         });
     })

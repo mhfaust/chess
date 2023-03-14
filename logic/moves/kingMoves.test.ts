@@ -20,7 +20,7 @@ describe('kingMoves', () => {
         ];
         const expectedLegalMoves = new Set([]);
 
-        const foundLegalMoves = kingMoves(board, 'E1', new Set());
+        const foundLegalMoves = kingMoves(board, 'e1', new Set());
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves);
     });
@@ -37,9 +37,9 @@ describe('kingMoves', () => {
         /*  G  */ [__,__,__,__,__,__,__,__],
         /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
-        const expectedLegalMoves = new Set(['C6','C7','C8','D6','D8','E6','E7','E8']);
+        const expectedLegalMoves = new Set(['c6','c7','c8','d6','d8','e6','e7','e8']);
 
-        const foundLegalMoves = kingMoves(board, 'D7', new Set<RookStartPosition>(['A1', 'H1', 'A8', 'H8']));
+        const foundLegalMoves = kingMoves(board, 'd7', new Set<RookStartPosition>(['a1', 'h1', 'a8', 'h8']));
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });
@@ -57,7 +57,7 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,BR], 
         ];
 
-        const foundLegalMoves = kingMoves(board, 'E1', new Set());
+        const foundLegalMoves = kingMoves(board, 'e1', new Set());
 
         expect(foundLegalMoves).toEqual(new Set([]));
     });
@@ -78,16 +78,16 @@ describe('kingMoves', () => {
 
         it('White king can castle if not precluded', () => {
     
-            const foundLegalMoves = kingMoves(board, 'E1', new Set());
+            const foundLegalMoves = kingMoves(board, 'e1', new Set());
     
-            expect(foundLegalMoves).toContain('G1')
+            expect(foundLegalMoves).toContain('g1')
         });  
     
         it('White king cannot castle if precluded', () => {
 
-            const foundLegalMoves = kingMoves(board, 'E1', new Set<RookStartPosition>(['H1']));
+            const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartPosition>(['h1']));
     
-            expect(foundLegalMoves).not.toContain('G1')
+            expect(foundLegalMoves).not.toContain('g1')
         });  
     })
 
@@ -106,9 +106,9 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
     
-        const foundLegalMoves = kingMoves(board, 'E1', new Set<RookStartPosition>(['A8', 'H8']));
+        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartPosition>(['a8', 'h8']));
 
-        expect(foundLegalMoves).not.toContain('G1')
+        expect(foundLegalMoves).not.toContain('g1')
     });
 
      
@@ -125,9 +125,9 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        const foundLegalMoves = kingMoves(board, 'E1', new Set<RookStartPosition>(['A8', 'H8']));
+        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartPosition>(['a8', 'h8']));
 
-        expect(foundLegalMoves).not.toContain('G1')
+        expect(foundLegalMoves).not.toContain('g1')
     });
 
     it('White king cannot castle when a piece is in between', () => {
@@ -143,9 +143,9 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,BR], 
         ];
 
-        const foundLegalMoves = kingMoves(board, 'E1', new Set());
+        const foundLegalMoves = kingMoves(board, 'e1', new Set());
 
-        expect(foundLegalMoves).not.toContain('C1')
+        expect(foundLegalMoves).not.toContain('c1')
     });
 
     it('Black king can castle, queen-side', () => {
@@ -161,9 +161,9 @@ describe('kingMoves', () => {
         /*  H  */ [__,WP,__,__,__,__,BP,BR],
         ]; 
 
-        const foundLegalMoves = kingMoves(board, 'E8', new Set());
+        const foundLegalMoves = kingMoves(board, 'e8', new Set());
 
-        expect(foundLegalMoves).toContain('C8')
+        expect(foundLegalMoves).toContain('c8')
     });  
 
     it('White king cannot castle out of check', () => {
@@ -179,8 +179,8 @@ describe('kingMoves', () => {
         /*  H  */ [WR,WP,__,__,__,WB,BP,BR],
         ]; 
 
-        const foundLegalMoves = kingMoves(board, 'E1', new Set());
+        const foundLegalMoves = kingMoves(board, 'e1', new Set());
 
-        expect(foundLegalMoves.has('G1')).toBe(false)
+        expect(foundLegalMoves.has('g1')).toBe(false)
     });  
 })

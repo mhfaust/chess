@@ -16,14 +16,14 @@ describe('queenCanMove', () => {
         ];
 
     it('can move right one', () => {
-        expect(queenCanMove(queen1Board, 'C2', 'C3')).toBe(true)
+        expect(queenCanMove(queen1Board, 'c2', 'c3')).toBe(true)
     });
 
     it('cannot take own piece', () => {
-        expect(queenCanMove(queen1Board, 'C2', 'C4')).toBe(false)
+        expect(queenCanMove(queen1Board, 'c2', 'c4')).toBe(false)
     });
 
     it('can capture opponent piece, diagonally', () => {
-        expect(queenCanMove(queen1Board, 'C2', 'F5')).toBe(true)
+        expect(queenCanMove(queen1Board, 'c2', 'f5')).toBe(true)
     });
 })

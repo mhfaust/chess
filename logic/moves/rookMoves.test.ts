@@ -18,19 +18,19 @@ describe('rook', () => {
         ];
 
         const expectedLegalMoves = new Set([
-            'D4',
-            'C4',
-            'E2',
-            'E3',
-            'E5',
-            'E6',
-            'E7',
-            'F4',
-            'G4',
-            'H4'
+            'd4',
+            'c4',
+            'e2',
+            'e3',
+            'e5',
+            'e6',
+            'e7',
+            'f4',
+            'g4',
+            'h4'
         ]);
 
-        const foundLegalMoves = rook(board, 'E4');
+        const foundLegalMoves = rook(board, 'e4');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves);
     })
@@ -48,14 +48,14 @@ describe('rook', () => {
             /*  H  */ [__,__,__,WP,__,__,__,__],
             ];
         const expectedLegalMoves = new Set([
-            'E2',
-            'E3',
-            'E5',
-            'E6',
-            'E7',
+            'e2',
+            'e3',
+            'e5',
+            'e6',
+            'e7',
         ]);
 
-        const foundLegalMoves = rook(board, 'E4');
+        const foundLegalMoves = rook(board, 'e4');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });

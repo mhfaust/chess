@@ -8,26 +8,26 @@ describe('knightCanMove', () => {
 
     it('reports true attempting to move to empty square, 2 forward, 1 left.', () => {
 
-        const answer = knightCanMove(initialBoard(), 'B1', 'A3')
+        const answer = knightCanMove(initialBoard(), 'b1', 'a3')
         expect(answer).toBe(true);
     });
 
     it('reports true attempting to move to empty square, 2 forward, 1 right.', () => {
        
 
-        const answer = knightCanMove(initialBoard(), 'B1', 'C3')
+        const answer = knightCanMove(initialBoard(), 'b1', 'c3')
         expect(answer).toBe(true);
     });
 
     it('reports false attempting to move to square occupied by own players piece.', () => {
         
-        const answer = knightCanMove(initialBoard(), 'B1', 'C2')
+        const answer = knightCanMove(initialBoard(), 'b1', 'c2')
         expect(answer).toBe(false);
     });
 
     it('reports false attempting to move to mechanically disallowed square', () => {
 
-        const answer = knightCanMove(initialBoard(), 'B1', 'B4')
+        const answer = knightCanMove(initialBoard(), 'b1', 'b4')
         expect(answer).toBe(false);
     });
 
@@ -44,7 +44,7 @@ describe('knightCanMove', () => {
             /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        const answer = knightCanMove(board, 'E4', 'C3')
+        const answer = knightCanMove(board, 'e4', 'c3')
         expect(answer).toBe(false);
 
     })

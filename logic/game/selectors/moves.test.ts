@@ -13,27 +13,27 @@ describe('moves', () => {
   it('gets Move[] from a simple first move', () => {
 
     const gameMoves = moves({
-      gamePlay: 'E2-E4',
+      gamePlay: 'e2-e4',
     });
 
     expect(gameMoves.length).toBe(1);
     const [ start, end ] = gameMoves[0] as NormalMove;
 
-    expect(start).toBe('E2');
-    expect(end).toBe('E4')
+    expect(start).toBe('e2');
+    expect(end).toBe('e4')
   });
 
   it('gets a move with pawn promotion', () => {
     
     const gameMoves = moves({
-      gamePlay: 'E2-E4,E7-E5,G1-F3,F7-F5,E4-F5,E5-E4,F5-F6,E4-F3,F6-G7,F3-G2,G7-H8(N)',
+      gamePlay: 'e2-e4,e7-e5,g1-f3,f7-f5,e4-f5,e5-e4,f5-f6,e4-f3,f6-g7,f3-g2,g7-h8(n)',
     });
 
     const lastMove = [...gameMoves].pop()!;
     const [from, to, promoteTo, ...rest] = lastMove as NormalMove;
 
-    expect(from).toBe('G7')
-    expect(to).toBe('H8')
+    expect(from).toBe('g7')
+    expect(to).toBe('h8')
     expect(promoteTo).toBe('White Knight')
   })
   // it('throws exception if history string is not in a valid format', () => {

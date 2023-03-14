@@ -3,7 +3,7 @@ import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-
 import { Board }  from 'logic/types/Board';
 
 describe('isInCheck: true', () => {
-    it('White King  at D4 is in check from Black King at PIECE_POSITION', () => {
+    it('White King  at d4 is in check from Black King at PIECE_POSITION', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
@@ -20,7 +20,7 @@ describe('isInCheck: true', () => {
 
     });
 
-    it('White King  at D4 is in check from Black King at PIECE_POSITION', () => {
+    it('White King  at d4 is in check from Black King at PIECE_POSITION', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
@@ -37,7 +37,7 @@ describe('isInCheck: true', () => {
 
     });
 
-    it('White King  at D4 is in check from Black King at PIECE_POSITION', () => {
+    it('White King  at d4 is in check from Black King at PIECE_POSITION', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
@@ -55,7 +55,7 @@ describe('isInCheck: true', () => {
 })
 
 describe('isInCheck: false', () => {
-    it('White King at D4 is NOT in check from Black King at D6', () => {
+    it('White King at d4 is NOT in check from Black King at d6', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
