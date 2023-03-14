@@ -1,5 +1,4 @@
 import { initialBoard, move, nextCastlingPreclusions } from 'logic/board';
-import { Move } from 'logic/game/validateMoves';
 import { PositionName } from 'logic/positions/positionName';
 import { Board } from 'logic/types/Board';
 import { create } from 'zustand';
@@ -9,6 +8,8 @@ import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassant
 import isPawn from 'logic/pieces/isPawn';
 import { Player } from 'logic/types/Player';
 import { Piece } from 'logic/positions/piece';
+import { Move } from 'logic/game/selectors/moves';
+
 
 export type OldGameState =   {
   moves: Move[];

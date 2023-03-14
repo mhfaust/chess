@@ -1,11 +1,15 @@
-import { Move } from 'logic/game/validateMoves';
 import { Piece } from 'logic/positions/piece';
 import { PositionName } from 'logic/positions/positionName';
 import { Player } from 'logic/types/Player';
 import { GameState } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 
-const moveStringRegex = /([A-H][1-8])-([A-H][1-8])(\((Q|B|N|R)\))?(x(Q|B|N|R|P))?(ep)?/;
+export type NormalMove = [PositionName, PositionName, Piece | undefined];
+
+export type Move = NormalMove | 'RESIGN';
+
+//(x(Q|B|N|R|P))?(ep)?
+const normalMoveRegex = /([A-H][1-8])-([A-H][1-8])(\((Q|B|N|R)\))?/;
 
 const promotions: Record<string, string> = {
   Q: 'Queen',
@@ -18,7 +22,6 @@ const cache = new Map<string, (Move)[]>();
 
 const noMoves: Move[] = [];
 
-
 export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
 
   if(!state.gamePlay) {
@@ -30,8 +33,13 @@ export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
   }
 
   const moveStrings = state.gamePlay.split(',');
+
   const gameMoves = moveStrings.map((str, i) => {
-    const match = str.toUpperCase().match(moveStringRegex);
+    if(str === 'RESIGN') {
+      return 'RESIGN';
+    }
+
+    const match = str.toUpperCase().match(normalMoveRegex);
     if(!match) {
       throw Error(`Illegal move: ${str}.`);
     }

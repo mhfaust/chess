@@ -31,7 +31,11 @@ const recurse = (state: Pick<GameState, 'gamePlay'>, i: number): CastlingPreclus
   // }
   
   const prev = recurse(state, i -1);
-  const [from] = moves(state)[i - 1];
+  const move = moves(state)[i - 1];
+  if (move === 'RESIGN'){
+    return new Set(prev);
+  }
+  const [from] = move;
   const newCastling = nextCastlingPreclusions(from, prev)
 
   // boardCache.set(gameBoards[i], newCastling);

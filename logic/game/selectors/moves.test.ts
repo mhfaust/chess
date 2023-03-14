@@ -1,4 +1,4 @@
-import { moves } from "./moves";
+import { moves, NormalMove } from "./moves";
 
 describe('moves', () => {
 
@@ -17,7 +17,7 @@ describe('moves', () => {
     });
 
     expect(gameMoves.length).toBe(1);
-    const [ start, end ] = gameMoves[0];
+    const [ start, end ] = gameMoves[0] as NormalMove;
 
     expect(start).toBe('E2');
     expect(end).toBe('E4')
@@ -30,7 +30,7 @@ describe('moves', () => {
     });
 
     const lastMove = [...gameMoves].pop()!;
-    const [from, to, promoteTo, ...rest] = lastMove;
+    const [from, to, promoteTo, ...rest] = lastMove as NormalMove;
 
     expect(from).toBe('G7')
     expect(to).toBe('H8')

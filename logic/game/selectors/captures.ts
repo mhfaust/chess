@@ -27,7 +27,11 @@ export const captures = (state: Pick<GameState, 'gamePlay'>) => {
     return noCaptures;
   }
 
-  return gameMoves.reduce<Captures>((acc, [_, to], i) => {
+  return gameMoves.reduce<Captures>((acc, move, i) => {
+    if (move === 'RESIGN') {
+      return acc;
+    }
+    const [_, to] = move;
     const prevBoard = gameBoards[i];
     const nextBoard = gameBoards[i + 1]!; //todo: is this assertion OK?
 

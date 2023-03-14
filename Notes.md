@@ -1,6 +1,9 @@
 Resign
 - UI to allow player to resign
 
+Menu
+☰   <--- "trigram from heaven" hamburger menu (utf-8)
+
 Draw
 - See draw rules at https://www.chessmatec.com/chess-rules-for-kids-draw
 

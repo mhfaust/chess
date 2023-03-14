@@ -8,7 +8,11 @@ import { moves } from './moves';
 export const epSquares = (state: Pick<GameState, 'gamePlay'>) => {
   const movedPawns = new Set<PositionName>();
   const allMoves = moves(state);
-  return allMoves.map(([from, to]) => {
+  return allMoves.map((move) => {
+    if (move === 'RESIGN') {
+      return null
+    }
+    const [from, to] = move;
     if (rank(from) !== 1 && rank(from) !== 6) {
       return null;
     }

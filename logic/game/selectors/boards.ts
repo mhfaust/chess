@@ -1,9 +1,8 @@
 import { Board } from 'logic/types/Board';
-import { moves } from 'logic/game/selectors/moves';
+import { Move, moves } from 'logic/game/selectors/moves';
 import { canMoveTo } from 'logic/moves';
 import { firstBoard } from 'logic/board/initialBoard';
 import { castling } from 'logic/game/selectors/castling';
-import { Move } from 'logic/game/validateMoves';
 import { RookStartPosition } from 'logic/types/CastlingPreclusions';
 import nextBoard from 'logic/board/move';
 import { epSquare } from 'logic/game/selectors/enPassant';
@@ -27,11 +26,15 @@ export const boards = (game: Pick<GameState, 'gamePlay'>): Board[] => {
 
   const boardsArray: Board[] = gameMoves
     .reduce<Board[]>((arr: Board[], move: Move, i: number) => {
-
+      
+      if(move === 'RESIGN'){
+        return arr;
+      }
       const previousBoard = [...arr].pop()!;
       const gameCastling = castling(game);
       const prevPreclusions = gameCastling[i - 1] ?? emptyPreclusions;
       const ep = epSquare(game, i - 1);
+
 
       const [from, to, promoteTo] = move;
       if(canMoveTo(previousBoard, from, to, prevPreclusions, ep)){
