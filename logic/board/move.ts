@@ -6,12 +6,13 @@ import COORDS from 'logic/positions/coordinates';
 import { Piece } from 'logic/positions/piece';
 import { shorthand } from 'logic/positions/pieces-shorthand';
 import isPawn from 'logic/pieces/isPawn';
+import textRender from './textRender';
 
 const castlings: Record<string, [PositionName, PositionName] | undefined> = {
-    'White King-e1-c1': ['a1', 'd1'],
-    'White King-e1-g1': ['h1', 'f1'],
-    'Black King-e8-c8': ['a8', 'd8'],
-    'Black King-e8-g8': ['h8', 'f8'],
+    'White King-e1c1': ['a1', 'd1'],
+    'White King-e1g1': ['h1', 'f1'],
+    'Black King-e8c8': ['a8', 'd8'],
+    'Black King-e8g8': ['h8', 'f8'],
 };
 
 type MoveTuple = [Board, string]
@@ -44,7 +45,7 @@ function move (
 
     const promoStr = promoteTo ? `(${shorthand(promoteTo)})` : ''
     
-    const moveHash = `${from}-${to}${captStr}${promoStr}`;
+    const moveHash = `${from}${to}${captStr}${promoStr}`;
 
     const cachedBoard = boardCache.get(moveHash);
     if(cachedBoard){
@@ -67,9 +68,8 @@ function move (
     newBoard[file(from)][rank(from)] = null;
     newBoard[file(to)][rank(to)] = movedPiece;
 
-    const castling = castlings[`${movedPiece}-${from}-${to}`];
+    const castling = castlings[`${movedPiece}-${from}${to}`];
     if(castling){
-        //move the castle:
         const [castlingBoard] = move(newBoard, castling[0], castling[1], null);
         const castlingTuple: MoveTuple = [castlingBoard, moveHash];
         boardCache.set(moveHash, castlingTuple);

@@ -9,7 +9,7 @@ export type NormalMove = [PositionName, PositionName, Piece | undefined];
 export type Move = NormalMove | 'RESIGN';
 
 //(x(Q|B|N|R|P))?(ep)?
-const normalMoveRegex = /([a-h][1-8])-([a-h][1-8])(\((q|b|n|r)\))?/;
+const normalMoveRegex = /([a-h][1-8])([a-h][1-8])((q|b|n|r))?/;
 
 const promotions: Record<string, string> = {
   q: 'Queen',

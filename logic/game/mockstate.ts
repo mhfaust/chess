@@ -14,7 +14,7 @@ export let l = [
   // after 1st move:
   {
     boardCursor: 1,
-    history: 'e2-e4',
+    history: 'e2e4',
     //DERIVED
     moves: [ [ 'e2', 'e4'] ],  //-- derived from history only (not pointer)
     currentMove: [ 'e2', 'e4'] ,

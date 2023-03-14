@@ -17,11 +17,11 @@ describe('Historical Games', () => {
       whiteCaptures,
     } = currentGameView({ gamePlay: KasparovVeselin, boardCursor: 87 });
 
-    console.log(textRender(board))
-    console.log(latestMove);
-    console.log(enPassantSquare);
-    console.log(blackCaptures);
-    console.log(whiteCaptures);
+    // console.log(textRender(board))
+    // console.log(latestMove);
+    // console.log(enPassantSquare);
+    // console.log(blackCaptures);
+    // console.log(whiteCaptures);
   })
 
 })

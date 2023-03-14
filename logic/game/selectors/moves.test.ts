@@ -13,7 +13,7 @@ describe('moves', () => {
   it('gets Move[] from a simple first move', () => {
 
     const gameMoves = moves({
-      gamePlay: 'e2-e4',
+      gamePlay: 'e2e4',
     });
 
     expect(gameMoves.length).toBe(1);
@@ -26,7 +26,7 @@ describe('moves', () => {
   it('gets a move with pawn promotion', () => {
     
     const gameMoves = moves({
-      gamePlay: 'e2-e4,e7-e5,g1-f3,f7-f5,e4-f5,e5-e4,f5-f6,e4-f3,f6-g7,f3-g2,g7-h8(n)',
+      gamePlay: 'e2e4,e7e5,g1f3,f7f5,e4f5,e5e4,f5f6,e4f3,f6g7,f3g2,g7h8n',
     });
 
     const lastMove = [...gameMoves].pop()!;

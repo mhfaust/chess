@@ -95,7 +95,6 @@ function isCheckmate(
                 && playerAt(board, defendingPieceMovesFrom) === defender
                 && !movesIntoCheck(board, defendingPieceMovesFrom, blockingPosition)
             ) {
-                console.log(`I don't think ${defender} is in check if I move ${defendingPieceMovesFrom}  to  ${blockingPosition}`)
                 playerCache?.set(board, false);
                 return false;
             }
