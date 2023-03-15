@@ -1,4 +1,4 @@
-import { positionName }  from 'logic/positions';
+import { square }  from 'logic/positions';
 import { BLACK_PIECES, WHITE_PIECES }  from 'logic/constants/pieces';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
@@ -17,7 +17,7 @@ function allPlayerPositions(board: Board, player: Player): Array<PiecePosition>{
     board.forEach((file, i) => file.forEach((piece, j) => {
         if(piece && allPlayerPieces.has(piece)){
             occupiedPositions.push({
-                position: (positionName([i, j]) as Square),
+                position: (square([i, j]) as Square),
                 piece
             });
         }

@@ -1,5 +1,5 @@
 import { file, pieceAt, rank }  from 'logic/positions'
-import positionName, { Square }  from 'logic/positions/positionName'
+import square, { Square }  from 'logic/positions/positionName'
 import { Board }  from 'logic/types/Board';
 
 const blackPawnStartRank = 6;
@@ -42,7 +42,7 @@ const enPassantSquare = (
     && rank(lastMovedFrom) === blackPawnStartRank 
     && rank(lastMovedTo) === blackPawnStartRank - 2
   ) {
-    const position = positionName([file(lastMovedFrom), blackPawnStartRank - 1])
+    const position = square([file(lastMovedFrom), blackPawnStartRank - 1])
     cache.set(currentBoard, position)
     return position;
   }
@@ -51,7 +51,7 @@ const enPassantSquare = (
     && rank(lastMovedFrom) === whitePawnStartRank 
     && rank(lastMovedTo) === whitePawnStartRank + 2
   ){
-    const position = positionName([file(lastMovedFrom), whitePawnStartRank + 1]);
+    const position = square([file(lastMovedFrom), whitePawnStartRank + 1]);
     cache.set(currentBoard, position);
     return position;
   }

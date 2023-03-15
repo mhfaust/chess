@@ -1,6 +1,6 @@
 import { pieceAt }  from 'logic/positions'
 import { Board }  from 'logic/types/Board';
-import positionName, { Square } from 'logic/positions/positionName';
+import square, { Square } from 'logic/positions/positionName';
 
 export type UniquePiece = 
     | 'White King' 
@@ -19,7 +19,7 @@ function locatePiece(board: Board, piece: UniquePiece) : Square | null {
         for (let rank = 0; rank < 8; rank++){
             const position: ReadonlyArray<number> = [file, rank];
             if(board[file][rank] === piece){
-                return positionName(position);
+                return square(position);
             }
         }
     }

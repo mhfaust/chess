@@ -1,14 +1,13 @@
 
 import styles from './Grid.module.css'
 import { BLACK_PIECES, unicodeSymbols, WHITE_PIECES }  from 'logic/constants/pieces';
-import { positionName } from 'logic/positions';
+import { square } from 'logic/positions';
 import { Board, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
 import { Square, squareColor } from 'logic/positions/positionName';
 import { rotate8by8 } from 'logic/board/rotateCounterClockwise';
 import { Player } from 'logic/types/Player';
-import { isInCheck } from 'logic/check';
 import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';
 
 /*
@@ -27,7 +26,7 @@ type SquareModel = {
 const mapToPresentationModel = (board: Board): SquareModel[][] => {
   return  board.map((row, file) => {
     return row.map((piece, rank) => ({
-      positionName: positionName([file, rank])!,
+      positionName: square([file, rank])!,
       piece
     }))
   })
@@ -48,7 +47,7 @@ const rotate: Record<Orientation, (s: SquareModel[][]) => SquareModel[][]> = {
 type ChessBoardProps = {
   board: Board;
   orientation: Orientation;
-  onClickSquare: (PositionName: Square) => void;
+  onClickSquare: (square: Square) => void;
   selectedSquare: Square | null;
   validMoves?: Set<Square>;
   currentPlayer: Player;

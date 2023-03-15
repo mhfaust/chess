@@ -5,7 +5,7 @@ import {
     isOccupied, 
     isUnOccupied, 
     isOccupiedByPlayer, 
-    positionName
+    square
 } from 'logic/positions';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
@@ -44,7 +44,7 @@ function pawnCanMove (
             }
             //cannot jump over any piece
             const jumpedCoords = [file(from), rank(from) + forwardDirection];
-            if(isOccupied(board, positionName(jumpedCoords)!)){
+            if(isOccupied(board, square(jumpedCoords)!)){
                 return false;
             }
         }

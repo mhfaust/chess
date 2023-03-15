@@ -1,5 +1,5 @@
 import { file, rank } from 'logic/positions';
-import positionName, { Square } from 'logic/positions/positionName';
+import square, { Square } from 'logic/positions/positionName';
 import { ChessGame } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 import { moves } from './moves';
@@ -24,7 +24,7 @@ export const epSquares = (state: Pick<ChessGame, 'gamePlay'>) => {
       (rank(from) === 6 && rank(to) === 4) 
     ){
       const epRank = (rank(from) + rank(to)) / 2
-      const sq = positionName([file(from), epRank])!;
+      const sq = square([file(from), epRank])!;
       movedPawns.add(sq);
       return sq;
     }

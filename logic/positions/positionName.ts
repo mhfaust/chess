@@ -1,4 +1,3 @@
-import { rank, file }  from 'logic/positions';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import COORDS from 'logic/positions/coordinates';
 
@@ -38,8 +37,8 @@ const grid: Square[][] = [
     ['h1','h2','h3','h4','h5','h6','h7','h8',],
 ]
 
-function positionName (position: GridCoordinates): Square | null {
+const square = (position: GridCoordinates): Square | null => {
     return grid[position[0]]?.[position[1]] ?? null;
 }
 
-export default positionName
+export default square
