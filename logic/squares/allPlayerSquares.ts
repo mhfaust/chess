@@ -1,9 +1,9 @@
-import { square }  from 'logic/positions';
+import { square }  from 'logic/squares';
 import { BLACK_PIECES, WHITE_PIECES }  from 'logic/constants/pieces';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
-import { Piece }  from 'logic/positions/piece';
-import { Square }  from 'logic/positions/square';
+import { Piece }  from 'logic/squares/piece';
+import { Square }  from 'logic/squares/square';
 
 export type PiecePosition = {
     position: Square;

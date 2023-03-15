@@ -1,4 +1,4 @@
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { rookMoves, bishopMoves }  from 'logic/moves'
 import { Board }  from 'logic/types/Board';
 

@@ -1,8 +1,8 @@
-import pieceAt  from 'logic/positions/pieceAt'
+import pieceAt  from 'logic/squares/pieceAt'
 import { initialBoard }  from 'logic/board'
 
 
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 
 describe('pieceAt', () => {
     it('gets the white queen knight from the initial board', () => {

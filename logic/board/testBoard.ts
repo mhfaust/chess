@@ -1,5 +1,5 @@
 import { Board, BoardFile }  from 'logic/types/Board';
-import { shorthand } from 'logic/positions/pieces-shorthand';
+import { shorthand } from 'logic/squares/pieces-shorthand';
 
 const files = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 

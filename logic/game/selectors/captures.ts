@@ -1,5 +1,5 @@
-import { pieceAt } from 'logic/positions';
-import { Piece } from 'logic/positions/piece';
+import { pieceAt } from 'logic/squares';
+import { Piece } from 'logic/squares/piece';
 import { Board } from 'logic/types/Board';
 import { ChessGame } from 'logic/game/gameState';
 import { boards, currentBoard } from './boards';

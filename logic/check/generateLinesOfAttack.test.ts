@@ -1,10 +1,10 @@
 import generateLinesOfAttack from './generateLinesOfAttack';
 import allLinesOfAttack from './allLinesOfAttack';
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ } from 'logic/positions/pieces-shorthand';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ } from 'logic/squares/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
-import COORDS  from 'logic/positions/coordinates';
+import COORDS  from 'logic/squares/coordinates';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
-import { areSamePositions } from 'logic/positions';
+import { areSamePositions } from 'logic/squares';
 
 describe('generateLinesOfAttack', () => {
     it('finds the line from a bishop at c3 to e5', () => {

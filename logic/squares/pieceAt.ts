@@ -1,6 +1,6 @@
 import { Board, PieceOrEmpty }  from 'logic/types/Board';
-import { Square } from 'logic/positions/square';
-import COORDS from 'logic/positions/coordinates';
+import { Square } from 'logic/squares/square';
+import COORDS from 'logic/squares/coordinates';
 
 function pieceAt (board: Board, position?: Square): PieceOrEmpty {
     if (!position) {

@@ -4,11 +4,11 @@ import {
     isUnOccupied, 
     isOccupiedByPlayer, 
     otherPlayer, 
-} from 'logic/positions';
+} from 'logic/squares';
 
 import { bishopVectors }  from 'logic/constants/move-vectors'
 import { movesIntoCheck }  from 'logic/check';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { Board }  from 'logic/types/Board';
 import { MoveVector } from 'logic/types/MoveVector';
 

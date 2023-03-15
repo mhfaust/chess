@@ -1,4 +1,4 @@
-import { Square } from 'logic/positions/square'
+import { Square } from 'logic/squares/square'
 import { Board } from 'logic/types/Board'
 
 const cache = new Map<Board, ([Square, Square] | null)>;

@@ -1,13 +1,13 @@
 import { initialBoard, move, nextCastlingPreclusions } from 'logic/board';
-import { Square } from 'logic/positions/square';
+import { Square } from 'logic/squares/square';
 import { Board } from 'logic/types/Board';
 import { create } from 'zustand';
-import { otherPlayer, pieceAt, playerAt } from 'logic/positions';
+import { otherPlayer, pieceAt, playerAt } from 'logic/squares';
 import { CastlingPreclusions } from 'logic/types/CastlingPreclusions';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
 import isPawn from 'logic/pieces/isPawn';
 import { Player } from 'logic/types/Player';
-import { Piece } from 'logic/positions/piece';
+import { Piece } from 'logic/squares/piece';
 import { Move } from 'logic/game/selectors/moves';
 
 

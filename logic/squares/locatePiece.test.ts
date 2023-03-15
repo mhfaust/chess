@@ -1,6 +1,6 @@
-import locatePiece  from 'logic/positions/locatePiece';
+import locatePiece  from 'logic/squares/locatePiece';
 import { initialBoard }  from 'logic/board';
-import COORDS  from 'logic/positions/coordinates'
+import COORDS  from 'logic/squares/coordinates'
 
 
 describe('locatePiece', () => {

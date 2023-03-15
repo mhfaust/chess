@@ -4,9 +4,9 @@ import {
     isUnOccupied, 
     isOccupiedByPlayer,
     otherPlayer,  
-} from 'logic/positions';
+} from 'logic/squares';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { Board }  from 'logic/types/Board';
 
 function rook(board: Board, moveFrom: Square): Set<Square> {

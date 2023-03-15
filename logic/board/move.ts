@@ -1,10 +1,10 @@
-import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/positions';
+import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/squares';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
-import COORDS from 'logic/positions/coordinates';
-import { Piece } from 'logic/positions/piece';
-import { shorthand } from 'logic/positions/pieces-shorthand';
+import COORDS from 'logic/squares/coordinates';
+import { Piece } from 'logic/squares/piece';
+import { shorthand } from 'logic/squares/pieces-shorthand';
 import isPawn from 'logic/pieces/isPawn';
 import textRender from './textRender';
 

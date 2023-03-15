@@ -1,4 +1,4 @@
-import { Piece }  from 'logic/positions/piece';
+import { Piece }  from 'logic/squares/piece';
 
 const blackPieces : ReadonlyArray<Piece> = Object.freeze([
     'Black King',

@@ -6,11 +6,11 @@ import {
   queenMoves, 
   rookMoves 
 } from 'logic/moves';
-import { pieceAt }  from 'logic/positions';
+import { pieceAt }  from 'logic/squares';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
-import { Piece } from 'logic/positions/piece';
+import { Piece } from 'logic/squares/piece';
 
 //Each of the piece-specific can-move functions has a less-demanding signtaure for 
 //annotations than the combined canMoveTo, so we cury them to match it

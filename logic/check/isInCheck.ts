@@ -1,7 +1,7 @@
 import { generateLinesOfAttack }  from 'logic/check'
 import { Player }  from 'logic/types/Player';
 import { Board }  from 'logic/types/Board';
-import kingSquare  from 'logic/positions/kingSquare';
+import kingSquare  from 'logic/squares/kingSquare';
 
 const cache = new Map<Player, Map<Board, boolean>>()
     .set('Black', new Map())

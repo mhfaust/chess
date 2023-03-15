@@ -1,5 +1,5 @@
 import { GridCoordinates } from 'logic/types/GridCoordinates';
-import COORDS from 'logic/positions/coordinates';
+import COORDS from 'logic/squares/coordinates';
 
 export const squares = [
     'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8',

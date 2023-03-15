@@ -1,7 +1,7 @@
-import { isOnBoard, playerAt, file, rank }  from 'logic/positions'
+import { isOnBoard, playerAt, file, rank }  from 'logic/squares'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 
 function knightCanMove (
     board: Board, 

@@ -1,4 +1,4 @@
-import { Piece }  from 'logic/positions/piece';
+import { Piece }  from 'logic/squares/piece';
 import { PieceOrEmpty } from 'logic/types/Board';
 
 export const __ : PieceOrEmpty = null;

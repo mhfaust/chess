@@ -2,11 +2,11 @@ import {
     playerAt, 
     isUnOccupiedByPlayer, 
     displaceTo 
-} from 'logic/positions';
+} from 'logic/squares';
 
 import { knightVectors }  from 'logic/constants/move-vectors'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { Board }  from 'logic/types/Board';
 
 const emptySet = new Set<Square>();

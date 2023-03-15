@@ -2,7 +2,7 @@ import { unicodeSymbols }  from 'logic/constants/pieces';
 import { rotateCounterClockwise }  from 'logic/board';
 import chalk   from 'chalk';
 import { Board, BoardFile, PieceOrEmpty }  from 'logic/types/Board';
-import { Piece }  from 'logic/positions/piece';
+import { Piece }  from 'logic/squares/piece';
 
 const { bgWhite, black, blue } = chalk;
 

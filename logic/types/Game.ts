@@ -1,8 +1,8 @@
 
 import { Board } from 'logic/types/Board';
-import { Piece }  from 'logic/positions/piece';
+import { Piece }  from 'logic/squares/piece';
 import { Player }  from 'logic/types/Player';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 
 export type BoardAnnotations = {

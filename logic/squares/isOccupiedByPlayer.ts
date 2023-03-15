@@ -1,8 +1,8 @@
-import playerAt from 'logic/positions/playerAt';
-import isUnOccupied from 'logic/positions/isUnOccupied';
+import playerAt from 'logic/squares/playerAt';
+import isUnOccupied from 'logic/squares/isUnOccupied';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
-import { Square } from 'logic/positions/square';
+import { Square } from 'logic/squares/square';
 
 function isOccupiedByPlayer (board: Board, position: Square, player: Player): boolean{
     

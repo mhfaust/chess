@@ -7,13 +7,13 @@ import {
     otherPlayer, 
     playerAt, 
     square,
-} from 'logic/positions';
+} from 'logic/squares';
     
 import { kingVectors }  from 'logic/constants/move-vectors';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
-import kingSquare  from 'logic/positions/kingSquare';
-import { Square } from 'logic/positions/square';
+import kingSquare  from 'logic/squares/kingSquare';
+import { Square } from 'logic/squares/square';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { MoveVector } from 'logic/types/MoveVector';
 

@@ -2,13 +2,13 @@
 
 import Grid from 'app/components/Grid/Grid';
 import { useOldGameStore } from 'app/components/Game/oldGameStore';
-import { Square } from 'logic/positions/square';
+import { Square } from 'logic/squares/square';
 import { canMoveTo } from 'logic/moves';
-import { otherPlayer, playerAt } from 'logic/positions';
+import { otherPlayer, playerAt } from 'logic/squares';
 import Captures from 'app/components/Captures';
 import allPieceMoves from 'logic/moves/allPieceMoves';
 import isPromotingPawn from 'logic/board/pawnPromotionOptions';
-import { Piece } from 'logic/positions/piece';
+import { Piece } from 'logic/squares/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { isCheckmate, isInCheck } from 'logic/check';

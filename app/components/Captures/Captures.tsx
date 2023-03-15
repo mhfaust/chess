@@ -1,5 +1,5 @@
 import { unicodeSymbols } from 'logic/constants/pieces';
-import { Piece } from 'logic/positions/piece'
+import { Piece } from 'logic/squares/piece'
 
 import styles from './Captures.module.css'
 

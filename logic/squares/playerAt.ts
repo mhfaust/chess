@@ -1,8 +1,8 @@
-import { pieceAt }  from 'logic/positions';
+import { pieceAt }  from 'logic/squares';
 import { BLACK_PIECES }  from 'logic/constants/pieces'
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
-import { Square } from 'logic/positions/square';
+import { Square } from 'logic/squares/square';
 
 const playerAt = (board: Board, position: Square): Player | null => {
     const piece = pieceAt(board, position);

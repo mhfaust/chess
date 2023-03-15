@@ -6,10 +6,10 @@ import {
     isUnOccupied, 
     isOccupiedByPlayer, 
     square
-} from 'logic/positions';
+} from 'logic/squares';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 
 function pawnCanMove (
         board: Board, 

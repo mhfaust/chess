@@ -1,4 +1,4 @@
-import isOccupied  from 'logic/positions/isOccupied'
+import isOccupied  from 'logic/squares/isOccupied'
 import { initialBoard }  from 'logic/board'
 
 describe('isOccupied', () => {

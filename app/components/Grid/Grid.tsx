@@ -1,11 +1,11 @@
 
 import styles from './Grid.module.css'
 import { BLACK_PIECES, unicodeSymbols, WHITE_PIECES }  from 'logic/constants/pieces';
-import { square } from 'logic/positions';
+import { square } from 'logic/squares';
 import { Board, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
-import { Square, squareColor } from 'logic/positions/square';
+import { Square, squareColor } from 'logic/squares/square';
 import { rotate8by8 } from 'logic/board/rotateCounterClockwise';
 import { Player } from 'logic/types/Player';
 import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';

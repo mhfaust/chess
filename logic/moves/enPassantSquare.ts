@@ -1,5 +1,5 @@
-import { file, pieceAt, rank }  from 'logic/positions'
-import square, { Square }  from 'logic/positions/square'
+import { file, pieceAt, rank }  from 'logic/squares'
+import square, { Square }  from 'logic/squares/square'
 import { Board }  from 'logic/types/Board';
 
 const blackPawnStartRank = 6;

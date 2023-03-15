@@ -1,5 +1,5 @@
 import queenCanMove   from 'logic/moves/queenCanMove'
-import { BP,WK,WQ,WR,BK,__ }  from 'logic/positions/pieces-shorthand';
+import { BP,WK,WQ,WR,BK,__ }  from 'logic/squares/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
 
 describe('queenCanMove', () => {

@@ -6,9 +6,9 @@ import {
     queenCanMove, 
     rookCanMove 
 } from 'logic/moves';
-import { pieceAt }  from 'logic/positions';
+import { pieceAt }  from 'logic/squares';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 
 //Each of the piece-specific can-move functions has a less-demanding signtaure for 

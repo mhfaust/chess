@@ -1,4 +1,4 @@
-import { pieceAt }  from 'logic/positions';
+import { pieceAt }  from 'logic/squares';
 import { Board }  from 'logic/types/Board';
 
 type CastlePosition =

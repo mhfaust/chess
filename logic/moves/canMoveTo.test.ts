@@ -1,4 +1,4 @@
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import canMoveTo  from 'logic/moves/canMoveTo';
 import { Board }  from 'logic/types/Board';
 import { RookStartPosition } from 'logic/types/CastlingPreclusions';

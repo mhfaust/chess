@@ -1,4 +1,4 @@
-import { square } from 'logic/positions';
+import { square } from 'logic/squares';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 
 function areSamePositions  (

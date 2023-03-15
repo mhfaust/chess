@@ -1,10 +1,10 @@
-import { playerAt, otherPlayer, pieceAt }  from 'logic/positions';
+import { playerAt, otherPlayer, pieceAt }  from 'logic/squares';
 import { isInCheck, isCheckmate }  from 'logic/check';
 import { nextCastlingPreclusions }  from 'logic/board';
 import { Board }  from 'logic/types/Board';
-import { Piece }  from 'logic/positions/piece';
+import { Piece }  from 'logic/squares/piece';
 import { Player }  from 'logic/types/Player';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { BoardAnnotations }  from 'logic/types/Game';
 
 export const makeCapturedPieces = (

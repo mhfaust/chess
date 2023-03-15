@@ -1,7 +1,7 @@
 import { useOldGameStore } from 'app/components/Game/oldGameStore';
 import { blackPromotionOptions, whitePromotionOptions } from 'logic/board/pawnPromotionOptions';
 import { unicodeSymbols } from 'logic/constants/pieces';
-import { Piece } from 'logic/positions/piece';
+import { Piece } from 'logic/squares/piece';
 import styles from './PawnPromotionPrompt.module.css';
 
 export type PawnPromotionOptionsProps = {

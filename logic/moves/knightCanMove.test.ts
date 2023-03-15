@@ -1,6 +1,6 @@
 import knightCanMove  from 'logic/moves/knightCanMove'
 import { initialBoard }  from 'logic/board'
-import { __, WK, WN, BK, BQ }  from 'logic/positions/pieces-shorthand';
+import { __, WK, WN, BK, BQ }  from 'logic/squares/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
 
 describe('knightCanMove', () => {

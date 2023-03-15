@@ -1,7 +1,7 @@
-import allPlayerSquares, { PiecePosition }  from 'logic/positions/allPlayerSquares'
+import allPlayerSquares, { PiecePosition }  from 'logic/squares/allPlayerSquares'
 import { initialBoard }  from 'logic/board'
-import { Square }  from 'logic/positions/square';
-import { Piece }  from 'logic/positions/piece';
+import { Square }  from 'logic/squares/square';
+import { Piece }  from 'logic/squares/piece';
 
 describe('allPlayerPositions finds all white piecesonr initial board', () => {
 

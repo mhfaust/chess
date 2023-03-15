@@ -3,7 +3,7 @@ import {
     displaceFrom, 
     otherPlayer, 
     pieceAt, 
-} from 'logic/positions';
+} from 'logic/squares';
 import { 
     knightVectors, 
     pawnBlackAttackVectors, 
@@ -13,16 +13,16 @@ import {
     rookVectors
 } from 'logic/constants/move-vectors'
 
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 
-import { Piece }  from 'logic/positions/piece';
-import COORDS  from 'logic/positions/coordinates';
+import { Piece }  from 'logic/squares/piece';
+import COORDS  from 'logic/squares/coordinates';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { MoveVector } from 'logic/types/MoveVector';
 import { canMoveTo } from 'logic/moves';
-import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import isPawn from 'logic/pieces/isPawn';
 
 

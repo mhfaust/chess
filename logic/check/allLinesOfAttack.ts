@@ -1,4 +1,4 @@
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import generateLinesOfAttack from 'logic/check/generateLinesOfAttack';

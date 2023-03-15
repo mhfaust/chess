@@ -5,10 +5,10 @@
     isOccupiedByPlayer, 
     otherPlayer, 
     rank
-} from 'logic/positions';
+} from 'logic/squares';
 import { isInCheck }  from 'logic/check';
 import { move }  from 'logic/board';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 import { Board }  from 'logic/types/Board';
 import { MoveVector } from 'logic/types/MoveVector';
 

@@ -1,4 +1,4 @@
-import { __ }  from 'logic/positions/pieces-shorthand'
+import { __ }  from 'logic/squares/pieces-shorthand'
 import { Board }  from 'logic/types/Board';
 
 const emptyBoard = (): Board => [

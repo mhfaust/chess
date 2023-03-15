@@ -1,5 +1,5 @@
-import { pieceAt, playerAt } from 'logic/positions';
-import { Square } from 'logic/positions/square';
+import { pieceAt, playerAt } from 'logic/squares';
+import { Square } from 'logic/squares/square';
 import { Board, PieceOrEmpty } from 'logic/types/Board';
 import isInCheck from './isInCheck';
 

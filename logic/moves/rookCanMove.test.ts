@@ -1,5 +1,5 @@
 import rookCanMove  from 'logic/moves/rookCanMove';
-import { WK,BK,BR,BP,WP,__ }  from 'logic/positions/pieces-shorthand';
+import { WK,BK,BR,BP,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
 
 const rook1Board: Board = [

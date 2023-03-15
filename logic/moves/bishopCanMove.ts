@@ -4,10 +4,10 @@ import {
     isOnBoard, 
     playerAt, 
     isOccupied, 
-    displaceTo } from 'logic/positions'
+    displaceTo } from 'logic/squares'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/square';
+import { Square }  from 'logic/squares/square';
 
 function bishopCanMove (
     board: Board, 
