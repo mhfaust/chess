@@ -2,7 +2,7 @@ import isOccupied  from 'logic/squares/isOccupied'
 import { initialBoard }  from 'logic/board'
 
 describe('isOccupied', () => {
-    it('reports true for initially positioned rook', () => {
+    it('reports true for rook on initial square', () => {
         expect(isOccupied(initialBoard(), 'a1')).toBe(true);
     })
 

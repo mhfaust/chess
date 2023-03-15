@@ -74,8 +74,8 @@ function isCheckmate(
     //and if so, be sure moving it there would fully remove the player from check,
     //important because the blocking piece may have been pinned.
 
-    for(let positionOnCheckLine of (checkLine.value)){
-        const blockingSquare = square(positionOnCheckLine) as Square;
+    for(let squareOnCheckLine of (checkLine.value)){
+        const blockingSquare = square(squareOnCheckLine) as Square;
         const movesToBlockingSquare = generateLinesOfAttack(board, defender, blockingSquare);
 
         //find any defensive moves onto this particular intervening grid-square,
