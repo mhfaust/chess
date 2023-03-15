@@ -12,7 +12,7 @@ import {
 import { kingVectors }  from 'logic/constants/move-vectors';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
-import kingPosition  from 'logic/positions/kingPosition';
+import kingSquare  from 'logic/positions/kingSquare';
 import { Square } from 'logic/positions/square';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { MoveVector } from 'logic/types/MoveVector';
@@ -32,7 +32,7 @@ function isCheckmate(
         return cached;
     }
 
-    const kingPos = kingPosition(board, defender);
+    const kingPos = kingSquare(board, defender);
 
     //is there any way to get out of check by moving the king?
     for (let i = 0; i < kingVectors.length; i++) {

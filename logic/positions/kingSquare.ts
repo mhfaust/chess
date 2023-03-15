@@ -6,7 +6,7 @@ import pieceAt from 'logic/positions/pieceAt';
 const whiteCache: Map<Board, Square> = new Map();
 const blackCache: Map<Board, Square> = new Map();
 
-const kingPosition = (board: Board, player: Player): Square => {
+const kingSquare = (board: Board, player: Player): Square => {
   if(player === 'Black'){
     if(blackCache.has(board)){
       return blackCache.get(board) as Square;
@@ -24,4 +24,4 @@ const kingPosition = (board: Board, player: Player): Square => {
   }
 }
 
-export default kingPosition;
+export default kingSquare;
