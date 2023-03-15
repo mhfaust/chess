@@ -1,6 +1,6 @@
 // @create-index
 
-export { default as allPlayerPositions } from './allPlayerPositions';
+export { default as allPlayerSquares } from './allPlayerSquares';
 export { default as areSamePositions } from './areSamePositions';
 export { default as coordinates } from './coordinates';
 export { default as displaceTo } from './displaceTo';

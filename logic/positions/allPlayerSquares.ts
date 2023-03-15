@@ -9,7 +9,7 @@ export type PiecePosition = {
     position: Square;
     piece: Piece;
 }
-function allPlayerPositions(board: Board, player: Player): Array<PiecePosition>{
+function allPlayerSquares(board: Board, player: Player): Array<PiecePosition>{
     
     const occupiedPositions: Array<PiecePosition> = [];
     const allPlayerPieces = player === 'Black' ? BLACK_PIECES : WHITE_PIECES;
@@ -25,4 +25,4 @@ function allPlayerPositions(board: Board, player: Player): Array<PiecePosition>{
     return occupiedPositions;
 }
 
-export default allPlayerPositions;
+export default allPlayerSquares;
