@@ -1,4 +1,4 @@
-import areSamePositions from 'logic/squares/areSamePositions'
+import areSameCoordinates from 'logic/squares/areSameCoordinates'
 
 describe('areSamePositions', () => {
     it('finds two positions are the same, even though their objects by reference are different', () => {
@@ -7,7 +7,7 @@ describe('areSamePositions', () => {
 
         const areSameReference = p1 === p2;
         expect(areSameReference).toBe(false);
-        expect(areSamePositions(p1, p2)).toBe(true);
+        expect(areSameCoordinates(p1, p2)).toBe(true);
     });
 
     it('finds two positions are different when the vary only by file', () => {
@@ -16,7 +16,7 @@ describe('areSamePositions', () => {
 
         const areSameReference = p1 === p2;
         expect(areSameReference).toBe(false);
-        expect(areSamePositions(p1, p2)).toBe(false);
+        expect(areSameCoordinates(p1, p2)).toBe(false);
     });
 
     it('finds two positions are different when the vary only by rank', () => {
@@ -25,6 +25,6 @@ describe('areSamePositions', () => {
 
         const areSameReference = p1 === p2;
         expect(areSameReference).toBe(false);
-        expect(areSamePositions(p1, p2)).toBe(false);
+        expect(areSameCoordinates(p1, p2)).toBe(false);
     });
 })

@@ -1,11 +1,11 @@
 import { square } from 'logic/squares';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 
-function areSamePositions  (
+function areSameCoordinates  (
     coordsA: GridCoordinates, 
     coordsB: GridCoordinates)
     : boolean {
         return square(coordsA) === square(coordsB)
     } 
 
-export default areSamePositions;
+export default areSameCoordinates;

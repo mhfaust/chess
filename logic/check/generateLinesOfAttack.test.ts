@@ -4,7 +4,7 @@ import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ } from 'logic/squares/pieces-sho
 import { Board }  from 'logic/types/Board';
 import COORDS  from 'logic/squares/coordinates';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
-import { areSamePositions } from 'logic/squares';
+import { areSameCoordinates } from 'logic/squares';
 
 describe('generateLinesOfAttack', () => {
     it('finds the line from a bishop at c3 to e5', () => {
@@ -103,7 +103,7 @@ describe('generateLinesOfAttack', () => {
 
         for (let attackLine of linesOfAttack) {
             expect(expectedLines.some(line => {
-                line.forEach((coord, i) => attackLine[i] && areSamePositions(coord, attackLine[i]))
+                line.forEach((coord, i) => attackLine[i] && areSameCoordinates(coord, attackLine[i]))
             }))
         }
 

@@ -1,7 +1,7 @@
 import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/squares';
 import { Board }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
-import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
+import enPassantSquare, { pawnSquareFromEpSquare } from 'logic/moves/enPassantSquare';
 import COORDS from 'logic/squares/coordinates';
 import { Piece } from 'logic/squares/piece';
 import { shorthand } from 'logic/squares/pieces-shorthand';
@@ -77,7 +77,7 @@ function move (
     }
 
     if(isEpCapture){
-        const capturedPawnPosition = pawnPositionFromEpSquare.get(to)!;
+        const capturedPawnPosition = pawnSquareFromEpSquare.get(to)!;
         const [file, rank] = COORDS[capturedPawnPosition];
         newBoard[file][rank] = null; //mutate
     }

@@ -7,7 +7,7 @@ const whitePawnStartRank = 1;
 
 const cache: Map<Board, Square | null> = new Map();
 
-export const pawnPositionFromEpSquare: Map<Square, Square> = new Map([
+export const pawnSquareFromEpSquare: Map<Square, Square> = new Map([
   ['a3', 'a4'],
   ['b3', 'b4'],
   ['c3', 'c4'],

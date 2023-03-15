@@ -4,7 +4,7 @@ import { Board } from 'logic/types/Board';
 import { create } from 'zustand';
 import { otherPlayer, pieceAt, playerAt } from 'logic/squares';
 import { CastlingPreclusions } from 'logic/types/CastlingPreclusions';
-import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
+import enPassantSquare, { pawnSquareFromEpSquare } from 'logic/moves/enPassantSquare';
 import isPawn from 'logic/pieces/isPawn';
 import { Player } from 'logic/types/Player';
 import { Piece } from 'logic/squares/piece';
@@ -89,7 +89,7 @@ export const useOldGameStore = create<OldGameState>((set) => {
         const newBlacksMap = new Map(capturedBlacks);
         const prevBlackCaptureds = capturedBlacks.get(lastBoard)!;
 
-        const epCapture = epSquare && pieceAt(lastBoard, pawnPositionFromEpSquare.get(epSquare))
+        const epCapture = epSquare && pieceAt(lastBoard, pawnSquareFromEpSquare.get(epSquare))
         const captured = pieceAt(lastBoard, to) || epCapture;
 
         const newBlackCaptureds = captured && playerAt(lastBoard, to) === "Black"
