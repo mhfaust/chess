@@ -13,7 +13,7 @@ import { kingVectors }  from 'logic/constants/move-vectors';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import kingPosition  from 'logic/positions/kingPosition';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { MoveVector } from 'logic/types/MoveVector';
 
@@ -75,7 +75,7 @@ function isCheckmate(
     //important because the blocking piece may have been pinned.
 
     for(let positionOnCheckLine of (checkLine.value)){
-        const blockingPosition = positionName(positionOnCheckLine) as PositionName;
+        const blockingPosition = positionName(positionOnCheckLine) as Square;
         const movesToBlockingPosition = generateLinesOfAttack(board, defender, blockingPosition);
 
         //find any defensive moves onto this particular intervening grid-square,

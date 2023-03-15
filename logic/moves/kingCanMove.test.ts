@@ -2,7 +2,7 @@ import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-
 import { kingCanMove }  from 'logic/moves';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 
 const noPreclusions: CastlingPreclusions = new Set()
 
@@ -21,7 +21,7 @@ describe('kingCanMove', () => {
         /*  H  */ [WR,WP,__,__,__,__,BP,BR],
         ];
 
-        const tries: PositionName[] = ['d1', 'd2', 'e2', 'f2', 'f1']
+        const tries: Square[] = ['d1', 'd2', 'e2', 'f2', 'f1']
 
         tries.forEach(position => {
             expect(kingCanMove(board, 'e1', position, noPreclusions)).toBe(false)
@@ -41,7 +41,7 @@ describe('kingCanMove', () => {
         /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        const tries: PositionName[] = [ 
+        const tries: Square[] = [ 
             'd3', 'd4', 'd5', 
             'e3',       'e5',
             'f3', 'f4', 'f5'

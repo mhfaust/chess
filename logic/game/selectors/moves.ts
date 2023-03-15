@@ -1,10 +1,10 @@
 import { Piece } from 'logic/positions/piece';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 import { Player } from 'logic/types/Player';
 import { ChessGame } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 
-export type NormalMove = [PositionName, PositionName, Piece | undefined];
+export type NormalMove = [Square, Square, Piece | undefined];
 
 export type Move = NormalMove | 'RESIGN';
 
@@ -48,8 +48,8 @@ export const moves = (state: Pick<ChessGame, 'gamePlay'>): Move[] => {
     const player: Player = i % 2 === 0 ? 'White' : 'Black'
     const promotion = promo && (`${player} ${promo}` as Piece) || undefined;
     const move: Move = [ 
-      start as PositionName, 
-      end as PositionName, 
+      start as Square, 
+      end as Square, 
       promotion,
     ];
 

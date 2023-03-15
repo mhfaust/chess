@@ -1,6 +1,6 @@
 import { coordinates } from 'logic/positions';
 import { Piece } from 'logic/positions/piece';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 
 export type ChessGame = {
   gamePlay: string;
@@ -8,13 +8,13 @@ export type ChessGame = {
 }
 coordinates
 export type GameView =  ChessGame & {
-  selectedSquare: PositionName | null;
+  selectedSquare: Square | null;
   toggleSelectedSquare: (
-    positionName: PositionName | null
+    positionName: Square | null
   ) => void;
   makeNextMove: (
-    from: PositionName, 
-    to: PositionName, 
+    from: Square, 
+    to: Square, 
     promoteTo?: Piece, 
     captureEp?: boolean
   ) => void;

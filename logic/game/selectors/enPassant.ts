@@ -1,12 +1,12 @@
 import { file, rank } from 'logic/positions';
-import positionName, { PositionName } from 'logic/positions/positionName';
+import positionName, { Square } from 'logic/positions/positionName';
 import { ChessGame } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 import { moves } from './moves';
 
 //TODO: MEMOIZE.
 export const epSquares = (state: Pick<ChessGame, 'gamePlay'>) => {
-  const movedPawns = new Set<PositionName>();
+  const movedPawns = new Set<Square>();
   const allMoves = moves(state);
   return allMoves.map((move) => {
     if (move === 'RESIGN') {

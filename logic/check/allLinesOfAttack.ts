@@ -1,4 +1,4 @@
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import generateLinesOfAttack from 'logic/check/generateLinesOfAttack';
@@ -6,7 +6,7 @@ import generateLinesOfAttack from 'logic/check/generateLinesOfAttack';
 const allLinesOfAttack = (
   board: Board, 
   defender: Player, 
-  target: PositionName
+  target: Square
 ) => {
   const lines = [];
   const iterable = generateLinesOfAttack(board, defender, target);

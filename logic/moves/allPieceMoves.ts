@@ -8,20 +8,20 @@ import {
 } from 'logic/moves';
 import { pieceAt }  from 'logic/positions';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 import { Piece } from 'logic/positions/piece';
 
 //Each of the piece-specific can-move functions has a less-demanding signtaure for 
 //annotations than the combined canMoveTo, so we cury them to match it
-const bishop = (b: Board, f: PositionName) => bishopMoves(b, f);
-const knight = (b: Board, f: PositionName) => knightMoves(b, f);
-const rook = (b: Board, f: PositionName) => rookMoves(b, f);
-const pawn = (b: Board, f: PositionName, _: CastlingPreclusions, a: PositionName) => pawnMoves(b, f, a);
-const king = (b: Board, f: PositionName, a: CastlingPreclusions) => kingMoves(b, f, a);
-const queen = (b: Board, f: PositionName) => queenMoves(b, f);
+const bishop = (b: Board, f: Square) => bishopMoves(b, f);
+const knight = (b: Board, f: Square) => knightMoves(b, f);
+const rook = (b: Board, f: Square) => rookMoves(b, f);
+const pawn = (b: Board, f: Square, _: CastlingPreclusions, a: Square) => pawnMoves(b, f, a);
+const king = (b: Board, f: Square, a: CastlingPreclusions) => kingMoves(b, f, a);
+const queen = (b: Board, f: Square) => queenMoves(b, f);
 
-const emptySet = new Set<PositionName>();
+const emptySet = new Set<Square>();
 
 const strategies = new Map()
   .set('Black Bishop', bishop)
@@ -38,15 +38,15 @@ const strategies = new Map()
   .set('White Pawn', pawn)
 
 export type CanMoveTo = 
-  (...params: Parameters<typeof allPieceMoves>) => Set<PositionName>;
+  (...params: Parameters<typeof allPieceMoves>) => Set<Square>;
 
 
 function allPieceMoves (
   board: Board,
-  from: PositionName, 
+  from: Square, 
   castlingPreclusions: CastlingPreclusions | null = null,
-  enPassantSquare: PositionName | null = null,
-): Set<PositionName> {
+  enPassantSquare: Square | null = null,
+): Set<Square> {
   const piece = pieceAt(board, from);
   if(!piece){
     return emptySet; 

@@ -1,7 +1,7 @@
-import { PositionName } from 'logic/positions/positionName'
+import { Square } from 'logic/positions/positionName'
 import { Board } from 'logic/types/Board'
 
-const cache = new Map<Board, ([PositionName, PositionName] | null)>;
+const cache = new Map<Board, ([Square, Square] | null)>;
 
 /**
  * Gets the move that resulted in the board at index

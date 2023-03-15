@@ -5,7 +5,7 @@ import { positionName } from 'logic/positions';
 import { Board, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
-import { PositionName, squareColor } from 'logic/positions/positionName';
+import { Square, squareColor } from 'logic/positions/positionName';
 import { rotate8by8 } from 'logic/board/rotateCounterClockwise';
 import { Player } from 'logic/types/Player';
 import { isInCheck } from 'logic/check';
@@ -20,7 +20,7 @@ type Orientation = 0 | 1 | 2 | 3;
 
 
 type SquareModel = { 
-  positionName: PositionName, 
+  positionName: Square, 
   piece: PieceOrEmpty 
 }
 
@@ -48,12 +48,12 @@ const rotate: Record<Orientation, (s: SquareModel[][]) => SquareModel[][]> = {
 type ChessBoardProps = {
   board: Board;
   orientation: Orientation;
-  onClickSquare: (PositionName: PositionName) => void;
-  selectedSquare: PositionName | null;
-  validMoves?: Set<PositionName>;
+  onClickSquare: (PositionName: Square) => void;
+  selectedSquare: Square | null;
+  validMoves?: Set<Square>;
   currentPlayer: Player;
 }
-const noMoves = new Set<PositionName>();
+const noMoves = new Set<Square>();
 
 const ChessBoard = ({ 
   board, 
@@ -68,7 +68,7 @@ const ChessBoard = ({
     return rotate[orientation](mapToPresentationModel(board))
   }, [board, orientation])
 
-  const handleSquareClick = (pos: PositionName): MouseEventHandler => {
+  const handleSquareClick = (pos: Square): MouseEventHandler => {
     return () => onClickSquare(pos);
   };
 

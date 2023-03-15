@@ -1,13 +1,13 @@
 import { file, pieceAt, rank }  from 'logic/positions'
-import positionName, { PositionName }  from 'logic/positions/positionName'
+import positionName, { Square }  from 'logic/positions/positionName'
 import { Board }  from 'logic/types/Board';
 
 const blackPawnStartRank = 6;
 const whitePawnStartRank = 1;
 
-const cache: Map<Board, PositionName | null> = new Map();
+const cache: Map<Board, Square | null> = new Map();
 
-export const pawnPositionFromEpSquare: Map<PositionName, PositionName> = new Map([
+export const pawnPositionFromEpSquare: Map<Square, Square> = new Map([
   ['a3', 'a4'],
   ['b3', 'b4'],
   ['c3', 'c4'],
@@ -28,9 +28,9 @@ export const pawnPositionFromEpSquare: Map<PositionName, PositionName> = new Map
 
 const enPassantSquare = (
   currentBoard: Board,
-  lastMovedFrom: PositionName,
-  lastMovedTo: PositionName,
-): PositionName | null => {
+  lastMovedFrom: Square,
+  lastMovedTo: Square,
+): Square | null => {
 
   if(cache.has(currentBoard)){
     return cache.get(currentBoard)!;

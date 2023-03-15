@@ -7,12 +7,12 @@ import {
     displaceTo } from 'logic/positions'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 
 function bishopCanMove (
     board: Board, 
-    fromPosition: PositionName, 
-    toPosition: PositionName)
+    fromPosition: Square, 
+    toPosition: Square)
     : boolean {
 
     if (!isOnBoard(toPosition)) {

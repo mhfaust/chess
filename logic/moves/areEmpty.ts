@@ -1,8 +1,8 @@
 import { pieceAt } from 'logic/positions';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 import { Board } from 'logic/types/Board';
 
-const areEmpty = (board: Board, ...squares: PositionName[]) => {
+const areEmpty = (board: Board, ...squares: Square[]) => {
   return squares.every(square => pieceAt(board, square) === null);
 }
 

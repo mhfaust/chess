@@ -6,12 +6,12 @@ position is on the board
 import { rank, file }  from 'logic/positions';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { MoveVector } from 'logic/types/MoveVector';
-import positionName, { PositionName } from 'logic/positions/positionName';
+import positionName, { Square } from 'logic/positions/positionName';
     
 function displaceTo  (
-    currentPosition: PositionName, 
+    currentPosition: Square, 
     vector: MoveVector)
-    : PositionName | null {
+    : Square | null {
 
     const newFile = file(currentPosition) + vector[0];
     const newRank = rank(currentPosition) + vector[1];

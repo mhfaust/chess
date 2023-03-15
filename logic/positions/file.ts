@@ -1,7 +1,7 @@
 import COORDS from 'logic/positions/coordinates';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 
-function file (position: PositionName): number {
+function file (position: Square): number {
     return COORDS[position][0];
 };
 

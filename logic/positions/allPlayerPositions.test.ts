@@ -1,13 +1,13 @@
 import allPlayerPositions, { PiecePosition }  from 'logic/positions/allPlayerPositions'
 import { initialBoard }  from 'logic/board'
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Piece }  from 'logic/positions/piece';
 
 describe('allPlayerPositions finds all white piecesonr initial board', () => {
 
     const results = allPlayerPositions(initialBoard(), 'White');
 
-    const foundWhitePieceAt = (piece: Piece, position: PositionName) =>{
+    const foundWhitePieceAt = (piece: Piece, position: Square) =>{
         return results.some((result: PiecePosition) =>
             result.position === position &&
             result.piece === piece
@@ -68,7 +68,7 @@ describe('allPlayerPositions finds all white piecesonr initial board', () => {
 
     const results = allPlayerPositions(initialBoard(), 'Black');
 
-    const foundBlackPieceAt = (piece: Piece, position: PositionName) =>{
+    const foundBlackPieceAt = (piece: Piece, position: Square) =>{
         return results.some((result: PiecePosition) =>
             result.position === position &&
             result.piece === piece

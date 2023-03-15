@@ -2,14 +2,14 @@
 import { Board } from 'logic/types/Board';
 import { Piece }  from 'logic/positions/piece';
 import { Player }  from 'logic/types/Player';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 
 export type BoardAnnotations = {
   // lastPlayerMoved: Player;
   lastPieceMoved: Piece | null;
-  lastMoveFrom: PositionName | null;
-  lastMoveTo: PositionName | null;
+  lastMoveFrom: Square | null;
+  lastMoveTo: Square | null;
   currentPlayer: Player;
   isInCheck: boolean;
   isCheckmate: boolean;

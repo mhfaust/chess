@@ -1,6 +1,6 @@
 import { pieceAt, rank } from 'logic/positions';
 import { Piece } from 'logic/positions/piece';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 import { Board } from 'logic/types/Board';
 
 export const blackPromotionOptions: Piece[] =  [
@@ -19,8 +19,8 @@ export const whitePromotionOptions: Piece[] =  [
 
 const isPromotingPawn = (
   board: Board, 
-  from: PositionName, 
-  to: PositionName
+  from: Square, 
+  to: Square
 ): boolean => {
   const piece = pieceAt(board, from);
   const toRank = rank(to);

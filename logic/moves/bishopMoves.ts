@@ -8,22 +8,22 @@ import {
 
 import { bishopVectors }  from 'logic/constants/move-vectors'
 import { movesIntoCheck }  from 'logic/check';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 import { MoveVector } from 'logic/types/MoveVector';
 
-const emptySet = new Set<PositionName>();
+const emptySet = new Set<Square>();
 
 function bishop(
     board: Board, 
-    moveFrom: PositionName
-): Set<PositionName> {
+    moveFrom: Square
+): Set<Square> {
 
     const player = playerAt(board, moveFrom);
     if(!player){
         return emptySet;
     }
-    const legalMoves: Array<PositionName> = [];
+    const legalMoves: Array<Square> = [];
 
     bishopVectors.forEach((vector: MoveVector): void => {
 

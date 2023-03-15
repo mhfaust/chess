@@ -1,5 +1,5 @@
 import { initialBoard, move, nextCastlingPreclusions } from 'logic/board';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 import { Board } from 'logic/types/Board';
 import { create } from 'zustand';
 import { otherPlayer, pieceAt, playerAt } from 'logic/positions';
@@ -16,13 +16,13 @@ export type OldGameState =   {
   currentTurn: number;
   currentPlayer: Player;
   boards: Board[];
-  selectedSquare: PositionName | null;
+  selectedSquare: Square | null;
   castling: Map<Board, CastlingPreclusions>;
-  enPassantSquares: Map<Board, PositionName | null>;
+  enPassantSquares: Map<Board, Square | null>;
   capturedBlacks: Map<Board, Piece[]>;
   capturedWhites: Map<Board, Piece[]>;
-  toggleSelectedSquare: (PositionName: PositionName | null) => void;
-  makeNextMove: (from: PositionName, to: PositionName, promoteTo?: Piece, captureEp?: boolean) => void;
+  toggleSelectedSquare: (PositionName: Square | null) => void;
+  makeNextMove: (from: Square, to: Square, promoteTo?: Piece, captureEp?: boolean) => void;
 }
 
 export const useOldGameStore = create<OldGameState>((set) => {
@@ -36,7 +36,7 @@ export const useOldGameStore = create<OldGameState>((set) => {
     boards: [startBoard],
     selectedSquare: null,
     castling: new Map<Board, CastlingPreclusions>().set(startBoard, new Set()),
-    enPassantSquares: new Map<Board, PositionName | null>().set(startBoard, null),
+    enPassantSquares: new Map<Board, Square | null>().set(startBoard, null),
     capturedBlacks: new Map().set(startBoard, []),
     capturedWhites: new Map().set(startBoard, []),
     toggleSelectedSquare: (positionName) => {

@@ -1,8 +1,8 @@
 import { Board, PieceOrEmpty }  from 'logic/types/Board';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 import COORDS from 'logic/positions/coordinates';
 
-function pieceAt (board: Board, position?: PositionName): PieceOrEmpty {
+function pieceAt (board: Board, position?: Square): PieceOrEmpty {
     if (!position) {
         return null;
     }

@@ -8,27 +8,27 @@
 } from 'logic/positions';
 import { isInCheck }  from 'logic/check';
 import { move }  from 'logic/board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 import { MoveVector } from 'logic/types/MoveVector';
 
-const emptySet = new Set<PositionName>();
+const emptySet = new Set<Square>();
 
 function pawn(
     board: Board, 
-    moveFrom: PositionName, 
-    enPassantSquare: PositionName | null)
-    : Set<PositionName> {
+    moveFrom: Square, 
+    enPassantSquare: Square | null)
+    : Set<Square> {
     const player = playerAt(board, moveFrom);
     if(!player){
         return emptySet;
     }
-    const legalMoves: Set<PositionName> = new Set();
+    const legalMoves: Set<Square> = new Set();
     const forwardDirection = player === 'White' ? 1 : -1;
     const initialRank = rank(moveFrom);
     const forward1 = displaceTo(moveFrom, [0, forwardDirection]);
 
-    const moveNotInCheck = (moveTo: PositionName): boolean => !isInCheck(move(board, moveFrom, moveTo, null)[0], player)
+    const moveNotInCheck = (moveTo: Square): boolean => !isInCheck(move(board, moveFrom, moveTo, null)[0], player)
      
     //advance moves
     if(forward1 && isUnOccupied(board, forward1) && moveNotInCheck(forward1)){

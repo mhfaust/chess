@@ -5,12 +5,12 @@ position is on the board
 
 import { rank, file }  from 'logic/positions';
 import { MoveVector } from 'logic/types/MoveVector';
-import positionName, { PositionName } from 'logic/positions/positionName';
+import positionName, { Square } from 'logic/positions/positionName';
     
 function displaceFrom  (
-    currentPosition: PositionName, 
+    currentPosition: Square, 
     vector: MoveVector)
-    : PositionName | null {
+    : Square | null {
 
         return positionName([
             file(currentPosition) - vector[0],

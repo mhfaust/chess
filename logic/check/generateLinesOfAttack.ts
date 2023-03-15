@@ -13,7 +13,7 @@ import {
     rookVectors
 } from 'logic/constants/move-vectors'
 
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 
@@ -51,7 +51,7 @@ const blackAttackPatterns: Array<AttackPattern> = [
 function * generateLinesOfAttack(
     board: Board, 
     defender: Player, 
-    target: PositionName)
+    target: Square)
     : IterableIterator<GridCoordinates[]>
 {
     if(!target){
@@ -59,7 +59,7 @@ function * generateLinesOfAttack(
     }
     const attacker = otherPlayer(defender);
     let attackPatterns = attacker === 'Black' ? blackAttackPatterns : whiteAttackPatterns;
-    const attackLines = new Map<PositionName, GridCoordinates[]>();
+    const attackLines = new Map<Square, GridCoordinates[]>();
 
     for(let attackPattern of attackPatterns){
         const { vectors, limit, canAttackLikeThis} = attackPattern;

@@ -4,14 +4,14 @@ import { nextCastlingPreclusions }  from 'logic/board';
 import { Board }  from 'logic/types/Board';
 import { Piece }  from 'logic/positions/piece';
 import { Player }  from 'logic/types/Player';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { BoardAnnotations }  from 'logic/types/Game';
 
 export const makeCapturedPieces = (
     board: Board, 
     prevCaptures: Array<Piece>, 
     defender: Player, 
-    moveTo: PositionName
+    moveTo: Square
 ) : Array<Piece> => {
     
     if (playerAt(board, moveTo) !== defender) {
@@ -31,8 +31,8 @@ function nextBoardAnnotations(
     previousBoard: Board,
     currentBoard: Board,
     previousAnnotations: BoardAnnotations,  
-    pieceMovedFromPosition: PositionName, 
-    pieceMovedToPosition: PositionName
+    pieceMovedFromPosition: Square, 
+    pieceMovedToPosition: Square
 ): BoardAnnotations {
     const { castlingPreclusions: prevCastlingPreclusions } = previousAnnotations;
     const castlingPreclusions = nextCastlingPreclusions(pieceMovedFromPosition, prevCastlingPreclusions);

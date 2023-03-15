@@ -9,13 +9,13 @@ import {
 } from 'logic/positions';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 
 function pawnCanMove (
         board: Board, 
-        from: PositionName, 
-        to: PositionName, 
-        enPassantSquare: PositionName | null)
+        from: Square, 
+        to: Square, 
+        enPassantSquare: Square | null)
     : boolean {
 
     const player = playerAt(board, from);

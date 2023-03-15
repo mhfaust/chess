@@ -1,13 +1,13 @@
 import { move }  from 'logic/board';
 import { isInCheck }  from 'logic/check';
 import { playerAt }  from 'logic/positions';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 
 function movesIntoCheck(
     board: Board, 
-    moveFrom: PositionName, 
-    moveTo: PositionName)
+    moveFrom: Square, 
+    moveTo: Square)
     : boolean {
    
     const player = playerAt(board, moveFrom);

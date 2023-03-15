@@ -2,7 +2,7 @@ import { rank, file }  from 'logic/positions';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import COORDS from 'logic/positions/coordinates';
 
-export const positionNames = [
+export const squares = [
     'a1', 'a2', 'a3', 'a4', 'a5', 'a6', 'a7', 'a8',
     'b1', 'b2', 'b3', 'b4', 'b5', 'b6', 'b7', 'b8',
     'c1', 'c2', 'c3', 'c4', 'c5', 'c6', 'c7', 'c8',
@@ -15,19 +15,19 @@ export const positionNames = [
 
 const c = ['dark', 'light'] as const;
 type C = typeof c[number];
-const colors = positionNames
+const colors = squares
     .flatMap(name => name)
-    .reduce<Map<PositionName, C>>((map, positionName) => {
+    .reduce<Map<Square, C>>((map, positionName) => {
         const [i, j] = COORDS[positionName];
         const color = c[(i + j) % 2];
         return map.set(positionName, color);
     }, new Map());
 
-export const squareColor = (positionName: PositionName) => colors.get(positionName);
+export const squareColor = (positionName: Square) => colors.get(positionName);
 
-export type PositionName = typeof positionNames[number];
+export type Square = typeof squares[number];
 
-const grid: PositionName[][] = [
+const grid: Square[][] = [
     ['a1','a2','a3','a4','a5','a6','a7','a8',],
     ['b1','b2','b3','b4','b5','b6','b7','b8',],
     ['c1','c2','c3','c4','c5','c6','c7','c8',],
@@ -38,7 +38,7 @@ const grid: PositionName[][] = [
     ['h1','h2','h3','h4','h5','h6','h7','h8',],
 ]
 
-function positionName (position: GridCoordinates): PositionName | null {
+function positionName (position: GridCoordinates): Square | null {
     return grid[position[0]]?.[position[1]] ?? null;
 }
 

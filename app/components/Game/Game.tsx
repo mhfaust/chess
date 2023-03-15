@@ -2,7 +2,7 @@
 
 import Grid from 'app/components/Grid/Grid';
 import { useOldGameStore } from 'app/components/Game/oldGameStore';
-import { PositionName } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/positionName';
 import { canMoveTo } from 'logic/moves';
 import { otherPlayer, playerAt } from 'logic/positions';
 import Captures from 'app/components/Captures';
@@ -50,7 +50,7 @@ export default function Game() {
       enPassantSquares.get(currentBoard) 
     ) || undefined;
 
-  const handleClickSquare = (clickedSquare: PositionName) => {
+  const handleClickSquare = (clickedSquare: Square) => {
     const playerAtClicked = playerAt(currentBoard, clickedSquare);
 
     if (selectedSquare && selectedSquare === clickedSquare){

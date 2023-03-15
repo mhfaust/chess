@@ -6,18 +6,18 @@ import {
 import { kingVectors }  from 'logic/constants/move-vectors'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 import areEmpty from 'logic/moves/areEmpty';
 import { isInCheck } from 'logic/check';
 
-const emptySet = new Set<PositionName>();
+const emptySet = new Set<Square>();
 
 function kingMoves (
     board: Board, 
-    kingFrom: PositionName, 
+    kingFrom: Square, 
     castlingPreclusions: CastlingPreclusions
-): Set<PositionName> {
+): Set<Square> {
 
     const player = playerAt(board, kingFrom);
     if(!player){
@@ -31,7 +31,7 @@ function kingMoves (
             .filter(targetPosition => isUnOccupiedByPlayer(board, targetPosition!, player))
             .filter(kingTo => !movesIntoCheck(board, kingFrom, kingTo!))
         )
-    ) as Set<PositionName>;
+    ) as Set<Square>;
 
     //finish & don't look for castling moves if they're in check:
     if(isInCheck(board, player)){

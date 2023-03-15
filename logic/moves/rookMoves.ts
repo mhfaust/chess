@@ -6,17 +6,17 @@ import {
     otherPlayer,  
 } from 'logic/positions';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 
-function rook(board: Board, moveFrom: PositionName): Set<PositionName> {
+function rook(board: Board, moveFrom: Square): Set<Square> {
     
     const player = playerAt(board, moveFrom);
     if (!player){
         return new Set();
     }
     const directions = [[0,1], [0,-1], [1,0], [-1,0]];
-    const legalMoves : Array<PositionName> = [];
+    const legalMoves : Array<Square> = [];
 
     directions.forEach((direction) => {
         let examinedPosition = displaceTo(moveFrom, direction);

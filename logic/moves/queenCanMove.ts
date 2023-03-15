@@ -1,13 +1,13 @@
 import {
     rookCanMove,
     bishopCanMove } from 'logic/moves';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import { Board }  from 'logic/types/Board';
 
 function queenCanMove (
     board: Board, 
-    fromPosition: PositionName, 
-    toPosition: PositionName, 
+    fromPosition: Square, 
+    toPosition: Square, 
 ): boolean {
     
     return rookCanMove(board, fromPosition, toPosition)

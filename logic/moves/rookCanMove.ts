@@ -8,12 +8,12 @@ import {
     
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 
 function rookCanMove (
     board: Board, 
-    from: PositionName, 
-    to: PositionName, 
+    from: Square, 
+    to: Square, 
 ) : boolean {
 
     if(!isOnBoard(to)){

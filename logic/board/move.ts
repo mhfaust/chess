@@ -1,6 +1,6 @@
 import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/positions';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
 import COORDS from 'logic/positions/coordinates';
 import { Piece } from 'logic/positions/piece';
@@ -8,7 +8,7 @@ import { shorthand } from 'logic/positions/pieces-shorthand';
 import isPawn from 'logic/pieces/isPawn';
 import textRender from './textRender';
 
-const castlings: Record<string, [PositionName, PositionName] | undefined> = {
+const castlings: Record<string, [Square, Square] | undefined> = {
     'White King-e1c1': ['a1', 'd1'],
     'White King-e1g1': ['h1', 'f1'],
     'Black King-e8c8': ['a8', 'd8'],
@@ -22,9 +22,9 @@ const cache = new Map<Board, Map<string, MoveTuple>>();
 /** Does not validate the move (to may be occupied, may be in check, etc.) */
 function move ( 
     previousBoard: Board, 
-    from: PositionName, 
-    to: PositionName,
-    enPassantSquare: PositionName | null,
+    from: Square, 
+    to: Square,
+    enPassantSquare: Square | null,
     promoteTo?: Piece,
 ) : MoveTuple {
 

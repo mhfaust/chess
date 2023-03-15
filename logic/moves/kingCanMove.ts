@@ -2,15 +2,15 @@ import { rank, file, playerAt, pieceAt }  from 'logic/positions';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 import areEmpty from 'logic/moves/areEmpty';
 import { isInCheck } from 'logic/check';
 
 
 function kingCanMove (
     board: Board, 
-    from: PositionName, 
-    to: PositionName, 
+    from: Square, 
+    to: Square, 
     castlingPreclusions: CastlingPreclusions
 ) {
 

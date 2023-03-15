@@ -1,5 +1,5 @@
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 
 const castleAndKingStartsArray = [
     'a1', // White Rook
@@ -26,7 +26,7 @@ const addPreclusions: Record<CastleAndKingStarts, AddPreclusions> = {
 }
 
 function nextCastlingPreclusions(
-    movedFrom: PositionName,
+    movedFrom: Square,
     prev?: CastlingPreclusions
 ): CastlingPreclusions {
 

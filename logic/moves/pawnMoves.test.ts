@@ -1,9 +1,9 @@
 import pawnMoves from './pawnMoves';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/positions/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 
-type TestCases = { pawnPosition: PositionName, attackedPositions: PositionName[] }[];
+type TestCases = { pawnPosition: Square, attackedPositions: Square[] }[];
 
 const pawn1Board: Board = [
     /*         1  2  3  4  5  6  7  8  */

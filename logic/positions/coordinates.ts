@@ -1,11 +1,11 @@
-import { PositionName }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/positionName';
 
 type RankIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 type FileIndex =  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 
 const { freeze } = Object;
 
-const COORDS: Record<PositionName, readonly [FileIndex, RankIndex]> = {
+const COORDS: Record<Square, readonly [FileIndex, RankIndex]> = {
     a1: freeze([0, 0]),
     a2: freeze([0, 1]),
     a3: freeze([0, 2]),
