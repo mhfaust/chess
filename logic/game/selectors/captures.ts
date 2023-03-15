@@ -1,7 +1,7 @@
 import { pieceAt } from 'logic/positions';
 import { Piece } from 'logic/positions/piece';
 import { Board } from 'logic/types/Board';
-import { GameState } from 'logic/game/gameState';
+import { ChessGame } from 'logic/game/gameState';
 import { boards, currentBoard } from './boards';
 import { epSquare } from './enPassant';
 import { moves } from './moves';
@@ -18,7 +18,7 @@ const noCaptures: Captures = {
 
 const boardCache = new Map<Board, Captures>();
 
-export const captures = (state: Pick<GameState, 'gamePlay'>) => {
+export const captures = (state: Pick<ChessGame, 'gamePlay'>) => {
 
   const gameBoards = boards(state);
   const gameMoves = moves(state);
@@ -63,7 +63,7 @@ export const captures = (state: Pick<GameState, 'gamePlay'>) => {
   }, noCaptures);
 };
 
-export const currentCaptures = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
+export const currentCaptures = (state: ChessGame) => {
   const board = currentBoard(state);
   captures(state);// <-- just running this to generate board-cache.
   return boardCache.get(board)!;

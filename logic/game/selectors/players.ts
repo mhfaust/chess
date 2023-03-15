@@ -1,10 +1,13 @@
-import { GameState } from 'logic/game/gameState';
+import { ChessGame } from 'logic/game/gameState';
+import { Player } from 'logic/types/Player';
 import boardCursor from './boardCursor';
 
-const currentPlayer = (game: GameState, turn: number = -1) => {
+const players = ['Black', 'White'] as const;
+
+const currentPlayer = (game: ChessGame): Player => {
 
   const ord = boardCursor(game) % 2;
-  return ['Black', 'White'][ord]; 
+  return players[ord]; 
 };
 
 export default currentPlayer;

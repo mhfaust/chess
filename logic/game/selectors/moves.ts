@@ -1,7 +1,7 @@
 import { Piece } from 'logic/positions/piece';
 import { PositionName } from 'logic/positions/positionName';
 import { Player } from 'logic/types/Player';
-import { GameState } from 'logic/game/gameState';
+import { ChessGame } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 
 export type NormalMove = [PositionName, PositionName, Piece | undefined];
@@ -22,7 +22,7 @@ const cache = new Map<string, (Move)[]>();
 
 const noMoves: Move[] = [];
 
-export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
+export const moves = (state: Pick<ChessGame, 'gamePlay'>): Move[] => {
 
   if(!state.gamePlay) {
     return noMoves;
@@ -64,7 +64,7 @@ export const moves = (state: Pick<GameState, 'gamePlay'>): Move[] => {
  * @param state 
  * @returns 
  */
-export const currentMove = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
+export const currentMove = (state: ChessGame) => {
   const cursor = boardCursor(state)
   return moves(state)[cursor - 1];
 }

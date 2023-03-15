@@ -1,7 +1,7 @@
 'use client'
 
 import Grid from 'app/components/Grid/Grid';
-import { useGameStore } from 'app/components/Game/gameStore';
+import { useOldGameStore } from 'app/components/Game/oldGameStore';
 import { PositionName } from 'logic/positions/positionName';
 import { canMoveTo } from 'logic/moves';
 import { otherPlayer, playerAt } from 'logic/positions';
@@ -30,7 +30,7 @@ export default function Game() {
     enPassantSquares,
     capturedBlacks,
     capturedWhites
-  } = useGameStore();
+  } = useOldGameStore();
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
     ((p: Piece ) => void) | null

@@ -25,7 +25,7 @@ export type OldGameState =   {
   makeNextMove: (from: PositionName, to: PositionName, promoteTo?: Piece, captureEp?: boolean) => void;
 }
 
-export const useGameStore = create<OldGameState>((set) => {
+export const useOldGameStore = create<OldGameState>((set) => {
   
   const startBoard: Board = initialBoard();
 

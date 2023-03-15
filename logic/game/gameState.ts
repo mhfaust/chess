@@ -1,9 +1,13 @@
+import { coordinates } from 'logic/positions';
 import { Piece } from 'logic/positions/piece';
 import { PositionName } from 'logic/positions/positionName';
 
-export type GameState =   {
+export type ChessGame = {
   gamePlay: string;
   boardCursor: number;
+}
+coordinates
+export type GameView =  ChessGame & {
   selectedSquare: PositionName | null;
   toggleSelectedSquare: (
     positionName: PositionName | null
@@ -14,5 +18,4 @@ export type GameState =   {
     promoteTo?: Piece, 
     captureEp?: boolean
   ) => void;
-
 }

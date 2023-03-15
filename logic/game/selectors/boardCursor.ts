@@ -1,7 +1,7 @@
-import { GameState } from 'logic/game/gameState';
+import { ChessGame } from 'logic/game/gameState';
 import { boards } from './boards';
 
-const boardCursor = (game: Pick<GameState, 'gamePlay' | 'boardCursor'>) => {
+const boardCursor = (game: ChessGame) => {
   return game.boardCursor ?? boards(game).length - 1;
 }
 

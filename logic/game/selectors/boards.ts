@@ -8,7 +8,7 @@ import nextBoard from 'logic/board/move';
 import { epSquare } from 'logic/game/selectors/enPassant';
 import textRender from 'logic/board/textRender';
 import boardCursor from 'logic/game/selectors/boardCursor';
-import { GameState } from 'logic/game/gameState';
+import { ChessGame } from 'logic/game/gameState';
 
 const emptyPreclusions = new Set<RookStartPosition>();
 
@@ -16,7 +16,7 @@ const cache = new Map<string, Board[]>([
   ['', [firstBoard]]
 ]);
 
-export const boards = (game: Pick<GameState, 'gamePlay'>): Board[] => {
+export const boards = (game: Pick<ChessGame, 'gamePlay'>): Board[] => {
 
   if(cache.has(game.gamePlay)){
     return cache.get(game.gamePlay)!;
@@ -51,12 +51,12 @@ export const boards = (game: Pick<GameState, 'gamePlay'>): Board[] => {
   return boardsArray;
 };
 
-export const currentBoard = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>): Board => {
+export const currentBoard = (state: ChessGame): Board => {
   const cursor = boardCursor(state)
   return boards(state)[cursor];
 };
 
-export const previousBoard = (state: Pick<GameState, 'gamePlay' | 'boardCursor'>): Board | null => {
+export const previousBoard = (state: ChessGame): Board | null => {
   const cursor = boardCursor(state)
   if(cursor === 0) {
     return null;
