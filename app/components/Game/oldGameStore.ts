@@ -21,7 +21,7 @@ export type OldGameState =   {
   enPassantSquares: Map<Board, Square | null>;
   capturedBlacks: Map<Board, Piece[]>;
   capturedWhites: Map<Board, Piece[]>;
-  toggleSelectedSquare: (PositionName: Square | null) => void;
+  toggleSelectedSquare: (square: Square | null) => void;
   makeNextMove: (from: Square, to: Square, promoteTo?: Piece, captureEp?: boolean) => void;
 }
 
