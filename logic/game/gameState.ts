@@ -10,7 +10,7 @@ coordinates
 export type GameView =  ChessGame & {
   selectedSquare: Square | null;
   toggleSelectedSquare: (
-    positionName: Square | null
+    square: Square | null
   ) => void;
   makeNextMove: (
     from: Square, 

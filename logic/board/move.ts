@@ -77,8 +77,8 @@ function move (
     }
 
     if(isEpCapture){
-        const capturedPawnPosition = pawnSquareFromEpSquare.get(to)!;
-        const [file, rank] = COORDS[capturedPawnPosition];
+        const capturedPawnSquare = pawnSquareFromEpSquare.get(to)!;
+        const [file, rank] = COORDS[capturedPawnSquare];
         newBoard[file][rank] = null; //mutate
     }
 

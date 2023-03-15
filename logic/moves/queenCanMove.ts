@@ -6,12 +6,12 @@ import { Board }  from 'logic/types/Board';
 
 function queenCanMove (
     board: Board, 
-    fromPosition: Square, 
-    toPosition: Square, 
+    fromSquare: Square, 
+    toSquare: Square, 
 ): boolean {
     
-    return rookCanMove(board, fromPosition, toPosition)
-        || bishopCanMove(board, fromPosition, toPosition);
+    return rookCanMove(board, fromSquare, toSquare)
+        || bishopCanMove(board, fromSquare, toSquare);
 }
 
 export default queenCanMove;

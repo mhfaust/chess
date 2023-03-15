@@ -24,7 +24,7 @@ function knight(
         knightVectors
             .map(vector => displaceTo(moveFrom, vector))
             .filter(i => i !== null)
-            .filter(targetPosition => isUnOccupiedByPlayer(board, targetPosition!, player))
+            .filter(targetSquare => isUnOccupiedByPlayer(board, targetSquare!, player))
             .filter(position => !movesIntoCheck(board, moveFrom, position!))
     ) as Set<Square>;
 }

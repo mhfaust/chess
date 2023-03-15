@@ -2,7 +2,7 @@
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { kingMoves }  from 'logic/moves';
 import { Board }  from 'logic/types/Board';
-import { RookStartPosition } from 'logic/types/CastlingPreclusions';
+import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 
 
 describe('kingMoves', () => {
@@ -39,7 +39,7 @@ describe('kingMoves', () => {
         ];
         const expectedLegalMoves = new Set(['c6','c7','c8','d6','d8','e6','e7','e8']);
 
-        const foundLegalMoves = kingMoves(board, 'd7', new Set<RookStartPosition>(['a1', 'h1', 'a8', 'h8']));
+        const foundLegalMoves = kingMoves(board, 'd7', new Set<RookStartSquare>(['a1', 'h1', 'a8', 'h8']));
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });
@@ -85,7 +85,7 @@ describe('kingMoves', () => {
     
         it('White king cannot castle if precluded', () => {
 
-            const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartPosition>(['h1']));
+            const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartSquare>(['h1']));
     
             expect(foundLegalMoves).not.toContain('g1')
         });  
@@ -106,7 +106,7 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
     
-        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartPosition>(['a8', 'h8']));
+        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartSquare>(['a8', 'h8']));
 
         expect(foundLegalMoves).not.toContain('g1')
     });
@@ -125,7 +125,7 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartPosition>(['a8', 'h8']));
+        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartSquare>(['a8', 'h8']));
 
         expect(foundLegalMoves).not.toContain('g1')
     });

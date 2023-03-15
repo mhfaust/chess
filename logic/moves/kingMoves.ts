@@ -28,7 +28,7 @@ function kingMoves (
         Array.from(kingVectors
             .map(vector => displaceTo(kingFrom, vector))
             .filter(i => i !== null)
-            .filter(targetPosition => isUnOccupiedByPlayer(board, targetPosition!, player))
+            .filter(targetSquare => isUnOccupiedByPlayer(board, targetSquare!, player))
             .filter(kingTo => !movesIntoCheck(board, kingFrom, kingTo!))
         )
     ) as Set<Square>;

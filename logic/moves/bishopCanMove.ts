@@ -11,21 +11,21 @@ import { Square }  from 'logic/squares/square';
 
 function bishopCanMove (
     board: Board, 
-    fromPosition: Square, 
-    toPosition: Square)
+    fromSquare: Square, 
+    toSquare: Square)
     : boolean {
 
-    if (!isOnBoard(toPosition)) {
+    if (!isOnBoard(toSquare)) {
         return false;
     }
-    const thisPlayer = playerAt(board, toPosition);
+    const thisPlayer = playerAt(board, toSquare);
 
     //can't move there if it's occupied by one of player's own pieces:
-    if (thisPlayer === playerAt(board, fromPosition))
+    if (thisPlayer === playerAt(board, fromSquare))
         return false;
     
-    const fileMove = file(toPosition) - file(fromPosition);
-    const rankMove = rank(toPosition) - rank(fromPosition);
+    const fileMove = file(toSquare) - file(fromSquare);
+    const rankMove = rank(toSquare) - rank(fromSquare);
 
     //if neither file and rank were changed then
     //it's not a valid bishop move:
@@ -38,17 +38,17 @@ function bishopCanMove (
 
     const moveVector = [Math.sign(fileMove),  Math.sign(rankMove)]
     //start checking one step out from the move-from position
-    let step = displaceTo(fromPosition, moveVector);
+    let step = displaceTo(fromSquare, moveVector);
 
     //and keep checking until we run into a piece or the move-to position:
-    while(step && step !== toPosition){
+    while(step && step !== toSquare){
         if(isOccupied(board, step)){
             return false;
         }
         step = displaceTo(step, moveVector);
     }
 
-    if(movesIntoCheck(board, fromPosition, toPosition)){
+    if(movesIntoCheck(board, fromSquare, toSquare)){
         return false;
     }
 

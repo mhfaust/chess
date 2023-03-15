@@ -49,16 +49,16 @@ function pawn(
 
     //attack moves
     moveVectors.forEach(vector => {
-        const attackedPosition = displaceTo(moveFrom, vector);
-        if(!attackedPosition){
+        const attackedSquare = displaceTo(moveFrom, vector);
+        if(!attackedSquare){
             return;
         }
         if(
-            isOccupiedByPlayer(board, attackedPosition, opponent)
-            || (attackedPosition === enPassantSquare)
+            isOccupiedByPlayer(board, attackedSquare, opponent)
+            || (attackedSquare === enPassantSquare)
         ){
-                if(moveNotInCheck(attackedPosition)){
-                    legalMoves.add(attackedPosition);
+                if(moveNotInCheck(attackedSquare)){
+                    legalMoves.add(attackedSquare);
                 }
         }
     });

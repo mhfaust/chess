@@ -31,26 +31,26 @@ function nextBoardAnnotations(
     previousBoard: Board,
     currentBoard: Board,
     previousAnnotations: BoardAnnotations,  
-    pieceMovedFromPosition: Square, 
-    pieceMovedToPosition: Square
+    pieceMovedFromSquare: Square, 
+    pieceMovedToSquare: Square
 ): BoardAnnotations {
     const { castlingPreclusions: prevCastlingPreclusions } = previousAnnotations;
-    const castlingPreclusions = nextCastlingPreclusions(pieceMovedFromPosition, prevCastlingPreclusions);
+    const castlingPreclusions = nextCastlingPreclusions(pieceMovedFromSquare, prevCastlingPreclusions);
     
-    const lastPlayerMoved = playerAt(previousBoard, pieceMovedFromPosition);
-    const lastPieceMoved = pieceAt(previousBoard, pieceMovedFromPosition)
+    const lastPlayerMoved = playerAt(previousBoard, pieceMovedFromSquare);
+    const lastPieceMoved = pieceAt(previousBoard, pieceMovedFromSquare)
     const nextPlayer = otherPlayer(lastPlayerMoved || 'Black');
     const nextTurnIsInCheck = isInCheck(currentBoard, nextPlayer);
     const nextTurnIsCheckmate = isCheckmate(currentBoard, nextPlayer);
-    const capturedBlackPieces = makeCapturedPieces(previousBoard, previousAnnotations.capturedBlackPieces, 'Black', pieceMovedToPosition);
-    const capturedWhitePieces = makeCapturedPieces(previousBoard, previousAnnotations.capturedWhitePieces, 'White', pieceMovedToPosition);
+    const capturedBlackPieces = makeCapturedPieces(previousBoard, previousAnnotations.capturedBlackPieces, 'Black', pieceMovedToSquare);
+    const capturedWhitePieces = makeCapturedPieces(previousBoard, previousAnnotations.capturedWhitePieces, 'White', pieceMovedToSquare);
         
     // const next : BoardAnnotations = {
     const next: BoardAnnotations   = {
         castlingPreclusions,
         lastPieceMoved,
-        lastMoveFrom: pieceMovedFromPosition,
-        lastMoveTo: pieceMovedToPosition,
+        lastMoveFrom: pieceMovedFromSquare,
+        lastMoveTo: pieceMovedToSquare,
         currentPlayer: nextPlayer,
         isInCheck: nextTurnIsInCheck,
         isCheckmate: nextTurnIsCheckmate,

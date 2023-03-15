@@ -3,7 +3,7 @@ import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-sh
 import { Board }  from 'logic/types/Board';
 
 describe('isInCheck: true', () => {
-    it('White King  at d4 is in check from Black King at PIECE_POSITION', () => {
+    it('White King  at d4 is in check from Black King at PIECE_Square', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
@@ -20,7 +20,7 @@ describe('isInCheck: true', () => {
 
     });
 
-    it('White King  at d4 is in check from Black King at PIECE_POSITION', () => {
+    it('White King  at d4 is in check from Black King at PIECE_Square', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
@@ -37,7 +37,7 @@ describe('isInCheck: true', () => {
 
     });
 
-    it('White King  at d4 is in check from Black King at PIECE_POSITION', () => {
+    it('White King  at d4 is in check from Black King at PIECE_Square', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],

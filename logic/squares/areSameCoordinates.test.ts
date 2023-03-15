@@ -1,6 +1,6 @@
 import areSameCoordinates from 'logic/squares/areSameCoordinates'
 
-describe('areSamePositions', () => {
+describe('areSameSquares', () => {
     it('finds two positions are the same, even though their objects by reference are different', () => {
         const p1 = [3,3];
         const p2 = [3,3];

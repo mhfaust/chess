@@ -3,7 +3,7 @@ import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-sh
 import { Board }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
 
-type TestCases = { pawnPosition: Square, attackedPositions: Square[] }[];
+type TestCases = { pawnSquare: Square, attackedSquares: Square[] }[];
 
 const pawn1Board: Board = [
     /*         1  2  3  4  5  6  7  8  */
@@ -20,23 +20,23 @@ const pawn1Board: Board = [
 describe('white pawn', () => {
 
     const testCases: TestCases = [
-        { pawnPosition: 'a2', attackedPositions: ['a3', 'a4'] },
-        { pawnPosition: 'b2', attackedPositions: ['b3'] },
-        { pawnPosition: 'c3', attackedPositions: ['c4', 'b4'] },
-        { pawnPosition: 'd4', attackedPositions: ['c5', 'd5', 'e5'] },
-        { pawnPosition: 'e2', attackedPositions: ['e3', 'e4'] },
-        { pawnPosition: 'f2', attackedPositions: ['f3', 'f4'] },
-        { pawnPosition: 'g2', attackedPositions: ['g3', 'g4'] },
-        { pawnPosition: 'h4', attackedPositions: ['g5'] },
+        { pawnSquare: 'a2', attackedSquares: ['a3', 'a4'] },
+        { pawnSquare: 'b2', attackedSquares: ['b3'] },
+        { pawnSquare: 'c3', attackedSquares: ['c4', 'b4'] },
+        { pawnSquare: 'd4', attackedSquares: ['c5', 'd5', 'e5'] },
+        { pawnSquare: 'e2', attackedSquares: ['e3', 'e4'] },
+        { pawnSquare: 'f2', attackedSquares: ['f3', 'f4'] },
+        { pawnSquare: 'g2', attackedSquares: ['g3', 'g4'] },
+        { pawnSquare: 'h4', attackedSquares: ['g5'] },
     ] ;
 
     testCases.forEach((testCase) => {
-        it(`provides all possible moves from pawn at ${(testCase.pawnPosition)} on pawn1board: `, () => {
+        it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
 
             const board =  pawn1Board;
-            const foundMoves = pawnMoves(board, testCase.pawnPosition, null);
+            const foundMoves = pawnMoves(board, testCase.pawnSquare, null);
     
-            expect(foundMoves).toEqual(new Set(testCase.attackedPositions));
+            expect(foundMoves).toEqual(new Set(testCase.attackedSquares));
         })
     });
 
@@ -45,23 +45,23 @@ describe('white pawn', () => {
 describe('black pawn', () => {
 
     const testCases: TestCases = [
-        { pawnPosition: 'a7', attackedPositions: ['a6', 'a5'] },
-        { pawnPosition: 'b4', attackedPositions: ['b3', 'c3'] },
-        { pawnPosition: 'c5', attackedPositions: ['c4', 'd4'] },
-        { pawnPosition: 'd6', attackedPositions: ['d5'] },
-        { pawnPosition: 'e5', attackedPositions: ['d4', 'e4'] },
-        { pawnPosition: 'f7', attackedPositions: ['f6', 'f5'] },
-        { pawnPosition: 'g5', attackedPositions: ['g4', 'h4'] },
-        { pawnPosition: 'h5', attackedPositions: [] },
+        { pawnSquare: 'a7', attackedSquares: ['a6', 'a5'] },
+        { pawnSquare: 'b4', attackedSquares: ['b3', 'c3'] },
+        { pawnSquare: 'c5', attackedSquares: ['c4', 'd4'] },
+        { pawnSquare: 'd6', attackedSquares: ['d5'] },
+        { pawnSquare: 'e5', attackedSquares: ['d4', 'e4'] },
+        { pawnSquare: 'f7', attackedSquares: ['f6', 'f5'] },
+        { pawnSquare: 'g5', attackedSquares: ['g4', 'h4'] },
+        { pawnSquare: 'h5', attackedSquares: [] },
     ] ;
 
     testCases.forEach((testCase) => {
-        it(`provides all possible moves from pawn at ${(testCase.pawnPosition)} on pawn1board: `, () => {
+        it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
 
             const board =  pawn1Board;
-            const foundMoves = pawnMoves(board, testCase.pawnPosition, null);
+            const foundMoves = pawnMoves(board, testCase.pawnSquare, null);
     
-            expect(foundMoves).toEqual(new Set(testCase.attackedPositions));
+            expect(foundMoves).toEqual(new Set(testCase.attackedSquares));
         })
     });
 

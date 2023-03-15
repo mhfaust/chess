@@ -5,20 +5,20 @@ import { Square }  from 'logic/squares/square';
 
 function knightCanMove (
     board: Board, 
-    fromPosition: Square, 
-    toPosition: Square, 
+    fromSquare: Square, 
+    toSquare: Square, 
   ) {
 
-    if(!isOnBoard(toPosition))
+    if(!isOnBoard(toSquare))
         return false;
             
     //can't move there if it's occupied by one of player's own pieces:
-    if (playerAt(board, toPosition) === playerAt(board, fromPosition))
+    if (playerAt(board, toSquare) === playerAt(board, fromSquare))
         return false;
         
     const rectangularAreaOfDisplacement = Math.abs(
-        (file(fromPosition) - file(toPosition)) * 
-        (rank(fromPosition) - rank(toPosition))
+        (file(fromSquare) - file(toSquare)) * 
+        (rank(fromSquare) - rank(toSquare))
     );
 
     //Given the discrete nature of board moves, 
@@ -27,7 +27,7 @@ function knightCanMove (
     if(rectangularAreaOfDisplacement !== 2)
         return false;
 
-    if(movesIntoCheck(board, fromPosition, toPosition)){
+    if(movesIntoCheck(board, fromSquare, toSquare)){
         return false;
     }
 

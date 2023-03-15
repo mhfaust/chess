@@ -17,7 +17,7 @@ describe('queen', () => {
             /*  H  */ [__,__,__,__,__,__,__,__], 
             ];
         
-        const expectedattackedPositions = new Set([
+        const expectedattackedSquares = new Set([
             'c3',
             'c1',
             'd2',
@@ -34,9 +34,9 @@ describe('queen', () => {
             'a4'
         ])
 
-        const foundattackedPositions = queenMoves(board, 'c2');
+        const foundattackedSquares = queenMoves(board, 'c2');
 
-        expect(foundattackedPositions).toEqual(expectedattackedPositions)
+        expect(foundattackedSquares).toEqual(expectedattackedSquares)
     });
 
     it('does not include moves putting self in check', () => {

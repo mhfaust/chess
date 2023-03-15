@@ -16,13 +16,13 @@ const c = ['dark', 'light'] as const;
 type C = typeof c[number];
 const colors = squares
     .flatMap(name => name)
-    .reduce<Map<Square, C>>((map, positionName) => {
-        const [i, j] = COORDS[positionName];
+    .reduce<Map<Square, C>>((map, square) => {
+        const [i, j] = COORDS[square];
         const color = c[(i + j) % 2];
-        return map.set(positionName, color);
+        return map.set(square, color);
     }, new Map());
 
-export const squareColor = (positionName: Square) => colors.get(positionName);
+export const squareColor = (square: Square) => colors.get(square);
 
 export type Square = typeof squares[number];
 

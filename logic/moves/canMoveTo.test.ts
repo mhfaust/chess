@@ -1,7 +1,7 @@
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import canMoveTo  from 'logic/moves/canMoveTo';
 import { Board }  from 'logic/types/Board';
-import { RookStartPosition } from 'logic/types/CastlingPreclusions';
+import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 
 describe('canMoveTo (Bishop)', () => {
     
@@ -38,7 +38,7 @@ describe('canMoveTo (King)', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        expect(canMoveTo(board, 'e1', 'g1', new Set<RookStartPosition>(['h8', 'a8']))).toBe(false)
+        expect(canMoveTo(board, 'e1', 'g1', new Set<RookStartSquare>(['h8', 'a8']))).toBe(false)
     
 });
 

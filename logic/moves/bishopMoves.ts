@@ -27,14 +27,14 @@ function bishop(
 
     bishopVectors.forEach((vector: MoveVector): void => {
 
-        let examinedPosition = displaceTo(moveFrom, vector);
+        let examinedSquare = displaceTo(moveFrom, vector);
 
-        while(examinedPosition && isUnOccupied(board, examinedPosition)){
-            legalMoves.push(examinedPosition);
-            examinedPosition = displaceTo(examinedPosition, vector);
+        while(examinedSquare && isUnOccupied(board, examinedSquare)){
+            legalMoves.push(examinedSquare);
+            examinedSquare = displaceTo(examinedSquare, vector);
         }
-        if(examinedPosition && isOccupiedByPlayer(board, examinedPosition, otherPlayer(player))){
-            legalMoves.push(examinedPosition);
+        if(examinedSquare && isOccupiedByPlayer(board, examinedSquare, otherPlayer(player))){
+            legalMoves.push(examinedSquare);
         }
     });
 

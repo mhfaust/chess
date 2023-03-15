@@ -66,21 +66,21 @@ function * generateLinesOfAttack(
 
         for(let vector of vectors){   
             const attackLine: GridCoordinates[] = [];
-            let examinedPosition = displaceFrom(target, vector);
+            let examinedSquare = displaceFrom(target, vector);
             let step = 0;
-            while (examinedPosition && ++step) {
-                attackLine.push(COORDS[examinedPosition]);
-                const pieceThere = pieceAt(board, examinedPosition);
+            while (examinedSquare && ++step) {
+                attackLine.push(COORDS[examinedSquare]);
+                const pieceThere = pieceAt(board, examinedSquare);
                 
                 if (pieceThere) {
                     
-                    if (playerAt(board, examinedPosition) === attacker
+                    if (playerAt(board, examinedSquare) === attacker
                         && canAttackLikeThis.has(pieceThere) 
-                        && !attackLines.has(examinedPosition)
-                        && (!isPawn(pieceThere) || canMoveTo(board, examinedPosition, target))
+                        && !attackLines.has(examinedSquare)
+                        && (!isPawn(pieceThere) || canMoveTo(board, examinedSquare, target))
                     ){
                         yield attackLine; 
-                        attackLines.set(examinedPosition, attackLine);
+                        attackLines.set(examinedSquare, attackLine);
                     } 
                     break; //found a piece, done with vector
                 }
@@ -88,7 +88,7 @@ function * generateLinesOfAttack(
                     break; //attack patten only goes one or two out (knight, pawn, or king). done with vector.
                 }
 
-                examinedPosition = displaceFrom(examinedPosition, vector);
+                examinedSquare = displaceFrom(examinedSquare, vector);
             }
         }
     }

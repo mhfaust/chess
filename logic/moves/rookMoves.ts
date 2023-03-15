@@ -19,16 +19,16 @@ function rook(board: Board, moveFrom: Square): Set<Square> {
     const legalMoves : Array<Square> = [];
 
     directions.forEach((direction) => {
-        let examinedPosition = displaceTo(moveFrom, direction);
+        let examinedSquare = displaceTo(moveFrom, direction);
 
-        while(examinedPosition && isUnOccupied(board, examinedPosition)){
-            legalMoves.push(examinedPosition);
-            examinedPosition = displaceTo(examinedPosition, direction);
+        while(examinedSquare && isUnOccupied(board, examinedSquare)){
+            legalMoves.push(examinedSquare);
+            examinedSquare = displaceTo(examinedSquare, direction);
         }
-        if (examinedPosition && 
-            isOccupiedByPlayer(board, examinedPosition, otherPlayer(player))
+        if (examinedSquare && 
+            isOccupiedByPlayer(board, examinedSquare, otherPlayer(player))
         ) {
-            legalMoves.push(examinedPosition);
+            legalMoves.push(examinedSquare);
         }
     });
 

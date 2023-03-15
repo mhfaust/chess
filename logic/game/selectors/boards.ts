@@ -3,14 +3,14 @@ import { Move, moves } from 'logic/game/selectors/moves';
 import { canMoveTo } from 'logic/moves';
 import { firstBoard } from 'logic/board/initialBoard';
 import { castling } from 'logic/game/selectors/castling';
-import { RookStartPosition } from 'logic/types/CastlingPreclusions';
+import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 import nextBoard from 'logic/board/move';
 import { epSquare } from 'logic/game/selectors/enPassant';
 import textRender from 'logic/board/textRender';
 import boardCursor from 'logic/game/selectors/boardCursor';
 import { ChessGame } from 'logic/game/gameState';
 
-const emptyPreclusions = new Set<RookStartPosition>();
+const emptyPreclusions = new Set<RookStartSquare>();
 
 const cache = new Map<string, Board[]>([
   ['', [firstBoard]]

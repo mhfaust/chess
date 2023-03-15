@@ -5,24 +5,24 @@ import { Player }  from 'logic/types/Player';
 import { Piece }  from 'logic/squares/piece';
 import { Square }  from 'logic/squares/square';
 
-export type PiecePosition = {
+export type PieceSquare = {
     position: Square;
     piece: Piece;
 }
-function allPlayerSquares(board: Board, player: Player): Array<PiecePosition>{
+function allPlayerSquares(board: Board, player: Player): Array<PieceSquare>{
     
-    const occupiedPositions: Array<PiecePosition> = [];
+    const occupiedSquares: Array<PieceSquare> = [];
     const allPlayerPieces = player === 'Black' ? BLACK_PIECES : WHITE_PIECES;
 
     board.forEach((file, i) => file.forEach((piece, j) => {
         if(piece && allPlayerPieces.has(piece)){
-            occupiedPositions.push({
+            occupiedSquares.push({
                 position: (square([i, j]) as Square),
                 piece
             });
         }
     }));
-    return occupiedPositions;
+    return occupiedSquares;
 }
 
 export default allPlayerSquares;

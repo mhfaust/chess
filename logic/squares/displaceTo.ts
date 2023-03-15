@@ -9,12 +9,12 @@ import { MoveVector } from 'logic/types/MoveVector';
 import square, { Square } from 'logic/squares/square';
     
 function displaceTo  (
-    currentPosition: Square, 
+    currentSquare: Square, 
     vector: MoveVector)
     : Square | null {
 
-    const newFile = file(currentPosition) + vector[0];
-    const newRank = rank(currentPosition) + vector[1];
+    const newFile = file(currentSquare) + vector[0];
+    const newRank = rank(currentSquare) + vector[1];
     const g: GridCoordinates = [newFile, newRank];
 
     return square(g);

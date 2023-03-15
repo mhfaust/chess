@@ -1,12 +1,12 @@
 import { firstBoard } from 'logic/board/initialBoard';
 import nextCastlingPreclusions from 'logic/board/nextCastlingPreclusions';
 import { Board } from 'logic/types/Board';
-import { CastlingPreclusions, RookStartPosition } from 'logic/types/CastlingPreclusions';
+import { CastlingPreclusions, RookStartSquare } from 'logic/types/CastlingPreclusions';
 import { ChessGame } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 import { moves } from './moves';
 
-const emptyPreclusions = new Set<RookStartPosition>();
+const emptyPreclusions = new Set<RookStartSquare>();
 
 const boardCache = new Map<Board, CastlingPreclusions>([
   [firstBoard, emptyPreclusions]
