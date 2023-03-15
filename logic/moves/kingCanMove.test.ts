@@ -23,8 +23,8 @@ describe('kingCanMove', () => {
 
         const tries: Square[] = ['d1', 'd2', 'e2', 'f2', 'f1']
 
-        tries.forEach(position => {
-            expect(kingCanMove(board, 'e1', position, noPreclusions)).toBe(false)
+        tries.forEach(square => {
+            expect(kingCanMove(board, 'e1', square, noPreclusions)).toBe(false)
         })
     });
 
@@ -47,8 +47,8 @@ describe('kingCanMove', () => {
             'f3', 'f4', 'f5'
         ];
 
-        tries.forEach(position => {
-            expect(kingCanMove(board, 'e4', position, noPreclusions)).toBe(true)
+        tries.forEach(square => {
+            expect(kingCanMove(board, 'e4', square, noPreclusions)).toBe(true)
         })
     });    
 

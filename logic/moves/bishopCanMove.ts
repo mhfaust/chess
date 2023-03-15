@@ -37,10 +37,10 @@ function bishopCanMove (
         return false;
 
     const moveVector = [Math.sign(fileMove),  Math.sign(rankMove)]
-    //start checking one step out from the move-from position
+    //start checking one step out from the move-from square
     let step = displaceTo(fromSquare, moveVector);
 
-    //and keep checking until we run into a piece or the move-to position:
+    //and keep checking until we run into a piece or the move-to square:
     while(step && step !== toSquare){
         if(isOccupied(board, step)){
             return false;

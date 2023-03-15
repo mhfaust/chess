@@ -5,9 +5,9 @@ import isInCheck from './isInCheck';
 
 const kings: [PieceOrEmpty, PieceOrEmpty] = ['Black King', 'White King'];
 
-const isPieceKingInCheck = (board: Board, position: Square) => {
-  const player = playerAt(board, position);
-  const piece = pieceAt(board, position);
+const isPieceKingInCheck = (board: Board, square: Square) => {
+  const player = playerAt(board, square);
+  const piece = pieceAt(board, square);
   if (!piece || !player || !kings.includes(piece) !){
     return false;
   }

@@ -84,10 +84,10 @@ function isCheckmate(
 
         while(!blockingMoveInfo.done){
             //This will be a line of grid-coordinates, starting
-            //one step away from the position on the check-line and 
+            //one step away from the square on the check-line and 
             //ending at a defender's piece...:
             const blockingMove: Array<GridCoordinates> = blockingMoveInfo.value;
-            //...so to get the moved piece's position, get the last coordinates from the 'line-of-attck'
+            //...so to get the moved piece's square, get the last coordinates from the 'line-of-attck'
             const defendingPieceMovesFrom = square(blockingMove[blockingMove.length -1]);
 
             
