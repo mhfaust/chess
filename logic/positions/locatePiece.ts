@@ -1,6 +1,6 @@
 import { pieceAt }  from 'logic/positions'
 import { Board }  from 'logic/types/Board';
-import square, { Square } from 'logic/positions/positionName';
+import square, { Square } from 'logic/positions/square';
 
 export type UniquePiece = 
     | 'White King' 

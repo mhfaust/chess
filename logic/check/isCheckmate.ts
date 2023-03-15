@@ -13,7 +13,7 @@ import { kingVectors }  from 'logic/constants/move-vectors';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import kingPosition  from 'logic/positions/kingPosition';
-import { Square } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/square';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { MoveVector } from 'logic/types/MoveVector';
 

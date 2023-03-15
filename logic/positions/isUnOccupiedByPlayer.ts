@@ -2,7 +2,7 @@ import playerAt from 'logic/positions/playerAt';
 import { isUnOccupied }  from 'logic/positions';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
-import { Square } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/square';
 
 function isUnOccupiedByPlayer (board: Board, position: Square, player: Player): boolean {
     if(isUnOccupied(board, position))

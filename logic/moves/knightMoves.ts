@@ -6,7 +6,7 @@ import {
 
 import { knightVectors }  from 'logic/constants/move-vectors'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import { Board }  from 'logic/types/Board';
 
 const emptySet = new Set<Square>();

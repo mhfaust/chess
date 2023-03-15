@@ -1,4 +1,4 @@
-import square  from 'logic/positions/positionName'
+import square  from 'logic/positions/square'
 
 describe('positionName', () => {
     it('gets a1 for [0,0]', () => {

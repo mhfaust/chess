@@ -1,6 +1,6 @@
 import { coordinates } from 'logic/positions';
 import { Piece } from 'logic/positions/piece';
-import { Square } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/square';
 
 export type ChessGame = {
   gamePlay: string;

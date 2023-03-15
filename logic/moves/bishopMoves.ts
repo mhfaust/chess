@@ -8,7 +8,7 @@ import {
 
 import { bishopVectors }  from 'logic/constants/move-vectors'
 import { movesIntoCheck }  from 'logic/check';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import { Board }  from 'logic/types/Board';
 import { MoveVector } from 'logic/types/MoveVector';
 

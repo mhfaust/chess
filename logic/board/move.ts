@@ -1,6 +1,6 @@
 import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/positions';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import enPassantSquare, { pawnPositionFromEpSquare } from 'logic/moves/enPassantSquare';
 import COORDS from 'logic/positions/coordinates';
 import { Piece } from 'logic/positions/piece';

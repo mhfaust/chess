@@ -1,6 +1,6 @@
 import { Player }  from 'logic/types/Player';
 import { Board }  from 'logic/types/Board';
-import { Square, squares } from 'logic/positions/positionName';
+import { Square, squares } from 'logic/positions/square';
 import pieceAt from 'logic/positions/pieceAt';
 
 const whiteCache: Map<Board, Square> = new Map();

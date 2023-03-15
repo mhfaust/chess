@@ -1,5 +1,5 @@
 import { rank, file }  from 'logic/positions'
-import { Square } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/square';
 
 const isOnBoard = (position: Square) => {
     if (!position) {

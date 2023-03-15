@@ -1,5 +1,5 @@
 import COORDS from 'logic/positions/coordinates';
-import { Square } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/square';
 
 function rank (position: Square): number {
     

@@ -13,7 +13,7 @@ import {
     rookVectors
 } from 'logic/constants/move-vectors'
 
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 

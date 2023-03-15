@@ -2,7 +2,7 @@
 
 import Grid from 'app/components/Grid/Grid';
 import { useOldGameStore } from 'app/components/Game/oldGameStore';
-import { Square } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/square';
 import { canMoveTo } from 'logic/moves';
 import { otherPlayer, playerAt } from 'logic/positions';
 import Captures from 'app/components/Captures';

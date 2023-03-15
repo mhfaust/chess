@@ -16,4 +16,4 @@ export { default as otherPlayer } from './otherPlayer';
 export { default as pieceAt } from './pieceAt';
 export { default as playerAt } from './playerAt';
 export { default as rank } from './rank';
-export { default as square } from './positionName';
+export { default as square } from './square';

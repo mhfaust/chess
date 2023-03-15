@@ -1,5 +1,5 @@
 import { file, rank } from 'logic/positions';
-import square, { Square } from 'logic/positions/positionName';
+import square, { Square } from 'logic/positions/square';
 import { ChessGame } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
 import { moves } from './moves';

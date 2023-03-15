@@ -5,7 +5,7 @@ position is on the board
 
 import { rank, file }  from 'logic/positions';
 import { MoveVector } from 'logic/types/MoveVector';
-import square, { Square } from 'logic/positions/positionName';
+import square, { Square } from 'logic/positions/square';
     
 function displaceFrom  (
     currentPosition: Square, 

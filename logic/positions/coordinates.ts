@@ -1,4 +1,4 @@
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 
 type RankIndex = 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;
 type FileIndex =  0 | 1 | 2 | 3 | 4 | 5 | 6 | 7;

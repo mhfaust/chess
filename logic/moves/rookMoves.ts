@@ -6,7 +6,7 @@ import {
     otherPlayer,  
 } from 'logic/positions';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import { Board }  from 'logic/types/Board';
 
 function rook(board: Board, moveFrom: Square): Set<Square> {

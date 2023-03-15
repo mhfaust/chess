@@ -4,7 +4,7 @@ import { nextCastlingPreclusions }  from 'logic/board';
 import { Board }  from 'logic/types/Board';
 import { Piece }  from 'logic/positions/piece';
 import { Player }  from 'logic/types/Player';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import { BoardAnnotations }  from 'logic/types/Game';
 
 export const makeCapturedPieces = (

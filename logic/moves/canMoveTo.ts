@@ -8,7 +8,7 @@ import {
 } from 'logic/moves';
 import { pieceAt }  from 'logic/positions';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 
 //Each of the piece-specific can-move functions has a less-demanding signtaure for 

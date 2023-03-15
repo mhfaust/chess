@@ -8,7 +8,7 @@ import {
     
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Board }  from 'logic/types/Board';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 
 function rookCanMove (
     board: Board, 

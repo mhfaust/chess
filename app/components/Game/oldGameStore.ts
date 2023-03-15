@@ -1,5 +1,5 @@
 import { initialBoard, move, nextCastlingPreclusions } from 'logic/board';
-import { Square } from 'logic/positions/positionName';
+import { Square } from 'logic/positions/square';
 import { Board } from 'logic/types/Board';
 import { create } from 'zustand';
 import { otherPlayer, pieceAt, playerAt } from 'logic/positions';

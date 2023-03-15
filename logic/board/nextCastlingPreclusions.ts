@@ -1,5 +1,5 @@
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 
 const castleAndKingStartsArray = [
     'a1', // White Rook

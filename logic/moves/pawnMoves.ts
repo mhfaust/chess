@@ -8,7 +8,7 @@
 } from 'logic/positions';
 import { isInCheck }  from 'logic/check';
 import { move }  from 'logic/board';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 import { Board }  from 'logic/types/Board';
 import { MoveVector } from 'logic/types/MoveVector';
 

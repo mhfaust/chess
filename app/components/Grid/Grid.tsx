@@ -5,7 +5,7 @@ import { square } from 'logic/positions';
 import { Board, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
-import { Square, squareColor } from 'logic/positions/positionName';
+import { Square, squareColor } from 'logic/positions/square';
 import { rotate8by8 } from 'logic/board/rotateCounterClockwise';
 import { Player } from 'logic/types/Player';
 import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';

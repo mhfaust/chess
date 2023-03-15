@@ -3,7 +3,7 @@ import { BLACK_PIECES, WHITE_PIECES }  from 'logic/constants/pieces';
 import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import { Piece }  from 'logic/positions/piece';
-import { Square }  from 'logic/positions/positionName';
+import { Square }  from 'logic/positions/square';
 
 export type PiecePosition = {
     position: Square;
