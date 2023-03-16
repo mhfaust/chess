@@ -1,12 +1,12 @@
 import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/squares';
 import { Board }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
-import enPassantSquare, { pawnSquareFromEpSquare } from 'logic/moves/enPassantSquare';
+import { pawnSquareFromEpSquare } from 'logic/moves/enPassantSquare';
 import COORDS from 'logic/squares/coordinates';
 import { Piece } from 'logic/squares/piece';
 import { shorthand } from 'logic/squares/pieces-shorthand';
 import isPawn from 'logic/pieces/isPawn';
-import textRender from './textRender';
+import { Move } from 'logic/game/selectors/moves';
 
 const castlings: Record<string, [Square, Square] | undefined> = {
     'White King-e1c1': ['a1', 'd1'],
@@ -18,6 +18,23 @@ const castlings: Record<string, [Square, Square] | undefined> = {
 type MoveTuple = [Board, string]
 const cache = new Map<Board, Map<string, MoveTuple>>();
 
+const { entries, fromEntries } = Object;
+export const promotions: Record<string, string> = {
+    q: 'Queen',
+    b: 'Bishop',
+    n: 'Knight',
+    r: 'Rook',
+};
+const promotionsInverted = fromEntries(entries(promotions).map(([a,b]) => ([b,a])));
+const promoCode = (p: Piece) => promotionsInverted[p.substring(6)];
+
+export const moveHash = (move: Move): string => {
+    if (move === 'RESIGN') {
+        return 'RESING';
+    }
+    const [from, to, promotTo] = move;
+    return  `${from}${to}${promotTo ? promoCode(promotTo) : ''}`
+}
 
 /** Does not validate the move (to may be occupied, may be in check, etc.) */
 function move ( 

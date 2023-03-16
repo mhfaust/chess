@@ -2,7 +2,7 @@ import { ChessGame } from 'logic/game/gameState';
 import { Player } from 'logic/types/Player';
 import boardCursor from './boardCursor';
 
-const players = ['Black', 'White'] as const;
+const players = ['White', 'Black'] as const;
 
 const currentPlayer = (game: ChessGame): Player => {
 

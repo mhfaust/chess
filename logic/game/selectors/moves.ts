@@ -3,6 +3,8 @@ import { Square } from 'logic/squares/square';
 import { Player } from 'logic/types/Player';
 import { ChessGame } from 'logic/game/gameState';
 import boardCursor from './boardCursor';
+import { promotions } from 'logic/board/move';
+
 
 export type NormalMove = [Square, Square, Piece | undefined];
 
@@ -10,13 +12,6 @@ export type Move = NormalMove | 'RESIGN';
 
 //(x(Q|B|N|R|P))?(ep)?
 const normalMoveRegex = /([a-h][1-8])([a-h][1-8])((q|b|n|r))?/;
-
-const promotions: Record<string, string> = {
-  q: 'Queen',
-  b: 'Bishop',
-  n: 'Knight',
-  r: 'Rook',
-};
 
 const cache = new Map<string, (Move)[]>();
 

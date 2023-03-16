@@ -1,7 +1,6 @@
 'use client'
 
 import Grid from 'app/components/Grid/Grid';
-import { useOldGameStore } from 'app/components/Game/oldGameStore';
 import { Square } from 'logic/squares/square';
 import { canMoveTo } from 'logic/moves';
 import { otherPlayer, playerAt } from 'logic/squares';
@@ -12,6 +11,12 @@ import { Piece } from 'logic/squares/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { isCheckmate, isInCheck } from 'logic/check';
+import { useGameStore } from 'logic/game/useGameStore';
+import { currentBoard } from 'logic/game/selectors/boards';
+import { currentCastling } from 'logic/game/selectors/castling';
+import currentEnPassantSquare from 'logic/game/selectors/enPassant';
+import currentPlayer from 'logic/game/selectors/players';
+import { captures } from 'logic/game/selectors/captures';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -19,45 +24,37 @@ import { isCheckmate, isInCheck } from 'logic/check';
 
 export default function Game() {
 
-  const { 
-    currentPlayer,
-    moves, 
-    boards, 
-    toggleSelectedSquare, 
-    selectedSquare, 
-    makeNextMove,
-    castling,
-    enPassantSquares,
-    capturedBlacks,
-    capturedWhites
-  } = useOldGameStore();
+  const game = useGameStore();
+  const { selectedSquare, toggleSelectedSquare, makeNextMove } = game;
+  const thisBoard = currentBoard(game)
+  currentPlayer
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
     ((p: Piece ) => void) | null
   >(null);
   
-  const currentBoard = [...boards].pop()!;
-
-  if(!currentBoard){
+  if(!thisBoard){
     return null;
   }
 
   const validMoves = selectedSquare 
     && allPieceMoves(
-      currentBoard, 
+      thisBoard, 
       selectedSquare, 
-      castling.get(currentBoard), 
-      enPassantSquares.get(currentBoard) 
+      currentCastling(game), 
+      currentEnPassantSquare(game) 
     ) || undefined;
 
   const handleClickSquare = (clickedSquare: Square) => {
-    const playerAtClicked = playerAt(currentBoard, clickedSquare);
+    const playerAtClicked = playerAt(thisBoard, clickedSquare);
+
+console.log('currentCastling: ' + currentCastling(game) + ', ' + 'currentEnPassantSquare: ' + currentEnPassantSquare(game))
 
     if (selectedSquare && selectedSquare === clickedSquare){
       return toggleSelectedSquare(null);
     }
 
-    else if (currentPlayer === playerAtClicked) {
+    else if (currentPlayer(game) === playerAtClicked) {
       return toggleSelectedSquare(clickedSquare)
     }
     
@@ -66,14 +63,14 @@ export default function Game() {
     }
 
     else if (canMoveTo(
-      currentBoard, 
+      thisBoard, 
       selectedSquare, 
       clickedSquare,
-      castling.get(currentBoard),
-      enPassantSquares.get(currentBoard),
+      currentCastling(game),
+      currentEnPassantSquare(game),
     )) {
 
-      if (isPromotingPawn(currentBoard, selectedSquare, clickedSquare)) {
+      if (isPromotingPawn(thisBoard, selectedSquare, clickedSquare)) {
         setHandlePromotePawn(() => (promotePawnAs: Piece) => {
             makeNextMove(selectedSquare, clickedSquare, promotePawnAs);
             setHandlePromotePawn(null);
@@ -90,27 +87,29 @@ export default function Game() {
 
   return (<>
     <div style={{ width: '600px'}}>
-      <Captures captures={capturedWhites.get(currentBoard)!} />
+      <Captures captures={captures(game).black} />
       <Grid 
-        board={currentBoard} 
+        board={thisBoard} 
         orientation={0}
         onClickSquare={handleClickSquare}
         selectedSquare={selectedSquare}
         validMoves={validMoves}
-        currentPlayer={currentPlayer}
+        currentPlayer={currentPlayer(game)}
       />
-      <Captures captures={capturedBlacks.get(currentBoard)!} />
+      <Captures captures={captures(game).white} />
       <div>
-      {isCheckmate(currentBoard, currentPlayer) ? (
+      {isCheckmate(thisBoard, currentPlayer(game)) ? (
           <div>
-            <div>CHECKMATE -- {otherPlayer(currentPlayer)} WINS</div>
+            <div>CHECKMATE -- {otherPlayer(currentPlayer(game))} WINS</div>
             <button>New Game</button>
           </div>
         ) : (<>
-            <div>{currentPlayer}&apos; turn</div>
-            {isInCheck(currentBoard, currentPlayer) ?? (
-              <div>{currentPlayer} is in check</div>
-            )}
+            <div>{currentPlayer(game)}&apos; turn</div>
+            {isInCheck(thisBoard, currentPlayer(game)) ? (
+              <div>
+                <>{currentPlayer} is in check</>
+              </div>
+            ) : null}
           </>
         )}
       </div>
