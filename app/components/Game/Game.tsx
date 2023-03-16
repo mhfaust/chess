@@ -48,8 +48,6 @@ export default function Game() {
   const handleClickSquare = (clickedSquare: Square) => {
     const playerAtClicked = playerAt(thisBoard, clickedSquare);
 
-console.log('currentCastling: ' + currentCastling(game) + ', ' + 'currentEnPassantSquare: ' + currentEnPassantSquare(game))
-
     if (selectedSquare && selectedSquare === clickedSquare){
       return toggleSelectedSquare(null);
     }

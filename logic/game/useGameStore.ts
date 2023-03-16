@@ -30,7 +30,6 @@ export const useGameStore = create<GameView>((set) => {
     makeNextMove: (from, to, promoteTo) => {
       return set(({ gamePlay, boardCursor }) => {
         const newHash = moveHash([from, to, promoteTo]);
-        console.log({ newHash})
         return {
           gamePlay: gamePlay ? gamePlay + ',' + newHash : newHash,
           boardCursor: boardCursor + 1
