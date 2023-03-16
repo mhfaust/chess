@@ -25,9 +25,8 @@ import { captures } from 'logic/game/selectors/captures';
 export default function Game() {
 
   const game = useGameStore();
-  const { selectedSquare, toggleSelectedSquare, makeNextMove } = game;
+  const { selectedSquare, toggleSquare, makeNextMove } = game;
   const thisBoard = currentBoard(game)
-  currentPlayer
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
     ((p: Piece ) => void) | null
@@ -45,39 +44,43 @@ export default function Game() {
       currentEnPassantSquare(game) 
     ) || undefined;
 
-  const handleClickSquare = (clickedSquare: Square) => {
-    const playerAtClicked = playerAt(thisBoard, clickedSquare);
+  const handleClickSquare = (targetSquare: Square) => {
+    const playerAtClicked = playerAt(thisBoard, targetSquare);
 
-    if (selectedSquare && selectedSquare === clickedSquare){
-      return toggleSelectedSquare(null);
+    //clicking the already-selected square (de-select):
+    if (selectedSquare && selectedSquare === targetSquare){
+      return toggleSquare(null);
     }
-
+    //clicking one's own piece (select):
     else if (currentPlayer(game) === playerAtClicked) {
-      return toggleSelectedSquare(clickedSquare)
+      return toggleSquare(targetSquare)
     }
-    
+    //No selection before click, but clicking some other square (they can't):
     else if (!selectedSquare){
-      return toggleSelectedSquare(null)
+      return toggleSquare(null)
     }
 
+    //There's already a selection, and they're clicking another square, 
+    //so it's a move attempt. If it's a legit move, do it (unless pawn promo):
     else if (canMoveTo(
       thisBoard, 
       selectedSquare, 
-      clickedSquare,
+      targetSquare,
       currentCastling(game),
       currentEnPassantSquare(game),
     )) {
-
-      if (isPromotingPawn(thisBoard, selectedSquare, clickedSquare)) {
+      //If it's a pawn promotion, we don't do the move yet  because 
+      //we need to prompt them for which piece to promote to:
+      if (isPromotingPawn(thisBoard, selectedSquare, targetSquare)) {
         setHandlePromotePawn(() => (promotePawnAs: Piece) => {
-            makeNextMove(selectedSquare, clickedSquare, promotePawnAs);
+            makeNextMove(selectedSquare, targetSquare, promotePawnAs);
             setHandlePromotePawn(null);
         })
       }
       else {
-        makeNextMove(selectedSquare, clickedSquare);
+        makeNextMove(selectedSquare, targetSquare);
       }
-      return toggleSelectedSquare(null)
+      return toggleSquare(null)
     } 
     
     return;

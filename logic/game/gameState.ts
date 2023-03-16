@@ -9,7 +9,7 @@ export type ChessGame = {
 
 export type GameView =  ChessGame & {
   selectedSquare: Square | null;
-  toggleSelectedSquare: (
+  toggleSquare: (
     square: Square | null
   ) => void;
   makeNextMove: (
