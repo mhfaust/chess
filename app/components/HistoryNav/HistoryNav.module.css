@@ -1,0 +1,23 @@
+.historyNav {
+  display: flex;
+  flex-direction: row;
+}
+.boardIndex {
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: .75em;
+  background-color: #e8e8e8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: .3em;
+}
+.boardIndex:hover {
+  cursor: pointer;
+  background-color: #aaa;
+  color: white;
+}
+.currentIndex {
+  background-color: black;
+  color: white;
+}

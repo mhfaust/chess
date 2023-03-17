@@ -2,7 +2,7 @@ import { Piece } from 'logic/squares/piece';
 import { Square } from 'logic/squares/square';
 import { Player } from 'logic/types/Player';
 import { ChessGame } from 'logic/game/gameState';
-import boardCursor from './boardCursor';
+import { boardCursor } from 'logic/game/selectors/boards';
 import { promotions } from 'logic/board/move';
 
 
@@ -63,3 +63,14 @@ export const currentMove = (state: ChessGame) => {
   const cursor = boardCursor(state)
   return moves(state)[cursor - 1];
 }
+
+// const currentValidMoves = (game: GameView) => {
+//   const validMoves = game.selectedSquare ;
+
+//   && allPieceMoves(
+//     thisBoard, 
+//     selectedSquare, 
+//     precludedCastling, 
+//     epSquare 
+//   ) || undefined;
+// }

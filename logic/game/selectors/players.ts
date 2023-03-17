@@ -1,6 +1,6 @@
 import { ChessGame } from 'logic/game/gameState';
 import { Player } from 'logic/types/Player';
-import boardCursor from './boardCursor';
+import { boardCursor } from 'logic/game/selectors/boards';
 
 const players = ['White', 'Black'] as const;
 

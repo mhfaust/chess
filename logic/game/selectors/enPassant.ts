@@ -1,7 +1,7 @@
 import { file, rank } from 'logic/squares';
 import square, { Square } from 'logic/squares/square';
 import { ChessGame } from 'logic/game/gameState';
-import boardCursor from './boardCursor';
+import { boardCursor } from 'logic/game/selectors/boards';
 import { moves } from './moves';
 
 //TODO: MEMOIZE.

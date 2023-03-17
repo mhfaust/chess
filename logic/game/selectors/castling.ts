@@ -3,14 +3,14 @@ import nextCastlingPreclusions from 'logic/board/nextCastlingPreclusions';
 import { Board } from 'logic/types/Board';
 import { CastlingPreclusions, RookStartSquare } from 'logic/types/CastlingPreclusions';
 import { ChessGame } from 'logic/game/gameState';
-import boardCursor from './boardCursor';
-import { moves } from './moves';
+import { moves } from 'logic/game/selectors/moves';
+import { boardCursor } from 'logic/game/selectors/boards';
 
 const emptyPreclusions = new Set<RookStartSquare>();
 
-const boardCache = new Map<Board, CastlingPreclusions>([
-  [firstBoard, emptyPreclusions]
-]);
+// const boardCache = new Map<Board, CastlingPreclusions>([
+//   [firstBoard, emptyPreclusions]
+// ]);
 
 /**
  * recursive lookup back to find castling preclusions

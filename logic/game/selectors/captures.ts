@@ -68,3 +68,11 @@ export const currentCaptures = (state: ChessGame) => {
   captures(state);// <-- just running this to generate board-cache.
   return boardCache.get(board)!;
 }
+
+export const currentBlackCaptures = (game: ChessGame) => {
+  return currentCaptures(game).black;
+}
+
+export const currentWhiteCaptures = (game: ChessGame) => {
+  return currentCaptures(game).white;
+}

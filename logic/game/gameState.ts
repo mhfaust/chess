@@ -1,6 +1,5 @@
 import { Piece } from 'logic/squares/piece';
 import { Square } from 'logic/squares/square';
-import { Move } from 'logic/game/selectors/moves';
 
 export type ChessGame = {
   gamePlay: string;
@@ -16,6 +15,5 @@ export type GameView =  ChessGame & {
     from: Square, 
     to: Square, 
     promoteTo?: Piece, 
-    captureEp?: boolean
   ) => void;
 }

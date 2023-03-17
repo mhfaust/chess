@@ -7,7 +7,6 @@ import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 import nextBoard from 'logic/board/move';
 import { epSquare } from 'logic/game/selectors/enPassant';
 import textRender from 'logic/board/textRender';
-import boardCursor from 'logic/game/selectors/boardCursor';
 import { ChessGame } from 'logic/game/gameState';
 
 const emptyPreclusions = new Set<RookStartSquare>();
@@ -63,3 +62,11 @@ export const previousBoard = (state: ChessGame): Board | null => {
   }
   return boards(state)[cursor - 1];
 };
+
+export const boardCursor = (game: ChessGame) => {
+  return game.boardCursor ?? boards(game).length - 1;
+}
+
+export const boardIndexes = (game: ChessGame) => {
+  return new Array(boards(game).length).fill('').map((_, i) => i);
+}

@@ -13,10 +13,11 @@ import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { isCheckmate, isInCheck } from 'logic/check';
 import { useGameStore } from 'logic/game/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
-import { currentCastling } from 'logic/game/selectors/castling';
+import { castling, currentCastling } from 'logic/game/selectors/castling';
 import currentEnPassantSquare from 'logic/game/selectors/enPassant';
 import currentPlayer from 'logic/game/selectors/players';
-import { captures } from 'logic/game/selectors/captures';
+import { captures, currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
+import HistoryNav from '../HistoryNav';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -24,9 +25,18 @@ import { captures } from 'logic/game/selectors/captures';
 
 export default function Game() {
 
-  const game = useGameStore();
-  const { selectedSquare, toggleSquare, makeNextMove } = game;
-  const thisBoard = currentBoard(game)
+  const selectedSquare = useGameStore(game => game.selectedSquare);
+  const toggleSquare = useGameStore(game => game.toggleSquare);
+  const makeNextMove = useGameStore(game => game.makeNextMove);
+  const precludedCastling = useGameStore(currentCastling);
+  const epSquare = useGameStore(currentEnPassantSquare);
+  const thisPlayer = useGameStore(currentPlayer);
+  const whiteCaptures = useGameStore(currentWhiteCaptures);
+  const blackCaptures = useGameStore(currentBlackCaptures);
+
+
+  // const { toggleSquare, makeNextMove } = game;
+  const thisBoard = useGameStore(currentBoard);
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
     ((p: Piece ) => void) | null
@@ -40,8 +50,8 @@ export default function Game() {
     && allPieceMoves(
       thisBoard, 
       selectedSquare, 
-      currentCastling(game), 
-      currentEnPassantSquare(game) 
+      precludedCastling, 
+      epSquare 
     ) || undefined;
 
   const handleClickSquare = (targetSquare: Square) => {
@@ -52,7 +62,7 @@ export default function Game() {
       return toggleSquare(null);
     }
     //clicking one's own piece (select):
-    else if (currentPlayer(game) === playerAtClicked) {
+    else if (thisPlayer === playerAtClicked) {
       return toggleSquare(targetSquare)
     }
     //No selection before click, but clicking some other square (they can't):
@@ -66,8 +76,8 @@ export default function Game() {
       thisBoard, 
       selectedSquare, 
       targetSquare,
-      currentCastling(game),
-      currentEnPassantSquare(game),
+      precludedCastling,
+      epSquare,
     )) {
       //If it's a pawn promotion, we don't do the move yet  because 
       //we need to prompt them for which piece to promote to:
@@ -88,25 +98,25 @@ export default function Game() {
 
   return (<>
     <div style={{ width: '600px'}}>
-      <Captures captures={captures(game).black} />
+      <Captures captures={blackCaptures} />
       <Grid 
         board={thisBoard} 
         orientation={0}
         onClickSquare={handleClickSquare}
         selectedSquare={selectedSquare}
         validMoves={validMoves}
-        currentPlayer={currentPlayer(game)}
+        currentPlayer={thisPlayer}
       />
-      <Captures captures={captures(game).white} />
+      <Captures captures={whiteCaptures} />
       <div>
-      {isCheckmate(thisBoard, currentPlayer(game)) ? (
+      {isCheckmate(thisBoard, thisPlayer) ? (
           <div>
-            <div>CHECKMATE -- {otherPlayer(currentPlayer(game))} WINS</div>
+            <div>CHECKMATE -- {otherPlayer(thisPlayer)} WINS</div>
             <button>New Game</button>
           </div>
         ) : (<>
-            <div>{currentPlayer(game)}&apos; turn</div>
-            {isInCheck(thisBoard, currentPlayer(game)) ? (
+            <div>{thisPlayer}&apos; turn</div>
+            {isInCheck(thisBoard, thisPlayer) ? (
               <div>
                 <>{currentPlayer} is in check</>
               </div>
@@ -115,6 +125,7 @@ export default function Game() {
         )}
       </div>
     </div>
+    <HistoryNav />
     <PawnPromotionPrompt onPromote={handlePromotePawn} />
   </>)
 }
