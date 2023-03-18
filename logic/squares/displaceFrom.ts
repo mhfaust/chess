@@ -8,13 +8,13 @@ import { MoveVector } from 'logic/types/MoveVector';
 import square, { Square } from 'logic/squares/square';
     
 function displaceFrom  (
-    currentSquare: Square, 
+    origin: Square, 
     vector: MoveVector)
     : Square | null {
 
         return square([
-            file(currentSquare) - vector[0],
-            rank(currentSquare) - vector[1]
+            file(origin) - vector[0],
+            rank(origin) - vector[1]
         ]);
     };
 

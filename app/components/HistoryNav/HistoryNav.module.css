@@ -1,11 +1,12 @@
 .historyNav {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .boardIndex {
-  width: 1.5em;
-  height: 1.5em;
-  border-radius: .75em;
+  width: 2em;
+  height: 2em;
+  border-radius: 1em;
   background-color: #e8e8e8;
   display: flex;
   align-items: center;

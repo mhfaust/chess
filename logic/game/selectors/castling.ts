@@ -2,7 +2,7 @@ import { firstBoard } from 'logic/board/initialBoard';
 import nextCastlingPreclusions from 'logic/board/nextCastlingPreclusions';
 import { Board } from 'logic/types/Board';
 import { CastlingPreclusions, RookStartSquare } from 'logic/types/CastlingPreclusions';
-import { ChessGame } from 'logic/game/gameState';
+import { GameAndCursor } from 'logic/game/gameState';
 import { moves } from 'logic/game/selectors/moves';
 import { boardCursor } from 'logic/game/selectors/boards';
 
@@ -18,7 +18,7 @@ const emptyPreclusions = new Set<RookStartSquare>();
  * @param i index of board 
  * @returns castling preclusions set
  */
-const recurse = (state: Pick<ChessGame, 'gamePlay'>, i: number): CastlingPreclusions => {
+const recurse = (state: Pick<GameAndCursor, 'gamePlay'>, i: number): CastlingPreclusions => {
 
   if (i === 0) {
     return emptyPreclusions;
@@ -44,7 +44,7 @@ const recurse = (state: Pick<ChessGame, 'gamePlay'>, i: number): CastlingPreclus
 
 const gameCache = new Map<string, CastlingPreclusions[]>();
 
-export const castling = (state: Pick<ChessGame, 'gamePlay'>) => {
+export const castling = (state: Pick<GameAndCursor, 'gamePlay'>) => {
   const { gamePlay } = state;
   if(gameCache.has(gamePlay)){
     return gameCache.get(gamePlay)!;
@@ -56,7 +56,7 @@ export const castling = (state: Pick<ChessGame, 'gamePlay'>) => {
 
 }
 
-export const currentCastling = (state: ChessGame) => {
+export const currentCastling = (state: GameAndCursor) => {
   const cursor = boardCursor(state);
   return recurse(state, cursor)
 }

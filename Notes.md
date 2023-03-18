@@ -7,6 +7,9 @@ Menu
 Draw
 - See draw rules at https://www.chessmatec.com/chess-rules-for-kids-draw
 
+History View
+- Disable moving when viewing not-current position/board.
+
 Game Options:
   At start, select type of game (ideas)
     - "Touched-it" mode

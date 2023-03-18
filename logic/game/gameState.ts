@@ -1,13 +1,12 @@
 import { Piece } from 'logic/squares/piece';
 import { Square } from 'logic/squares/square';
 
-export type ChessGame = {
+export type GameAndCursor = {
   gamePlay: string;
   boardCursor: number;
 }
 
-export type GameView =  ChessGame & {
-  selectedSquare: Square | null;
+export type Actions = {
   toggleSquare: (
     square: Square | null
   ) => void;
@@ -16,4 +15,12 @@ export type GameView =  ChessGame & {
     to: Square, 
     promoteTo?: Piece, 
   ) => void;
+  toggleBoard: (
+    boardIndex: number
+  ) => void;
+};
+
+export type GameView =  GameAndCursor & {
+  selectedSquare: Square | null;
+  actions: Actions
 }

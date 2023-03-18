@@ -8,13 +8,14 @@ const HistoryNav = () => {
 
   const currentBoardIndex = useGameStore(boardCursor);
   const indexes = useGameStore(boardIndexes);
+  const toggleBoard = useGameStore().actions.toggleBoard;
 
   return (
     <div className={styles.historyNav}>
       {indexes.map((i) => (
         <div 
           key={i}
-          onClick={() => alert(i)}
+          onClick={() => toggleBoard(i)}
           className={clsx(styles.boardIndex, {
             [styles.currentIndex]: i === currentBoardIndex
           })}

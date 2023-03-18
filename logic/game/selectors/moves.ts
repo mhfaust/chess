@@ -1,7 +1,7 @@
 import { Piece } from 'logic/squares/piece';
 import { Square } from 'logic/squares/square';
 import { Player } from 'logic/types/Player';
-import { ChessGame } from 'logic/game/gameState';
+import { GameAndCursor } from 'logic/game/gameState';
 import { boardCursor } from 'logic/game/selectors/boards';
 import { promotions } from 'logic/board/move';
 
@@ -17,17 +17,17 @@ const cache = new Map<string, (Move)[]>();
 
 const noMoves: Move[] = [];
 
-export const moves = (state: Pick<ChessGame, 'gamePlay'>): Move[] => {
+export const moves = ({ gamePlay }: Pick<GameAndCursor, 'gamePlay'>): Move[] => {
 
-  if(!state.gamePlay) {
+  if(!gamePlay) {
     return noMoves;
   }
 
-  if(cache.has(state.gamePlay)){
-    return cache.get(state.gamePlay)!;
+  if(cache.has(gamePlay)){
+    return cache.get(gamePlay)!;
   }
 
-  const moveStrings = state.gamePlay.split(',');
+  const moveStrings = gamePlay.split(',');
 
   const gameMoves = moveStrings.map((str, i) => {
     if(str === 'RESIGN') {
@@ -36,7 +36,7 @@ export const moves = (state: Pick<ChessGame, 'gamePlay'>): Move[] => {
 
     const match = str.toLowerCase().match(normalMoveRegex);
     if(!match) {
-      throw Error(`Illegal move: ${str}.`);
+      throw Error(`Badly formed move-string: ${str}.`);
     }
     const [, start, end, , promote,] = match;
     const promo = promotions[promote];
@@ -50,7 +50,7 @@ export const moves = (state: Pick<ChessGame, 'gamePlay'>): Move[] => {
 
     return move;
   });
-  cache.set(state.gamePlay, gameMoves);
+  cache.set(gamePlay, gameMoves);
   return gameMoves;
 }
 
@@ -59,7 +59,7 @@ export const moves = (state: Pick<ChessGame, 'gamePlay'>): Move[] => {
  * @param state 
  * @returns 
  */
-export const currentMove = (state: ChessGame) => {
+export const currentMove = (state: GameAndCursor) => {
   const cursor = boardCursor(state)
   return moves(state)[cursor - 1];
 }

@@ -7,7 +7,7 @@ import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 import nextBoard from 'logic/board/move';
 import { epSquare } from 'logic/game/selectors/enPassant';
 import textRender from 'logic/board/textRender';
-import { ChessGame } from 'logic/game/gameState';
+import { GameAndCursor } from 'logic/game/gameState';
 
 const emptyPreclusions = new Set<RookStartSquare>();
 
@@ -15,7 +15,7 @@ const cache = new Map<string, Board[]>([
   ['', [firstBoard]]
 ]);
 
-export const boards = (game: Pick<ChessGame, 'gamePlay'>): Board[] => {
+export const boards = (game: Pick<GameAndCursor, 'gamePlay'>): Board[] => {
 
   if(cache.has(game.gamePlay)){
     return cache.get(game.gamePlay)!;
@@ -50,12 +50,12 @@ export const boards = (game: Pick<ChessGame, 'gamePlay'>): Board[] => {
   return boardsArray;
 };
 
-export const currentBoard = (state: ChessGame): Board => {
+export const currentBoard = (state: GameAndCursor): Board => {
   const cursor = boardCursor(state)
   return boards(state)[cursor];
 };
 
-export const previousBoard = (state: ChessGame): Board | null => {
+export const previousBoard = (state: GameAndCursor): Board | null => {
   const cursor = boardCursor(state)
   if(cursor === 0) {
     return null;
@@ -63,10 +63,10 @@ export const previousBoard = (state: ChessGame): Board | null => {
   return boards(state)[cursor - 1];
 };
 
-export const boardCursor = (game: ChessGame) => {
+export const boardCursor = (game: GameAndCursor) => {
   return game.boardCursor ?? boards(game).length - 1;
 }
 
-export const boardIndexes = (game: ChessGame) => {
+export const boardIndexes = (game: GameAndCursor) => {
   return new Array(boards(game).length).fill('').map((_, i) => i);
 }

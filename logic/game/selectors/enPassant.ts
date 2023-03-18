@@ -1,11 +1,11 @@
 import { file, rank } from 'logic/squares';
 import square, { Square } from 'logic/squares/square';
-import { ChessGame } from 'logic/game/gameState';
+import { GameAndCursor } from 'logic/game/gameState';
 import { boardCursor } from 'logic/game/selectors/boards';
 import { moves } from './moves';
 
 //TODO: MEMOIZE.
-export const epSquares = (state: Pick<ChessGame, 'gamePlay'>) => {
+export const epSquares = (state: Pick<GameAndCursor, 'gamePlay'>) => {
   const movedPawns = new Set<Square>();
   const allMoves = moves(state);
   return allMoves.map((move) => {
@@ -31,12 +31,12 @@ export const epSquares = (state: Pick<ChessGame, 'gamePlay'>) => {
   })
 }
 
-export const epSquare = (state: Pick<ChessGame, 'gamePlay'>, i: number) => {
+export const epSquare = (state: Pick<GameAndCursor, 'gamePlay'>, i: number) => {
   return epSquares(state)[i] ?? null;
 }
 
 
-const currentEnPassantSquare = (state: ChessGame) => {
+const currentEnPassantSquare = (state: GameAndCursor) => {
   const cursor = boardCursor(state)
   if(cursor === 0){
     return null;

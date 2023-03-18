@@ -1,10 +1,10 @@
-import { pieceAt } from 'logic/squares';
-import { Piece } from 'logic/squares/piece';
-import { Board } from 'logic/types/Board';
-import { ChessGame } from 'logic/game/gameState';
-import { boards, currentBoard } from './boards';
-import { epSquare } from './enPassant';
-import { moves } from './moves';
+import { Piece } from "logic/squares/piece";
+import { GameAndCursor } from "logic/game/gameState";
+import { boards } from "logic/game/selectors/boards";
+import { moves } from "logic/game/selectors/moves";
+import { pieceAt } from "logic/squares";
+import { epSquare } from "logic/game/selectors//enPassant";
+import { gamePlayAt } from "logic/game/selectors//game";
 
 type Captures = {
   black: Piece[];
@@ -16,28 +16,27 @@ const noCaptures: Captures = {
   black: []
 };
 
-const boardCache = new Map<Board, Captures>();
+const cache = new Map<string, Captures>();
 
-export const captures = (state: Pick<ChessGame, 'gamePlay'>) => {
+export const gamePlayCaptures = (gamePlay: string) => {
 
-  const gameBoards = boards(state);
-  const gameMoves = moves(state);
-
-  if(state.gamePlay === ''){
+  if(gamePlay === ''){
     return noCaptures;
   }
 
-  return gameMoves.reduce<Captures>((acc, move, i) => {
+  if (cache.has(gamePlay)) {
+    return cache.get(gamePlay)!;
+  }
+
+  const gameBoards = boards({ gamePlay });
+  const gameMoves = moves({ gamePlay });
+
+  const capts = gameMoves.reduce<Captures>((acc, move, i) => {
     if (move === 'RESIGN') {
       return acc;
     }
     const [_, to] = move;
     const prevBoard = gameBoards[i];
-    const nextBoard = gameBoards[i + 1]!; //todo: is this assertion OK?
-
-    if(boardCache.has(nextBoard)){
-      return boardCache.get(nextBoard)!;
-    }
 
     const captured = pieceAt(prevBoard, to);
     const isBlacksTurn = i % 2 === 1;
@@ -49,30 +48,26 @@ export const captures = (state: Pick<ChessGame, 'gamePlay'>) => {
     if (captured) {
       updatedList.push(captured)
     } 
-    else if (to === epSquare(state, i - 1)) {
+    else if (to === epSquare({ gamePlay }, i - 1)) {
       updatedList.push(isBlacksTurn ? 'White Pawn' : 'Black Pawn');
     }
     const newCaptures = {
       black: newBlackList,
       white: newWhiteList
     };
-    boardCache.set(nextBoard, newCaptures);
 
     return newCaptures;
 
-  }, noCaptures);
-};
+  }, noCaptures) ?? noCaptures;
 
-export const currentCaptures = (state: ChessGame) => {
-  const board = currentBoard(state);
-  captures(state);// <-- just running this to generate board-cache.
-  return boardCache.get(board)!;
+  cache.set(gamePlay, capts);
+  return capts;
 }
 
-export const currentBlackCaptures = (game: ChessGame) => {
-  return currentCaptures(game).black;
-}
 
-export const currentWhiteCaptures = (game: ChessGame) => {
-  return currentCaptures(game).white;
+export const currentBlackCaptures = (game: GameAndCursor): Piece[] => {
+  return gamePlayCaptures(gamePlayAt(game.gamePlay, game.boardCursor)).black;
+}
+export const currentWhiteCaptures = (game: GameAndCursor): Piece[] => {
+  return gamePlayCaptures(gamePlayAt(game.gamePlay, game.boardCursor)).white;
 }

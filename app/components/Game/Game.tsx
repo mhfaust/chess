@@ -16,7 +16,7 @@ import { currentBoard } from 'logic/game/selectors/boards';
 import { castling, currentCastling } from 'logic/game/selectors/castling';
 import currentEnPassantSquare from 'logic/game/selectors/enPassant';
 import currentPlayer from 'logic/game/selectors/players';
-import { captures, currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
+import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
 import HistoryNav from '../HistoryNav';
 
 /*
@@ -25,9 +25,8 @@ import HistoryNav from '../HistoryNav';
 
 export default function Game() {
 
+  const { toggleSquare, makeNextMove } = useGameStore().actions;
   const selectedSquare = useGameStore(game => game.selectedSquare);
-  const toggleSquare = useGameStore(game => game.toggleSquare);
-  const makeNextMove = useGameStore(game => game.makeNextMove);
   const precludedCastling = useGameStore(currentCastling);
   const epSquare = useGameStore(currentEnPassantSquare);
   const thisPlayer = useGameStore(currentPlayer);
