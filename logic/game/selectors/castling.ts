@@ -12,13 +12,7 @@ const emptyPreclusions = new Set<RookStartSquare>();
 //   [firstBoard, emptyPreclusions]
 // ]);
 
-/**
- * recursive lookup back to find castling preclusions
- * @param state 
- * @param i index of board 
- * @returns castling preclusions set
- */
-const recurse = (state: Pick<GameAndCursor, 'gamePlay'>, i: number): CastlingPreclusions => {
+const recurse = (gamePlay: string, i: number): CastlingPreclusions => {
 
   if (i === 0) {
     return emptyPreclusions;
@@ -29,8 +23,8 @@ const recurse = (state: Pick<GameAndCursor, 'gamePlay'>, i: number): CastlingPre
   //   return boardCache.get(gameBoards[i])!;
   // }
   
-  const prev = recurse(state, i -1);
-  const move = moves(state)[i - 1];
+  const prev = recurse(gamePlay, i -1);
+  const move = moves({ gamePlay })[i - 1];
   if (move === 'RESIGN'){
     return new Set(prev);
   }
@@ -44,13 +38,12 @@ const recurse = (state: Pick<GameAndCursor, 'gamePlay'>, i: number): CastlingPre
 
 const gameCache = new Map<string, CastlingPreclusions[]>();
 
-export const castling = (state: Pick<GameAndCursor, 'gamePlay'>) => {
-  const { gamePlay } = state;
+export const castling = ({ gamePlay }: Pick<GameAndCursor, 'gamePlay'>) => {
   if(gameCache.has(gamePlay)){
     return gameCache.get(gamePlay)!;
   };
 
-  const newGameCacheEntry = moves(state).map((_, i) => recurse(state, i));
+  const newGameCacheEntry = moves({ gamePlay }).map((_, i) => recurse(gamePlay, i));
   gameCache.set(gamePlay, newGameCacheEntry);
   return newGameCacheEntry;
 
@@ -58,5 +51,5 @@ export const castling = (state: Pick<GameAndCursor, 'gamePlay'>) => {
 
 export const currentCastling = (state: GameAndCursor) => {
   const cursor = boardCursor(state);
-  return recurse(state, cursor)
+  return recurse(state.gamePlay, cursor)
 }

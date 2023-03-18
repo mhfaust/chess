@@ -48,7 +48,7 @@ export const gamePlayCaptures = (gamePlay: string) => {
     if (captured) {
       updatedList.push(captured)
     } 
-    else if (to === epSquare({ gamePlay }, i - 1)) {
+    else if (to === epSquare({ gamePlay }, i)) {
       updatedList.push(isBlacksTurn ? 'White Pawn' : 'Black Pawn');
     }
     const newCaptures = {

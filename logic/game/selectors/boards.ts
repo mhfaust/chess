@@ -32,8 +32,7 @@ export const boards = (game: Pick<GameAndCursor, 'gamePlay'>): Board[] => {
       const previousBoard = [...arr].pop()!;
       const gameCastling = castling(game);
       const prevPreclusions = gameCastling[i - 1] ?? emptyPreclusions;
-      const ep = epSquare(game, i - 1);
-
+      const ep = epSquare(game, i);
 
       const [from, to, promoteTo] = move;
       if(canMoveTo(previousBoard, from, to, prevPreclusions, ep)){

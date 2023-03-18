@@ -34,7 +34,6 @@ export default function Game() {
   const blackCaptures = useGameStore(currentBlackCaptures);
 
 
-  // const { toggleSquare, makeNextMove } = game;
   const thisBoard = useGameStore(currentBoard);
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
@@ -124,6 +123,7 @@ export default function Game() {
         )}
       </div>
     </div>
+    <div>EP Sq: {epSquare}</div>
     <HistoryNav />
     <PawnPromotionPrompt onPromote={handlePromotePawn} />
   </>)
