@@ -118,9 +118,9 @@ export default function Game() {
             <div>{thisPlayer}&apos; turn</div>
             {isInCheck(thisBoard, thisPlayer) ? (
               <div>
-                <>{currentPlayer} is in check</>
+                <>{thisPlayer} is in check</>
               </div>
-            ) : null}
+            ) : <></>}
           </>
         )}
       </div>
