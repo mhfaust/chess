@@ -13,11 +13,12 @@ import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { isCheckmate, isInCheck } from 'logic/check';
 import { useGameStore } from 'logic/game/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
-import { castling, currentCastling } from 'logic/game/selectors/castling';
+import { currentCastling } from 'logic/game/selectors/castling';
 import currentEnPassantSquare from 'logic/game/selectors/enPassant';
 import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
 import HistoryNav from '../HistoryNav';
+import { isViewingLatestMove } from 'logic/game/selectors/game';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -32,6 +33,7 @@ export default function Game() {
   const thisPlayer = useGameStore(currentPlayer);
   const whiteCaptures = useGameStore(currentWhiteCaptures);
   const blackCaptures = useGameStore(currentBlackCaptures);
+  const isLatestBoard = useGameStore(isViewingLatestMove);
 
 
   const thisBoard = useGameStore(currentBoard);
@@ -104,6 +106,7 @@ export default function Game() {
         selectedSquare={selectedSquare}
         validMoves={validMoves}
         currentPlayer={thisPlayer}
+        isLatestBoard={isLatestBoard}
       />
       <Captures captures={whiteCaptures} />
       <div>

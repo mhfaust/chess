@@ -44,31 +44,36 @@ const rotate: Record<Orientation, (s: SquareWithPiece[][]) => SquareWithPiece[][
   3: noTurn,
 }
 
-type ChessBoardProps = {
+type GridProps = {
   board: Board;
   orientation: Orientation;
   onClickSquare: (square: Square) => void;
   selectedSquare: Square | null;
   validMoves?: Set<Square>;
   currentPlayer: Player;
+  isLatestBoard: boolean;
 }
 const noMoves = new Set<Square>();
 
-const ChessBoard = ({ 
+const Grid = ({ 
   board, 
   orientation = 0, 
   onClickSquare,
   selectedSquare,
   validMoves = noMoves,
   currentPlayer,
- }: ChessBoardProps) => {
+  isLatestBoard
+ }: GridProps) => {
 
   const rotated = useMemo(() => {
     return rotate[orientation](mapToPresentationModel(board))
   }, [board, orientation])
 
   const handleSquareClick = (pos: Square): MouseEventHandler => {
-    return () => onClickSquare(pos);
+    return () => {
+      if (isLatestBoard) {
+        onClickSquare(pos)};
+      } 
   };
 
   const turnStyle = currentPlayer === 'Black' ? styles.blackTurn : styles.whiteTurn;
@@ -84,8 +89,8 @@ const ChessBoard = ({
                   styles.square, 
                   styles[squareColor(square!)!],
                   { 
-                    [styles.selected]: selectedSquare === square,
-                    [styles.canMoveTo]: validMoves.has(square),
+                    [styles.selected]: isLatestBoard && selectedSquare === square,
+                    [styles.canMoveTo]: isLatestBoard && validMoves.has(square),
                     [styles.whitePiece]: piece && WHITE_PIECES.has(piece),
                     [styles.blackPiece]: piece && BLACK_PIECES.has(piece),
                     [styles.kingInCheck]: piece && isPieceKingInCheck(board, square),
@@ -106,4 +111,4 @@ const ChessBoard = ({
   )
 }
 
-export default ChessBoard;
+export default Grid;

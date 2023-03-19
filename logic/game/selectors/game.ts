@@ -5,7 +5,7 @@ import { moves } from "./moves";
 import currentPlayer from "./players";
 
 export const isViewingLatestMove = (game: GameAndCursor) => {
-  return game.boardCursor === boards(game).length;
+  return game.boardCursor === boards(game).length - 1;
 }
 
 export const isGameComplete = (game: GameAndCursor) => {
