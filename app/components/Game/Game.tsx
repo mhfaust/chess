@@ -116,11 +116,11 @@ export default function Game() {
           </div>
         ) : (<>
             <div>{thisPlayer}&apos; turn</div>
-            {isInCheck(thisBoard, thisPlayer) ? (
+            {isInCheck(thisBoard, thisPlayer) && (
               <div>
                 <>{thisPlayer} is in check</>
               </div>
-            ) : <></>}
+            )}
           </>
         )}
       </div>
