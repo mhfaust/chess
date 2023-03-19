@@ -66,6 +66,10 @@ export const boardCursor = (game: GameAndCursor) => {
   return game.boardCursor ?? boards(game).length - 1;
 }
 
+export const latestBoardCursor = (game: GameAndCursor) => {
+  return boards(game).length - 1;
+}
+
 export const boardIndexes = (game: GameAndCursor) => {
   return new Array(boards(game).length).fill('').map((_, i) => i);
 }

@@ -1,4 +1,4 @@
-import { GameAndCursor, GameView } from "../gameState";
+import { GameView } from "../gameState";
 
 export const selectedSquare = (state: GameView) => {
   return state.selectedSquare;

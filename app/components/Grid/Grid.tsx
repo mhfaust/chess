@@ -76,8 +76,15 @@ const Grid = ({
       } 
   };
 
-  const turnStyle = currentPlayer === 'Black' ? styles.blackTurn : styles.whiteTurn;
-
+  const turnStyle = (() => {
+    if (!isLatestBoard) {
+      return null
+    }
+    return currentPlayer === 'Black' 
+      ? styles.blackTurn 
+      : styles.whiteTurn;
+  })();
+  
   return (
     <div className={clsx(styles.main, turnStyle)}>
       {rotated.map((file, i) => (
@@ -99,9 +106,9 @@ const Grid = ({
                  key={j}
                  onClick={handleSquareClick(square)}
                >
-                 {(piece && (
+                 {piece ? (
                   <span className={styles.piece} >{unicodeSymbols[piece]}</span>
-                  )) ?? <>&nbsp;</>}
+                  ) : <>&nbsp;</>}
                </div> 
              )
            })}

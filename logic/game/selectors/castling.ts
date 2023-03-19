@@ -25,7 +25,7 @@ const recurse = (gamePlay: string, i: number): CastlingPreclusions => {
   
   const prev = recurse(gamePlay, i -1);
   const move = moves({ gamePlay })[i - 1];
-  if (move === 'RESIGN'){
+  if (!move || move === 'RESIGN'){
     return new Set(prev);
   }
   const [from] = move;
