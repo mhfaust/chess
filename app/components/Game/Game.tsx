@@ -19,6 +19,7 @@ import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
 import HistoryNav from '../HistoryNav';
 import { isViewingLatestMove } from 'logic/game/selectors/game';
+import RotateButtons from '../Rotator/Rotator';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -28,14 +29,15 @@ export default function Game() {
 
   const { toggleSquare, makeNextMove } = useGameStore().actions;
   const selectedSquare = useGameStore(game => game.selectedSquare);
+  const orientation = useGameStore(game => game.orientation);
   const precludedCastling = useGameStore(currentCastling);
   const epSquare = useGameStore(currentEnPassantSquare);
   const thisPlayer = useGameStore(currentPlayer);
   const whiteCaptures = useGameStore(currentWhiteCaptures);
   const blackCaptures = useGameStore(currentBlackCaptures);
   const isLatestBoard = useGameStore(isViewingLatestMove);
-
   const thisBoard = useGameStore(currentBoard);
+
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
     ((p: Piece ) => void) | null
@@ -100,13 +102,14 @@ export default function Game() {
       <Captures captures={blackCaptures} />
       <Grid 
         board={thisBoard} 
-        orientation={0}
+        orientation={orientation}
         onClickSquare={handleClickSquare}
         selectedSquare={selectedSquare}
         validMoves={validMoves}
         currentPlayer={thisPlayer}
         isLatestBoard={isLatestBoard}
       />
+      <RotateButtons />
       <Captures captures={whiteCaptures} />
       <div>
       {isCheckmate(thisBoard, thisPlayer) ? (

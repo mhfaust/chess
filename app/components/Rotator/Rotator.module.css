@@ -1,0 +1,15 @@
+.rotator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 1em;
+  width: 1em;
+  font-size: 2.5em;
+  transform-origin: center .57em;
+  transition: transform .15s;
+  cursor: pointer;
+  user-select: none;
+}
+.rotator:focus, .rotator:active {
+  outline: none;
+}

@@ -18,9 +18,11 @@ export type Actions = {
   toggleBoard: (
     boardIndex: number
   ) => void;
+  rotateBoard: () => void;
 };
 
 export type GameView =  GameAndCursor & {
+  actions: Actions;
   selectedSquare: Square | null;
-  actions: Actions
+  orientation: number;
 }

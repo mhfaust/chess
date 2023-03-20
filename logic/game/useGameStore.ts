@@ -5,9 +5,10 @@ import { KasparovVeselin } from 'game-data/historicalGames';
 
 export const useGameStore = create<GameView>((set) => {
   return {
-    gamePlay: KasparovVeselin,
+    gamePlay: '',
     boardCursor: 0,
     selectedSquare: null,
+    orientation: 0,
     actions: {
       toggleSquare: (square) => {
         return set(({ selectedSquare }) => {
@@ -26,6 +27,11 @@ export const useGameStore = create<GameView>((set) => {
       },
       toggleBoard: (boardIndex: number) => {
         return set(() => ({ boardCursor: boardIndex }))
+      },
+      rotateBoard: () => {
+        return set(({ orientation }) => ({ 
+          orientation: ((orientation +  1))  
+        }))
       }
     }
   }

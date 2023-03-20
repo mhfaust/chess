@@ -14,16 +14,12 @@ import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';
  * think about this lib: https://github.com/Quramy/typed-css-modules
  */
 
-
-type Orientation = 0 | 1 | 2 | 3;
-
-
 type SquareWithPiece = { 
   square: Square, 
   piece: PieceOrEmpty 
 }
 
-const mapToPresentationModel = (board: Board): SquareWithPiece[][] => {
+const mapToGridModel = (board: Board): SquareWithPiece[][] => {
   return  board.map((row, file) => {
     return row.map((piece, rank) => ({
       square: square([file, rank])!,
@@ -37,16 +33,16 @@ const halfTurn = (s: SquareWithPiece[][]) => rotate8by8(rotate8by8(s));
 const quarterClockwise = (s: SquareWithPiece[][]) => rotate8by8(rotate8by8(rotate8by8(s)));
 const noTurn = (s: SquareWithPiece[][]) => s
 
-const rotate: Record<Orientation, (s: SquareWithPiece[][]) => SquareWithPiece[][]> = {
-  0: quaterCounterClockwise,
+const rotate: Record<0 | 1 | 2 | 3, (s: SquareWithPiece[][]) => SquareWithPiece[][]> = {
+  0: quarterClockwise,
   1: halfTurn,
-  2: quarterClockwise,
+  2: quaterCounterClockwise,
   3: noTurn,
 }
 
 type GridProps = {
   board: Board;
-  orientation: Orientation;
+  orientation: number;
   onClickSquare: (square: Square) => void;
   selectedSquare: Square | null;
   validMoves?: Set<Square>;
@@ -66,7 +62,9 @@ const Grid = ({
  }: GridProps) => {
 
   const rotated = useMemo(() => {
-    return rotate[orientation](mapToPresentationModel(board))
+    const rotateGrid = rotate[(orientation % 4) as 0 | 1 | 2 | 3 ];
+    return rotateGrid(mapToGridModel(board));
+    // return rotate[(orientation % 4) as 0 | 1 | 2 | 3 ](mapToGridModel(board))
   }, [board, orientation])
 
   const handleSquareClick = (pos: Square): MouseEventHandler => {
