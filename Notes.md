@@ -5,6 +5,7 @@ todo
 REDO/REFACTOR
 
 - resign -- store as separate part of gamestore, not a move.
+[test update]
 
 
 IDEAS
