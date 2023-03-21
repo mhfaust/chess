@@ -5,7 +5,7 @@ import { KasparovVeselin } from 'game-data/historicalGames';
 
 export const useGameStore = create<GameView>((set) => {
   return {
-    gamePlay: KasparovVeselin,
+    gamePlay: '',
     boardCursor: 0,
     selectedSquare: null,
     orientation: 0,
