@@ -62,9 +62,8 @@ const Grid = ({
  }: GridProps) => {
 
   const rotated = useMemo(() => {
-    const rotateGrid = rotate[(orientation % 4) as 0 | 1 | 2 | 3 ];
+    const rotateGrid = rotate[((orientation + 2) % 4) as 0 | 1 | 2 | 3 ];
     return rotateGrid(mapToGridModel(board));
-    // return rotate[(orientation % 4) as 0 | 1 | 2 | 3 ](mapToGridModel(board))
   }, [board, orientation])
 
   const handleSquareClick = (pos: Square): MouseEventHandler => {

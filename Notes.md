@@ -1,3 +1,17 @@
+todo
+- lockdown github (no pushes to main)
+
+
+REDO/REFACTOR
+
+- resign -- store as separate part of gamestore, not a move.
+
+
+IDEAS
+
+
+
+
 Resign
 - UI to allow player to resign
 
