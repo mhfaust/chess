@@ -20,6 +20,7 @@ import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors
 import HistoryNav from '../HistoryNav';
 import { isViewingLatestMove } from 'logic/game/selectors/game';
 import RotateButtons from '../Rotator/Rotator';
+import numWithOrdSuffix from 'app/utils/numWithOrdSuffix';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -37,6 +38,8 @@ export default function Game() {
   const blackCaptures = useGameStore(currentBlackCaptures);
   const isLatestBoard = useGameStore(isViewingLatestMove);
   const thisBoard = useGameStore(currentBoard);
+  const cursor = useGameStore(game => game.boardCursor);
+
 
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
@@ -97,6 +100,12 @@ export default function Game() {
     return;
   }
 
+  const ordinal = cursor === 0
+    ? 'initially'
+    : `after the ${numWithOrdSuffix(cursor)} move`
+
+  const historicBoardNote = `This is what the board looked like ${ordinal}`
+
   return (<>
     <div style={{ width: '600px'}}>
       <Captures captures={blackCaptures} />
@@ -113,19 +122,15 @@ export default function Game() {
       <Captures captures={whiteCaptures} />
       <div>
       {isCheckmate(thisBoard, thisPlayer) ? (
-          <div>
-            <div>CHECKMATE -- {otherPlayer(thisPlayer)} WINS</div>
-            <button>New Game</button>
-          </div>
-        ) : (<>
-            <div>{thisPlayer}&apos; turn</div>
-            {isInCheck(thisBoard, thisPlayer) && (
-              <div>
-                <>{thisPlayer} is in check</>
-              </div>
-            )}
-          </>
-        )}
+        <div>
+          <div>CHECKMATE -- {otherPlayer(thisPlayer)} WINS</div>
+          <button>New Game</button>
+        </div>
+      ) : isInCheck(thisBoard, thisPlayer) && (
+        <div>
+          <>{thisPlayer} is in check</>
+        </div>
+      )}
       </div>
     </div>
     <HistoryNav />
