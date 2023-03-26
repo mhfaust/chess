@@ -109,7 +109,6 @@ export default function Game() {
 
   return (<>
     <div className={styles.game}>
-      <Captures captures={blackCaptures} />
       <Grid 
         board={thisBoard} 
         orientation={orientation}
@@ -119,8 +118,11 @@ export default function Game() {
         currentPlayer={thisPlayer}
         isLatestBoard={isLatestBoard}
       />
-      <Captures captures={whiteCaptures} />
-      <RotateButtons />
+      <div className={styles.tray}>
+        <Captures captures={whiteCaptures} player='white' />
+        <RotateButtons />
+        <Captures captures={blackCaptures} player='black'/>
+      </div>
       <GameStatus />
     </div>
     <HistoryNav />

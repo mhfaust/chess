@@ -1,3 +1,8 @@
 .game {
   color: black;
+  max-width: 768px;
+}
+.tray {
+  display: flex;
+  flex-direction: row;
 }

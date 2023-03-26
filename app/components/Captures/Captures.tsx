@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { unicodeSymbols } from 'logic/constants/pieces';
 import { Piece } from 'logic/squares/piece'
 
@@ -5,12 +6,13 @@ import styles from './Captures.module.css'
 
 type CapturesProps = {
   captures: Piece[];
+  player: 'black' | 'white'
 }
 
-const Captures = ({ captures }: CapturesProps) => {
+const Captures = ({ captures, player }: CapturesProps) => {
 
   return (
-    <div className={styles.captures} style={{
+    <div className={clsx(styles.captures, styles[player])} style={{
       height: captures.length ? "1.5em" : "0em"
     }}>
       {captures.map((piece, i) => (

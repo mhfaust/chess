@@ -4,4 +4,8 @@
   height: 1em;
   font-size: 2em;
   transition: height .5s;
+  flex: 1;
+}
+.black {
+  flex-direction: row-reverse;
 }
