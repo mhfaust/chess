@@ -10,7 +10,6 @@ import isPromotingPawn from 'logic/board/pawnPromotionOptions';
 import { Piece } from 'logic/squares/piece';
 import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { isCheckmate, isInCheck } from 'logic/check';
 import { useGameStore } from 'logic/game/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
 import { currentCastling } from 'logic/game/selectors/castling';
@@ -21,6 +20,8 @@ import HistoryNav from '../HistoryNav';
 import { isViewingLatestMove } from 'logic/game/selectors/game';
 import RotateButtons from '../Rotator/Rotator';
 import numWithOrdSuffix from 'app/utils/numWithOrdSuffix';
+import styles from './Game.module.css';
+import GameStatus from '../GameStatus';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -107,7 +108,7 @@ export default function Game() {
   const historicBoardNote = `This is what the board looked like ${ordinal}`
 
   return (<>
-    <div style={{ width: '600px'}}>
+    <div className={styles.game}>
       <Captures captures={blackCaptures} />
       <Grid 
         board={thisBoard} 
@@ -118,20 +119,9 @@ export default function Game() {
         currentPlayer={thisPlayer}
         isLatestBoard={isLatestBoard}
       />
-      <RotateButtons />
       <Captures captures={whiteCaptures} />
-      <div>
-      {isCheckmate(thisBoard, thisPlayer) ? (
-        <div>
-          <div>CHECKMATE -- {otherPlayer(thisPlayer)} WINS</div>
-          <button>New Game</button>
-        </div>
-      ) : isInCheck(thisBoard, thisPlayer) && (
-        <div>
-          <>{thisPlayer} is in check</>
-        </div>
-      )}
-      </div>
+      <RotateButtons />
+      <GameStatus />
     </div>
     <HistoryNav />
     <PawnPromotionPrompt onPromote={handlePromotePawn} />

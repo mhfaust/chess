@@ -1,4 +1,11 @@
 todo
+Top Priority (feedback from Soren)
+- Make the nav things black on safari mobile
+  - rotator svg
+  - board-numbers
+- Fit board to screen always
+
+
 - lockdown github (no pushes to main)
 
 

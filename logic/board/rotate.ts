@@ -7,13 +7,6 @@ const makeRotator = <T>(f: (rows: T[][], i: number, j: number) => T) => {
         ));
     }
 }
-
-
-// export const rotateCounterClockwise = makeRotator(
-//     (rows: Piece[][], i: number, j: number) => rows[j][rows.length - i - 1]
-// );
-
-
 export const rotateCounterClockwise = <T>(rows: T[][]): T[][] => {
     return rows.map(
         (row, i) => row.map(

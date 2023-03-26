@@ -10,7 +10,9 @@ type CapturesProps = {
 const Captures = ({ captures }: CapturesProps) => {
 
   return (
-    <div className={styles.captures}>
+    <div className={styles.captures} style={{
+      height: captures.length ? "1.5em" : "0em"
+    }}>
       {captures.map((piece, i) => (
         <span key={i} >
           {unicodeSymbols[piece]}

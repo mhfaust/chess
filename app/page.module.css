@@ -4,24 +4,5 @@
   justify-content: space-between;
   align-items: center;
   padding: 6rem;
-}
-
-.file {
-  display: flex;
-}
-.square {
-  height: 40px;
-  width: 40px;
-  line-height: 40px;
-  font-size: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-}
-.even {
-  background-color: white;
-}
-.odd {
-  background-color: #ccc;
+  color: black;
 }
