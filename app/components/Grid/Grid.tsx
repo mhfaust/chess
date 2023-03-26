@@ -6,9 +6,10 @@ import { Board, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
 import { Square, squareColor } from 'logic/squares/square';
-import { rotate8by8 } from 'logic/board/rotateCounterClockwise';
+import { rotateCounterClockwise, rotateClockwise, rotate180 } from 'logic/board/rotate';
 import { Player } from 'logic/types/Player';
 import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';
+import allPieceMoves from 'logic/moves/allPieceMoves';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -28,16 +29,11 @@ const mapToGridModel = (board: Board): SquareWithPiece[][] => {
   })
 }
 
-const quaterCounterClockwise = rotate8by8<SquareWithPiece>;
-const halfTurn = (s: SquareWithPiece[][]) => rotate8by8(rotate8by8(s));
-const quarterClockwise = (s: SquareWithPiece[][]) => rotate8by8(rotate8by8(rotate8by8(s)));
-const noTurn = (s: SquareWithPiece[][]) => s
-
 const rotate: Record<0 | 1 | 2 | 3, (s: SquareWithPiece[][]) => SquareWithPiece[][]> = {
-  0: quarterClockwise,
-  1: halfTurn,
-  2: quaterCounterClockwise,
-  3: noTurn,
+  0: rotateClockwise,
+  1: rotate180,
+  2: rotateCounterClockwise,
+  3: b => b,
 }
 
 type GridProps = {
@@ -62,7 +58,8 @@ const Grid = ({
  }: GridProps) => {
 
   const rotated = useMemo(() => {
-    const rotateGrid = rotate[((orientation + 2) % 4) as 0 | 1 | 2 | 3 ];
+    const orientationMod4 = (orientation  +2) % 4 as 0 | 1 | 2 | 3;
+    const rotateGrid = rotate[orientationMod4];
     return rotateGrid(mapToGridModel(board));
   }, [board, orientation])
 
@@ -93,7 +90,7 @@ const Grid = ({
                   styles.square, 
                   styles[squareColor(square!)!],
                   { 
-                    [styles.selected]: isLatestBoard && selectedSquare === square,
+                    [styles.selected]: isLatestBoard && (allPieceMoves(board, square).size) && selectedSquare === square,
                     [styles.canMoveTo]: isLatestBoard && validMoves.has(square),
                     [styles.whitePiece]: piece && WHITE_PIECES.has(piece),
                     [styles.blackPiece]: piece && BLACK_PIECES.has(piece),

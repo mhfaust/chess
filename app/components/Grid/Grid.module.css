@@ -54,11 +54,15 @@
 .dark {
   background-color: #ccc;
 }
+
+.kingInCheck {
+  background-color: darkred;
+  color: white;
+}
 .selected {
   z-index: 2;
   background-color: darkblue;
   color: white;
-  /* outline: 2px dotted green; */
 }
 
 .blackTurn .blackPiece {
@@ -66,8 +70,4 @@
 }
 .whiteTurn .whitePiece {
   cursor: pointer;
-}
-
-.kingInCheck {
-  color: darkred;
 }
