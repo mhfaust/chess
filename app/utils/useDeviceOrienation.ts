@@ -12,11 +12,7 @@ function useDeviceOrientation(threshold: number) {
 
   const isClient = typeof window === 'object';
 
-  const initialOrientation = isClient
-    ? undefined
-    :  abs(window.orientation) <= threshold;
-
-  const [isDeviceFlat, setIsDeviceFlat] = useState<boolean | undefined>(initialOrientation);
+  const [isDeviceFlat, setIsDeviceFlat] = useState<boolean | undefined>(undefined);
 
   useEffect(() => {
     const handleDeviceOrientation = (eventData: OrientationEvent) => {
