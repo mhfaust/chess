@@ -58,10 +58,19 @@ const Grid = ({
  }: GridProps) => {
 
   const rotated = useMemo(() => {
-    const orientationMod4 = (orientation  +2) % 4 as 0 | 1 | 2 | 3;
+    const orientationMod4 = (0  +2) % 4 as 0 | 1 | 2 | 3;
     const rotateGrid = rotate[orientationMod4];
     return rotateGrid(mapToGridModel(board));
-  }, [board, orientation])
+  }, [board]);
+
+  const gridStyleAttr = { 
+    transform: `rotate(${90 * (orientation)}deg)`,
+  };
+
+  const pieceStyleAttr = { 
+    transform: `rotate(${-90 * (orientation)}deg)`,
+    transition: 'transform .5s'
+  };
 
   const handleSquareClick = (pos: Square): MouseEventHandler => {
     return () => {
@@ -80,7 +89,10 @@ const Grid = ({
   })();
   
   return (
-    <div className={clsx(styles.main, turnStyle)}>
+    <div 
+      className={clsx(styles.main, turnStyle)} 
+      style={gridStyleAttr}
+    >
       {rotated.map((file, i) => (
         <div className={styles.row} key={i}>
            {file.map(({ square: square, piece }, j) => {
@@ -101,7 +113,10 @@ const Grid = ({
                  onClick={handleSquareClick(square)}
                >
                  {piece ? (
-                  <span className={styles.piece} >{unicodeSymbols[piece]}</span>
+                  <span 
+                    className={styles.piece} 
+                    style={pieceStyleAttr}
+                  >{unicodeSymbols[piece]}</span>
                   ) : <>&nbsp;</>}
                </div> 
              )
