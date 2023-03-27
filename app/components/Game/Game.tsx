@@ -22,6 +22,7 @@ import CompassRotator from '../Rotator/Rotator';
 import numWithOrdSuffix from 'app/utils/numWithOrdSuffix';
 import styles from './Game.module.css';
 import GameStatus from '../GameStatus';
+import useDeviceOrientation from 'app/utils/useDeviceOrienation';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -41,6 +42,7 @@ export default function Game() {
   const thisBoard = useGameStore(currentBoard);
   const cursor = useGameStore(game => game.boardCursor);
 
+  const isFlat = useDeviceOrientation();
 
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<
@@ -123,9 +125,13 @@ export default function Game() {
         <CompassRotator />
         <Captures captures={blackCaptures} player='black'/>
       </div>
+      <div>
+        Device is flat: {isFlat === true ? 'TRUE' : isFlat === false ? 'FALSE' : 'UNKOWN'}
+      </div>
       <GameStatus />
       <PawnPromotionPrompt onPromote={handlePromotePawn} />
     </div>
     <HistoryNav />
+
   </>)
 }
