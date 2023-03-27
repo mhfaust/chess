@@ -10,7 +10,9 @@ const { abs } = Math;
 
 function useDeviceOrientation(threshold: number) {
 
-  const initialOrientation = typeof window === undefined 
+  const isClient = typeof window === 'object';
+
+  const initialOrientation = isClient
     ? undefined
     :  abs(window.orientation) <= threshold;
 
@@ -28,16 +30,16 @@ function useDeviceOrientation(threshold: number) {
       }
     }
 
-    if (typeof window !== undefined && window.DeviceOrientationEvent) {
+    if (isClient && window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', handleDeviceOrientation);
     }
 
     return () => {
-      if (typeof window !== undefined && window.DeviceOrientationEvent) {
+      if (isClient && window.DeviceOrientationEvent) {
         window.removeEventListener('deviceorientation', handleDeviceOrientation);
       }
     };
-  }, [threshold]);
+  }, [isClient, threshold]);
 
   return isDeviceFlat;
 }
