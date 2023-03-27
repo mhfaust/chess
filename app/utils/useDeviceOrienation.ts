@@ -9,8 +9,12 @@ type OrientationEvent = {
 const { abs } = Math;
 
 function useDeviceOrientation(threshold: number) {
-  const [isDeviceFlat, setIsDeviceFlat] = useState<boolean | undefined>(
-    window.orientation ? abs(window.orientation) <= threshold :  undefined);
+
+  const initialOrientation = typeof window === undefined 
+    ? undefined
+    :  abs(window.orientation) <= threshold;
+
+  const [isDeviceFlat, setIsDeviceFlat] = useState<boolean | undefined>(initialOrientation);
 
   useEffect(() => {
     const handleDeviceOrientation = (eventData: OrientationEvent) => {
@@ -24,12 +28,12 @@ function useDeviceOrientation(threshold: number) {
       }
     }
 
-    if (window.DeviceOrientationEvent) {
+    if (typeof window !== undefined && window.DeviceOrientationEvent) {
       window.addEventListener('deviceorientation', handleDeviceOrientation);
     }
 
     return () => {
-      if (window.DeviceOrientationEvent) {
+      if (typeof window !== undefined && window.DeviceOrientationEvent) {
         window.removeEventListener('deviceorientation', handleDeviceOrientation);
       }
     };
