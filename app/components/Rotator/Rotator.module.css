@@ -2,13 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 1em;
-  width: 1em;
   border-radius: .5em;
-  font-size: 4.5em;
+  font-size: 1em;
   transition: transform .15s;
   cursor: pointer;
   user-select: none;
+  margin: .5em 1.5em;
+
 }
 .rotator:focus, .rotator:active {
   outline: none;

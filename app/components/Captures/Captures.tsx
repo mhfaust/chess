@@ -12,9 +12,7 @@ type CapturesProps = {
 const Captures = ({ captures, player }: CapturesProps) => {
 
   return (
-    <div className={clsx(styles.captures, styles[player])} style={{
-      height: captures.length ? "1.5em" : "0em"
-    }}>
+    <div className={clsx(styles.captures, styles[player])}>
       {captures.map((piece, i) => (
         <span key={i} >
           {unicodeSymbols[piece]}

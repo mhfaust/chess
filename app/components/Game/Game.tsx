@@ -18,7 +18,7 @@ import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
 import HistoryNav from '../HistoryNav';
 import { isViewingLatestMove } from 'logic/game/selectors/game';
-import RotateButtons from '../Rotator/Rotator';
+import CompassRotator from '../Rotator/Rotator';
 import numWithOrdSuffix from 'app/utils/numWithOrdSuffix';
 import styles from './Game.module.css';
 import GameStatus from '../GameStatus';
@@ -120,12 +120,12 @@ export default function Game() {
       />
       <div className={styles.tray}>
         <Captures captures={whiteCaptures} player='white' />
-        <RotateButtons />
+        <CompassRotator />
         <Captures captures={blackCaptures} player='black'/>
       </div>
       <GameStatus />
+      <PawnPromotionPrompt onPromote={handlePromotePawn} />
     </div>
     <HistoryNav />
-    <PawnPromotionPrompt onPromote={handlePromotePawn} />
   </>)
 }
