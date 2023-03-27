@@ -33,7 +33,7 @@ function useDeviceOrientation(threshold: number) {
         window.removeEventListener('deviceorientation', handleDeviceOrientation);
       }
     };
-  }, []);
+  }, [threshold]);
 
   return isDeviceFlat;
 }
