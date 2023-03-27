@@ -42,7 +42,7 @@ export default function Game() {
   const thisBoard = useGameStore(currentBoard);
   const cursor = useGameStore(game => game.boardCursor);
 
-  const isFlat = useDeviceOrientation();
+  const isFlat = useDeviceOrientation(20);
 
 
   const [handlePromotePawn, setHandlePromotePawn] = useState<

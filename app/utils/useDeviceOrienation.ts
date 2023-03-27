@@ -6,15 +6,18 @@ type OrientationEvent = {
   gamma: number | null;
 };
 
-function useDeviceOrientation() {
-  const [isDeviceFlat, setIsDeviceFlat] = useState(false);
+const { abs } = Math;
+
+function useDeviceOrientation(threshold: number) {
+  const [isDeviceFlat, setIsDeviceFlat] = useState<boolean | undefined>(
+    window.orientation ? abs(window.orientation) <= threshold :  undefined);
 
   useEffect(() => {
     const handleDeviceOrientation = (eventData: OrientationEvent) => {
       const beta = eventData.beta ?? 0;
       const gamma = eventData.gamma ?? 0;
 
-      if (Math.abs(beta) <= 10 && Math.abs(gamma) <= 10) {
+      if (abs(beta) <= threshold && abs(gamma) <= threshold) {
         setIsDeviceFlat(true);
       } else {
         setIsDeviceFlat(false);
