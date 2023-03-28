@@ -19,7 +19,7 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5');
+        const linesOfAttack = generateLinesOfAttack(board, 'Black', 'e5');
         expect(linesOfAttack.next().value).toEqual([COORDS.d4, COORDS.c3]);
         expect(linesOfAttack.next().done).toBe(true);       
     });
@@ -36,7 +36,7 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__]
         ];
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5')
+        const linesOfAttack = generateLinesOfAttack(board, 'Black', 'e5')
         const returned = linesOfAttack.next();
         expect(returned.value).toBeNull();       
         expect(returned.done).toBe(true);       
@@ -55,7 +55,7 @@ describe('generateLinesOfAttack', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5')
+        const linesOfAttack = generateLinesOfAttack(board, 'Black', 'e5')
         const returned = linesOfAttack.next();
         expect(returned.value).toBeNull();       
         expect(returned.done).toBe(true);       
@@ -73,7 +73,7 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
-        const linesOfAttack = generateLinesOfAttack(board, 'White', 'e5')
+        const linesOfAttack = generateLinesOfAttack(board, 'Black', 'e5')
         expect(linesOfAttack.next().value).toEqual([COORDS.d5]) ;       
         expect(linesOfAttack.next().done).toBe(true); 
     });
@@ -90,7 +90,7 @@ describe('generateLinesOfAttack', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,WN,__,__,__,__], 
         ];
-        const linesOfAttack: GridCoordinates[][] = allLinesOfAttack(board, 'Black', 'f3')
+        const linesOfAttack: GridCoordinates[][] = allLinesOfAttack(board, 'White', 'f3')
 
         const expectedLines: GridCoordinates[][] = [
             [COORDS.e2],

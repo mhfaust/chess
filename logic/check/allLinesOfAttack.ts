@@ -5,11 +5,11 @@ import generateLinesOfAttack from 'logic/check/generateLinesOfAttack';
 
 const allLinesOfAttack = (
   board: Board, 
-  defender: Player, 
+  attacker: Player, 
   target: Square
 ) => {
   const lines = [];
-  const iterable = generateLinesOfAttack(board, defender, target);
+  const iterable = generateLinesOfAttack(board, attacker, target);
   let { value, done } = iterable.next();
 
   while (!done) {

@@ -1,6 +1,7 @@
 import isCheckmate from './isCheckmate';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
+import { isInCheck } from '.';
 
 describe('isCheckmate', () => {
    
@@ -15,9 +16,10 @@ describe('isCheckmate', () => {
 /*  F  */ [__,__,__,__,__,WP,BP,BR],
 /*  G  */ [__,__,__,__,__,BP,__,BK],
 /*  H  */ [__,__,__,__,__,WQ,BP,__],
-        ];
+        ];  
 
-        expect(isCheckmate(board, 'Black')).toBe(false)
+        expect(isInCheck(board, 'Black')).toBe(false);
+        expect(isCheckmate(board, 'Black')).toBe(false);
     });
 
     it('Black is NOT in checkmate (king can move out of check)', () => {
@@ -33,6 +35,7 @@ describe('isCheckmate', () => {
 /*  H  */ [__,__,__,__,__,__,WB,__],
         ];
 
+        expect(isInCheck(board, 'Black')).toBe(true);
         expect(isCheckmate(board, 'Black')).toBe(false)
     });  
 
@@ -48,7 +51,7 @@ describe('isCheckmate', () => {
 /*  G  */ [__,__,__,__,__,__,BP,BK],
 /*  H  */ [__,__,__,__,__,__,WB,__],
         ];
-
+        expect(isInCheck(board, 'Black')).toBe(true);
         expect(isCheckmate(board, 'Black')).toBe(false)
     });
 
@@ -65,6 +68,7 @@ describe('isCheckmate', () => {
 /*  H  */ [__,__,__,__,__,__,BP,__],
         ];
 
+        expect(isInCheck(board, 'Black')).toBe(true);
         expect(isCheckmate(board, 'Black')).toBe(true)
     });
 
@@ -81,6 +85,7 @@ describe('isCheckmate', () => {
 /*  H  */ [__,__,__,__,__,__,WQ,__],
         ];
 
+        expect(isInCheck(board, 'Black')).toBe(true);
         expect(isCheckmate(board, 'Black')).toBe(true)
     });    
 
@@ -96,7 +101,7 @@ describe('isCheckmate', () => {
 /*  G  */ [WK,BR,__,WP,__,BP,__,BK],
 /*  H  */ [__,BR,__,WP,__,WQ,BP,__],
         ];
-
+        expect(isInCheck(board, 'White')).toBe(true);
         expect(isCheckmate(board, 'White')).toBe(true)
     });  
    
@@ -112,7 +117,7 @@ describe('isCheckmate', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
-
+        expect(isInCheck(board, 'White')).toBe(true);
         expect(isCheckmate(board, 'White')).toBe(true)
     });     
     
@@ -128,7 +133,7 @@ describe('isCheckmate', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,BQ,__,__,__], 
         ];
-
+        expect(isInCheck(board, 'White')).toBe(true);
         expect(isCheckmate(board, 'White')).toBe(true)
     }); 
 
@@ -144,11 +149,11 @@ describe('isCheckmate', () => {
 /*  G  */ [__,__,__,__,__,__,__,__],
 /*  H  */ [__,__,__,__,BQ,__,__,__], 
         ];
-
+        expect(isInCheck(board, 'White')).toBe(true);
         expect(isCheckmate(board, 'White')).toBe(false)
     });
 
-    it('Black is in checkmate and pawn cannot attack empty square (h7g6)', () => {
+    it('Black is in checkmate because pawn cannot diagonally attack an empty square (h7g6)', () => {
         const board: Board = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [WR,WP,__,__,__,__,BP,BR],
@@ -160,7 +165,54 @@ describe('isCheckmate', () => {
 /*  G  */ [WN,WP,__,__,BP,__,__,BN],
 /*  H  */ [WR,WP,__,__,WQ,__,BP,BR],
         ];
+        expect(isInCheck(board, 'Black')).toBe(true);
+        expect(isCheckmate(board, 'Black')).toBe(true)
+    });
 
+    it("Fool's mate = white is checkmated", () => {
+        const board: Board = [
+/*         1  2  3  4  5  6  7  8  */
+/*  A  */ [WR,WP,__,__,__,__,BP,BR],
+/*  B  */ [WN,WP,__,__,__,__,BP,BN],
+/*  C  */ [WB,WP,__,__,__,__,BP,BB],
+/*  D  */ [WQ,WP,__,__,__,__,BP,__],
+/*  E  */ [WK,WP,__,__,BP,__,__,BK],
+/*  F  */ [WB,__,WP,__,__,__,BP,BB],
+/*  G  */ [WN,__,__,WP,__,__,BP,BN],
+/*  H  */ [WR,WP,__,BQ,__,__,BP,BR],
+        ];
+        expect(isInCheck(board, 'White')).toBe(true);
+        expect(isCheckmate(board, 'White')).toBe(true)
+    });
+
+    it('Black is NOT in checkmate because pawn can advance fwd to empty square to block check', () => {
+        const board: Board = [
+/*         1  2  3  4  5  6  7  8  */
+/*  A  */ [WR,WP,__,__,__,__,BP,BR],
+/*  B  */ [WN,WP,__,__,__,__,BP,BN],
+/*  C  */ [WB,WP,__,__,__,__,BP,BB],
+/*  D  */ [__,WP,__,__,__,__,BP,BQ],
+/*  E  */ [WK,__,__,WP,__,__,BP,BK],
+/*  F  */ [WB,WP,__,__,BP,__,__,BB],
+/*  G  */ [WN,WP,__,__,__,__,BP,BN],
+/*  H  */ [WR,WP,__,__,WQ,__,BP,BR],
+        ];
+        expect(isInCheck(board, 'Black')).toBe(true);
+        expect(isCheckmate(board, 'Black')).toBe(false)
+    });
+    it('Black is in checkmate', () => {
+        const board: Board = [
+/*         1  2  3  4  5  6  7  8  */
+/*  A  */ [WR,WP,__,__,__,__,BP,BR],
+/*  B  */ [WN,WP,__,__,__,__,BP,BN],
+/*  C  */ [WB,WP,__,__,__,__,BP,BB],
+/*  D  */ [__,__,WP,__,__,__,BP,BQ],
+/*  E  */ [WK,__,__,WP,__,__,BP,BK],
+/*  F  */ [WB,WP,__,__,BP,__,__,BB],
+/*  G  */ [WN,WP,__,__,BP,__,__,BN],
+/*  H  */ [WR,WP,__,__,WQ,__,BP,BR],
+        ];
+        expect(isInCheck(board, 'Black')).toBe(true);
         expect(isCheckmate(board, 'Black')).toBe(true)
     });
 })

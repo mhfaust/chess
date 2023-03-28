@@ -1,13 +1,14 @@
 import { 
     playerAt, 
     displaceFrom, 
-    otherPlayer, 
     pieceAt, 
 } from 'logic/squares';
 import { 
     knightVectors, 
     pawnBlackAttackVectors, 
     pawnWhiteAttackVectors, 
+    pawnWhiteAdvanceVectors,
+    pawnBlackAdvanceVectors,
     kingVectors,
     bishopVectors,
     rookVectors
@@ -28,41 +29,42 @@ import isPawn from 'logic/pieces/isPawn';
 
 export type AttackPattern = {
     vectors: ReadonlyArray<MoveVector>; 
-    canAttackLikeThis: Set<Piece>; 
+    canMoveLikeThis: Set<Piece>; 
     limit: number;
 }
 
 const whiteAttackPatterns: Array<AttackPattern> = [
-    { vectors: pawnWhiteAttackVectors, canAttackLikeThis: new Set([WP, WQ, WB, WK]), limit: 1 },
-    { vectors: kingVectors, canAttackLikeThis: new Set([WK, WQ]), limit: 1 },
-    { vectors: knightVectors, canAttackLikeThis: new Set([WN]), limit: 1 },
-    { vectors: bishopVectors, canAttackLikeThis: new Set([WB, WQ]), limit: 0 },
-    { vectors: rookVectors, canAttackLikeThis: new Set([WR, WQ]), limit: 0 },
+    { vectors: pawnWhiteAttackVectors, canMoveLikeThis: new Set([WP]), limit: 1 },
+    { vectors: pawnWhiteAdvanceVectors, canMoveLikeThis: new Set([WP]), limit: 1 },
+    { vectors: kingVectors, canMoveLikeThis: new Set([WK, WQ]), limit: 1 },
+    { vectors: knightVectors, canMoveLikeThis: new Set([WN]), limit: 1 },
+    { vectors: bishopVectors, canMoveLikeThis: new Set([WB, WQ]), limit: 0 },
+    { vectors: rookVectors, canMoveLikeThis: new Set([WR, WQ]), limit: 0 },
 ];
 
 const blackAttackPatterns: Array<AttackPattern> = [
-    { vectors: pawnBlackAttackVectors, canAttackLikeThis: new Set([BP, BQ, BB, BK]), limit: 1 },
-    { vectors: kingVectors, canAttackLikeThis: new Set([BK, BQ]), limit: 1 },
-    { vectors: knightVectors, canAttackLikeThis: new Set([BN]), limit: 1 },
-    { vectors: bishopVectors, canAttackLikeThis: new Set([BB, BQ]), limit: 0 },
-    { vectors: rookVectors, canAttackLikeThis: new Set([BR, BQ]), limit: 0 },
+    { vectors: pawnBlackAttackVectors, canMoveLikeThis: new Set([BP]), limit: 1 },
+    { vectors: pawnBlackAdvanceVectors, canMoveLikeThis: new Set([BP]), limit: 1 },
+    { vectors: kingVectors, canMoveLikeThis: new Set([BK, BQ]), limit: 1 },
+    { vectors: knightVectors, canMoveLikeThis: new Set([BN]), limit: 1 },
+    { vectors: bishopVectors, canMoveLikeThis: new Set([BB, BQ]), limit: 0 },
+    { vectors: rookVectors, canMoveLikeThis: new Set([BR, BQ]), limit: 0 },
 ];
 
 function * generateLinesOfAttack(
     board: Board, 
-    defender: Player, 
+    attacker: Player, 
     target: Square)
     : IterableIterator<GridCoordinates[]>
 {
     if(!target){
         return;
     }
-    const attacker = otherPlayer(defender);
     let attackPatterns = attacker === 'Black' ? blackAttackPatterns : whiteAttackPatterns;
     const attackLines = new Map<Square, GridCoordinates[]>();
 
     for(let attackPattern of attackPatterns){
-        const { vectors, limit, canAttackLikeThis} = attackPattern;
+        const { vectors, limit, canMoveLikeThis: canAttackLikeThis} = attackPattern;
 
         for(let vector of vectors){   
             const attackLine: GridCoordinates[] = [];
@@ -71,9 +73,7 @@ function * generateLinesOfAttack(
             while (examinedSquare && ++step) {
                 attackLine.push(COORDS[examinedSquare]);
                 const pieceThere = pieceAt(board, examinedSquare);
-                
                 if (pieceThere) {
-                    
                     if (playerAt(board, examinedSquare) === attacker
                         && canAttackLikeThis.has(pieceThere) 
                         && !attackLines.has(examinedSquare)
