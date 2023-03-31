@@ -42,18 +42,18 @@ const enPassantSquare = (
     && rank(lastMovedFrom) === blackPawnStartRank 
     && rank(lastMovedTo) === blackPawnStartRank - 2
   ) {
-    const position = square([file(lastMovedFrom), blackPawnStartRank - 1])
-    cache.set(currentBoard, position)
-    return position;
+    const epSquare = square([file(lastMovedFrom), blackPawnStartRank - 1])
+    cache.set(currentBoard, epSquare)
+    return epSquare;
   }
 
   else if (piece === 'White Pawn'
     && rank(lastMovedFrom) === whitePawnStartRank 
     && rank(lastMovedTo) === whitePawnStartRank + 2
   ){
-    const position = square([file(lastMovedFrom), whitePawnStartRank + 1]);
-    cache.set(currentBoard, position);
-    return position;
+    const epSquare = square([file(lastMovedFrom), whitePawnStartRank + 1]);
+    cache.set(currentBoard, epSquare);
+    return epSquare;
   }
 
   return null;

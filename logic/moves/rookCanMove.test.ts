@@ -16,7 +16,7 @@ const rook1Board: Board = [
 
 describe('rookCanMove', () => {
 
-    it('cannot move to its current position', () => {
+    it('cannot move to its current square', () => {
 
 
         expect(rookCanMove(rook1Board, 'e4', 'e4')).toBe(false);

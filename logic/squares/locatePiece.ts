@@ -10,16 +10,16 @@ export type UniquePiece =
 
 /**
  * 
- * @param board Gets position of a king or queen
+ * @param board 
  * @param piece 
  * @returns 
  */
 function locatePiece(board: Board, piece: UniquePiece) : Square | null {
     for(let file = 0; file < 8; file++){
         for (let rank = 0; rank < 8; rank++){
-            const position: ReadonlyArray<number> = [file, rank];
+            const coords: ReadonlyArray<number> = [file, rank];
             if(board[file][rank] === piece){
-                return square(position);
+                return square(coords);
             }
         }
     }

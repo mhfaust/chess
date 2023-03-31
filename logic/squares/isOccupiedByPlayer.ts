@@ -4,13 +4,13 @@ import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import { Square } from 'logic/squares/square';
 
-function isOccupiedByPlayer (board: Board, position: Square, player: Player): boolean{
+function isOccupiedByPlayer (board: Board, square: Square, player: Player): boolean{
     
-    if(isUnOccupied(board, position)){
+    if(isUnOccupied(board, square)){
         return false;
     }
     
-    else return playerAt(board, position) === player;
+    else return playerAt(board, square) === player;
 }
 
 export default isOccupiedByPlayer;

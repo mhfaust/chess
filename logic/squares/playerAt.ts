@@ -4,8 +4,8 @@ import { Board }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import { Square } from 'logic/squares/square';
 
-const playerAt = (board: Board, position: Square): Player | null => {
-    const piece = pieceAt(board, position);
+const playerAt = (board: Board, square: Square): Player | null => {
+    const piece = pieceAt(board, square);
 
     if(piece === null){
         return null;

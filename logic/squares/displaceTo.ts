@@ -1,6 +1,6 @@
 /*
 caller is responsible for checking if the new 
-position is on the board
+square is on the board
 */
 
 import { rank, file }  from 'logic/squares';

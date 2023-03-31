@@ -16,8 +16,6 @@ import kingSquare  from 'logic/squares/kingSquare';
 import { Square } from 'logic/squares/square';
 import { GridCoordinates } from 'logic/types/GridCoordinates';
 import { MoveVector } from 'logic/types/MoveVector';
-import { move } from 'logic/board';
-import textRender from 'logic/board/textRender';
 
 const cache = new Map<Player, Map<Board, boolean>>()
     .set('Black', new Map())

@@ -12,13 +12,13 @@ export const squares = [
     'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'h7', 'h8'
 ] as const;
 
-const c = ['dark', 'light'] as const;
-type C = typeof c[number];
+const squareColors = ['dark', 'light'] as const;
+type SquareColor = typeof squareColors[number];
 const colors = squares
     .flatMap(name => name)
-    .reduce<Map<Square, C>>((map, square) => {
+    .reduce<Map<Square, SquareColor>>((map, square) => {
         const [i, j] = COORDS[square];
-        const color = c[(i + j) % 2];
+        const color = squareColors[(i + j) % 2];
         return map.set(square, color);
     }, new Map());
 

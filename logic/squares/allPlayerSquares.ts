@@ -6,7 +6,7 @@ import { Piece }  from 'logic/squares/piece';
 import { Square }  from 'logic/squares/square';
 
 export type PieceSquare = {
-    position: Square;
+    square: Square;
     piece: Piece;
 }
 function allPlayerSquares(board: Board, player: Player): Array<PieceSquare>{
@@ -17,7 +17,7 @@ function allPlayerSquares(board: Board, player: Player): Array<PieceSquare>{
     board.forEach((file, i) => file.forEach((piece, j) => {
         if(piece && allPlayerPieces.has(piece)){
             occupiedSquares.push({
-                position: (square([i, j]) as Square),
+                square: (square([i, j]) as Square),
                 piece
             });
         }

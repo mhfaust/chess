@@ -1,14 +1,14 @@
 import { rank, file }  from 'logic/squares'
 import { Square } from 'logic/squares/square';
 
-const isOnBoard = (position: Square) => {
-    if (!position) {
+const isOnBoard = (square: Square) => {
+    if (!square) {
         return false;
     }
-    return file(position) > -1 
-        && file(position) < 8 
-        && rank(position) > -1 
-        && rank(position) < 8;
+    return file(square) > -1 
+        && file(square) < 8 
+        && rank(square) > -1 
+        && rank(square) < 8;
 }
 
 export default isOnBoard;

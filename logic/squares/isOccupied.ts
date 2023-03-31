@@ -4,9 +4,9 @@ import { Square } from 'logic/squares/square';
 
 function isOccupied  (
     board: Board, 
-    position: Square)
+    square: Square)
     : boolean {
-        return Boolean(pieceAt(board, position));
+        return Boolean(pieceAt(board, square));
     }
     
 export default isOccupied;

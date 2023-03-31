@@ -33,7 +33,7 @@ function rook(board: Board, moveFrom: Square): Set<Square> {
     });
 
     return new Set(legalMoves
-        .filter(position => !movesIntoCheck(board, moveFrom, position))
+        .filter(square => !movesIntoCheck(board, moveFrom, square))
     );
 }
 

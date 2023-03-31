@@ -1,9 +1,9 @@
 import COORDS from 'logic/squares/coordinates';
 import { Square } from 'logic/squares/square';
 
-function rank (position: Square): number {
+function rank (square: Square): number {
     
-    return COORDS[position][1];
+    return COORDS[square][1];
 }
 
 export default rank;
