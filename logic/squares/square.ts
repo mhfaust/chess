@@ -37,8 +37,8 @@ const grid: Square[][] = [
     ['h1','h2','h3','h4','h5','h6','h7','h8',],
 ]
 
-const square = (position: GridCoordinates): Square | null => {
-    return grid[position[0]]?.[position[1]] ?? null;
+const square = (coords: GridCoordinates): Square | null => {
+    return grid[coords[0]]?.[coords[1]] ?? null;
 }
 
 export default square
