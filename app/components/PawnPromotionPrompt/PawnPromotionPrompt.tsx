@@ -6,14 +6,15 @@ import { Piece } from 'logic/squares/piece';
 import styles from './PawnPromotionPrompt.module.css';
 
 export type PawnPromotionOptionsProps = {
-  onPromote: ((selection: Piece) => void) | null;
+  onSelectPiece: ((selection: Piece) => void) | null;
 }
 
-const PawnPromotionOptions = ({ onPromote }: PawnPromotionOptionsProps) => {
+const PawnPromotionOptions = ({ onSelectPiece }: PawnPromotionOptionsProps) => {
 
   const game = useGameStore();
   const player = currentPlayer(game);
-  if(!onPromote){
+  
+  if(!onSelectPiece){
     return null;
   }
 
@@ -28,7 +29,7 @@ const PawnPromotionOptions = ({ onPromote }: PawnPromotionOptionsProps) => {
           {options.map(option => (
             <div 
               key={option} 
-              onClick={() => onPromote(option)}
+              onClick={() => onSelectPiece(option)}
               className={styles.option}
             >
               {unicodeSymbols[option]}&nbsp;{option.substring(6)}

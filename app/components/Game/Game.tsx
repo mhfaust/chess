@@ -1,12 +1,8 @@
 'use client'
 
 import Grid from 'app/components/Grid/Grid';
-import { Square } from 'logic/squares/square';
-import { canMoveTo } from 'logic/moves';
-import { playerAt } from 'logic/squares';
 import Captures from 'app/components/Captures';
 import allPieceMoves from 'logic/moves/allPieceMoves';
-import isPromotingPawn from 'logic/board/pawnPromotionOptions';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { useGameStore } from 'logic/game/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
@@ -28,7 +24,7 @@ import useDeviceOrientation from 'app/utils/useDeviceOrienation';
 
 export default function Game() {
 
-  const { toggleSquare, makeNextMove, setOnPromotePawn } = useGameStore().actions;
+  const { toggleSquare } = useGameStore().actions;
   const selectedSquare = useGameStore(game => game.selectedSquare);
   const orientation = useGameStore(game => game.orientation);
   const precludedCastling = useGameStore(currentCastling);
@@ -39,7 +35,7 @@ export default function Game() {
   const isLatestBoard = useGameStore(isViewingLatestMove);
   const thisBoard = useGameStore(currentBoard);
   const cursor = useGameStore(game => game.boardCursor);
-  const prompt = useGameStore(game => game.onPromotePawn);
+  const onPromotePawn = useGameStore(game => game.onPromotePawn);
 
   const isFlat = useDeviceOrientation(20);
   
@@ -55,45 +51,6 @@ export default function Game() {
       epSquare 
     ) || undefined;
 
-  const handleClickSquare = (targetSquare: Square) => {
-    const playerAtClicked = playerAt(thisBoard, targetSquare);
-
-    //clicking the already-selected square (de-select):
-    if (selectedSquare && selectedSquare === targetSquare){
-      return toggleSquare(null);
-    }
-    //clicking one's own piece (select):
-    else if (thisPlayer === playerAtClicked) {
-      return toggleSquare(targetSquare)
-    }
-    //No selection before click, but clicking some other square (they can't):
-    else if (!selectedSquare){
-      return toggleSquare(null)
-    }
-
-    //There's already a selection, and they're clicking another square, 
-    //so it's a move attempt. If it's a legit move, do it (unless pawn promo):
-    else if (canMoveTo(
-      thisBoard, 
-      selectedSquare, 
-      targetSquare,
-      precludedCastling,
-      epSquare,
-    )) {
-      //If it's a pawn promotion, we don't do the move yet  because 
-      //we need to prompt them for which piece to promote to:
-      if (isPromotingPawn(thisBoard, selectedSquare, targetSquare)) {
-        setOnPromotePawn([selectedSquare, targetSquare])
-      }
-      else {
-        makeNextMove(selectedSquare, targetSquare);
-      }
-      return toggleSquare(null)
-    } 
-    
-    return;
-  }
-
   const ordinal = cursor === 0
     ? 'initially'
     : `after the ${numWithOrdSuffix(cursor)} move`
@@ -105,7 +62,7 @@ export default function Game() {
       <Grid 
         board={thisBoard} 
         orientation={orientation}
-        onClickSquare={handleClickSquare}
+        onClickSquare={toggleSquare}
         selectedSquare={selectedSquare}
         validMoves={validMoves}
         currentPlayer={thisPlayer}
@@ -120,9 +77,8 @@ export default function Game() {
         Device is flat: {isFlat === true ? 'TRUE' : isFlat === false ? 'FALSE' : 'UNKOWN'}
       </div>
       <GameStatus />
-      <PawnPromotionPrompt onPromote={prompt} />
+      <PawnPromotionPrompt onSelectPiece={onPromotePawn} />
     </div>
     <HistoryNav />
-
   </>)
 }
