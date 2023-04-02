@@ -3,12 +3,10 @@
 import Grid from 'app/components/Grid/Grid';
 import { Square } from 'logic/squares/square';
 import { canMoveTo } from 'logic/moves';
-import { otherPlayer, playerAt } from 'logic/squares';
+import { playerAt } from 'logic/squares';
 import Captures from 'app/components/Captures';
 import allPieceMoves from 'logic/moves/allPieceMoves';
 import isPromotingPawn from 'logic/board/pawnPromotionOptions';
-import { Piece } from 'logic/squares/piece';
-import { useState } from 'react';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
 import { useGameStore } from 'logic/game/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
@@ -30,7 +28,7 @@ import useDeviceOrientation from 'app/utils/useDeviceOrienation';
 
 export default function Game() {
 
-  const { toggleSquare, makeNextMove } = useGameStore().actions;
+  const { toggleSquare, makeNextMove, setOnPromotePawn } = useGameStore().actions;
   const selectedSquare = useGameStore(game => game.selectedSquare);
   const orientation = useGameStore(game => game.orientation);
   const precludedCastling = useGameStore(currentCastling);
@@ -41,13 +39,9 @@ export default function Game() {
   const isLatestBoard = useGameStore(isViewingLatestMove);
   const thisBoard = useGameStore(currentBoard);
   const cursor = useGameStore(game => game.boardCursor);
+  const prompt = useGameStore(game => game.onPromotePawn);
 
   const isFlat = useDeviceOrientation(20);
-
-
-  const [handlePromotePawn, setHandlePromotePawn] = useState<
-    ((p: Piece ) => void) | null
-  >(null);
   
   if(!thisBoard){
     return null;
@@ -89,10 +83,7 @@ export default function Game() {
       //If it's a pawn promotion, we don't do the move yet  because 
       //we need to prompt them for which piece to promote to:
       if (isPromotingPawn(thisBoard, selectedSquare, targetSquare)) {
-        setHandlePromotePawn(() => (promotePawnAs: Piece) => {
-            makeNextMove(selectedSquare, targetSquare, promotePawnAs);
-            setHandlePromotePawn(null);
-        })
+        setOnPromotePawn([selectedSquare, targetSquare])
       }
       else {
         makeNextMove(selectedSquare, targetSquare);
@@ -129,7 +120,7 @@ export default function Game() {
         Device is flat: {isFlat === true ? 'TRUE' : isFlat === false ? 'FALSE' : 'UNKOWN'}
       </div>
       <GameStatus />
-      <PawnPromotionPrompt onPromote={handlePromotePawn} />
+      <PawnPromotionPrompt onPromote={prompt} />
     </div>
     <HistoryNav />
 

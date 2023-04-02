@@ -2,6 +2,7 @@ import { create } from 'zustand';
 import { GameView } from 'logic/game/gameState';
 import { moveHash } from 'logic/board/move';
 import { KasparovVeselin } from 'game-data/historicalGames';
+import toggleSquare from './actions/toggleSquare';
 
 export const useGameStore = create<GameView>((set) => {
   return {
@@ -9,12 +10,10 @@ export const useGameStore = create<GameView>((set) => {
     boardCursor: 0,
     selectedSquare: null,
     orientation: 0,
+    onPromotePawn: null,
     actions: {
       toggleSquare: (square) => {
-        return set(({ selectedSquare }) => {
-          const nextSelectedSquare = square !== selectedSquare && square || null;
-          return { selectedSquare:  nextSelectedSquare }
-        })
+        return set(toggleSquare(square))
       },
       makeNextMove: (from, to, promoteTo) => {
         return set(({ gamePlay, boardCursor }) => {
@@ -25,14 +24,25 @@ export const useGameStore = create<GameView>((set) => {
           };
         })
       },
-      toggleBoard: (boardIndex: number) => {
-        return set(() => ({ boardCursor: boardIndex }))
+      toggleBoard: (boardCursor) => {
+        return set(() => ({ boardCursor }))
       },
       rotateBoard: () => {
         return set(({ orientation }) => ({ 
           orientation: ((orientation +  1))  
         }))
-      }
+      },
+      setOnPromotePawn: (arg => {
+        return set(({ actions: { makeNextMove, setOnPromotePawn }}) => ({
+          onPromotePawn: arg
+            ? (promotePawnTo) => {
+              const [from, to] = arg;
+              makeNextMove(from, to, promotePawnTo);
+              setOnPromotePawn(null);
+            } : null,
+
+        }))
+      })
     }
   }
 });
