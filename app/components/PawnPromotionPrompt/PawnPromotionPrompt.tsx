@@ -1,5 +1,5 @@
 import { blackPromotionOptions, whitePromotionOptions } from 'logic/board/pawnPromotionOptions';
-import { unicodeSymbols } from 'logic/constants/pieces';
+import { pieceSymbols } from 'logic/constants/pieces';
 import currentPlayer from 'logic/game/selectors/players';
 import { useGameStore } from 'app/utils/useGameStore';
 import { Piece } from 'logic/squares/piece';
@@ -32,7 +32,7 @@ const PawnPromotionOptions = ({ onSelectPiece }: PawnPromotionOptionsProps) => {
               onClick={() => onSelectPiece(option)}
               className={styles.option}
             >
-              {unicodeSymbols[option]}&nbsp;{option.substring(6)}
+              {pieceSymbols[option]}&nbsp;{option.substring(6)}
             </div>
           ))}
         </div>

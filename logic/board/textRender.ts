@@ -1,4 +1,4 @@
-import { unicodeSymbols }  from 'logic/constants/pieces';
+import { pieceSymbols }  from 'logic/constants/pieces';
 import { rotateCounterClockwise }  from 'logic/board/rotate';
 import chalk from 'chalk';
 import { Board, PieceOrEmpty }  from 'logic/types/Board';
@@ -13,7 +13,7 @@ const filesLine   = '     A   B   C   D   E   F   G   H    \n';
 
 const pieceLine = (row: PieceOrEmpty[], i: number) => {
     const drawPiece = (p: PieceOrEmpty) => {
-        return blue(unicodeSymbols[p as Piece] ?? ' ')
+        return blue(pieceSymbols[p as Piece] ?? ' ')
     };
     return ` ${7-i+1} │ ${row.map(drawPiece).join(' │ ')} │  \n`
 };

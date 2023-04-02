@@ -21,7 +21,7 @@ export const BLACK_PIECES = Object.freeze(new Set(blackPieces));
 export const WHITE_PIECES = Object.freeze(new Set(whitePieces));
 export const ALL_PIECES = Object.freeze(new Set([...blackPieces, ...whitePieces]));
 
-export const unicodeSymbols: Record<Piece, string> = Object.freeze({
+export const pieceSymbols: Record<Piece, string> = Object.freeze({
     'White King': '♔',
     'White Queen': '♕',
     'White Rook': '♖',

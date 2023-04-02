@@ -1,6 +1,6 @@
 
 import styles from './Grid.module.css'
-import { BLACK_PIECES, unicodeSymbols, WHITE_PIECES }  from 'logic/constants/pieces';
+import { BLACK_PIECES, pieceSymbols, WHITE_PIECES }  from 'logic/constants/pieces';
 import { square } from 'logic/squares';
 import { Board, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
@@ -116,7 +116,7 @@ const Grid = ({
                   <span 
                     className={styles.piece} 
                     style={pieceStyleAttr}
-                  >{unicodeSymbols[piece]}</span>
+                  >{pieceSymbols[piece]}</span>
                   ) : <>&nbsp;</>}
                </div> 
              )

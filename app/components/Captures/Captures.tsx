@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { unicodeSymbols } from 'logic/constants/pieces';
+import { pieceSymbols } from 'logic/constants/pieces';
 import { Piece } from 'logic/squares/piece'
 
 import styles from './Captures.module.css'
@@ -15,7 +15,7 @@ const Captures = ({ captures, player }: CapturesProps) => {
     <div className={clsx(styles.captures, styles[player])}>
       {captures.map((piece, i) => (
         <span key={i} >
-          {unicodeSymbols[piece]}
+          {pieceSymbols[piece]}
         </span>
       ))}
     </div>

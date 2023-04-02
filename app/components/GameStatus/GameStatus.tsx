@@ -1,23 +1,27 @@
-import { isCheckmate, isInCheck } from 'logic/check';
-import { currentBoard } from 'logic/game/selectors/boards';
 import currentPlayer from 'logic/game/selectors/players';
 import { useGameStore } from 'app/utils/useGameStore';
 import { otherPlayer } from 'logic/squares';
 import styles from './GameStatus.module.css';
+import {
+  currentlyInCheck,
+  currentlyCheckmated
+} from 'logic/game/selectors/check';
 
 const GameStatus = () => {
   const thisPlayer = useGameStore(currentPlayer);
-  const thisBoard = useGameStore(currentBoard);
+
+  const inCheck = useGameStore(currentlyInCheck);
+  const checkmated = useGameStore(currentlyCheckmated);
   
   return (
     <div className={styles.gameStatus} >
 
-    {isCheckmate(thisBoard, thisPlayer) ? (
+    {checkmated ? (
       <div>
         <div>CHECKMATE -- {otherPlayer(thisPlayer)} WINS</div>
         <button>New Game</button>
       </div>
-    ) : isInCheck(thisBoard, thisPlayer) && (
+    ) : inCheck && (
       <div>
         <>{thisPlayer} is in check</>
       </div>

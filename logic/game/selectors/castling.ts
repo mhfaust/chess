@@ -46,7 +46,6 @@ export const castling = ({ gamePlay }: Pick<GamePlayAndCursor, 'gamePlay'>) => {
   const newGameCacheEntry = moves({ gamePlay }).map((_, i) => recurse(gamePlay, i));
   gameCache.set(gamePlay, newGameCacheEntry);
   return newGameCacheEntry;
-
 }
 
 export const currentCastling = (state: GamePlayAndCursor) => {
