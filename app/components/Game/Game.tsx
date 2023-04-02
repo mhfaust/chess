@@ -34,7 +34,6 @@ export default function Game() {
   const blackCaptures = useGameStore(currentBlackCaptures);
   const isLatestBoard = useGameStore(isViewingLatestMove);
   const thisBoard = useGameStore(currentBoard);
-  const cursor = useGameStore(game => game.boardCursor);
   const onPromotePawn = useGameStore(game => game.onPromotePawn);
 
   const isFlat = useDeviceOrientation(20);
@@ -50,12 +49,6 @@ export default function Game() {
       precludedCastling, 
       epSquare 
     ) || undefined;
-
-  const ordinal = cursor === 0
-    ? 'initially'
-    : `after the ${numWithOrdSuffix(cursor)} move`
-
-  const historicBoardNote = `This is what the board looked like ${ordinal}`
 
   return (<>
     <div className={styles.game}>

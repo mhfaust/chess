@@ -1,5 +1,5 @@
 import { playerAt } from 'logic/squares';
-import isPromotingPawn from 'logic/board/pawnPromotionOptions';
+import shouldPromptToPromotePawn from 'logic/board/pawnPromotionOptions';
 import { Action } from "./Action";
 import { GameView } from '../gameState';
 import { currentCastling } from '../selectors/castling';
@@ -15,8 +15,8 @@ const toggleSquare = (targetSquare: Square | null): Action => (gameView: GameVie
   const epSquare = currentEnPassantSquare(gameView);
   const thisPlayer = currentPlayer(gameView);
   const thisBoard = currentBoard(gameView);
-  const { selectedSquare, onPromotePawn } = gameView;
-  const { makeNextMove, setOnPromotePawn } = gameView.actions;
+  const { selectedSquare, gamePlay, boardCursor } = gameView;
+  const { move, promptToPromotePawn } = gameView.actions;
 
   if(!targetSquare){
     return {
@@ -53,17 +53,17 @@ const toggleSquare = (targetSquare: Square | null): Action => (gameView: GameVie
   )) {
     //If it's a pawn promotion, we don't do the move yet  because 
     //we need to prompt them for which piece to promote to:
-    if (isPromotingPawn(thisBoard, selectedSquare, targetSquare)) {
+    if (shouldPromptToPromotePawn(thisBoard, selectedSquare, targetSquare)) {
       return {
         onPromotePawn: (promotePawnTo) => {
-          makeNextMove(selectedSquare, targetSquare, promotePawnTo);
-          setOnPromotePawn(null);
+          move(selectedSquare, targetSquare, promotePawnTo);
+          promptToPromotePawn(null);
         },
         selectedSquare: null
       }
     }
     else {
-      makeNextMove(selectedSquare, targetSquare);
+      move(selectedSquare, targetSquare);
     }
   }
   return {

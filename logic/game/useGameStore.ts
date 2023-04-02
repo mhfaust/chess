@@ -1,8 +1,11 @@
 import { create } from 'zustand';
 import { GameView } from 'logic/game/gameState';
-import { moveHash } from 'logic/board/move';
 import { KasparovVeselin } from 'game-data/historicalGames';
-import toggleSquare from './actions/toggleSquare';
+import toggleSquare from 'logic/game/actionCreators/toggleSquare';
+import promotePawn from 'logic/game/actionCreators/promotePawn';
+import nextMove from 'logic/game/actionCreators/nextMove';
+import rotateBoard from './actionCreators/rotateBoard';
+import toggleBoard from './actionCreators/toggleBoard';
 
 export const useGameStore = create<GameView>((set) => {
   return {
@@ -15,33 +18,17 @@ export const useGameStore = create<GameView>((set) => {
       toggleSquare: (square) => {
         return set(toggleSquare(square))
       },
-      makeNextMove: (from, to, promoteTo) => {
-        return set(({ gamePlay, boardCursor }) => {
-          const newHash = moveHash([from, to, promoteTo]);
-          return {
-            gamePlay: gamePlay ? gamePlay + ',' + newHash : newHash,
-            boardCursor: boardCursor + 1
-          };
-        })
+      move: (from, to, promoteTo) => {
+        return set(nextMove(from, to, promoteTo))
       },
       toggleBoard: (boardCursor) => {
-        return set(() => ({ boardCursor }))
+        return set(toggleBoard(boardCursor))
       },
       rotateBoard: () => {
-        return set(({ orientation }) => ({ 
-          orientation: ((orientation +  1))  
-        }))
+        return set(rotateBoard)
       },
-      setOnPromotePawn: (arg => {
-        return set(({ actions: { makeNextMove, setOnPromotePawn }}) => ({
-          onPromotePawn: arg
-            ? (promotePawnTo) => {
-              const [from, to] = arg;
-              makeNextMove(from, to, promotePawnTo);
-              setOnPromotePawn(null);
-            } : null,
-
-        }))
+      promptToPromotePawn: (arg => {
+        return set(promotePawn(arg))
       })
     }
   }

@@ -1,12 +1,3 @@
-import { Piece } from "logic/squares/piece";
-
-const makeRotator = <T>(f: (rows: T[][], i: number, j: number) => T) => {
-    return (rows: T[][]) => {
-        return rows.map((row, i) => row.map(
-            (_, j) => f(rows, i, i)
-        ));
-    }
-}
 export const rotateCounterClockwise = <T>(rows: T[][]): T[][] => {
     return rows.map(
         (row, i) => row.map(

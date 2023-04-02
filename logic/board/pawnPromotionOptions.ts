@@ -17,7 +17,7 @@ export const whitePromotionOptions: Piece[] =  [
   'White Bishop',
 ]
 
-const isPromotingPawn = (
+const shouldPromptToPromotePawn = (
   board: Board, 
   from: Square, 
   to: Square
@@ -28,4 +28,4 @@ const isPromotingPawn = (
     || (piece === 'White Pawn' && toRank === 7);
 }
 
-export default isPromotingPawn;
+export default shouldPromptToPromotePawn;
