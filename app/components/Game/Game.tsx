@@ -4,7 +4,7 @@ import Grid from 'app/components/Grid/Grid';
 import Captures from 'app/components/Captures';
 import allPieceMoves from 'logic/moves/allPieceMoves';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { useGameStore } from 'logic/game/useGameStore';
+import { useGameStore } from 'app/utils/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
 import { currentCastling } from 'logic/game/selectors/castling';
 import currentEnPassantSquare from 'logic/game/selectors/enPassant';

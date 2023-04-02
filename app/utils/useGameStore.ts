@@ -2,10 +2,10 @@ import { create } from 'zustand';
 import { GameView } from 'logic/game/gameState';
 import { KasparovVeselin } from 'game-data/historicalGames';
 import toggleSquare from 'logic/game/actionCreators/toggleSquare';
-import promotePawn from 'logic/game/actionCreators/promotePawn';
-import nextMove from 'logic/game/actionCreators/nextMove';
-import rotateBoard from './actionCreators/rotateBoard';
-import toggleBoard from './actionCreators/toggleBoard';
+import promptToPromotePawn from 'logic/game/actionCreators/promptToPromotePawn';
+import move from 'logic/game/actionCreators/move';
+import rotateBoard from 'logic/game/actionCreators/rotateBoard';
+import toggleBoard from 'logic/game/actionCreators/toggleBoard';
 
 export const useGameStore = create<GameView>((set) => {
   return {
@@ -19,7 +19,7 @@ export const useGameStore = create<GameView>((set) => {
         return set(toggleSquare(square))
       },
       move: (from, to, promoteTo) => {
-        return set(nextMove(from, to, promoteTo))
+        return set(move(from, to, promoteTo))
       },
       toggleBoard: (boardCursor) => {
         return set(toggleBoard(boardCursor))
@@ -28,7 +28,7 @@ export const useGameStore = create<GameView>((set) => {
         return set(rotateBoard)
       },
       promptToPromotePawn: (arg => {
-        return set(promotePawn(arg))
+        return set(promptToPromotePawn(arg))
       })
     }
   }

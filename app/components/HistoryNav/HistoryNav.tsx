@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { boardCursor, boardIndexes, latestBoardCursor } from "logic/game/selectors/boards";
-import { useGameStore } from "logic/game/useGameStore";
+import { useGameStore } from "app/utils/useGameStore";
 import { useCallback, useEffect } from "react";
 import styles from './HistoryNav.module.css';
 

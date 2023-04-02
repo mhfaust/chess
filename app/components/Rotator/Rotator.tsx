@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import currentPlayer from "logic/game/selectors/players";
-import { useGameStore } from "logic/game/useGameStore";
+import { useGameStore } from "app/utils/useGameStore";
 import styles from './Rotator.module.css';
 
 const WhiteTriangle = () => {

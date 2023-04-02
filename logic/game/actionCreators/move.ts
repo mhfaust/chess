@@ -3,7 +3,7 @@ import { Square } from "logic/squares/square";
 import { Action } from "./Action";
 import { moveHash } from 'logic/board/move';
 
-const nextMove = (
+const move = (
   from: Square, 
   to: Square, 
   promoteTo: Piece | undefined
@@ -18,4 +18,4 @@ const nextMove = (
   };
 };
 
-export default nextMove;
+export default move;

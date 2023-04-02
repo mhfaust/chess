@@ -1,7 +1,7 @@
 import { isCheckmate, isInCheck } from 'logic/check';
 import { currentBoard } from 'logic/game/selectors/boards';
 import currentPlayer from 'logic/game/selectors/players';
-import { useGameStore } from 'logic/game/useGameStore';
+import { useGameStore } from 'app/utils/useGameStore';
 import { otherPlayer } from 'logic/squares';
 import styles from './GameStatus.module.css';
 

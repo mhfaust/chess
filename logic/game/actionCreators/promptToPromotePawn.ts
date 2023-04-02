@@ -4,7 +4,7 @@ import { Square } from "logic/squares/square";
 import { GameView, PawnPromoteTuple } from "../gameState";
 import { Action } from "./Action";
 
-const promotePawn = (arg: PawnPromoteTuple | null): Action => (
+const promptToPromotePawn = (arg: PawnPromoteTuple | null): Action => (
   { actions: { move, promptToPromotePawn }}
 ) => ({
   onPromotePawn: arg
@@ -15,4 +15,4 @@ const promotePawn = (arg: PawnPromoteTuple | null): Action => (
     } : null,
 });
 
-export default promotePawn;
+export default promptToPromotePawn;
