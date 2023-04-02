@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { GameView } from 'logic/game/gameState';
+import { GameState } from 'logic/game/gameState';
 import { KasparovVeselin } from 'game-data/historicalGames';
 import toggleSquare from 'logic/game/actionCreators/toggleSquare';
 import promptToPromotePawn from 'logic/game/actionCreators/promptToPromotePawn';
@@ -7,7 +7,7 @@ import move from 'logic/game/actionCreators/move';
 import rotateBoard from 'logic/game/actionCreators/rotateBoard';
 import toggleBoard from 'logic/game/actionCreators/toggleBoard';
 
-export const useGameStore = create<GameView>((set) => {
+export const useGameStore = create<GameState>((set) => {
   return {
     gamePlay: '',
     boardCursor: 0,

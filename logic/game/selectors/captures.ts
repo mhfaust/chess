@@ -1,5 +1,5 @@
 import { Piece } from "logic/squares/piece";
-import { GameAndCursor } from "logic/game/gameState";
+import { GamePlayAndCursor } from "logic/game/gameState";
 import { boards } from "logic/game/selectors/boards";
 import { moves } from "logic/game/selectors/moves";
 import { pieceAt } from "logic/squares";
@@ -65,9 +65,9 @@ export const gamePlayCaptures = (gamePlay: string) => {
 }
 
 
-export const currentBlackCaptures = (game: GameAndCursor): Piece[] => {
+export const currentBlackCaptures = (game: GamePlayAndCursor): Piece[] => {
   return gamePlayCaptures(gamePlayAt(game.gamePlay, game.boardCursor)).black;
 }
-export const currentWhiteCaptures = (game: GameAndCursor): Piece[] => {
+export const currentWhiteCaptures = (game: GamePlayAndCursor): Piece[] => {
   return gamePlayCaptures(gamePlayAt(game.gamePlay, game.boardCursor)).white;
 }

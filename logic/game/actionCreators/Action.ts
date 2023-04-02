@@ -1,3 +1,3 @@
-import { GameView } from "../gameState";
+import { GameState } from "../gameState";
 
-export type Action = (partialStore: GameView) => Partial<GameView>;
+export type Action = (partialStore: GameState) => Partial<GameState>;

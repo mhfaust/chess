@@ -1,14 +1,14 @@
 import { isCheckmate } from "logic/check";
-import { GameAndCursor } from "../gameState";
+import { GamePlayAndCursor } from "../gameState";
 import { boards } from "./boards";
 import { moves } from "./moves";
 import currentPlayer from "./players";
 
-export const isViewingLatestMove = (game: GameAndCursor) => {
+export const isViewingLatestMove = (game: GamePlayAndCursor) => {
   return game.boardCursor === boards(game).length - 1;
 }
 
-export const isGameComplete = (game: GameAndCursor) => {
+export const isGameComplete = (game: GamePlayAndCursor) => {
   const gameMoves = moves(game);
   if(!gameMoves || gameMoves.length < 4){
     return false;
@@ -27,6 +27,6 @@ export const gamePlayAt = (gamePlay: string, i: number) => {
   return gamePlay.split(',').slice(0, i).join(',');
 }
 
-export const currentGamePlay = (game: GameAndCursor) => {
+export const currentGamePlay = (game: GamePlayAndCursor) => {
   return gamePlayAt(game.gamePlay, game.boardCursor);
 }

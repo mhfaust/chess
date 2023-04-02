@@ -1,15 +1,22 @@
 import { Piece } from 'logic/squares/piece';
 import { Square } from 'logic/squares/square';
 
-export type PawnPromoteTuple = [Square, Square]
+export type PawnPromoteTuple = [Square, Square];
 
 export type PawnPromotionCallback =
   | null 
-  | ((piecePromotedTo: Piece) => void)
+  | ((piecePromotedTo: Piece) => void);
 
-export type GameAndCursor = {
+export type GamePlayAndCursor = {
   gamePlay: string;
   boardCursor: number;
+};
+
+export type GameState =  GamePlayAndCursor & {
+  actions: Actions;
+  selectedSquare: Square | null;
+  orientation: number;
+  onPromotePawn: PawnPromotionCallback | null;
 }
 
 export type Actions = {
@@ -28,9 +35,3 @@ export type Actions = {
   promptToPromotePawn: (t: PawnPromoteTuple | null) => void;
 };
 
-export type GameView =  GameAndCursor & {
-  actions: Actions;
-  selectedSquare: Square | null;
-  orientation: number;
-  onPromotePawn: PawnPromotionCallback | null;
-}

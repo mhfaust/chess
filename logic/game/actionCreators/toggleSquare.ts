@@ -1,7 +1,7 @@
 import { playerAt } from 'logic/squares';
 import shouldPromptToPromotePawn from 'logic/board/pawnPromotionOptions';
 import { Action } from "./Action";
-import { GameView } from '../gameState';
+import { GameState } from '../gameState';
 import { currentCastling } from '../selectors/castling';
 import { currentEnPassantSquare } from '../selectors/enPassant';
 import currentPlayer from '../selectors/players';
@@ -9,7 +9,7 @@ import { currentBoard } from '../selectors/boards';
 import { Square } from 'logic/squares/square';
 import canMoveTo from 'logic/moves/canMoveTo';
 
-const toggleSquare = (targetSquare: Square | null): Action => (gameView: GameView) => {
+const toggleSquare = (targetSquare: Square | null): Action => (gameView: GameState) => {
 
   const precludedCastling = currentCastling(gameView);
   const epSquare = currentEnPassantSquare(gameView);

@@ -2,7 +2,7 @@ import { firstBoard } from 'logic/board/initialBoard';
 import nextCastlingPreclusions from 'logic/board/nextCastlingPreclusions';
 import { Board } from 'logic/types/Board';
 import { CastlingPreclusions, RookStartSquare } from 'logic/types/CastlingPreclusions';
-import { GameAndCursor } from 'logic/game/gameState';
+import { GamePlayAndCursor } from 'logic/game/gameState';
 import { moves } from 'logic/game/selectors/moves';
 import { boardCursor } from 'logic/game/selectors/boards';
 
@@ -38,7 +38,7 @@ const recurse = (gamePlay: string, i: number): CastlingPreclusions => {
 
 const gameCache = new Map<string, CastlingPreclusions[]>();
 
-export const castling = ({ gamePlay }: Pick<GameAndCursor, 'gamePlay'>) => {
+export const castling = ({ gamePlay }: Pick<GamePlayAndCursor, 'gamePlay'>) => {
   if(gameCache.has(gamePlay)){
     return gameCache.get(gamePlay)!;
   };
@@ -49,7 +49,7 @@ export const castling = ({ gamePlay }: Pick<GameAndCursor, 'gamePlay'>) => {
 
 }
 
-export const currentCastling = (state: GameAndCursor) => {
+export const currentCastling = (state: GamePlayAndCursor) => {
   const cursor = boardCursor(state);
   return recurse(state.gamePlay, cursor)
 }

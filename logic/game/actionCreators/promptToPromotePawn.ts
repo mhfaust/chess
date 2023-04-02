@@ -1,7 +1,5 @@
-import { moveHash } from "logic/board/move";
 import { Piece } from "logic/squares/piece";
-import { Square } from "logic/squares/square";
-import { GameView, PawnPromoteTuple } from "../gameState";
+import { PawnPromoteTuple } from "../gameState";
 import { Action } from "./Action";
 
 const promptToPromotePawn = (arg: PawnPromoteTuple | null): Action => (
