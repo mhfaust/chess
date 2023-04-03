@@ -20,7 +20,7 @@ const pieceLine = (row: PieceOrEmpty[], i: number) => {
 
 
 function asciiBoard(board: Board){
-    const pieceLines = rotateCounterClockwise(board)
+    const pieceLines = rotateCounterClockwise<PieceOrEmpty>(board as any)
         .map(pieceLine)
         .join(separLine);
 

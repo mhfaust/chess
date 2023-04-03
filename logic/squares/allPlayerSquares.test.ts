@@ -1,11 +1,11 @@
 import allPlayerSquares, { PieceSquare }  from 'logic/squares/allPlayerSquares'
-import { initialBoard }  from 'logic/board'
+import { initialBoard } from 'logic/board/initialBoard';
 import { Square }  from 'logic/squares/square';
 import { Piece }  from 'logic/squares/piece';
 
 describe('allPlayerSquares finds all white piecesonr initial board', () => {
 
-    const results = allPlayerSquares(initialBoard(), 'White');
+    const results = allPlayerSquares(initialBoard, 'White');
 
     const foundPieceAt = (piece: Piece, square: Square) =>{
         return results.some((result: PieceSquare) =>
@@ -66,7 +66,7 @@ describe('allPlayerSquares finds all white piecesonr initial board', () => {
 
 describe('allPlayerSquares finds all white piecesonr initial board', () => {
 
-    const results = allPlayerSquares(initialBoard(), 'Black');
+    const results = allPlayerSquares(initialBoard, 'Black');
 
     const foundPieceAt = (piece: Piece, square: Square) =>{
         return results.some((result: PieceSquare) =>

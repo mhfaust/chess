@@ -1,6 +1,4 @@
-import { firstBoard } from 'logic/board/initialBoard';
 import nextCastlingPreclusions from 'logic/board/nextCastlingPreclusions';
-import { Board } from 'logic/types/Board';
 import { CastlingPreclusions, RookStartSquare } from 'logic/types/CastlingPreclusions';
 import { GamePlayAndCursor } from 'logic/game/gameState';
 import { moves } from 'logic/game/selectors/moves';

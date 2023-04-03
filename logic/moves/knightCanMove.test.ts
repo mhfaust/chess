@@ -1,33 +1,32 @@
 import knightCanMove  from 'logic/moves/knightCanMove'
-import { initialBoard }  from 'logic/board'
 import { __, WK, WN, BK, BQ }  from 'logic/squares/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
+import { initialBoard } from 'logic/board/initialBoard';
 
 describe('knightCanMove', () => {
 
-
     it('reports true attempting to move to empty square, 2 forward, 1 left.', () => {
 
-        const answer = knightCanMove(initialBoard(), 'b1', 'a3')
+        const answer = knightCanMove(initialBoard, 'b1', 'a3')
         expect(answer).toBe(true);
     });
 
     it('reports true attempting to move to empty square, 2 forward, 1 right.', () => {
        
 
-        const answer = knightCanMove(initialBoard(), 'b1', 'c3')
+        const answer = knightCanMove(initialBoard, 'b1', 'c3')
         expect(answer).toBe(true);
     });
 
     it('reports false attempting to move to square occupied by own players piece.', () => {
         
-        const answer = knightCanMove(initialBoard(), 'b1', 'c2')
+        const answer = knightCanMove(initialBoard, 'b1', 'c2')
         expect(answer).toBe(false);
     });
 
     it('reports false attempting to move to mechanically disallowed square', () => {
 
-        const answer = knightCanMove(initialBoard(), 'b1', 'b4')
+        const answer = knightCanMove(initialBoard, 'b1', 'b4')
         expect(answer).toBe(false);
     });
 

@@ -1,5 +1,5 @@
 import knightMoves  from 'logic/moves/knightMoves';
-import { initialBoard }  from 'logic/board';
+import { initialBoard } from 'logic/board/initialBoard';;
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { Board }  from 'logic/types/Board';
 
@@ -7,7 +7,7 @@ describe('knight', () => {
 
     it('can move from initial board white queen knight to a3 and c3 only', () => {
         
-        const legalMoves = knightMoves(initialBoard(), 'b1');
+        const legalMoves = knightMoves(initialBoard, 'b1');
         
         expect(legalMoves).toContain('a3')
         expect(legalMoves).toContain('c3')
@@ -15,7 +15,7 @@ describe('knight', () => {
     });
 
     it('can move from initial board white king knight to a3 and c3 only', () => {
-        const legalMoves = knightMoves(initialBoard(), 'g1');
+        const legalMoves = knightMoves(initialBoard, 'g1');
         
         expect(legalMoves).toContain('f3')
         expect(legalMoves).toContain('h3')
@@ -23,7 +23,7 @@ describe('knight', () => {
     });
 
     it('can move from initial board black queen knight to a3 and c3 only', () => {
-        const legalMoves = knightMoves(initialBoard(), 'b8');
+        const legalMoves = knightMoves(initialBoard, 'b8');
         
         expect(legalMoves).toContain('a6')
         expect(legalMoves).toContain('c6')
@@ -31,7 +31,7 @@ describe('knight', () => {
     });
 
     it('can move from initial board black king knight to a3 and c3 only', () => {
-        const legalMoves = knightMoves(initialBoard(), 'g8');
+        const legalMoves = knightMoves(initialBoard, 'g8');
         
         expect(legalMoves).toContain('f6')
         expect(legalMoves).toContain('h6')

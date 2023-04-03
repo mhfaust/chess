@@ -1,7 +1,7 @@
 import { Board } from 'logic/types/Board';
 import { Move, moves } from 'logic/game/selectors/moves';
 import { canMoveTo } from 'logic/moves';
-import { firstBoard } from 'logic/board/initialBoard';
+import { initialBoard } from 'logic/board/initialBoard';
 import { castling } from 'logic/game/selectors/castling';
 import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 import nextBoard from 'logic/board/move';
@@ -12,7 +12,7 @@ import { GamePlayAndCursor } from 'logic/game/gameState';
 const emptyPreclusions = new Set<RookStartSquare>();
 
 const cache = new Map<string, Board[]>([
-  ['', [firstBoard]]
+  ['', [initialBoard]]
 ]);
 
 export const boards = (game: Pick<GamePlayAndCursor, 'gamePlay'>): Board[] => {
@@ -42,7 +42,7 @@ export const boards = (game: Pick<GamePlayAndCursor, 'gamePlay'>): Board[] => {
         throw Error(`ILLEGAL MOVE: ${from}, ${to} \n${textRender(previousBoard)}`)
       }
       return arr;
-    }, [firstBoard] );
+    }, [initialBoard] );
 
   cache.set(game.gamePlay, boardsArray);
 

@@ -1,4 +1,4 @@
-import { firstBoard } from 'logic/board/initialBoard';
+import { initialBoard } from 'logic/board/initialBoard';
 import { pieceAt } from 'logic/squares';
 import { boards } from 'logic/game/selectors/boards';
 import { moves } from 'logic/game/selectors/moves';
@@ -12,7 +12,7 @@ describe('boards', () => {
     });
 
     expect(gameBoards.length).toBe(1);
-    expect(gameBoards[0]).toBe(firstBoard);
+    expect(gameBoards[0]).toBe(initialBoard);
   });
 
   it('presents a number of boards equal to the number of moves + 1', () => {
@@ -47,7 +47,7 @@ describe('boards', () => {
     expect(gameBoards.length).toBe(1);
 
     const board = gameBoards[0];
-    expect(board).toStrictEqual(firstBoard);
+    expect(board).toStrictEqual(initialBoard);
   });
 
   it(`Doesn't allow en-passant capture on move too late`, () => {
