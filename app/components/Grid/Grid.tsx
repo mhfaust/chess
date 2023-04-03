@@ -9,7 +9,6 @@ import { Square, squareColor } from 'logic/squares/square';
 import { rotateCounterClockwise, rotateClockwise, rotate180 } from 'logic/board/rotate';
 import { Player } from 'logic/types/Player';
 import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';
-import allPieceMoves from 'logic/moves/allPieceMoves';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
@@ -102,7 +101,7 @@ const Grid = ({
                   styles.square, 
                   styles[squareColor(square!)!],
                   { 
-                    [styles.selected]: isLatestBoard && (allPieceMoves(board, square).size) && selectedSquare === square,
+                    [styles.selected]: isLatestBoard && validMoves.size && selectedSquare === square,
                     [styles.canMoveTo]: isLatestBoard && validMoves.has(square),
                     [styles.whitePiece]: piece && WHITE_PIECES.has(piece),
                     [styles.blackPiece]: piece && BLACK_PIECES.has(piece),
