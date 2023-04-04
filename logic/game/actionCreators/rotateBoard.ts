@@ -1,7 +1,7 @@
 import { GameState } from "../gameState";
 import { Action } from "./Action";
 
-const rotateBoard: Action = ({ orientation }: Pick<GameState, 'orientation'>) => ({ 
+const rotateBoard = (): Action => ({ orientation }: Pick<GameState, 'orientation'>) => ({ 
   orientation: ((orientation +  1))
 });
 

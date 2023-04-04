@@ -25,7 +25,7 @@ export const useGameStore = create<GameState>((set) => {
         return set(toggleBoard(boardCursor))
       },
       rotateBoard: () => {
-        return set(rotateBoard)
+        return set(rotateBoard())
       },
       promptToPromotePawn: (arg => {
         return set(promptToPromotePawn(arg))
