@@ -1,7 +1,7 @@
 import { blackPromotionOptions, whitePromotionOptions } from 'logic/board/pawnPromotionOptions';
 import { pieceSymbols } from 'logic/constants/pieces';
 import currentPlayer from 'logic/game/selectors/players';
-import { useGameStore } from 'app/utils/useGameStore';
+import useGameStore from 'state/useGameStore';
 import { Piece } from 'logic/squares/piece';
 import styles from './PawnPromotionPrompt.module.css';
 
@@ -11,14 +11,13 @@ export type PawnPromotionOptionsProps = {
 
 const PawnPromotionOptions = ({ onSelectPiece }: PawnPromotionOptionsProps) => {
 
-  const game = useGameStore();
-  const player = currentPlayer(game);
+  const thisPlayer = useGameStore(currentPlayer);
 
   if(!onSelectPiece){
     return null;
   }
 
-  const options = player === "White" 
+  const options = thisPlayer === "White" 
     ? whitePromotionOptions 
     : blackPromotionOptions;
 

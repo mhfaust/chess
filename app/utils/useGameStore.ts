@@ -27,9 +27,9 @@ export const useGameStore = create<GameState>((set) => {
       rotateBoard: () => {
         return set(rotateBoard())
       },
-      promptToPromotePawn: (arg => {
+      promptToPromotePawn: (arg) => {
         return set(promptToPromotePawn(arg))
-      })
+      }
     }
   }
 });

@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import { boardCursor, boardIndexes, latestBoardCursor } from "logic/game/selectors/boards";
-import { useGameStore } from "app/utils/useGameStore";
+import useGameStore from 'state/useGameStore';
 import { useCallback, useEffect } from "react";
 import styles from './HistoryNav.module.css';
 
@@ -8,7 +8,7 @@ const HistoryNav = () => {
 
   const currentBoardIndex = useGameStore(boardCursor);
   const indexes = useGameStore(boardIndexes);
-  const toggleBoard = useGameStore().actions.toggleBoard;
+  const { toggleBoard } = useGameStore().actions;
   const latestBoardIndex = useGameStore(latestBoardCursor);
 
 

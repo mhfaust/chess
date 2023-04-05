@@ -1,7 +1,6 @@
-import { GameState } from "../gameState";
-import { Action } from "./Action";
+import { GameState } from "logic/game/gameState";
 
-const rotateBoard = (): Action => ({ orientation }: Pick<GameState, 'orientation'>) => ({ 
+const rotateBoard = () => ({ orientation }: Pick<GameState, 'orientation'>) => ({ 
   orientation: ((orientation +  1))
 });
 

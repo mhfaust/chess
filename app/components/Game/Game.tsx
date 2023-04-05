@@ -3,15 +3,15 @@
 import Grid from 'app/components/Grid/Grid';
 import Captures from 'app/components/Captures';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { useGameStore } from 'app/utils/useGameStore';
+import useGameStore from 'state/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
 import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
-import HistoryNav from '../HistoryNav';
+import HistoryNav from 'app/components/HistoryNav';
 import { isViewingLatestMove } from 'logic/game/selectors/game';
-import CompassRotator from '../Rotator/Rotator';
+import Rotator from 'app/components/Rotator/Rotator';
 import styles from './Game.module.css';
-import GameStatus from '../GameStatus';
+import GameStatus from 'app/components/GameStatus';
 import useDeviceOrientation from 'app/utils/useDeviceOrienation';
 import { currentValidMoves } from 'logic/game/selectors/validMoves';
 
@@ -21,7 +21,7 @@ import { currentValidMoves } from 'logic/game/selectors/validMoves';
 
 export default function Game() {
 
-  const { toggleSquare } = useGameStore().actions;
+  const { toggleSquare } = useGameStore(game => game.actions);
   const selectedSquare = useGameStore(game => game.selectedSquare);
   const orientation = useGameStore(game => game.orientation);
   const thisPlayer = useGameStore(currentPlayer);
@@ -51,7 +51,7 @@ export default function Game() {
       />
       <div className={styles.tray}>
         <Captures captures={whiteCaptures} player='white' />
-        <CompassRotator />
+        <Rotator />
         <Captures captures={blackCaptures} player='black'/>
       </div>
       <div>

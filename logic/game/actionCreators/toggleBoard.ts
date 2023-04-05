@@ -1,5 +1,3 @@
-import { Action } from "./Action";
-
-const toggleBoard = (boardCursor: number): Action => () => ({ boardCursor });
+const toggleBoard = (boardCursor: number) => () => ({ boardCursor });
 
 export default toggleBoard;

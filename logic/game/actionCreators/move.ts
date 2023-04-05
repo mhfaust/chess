@@ -1,13 +1,15 @@
 import { Piece } from "logic/squares/piece";
 import { Square } from "logic/squares/square";
-import { Action } from "./Action";
 import { moveHash } from 'logic/board/move';
+import { GameState } from "../gameState";
+
+export type MoveParams = Parameters<typeof move>;
 
 const move = (
   from: Square, 
   to: Square, 
   promoteTo: Piece | undefined
-): Action => (gameView) => {
+) => (gameView: Pick<GameState, 'gamePlay' |  'boardCursor'>) => {
 
   const newHash = moveHash([from, to, promoteTo]);
   

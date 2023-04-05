@@ -1,5 +1,6 @@
 import currentPlayer from 'logic/game/selectors/players';
-import { useGameStore } from 'app/utils/useGameStore';
+import useGameStore from 'state/useGameStore';
+
 import { otherPlayer } from 'logic/squares';
 import styles from './GameStatus.module.css';
 import {

@@ -1,9 +1,14 @@
 import { Piece } from "logic/squares/piece";
-import { PawnPromoteTuple } from "../gameState";
-import { Action } from "./Action";
+import { Actions, PawnPromoteTuple } from "../gameState";
 
-const promptToPromotePawn = (arg: PawnPromoteTuple | null): Action => (
-  { actions: { move, promptToPromotePawn }}
+export type PromptToPromotePawnParams = Parameters<typeof promptToPromotePawn>;
+
+type TArgs = {
+  actions: Pick<Actions, 'move' | 'promptToPromotePawn'>
+}
+
+const promptToPromotePawn = (arg: PawnPromoteTuple | null) => (
+  { actions: { move, promptToPromotePawn } }: TArgs
 ) => ({
   onPromotePawn: arg
     ? (promotePawnTo :Piece) => {
