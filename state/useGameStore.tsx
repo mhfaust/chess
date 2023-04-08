@@ -1,4 +1,6 @@
-import { create } from 'zustand';
+'use client'
+
+import { createStore, useStore } from 'zustand';
 import { GameState } from 'logic/game/gameState';
 import { KasparovVeselin } from 'game-data/historicalGames';
 import toggleSquare from 'logic/game/actionCreators/toggleSquare';
@@ -6,8 +8,9 @@ import promptToPromotePawn from 'logic/game/actionCreators/promptToPromotePawn';
 import move from 'logic/game/actionCreators/move';
 import rotateBoard from 'logic/game/actionCreators/rotateBoard';
 import toggleBoard from 'logic/game/actionCreators/toggleBoard';
+import { createContext, ReactNode, useContext, useRef } from 'react';
 
-export const useGameStore = create<GameState>((set) => {
+const createGameStore = () => createStore<GameState>((set) => {
   return {
     gamePlay: '',
     boardCursor: 0,
@@ -33,3 +36,30 @@ export const useGameStore = create<GameState>((set) => {
     }
   }
 });
+
+type GameStore = ReturnType<typeof createGameStore>; 
+
+const GameContext = createContext<GameStore | null>(null);
+
+export const GameProvider = ({ children }: { children: ReactNode }) => {
+  const gameStoreRef = useRef<GameStore>();
+  if(!gameStoreRef.current){
+    gameStoreRef.current = createGameStore();
+  }
+  return (
+    <GameContext.Provider value={gameStoreRef.current}>
+      {children}
+    </GameContext.Provider>
+  )
+}
+
+export function useGameStore<T>(
+  selector: (state: GameState) => T,
+  equalityFn?: (left: T, right: T) => boolean
+) {
+  const gameStore = useContext(GameContext);
+  if(!gameStore){
+    throw Error("Missing GameContext.Provider in component sub-tree");
+  }
+  return useStore(gameStore, selector, equalityFn);
+}

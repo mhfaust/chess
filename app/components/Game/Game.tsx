@@ -3,7 +3,7 @@
 import Grid from 'app/components/Grid/Grid';
 import Captures from 'app/components/Captures';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import useGameStore from 'state/useGameStore';
+import { useGameStore } from 'state/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
 import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
@@ -20,17 +20,17 @@ import { currentValidMoves } from 'logic/game/selectors/validMoves';
  */
 
 export default function Game() {
-
   const { toggleSquare } = useGameStore(game => game.actions);
+  
   const selectedSquare = useGameStore(game => game.selectedSquare);
   const orientation = useGameStore(game => game.orientation);
+  const onPromotePawn = useGameStore(game => game.onPromotePawn);
   const thisPlayer = useGameStore(currentPlayer);
   const whiteCaptures = useGameStore(currentWhiteCaptures);
   const blackCaptures = useGameStore(currentBlackCaptures);
   const isLatestBoard = useGameStore(isViewingLatestMove);
   const thisBoard = useGameStore(currentBoard);
-  const onPromotePawn = useGameStore(game => game.onPromotePawn);
-  const validMoves = useGameStore(currentValidMoves)
+  const validMoves = useGameStore(currentValidMoves);
 
   const isFlat = useDeviceOrientation(20);
   

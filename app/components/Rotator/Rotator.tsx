@@ -1,6 +1,6 @@
 import clsx from "clsx";
 import currentPlayer from "logic/game/selectors/players";
-import useGameStore from 'state/useGameStore';
+import { useGameStore } from 'state/useGameStore';
 import styles from './Rotator.module.css';
 
 const WhiteTriangle = () => {
@@ -30,7 +30,7 @@ const BlackTriangle  = () => {
 }
 
 const EchelonRotator = () => {
-  const rotateBoard = useGameStore(game => game.actions.rotateBoard);
+  const { rotateBoard } = useGameStore(game => game.actions);
   const orientation = useGameStore(game => game.orientation);
   const player = useGameStore(currentPlayer);
 

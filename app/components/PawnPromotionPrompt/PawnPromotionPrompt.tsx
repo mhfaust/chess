@@ -1,7 +1,7 @@
 import { blackPromotionOptions, whitePromotionOptions } from 'logic/board/pawnPromotionOptions';
 import { pieceSymbols } from 'logic/constants/pieces';
 import currentPlayer from 'logic/game/selectors/players';
-import useGameStore from 'state/useGameStore';
+import { useGameStore } from 'state/useGameStore';
 import { Piece } from 'logic/squares/piece';
 import styles from './PawnPromotionPrompt.module.css';
 

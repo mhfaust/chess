@@ -1,6 +1,5 @@
 import { playerAt } from 'logic/squares';
 import shouldPromptToPromotePawn from 'logic/board/pawnPromotionOptions';
-import { Action } from "./Action";
 import { Actions, GameState } from '../gameState';
 import { currentCastling } from '../selectors/castling';
 import { currentEnPassantSquare } from '../selectors/enPassant';

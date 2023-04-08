@@ -1,17 +1,19 @@
 // 'use client'
 
 import Game from 'app/components/Game';
-import { GameProvider } from 'app/components/Game/GameProvider';
+import { GameProvider } from 'state/useGameStore';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
  */
 
 export default function GamePage() {
+
   
-  return (
-    <GameProvider initialGamePlay=''>
-      <Game />
+  return (<>
+    <GameProvider>
+        <Game />
     </GameProvider>
+  </>
   );
 }
