@@ -3,7 +3,6 @@
 import Grid from 'app/components/Grid/Grid';
 import Captures from 'app/components/Captures';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { useGameStore } from 'state/useGameStore';
 import { currentBoard } from 'logic/game/selectors/boards';
 import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
@@ -14,6 +13,7 @@ import styles from './Game.module.css';
 import GameStatus from 'app/components/GameStatus';
 import useDeviceOrientation from 'app/utils/useDeviceOrienation';
 import { currentValidMoves } from 'logic/game/selectors/validMoves';
+import { useGameStore } from '../GameContainer/GameContainer';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
