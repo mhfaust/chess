@@ -13,7 +13,7 @@ import styles from './Game.module.css';
 import GameStatus from 'app/components/GameStatus';
 import useDeviceOrientation from 'app/utils/useDeviceOrienation';
 import { currentValidMoves } from 'logic/game/selectors/validMoves';
-import { useGameStore } from '../GameContainer/GameContainer';
+import { useGameStore } from '../GameContainer/useGameStore';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules

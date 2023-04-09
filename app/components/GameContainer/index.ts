@@ -1,1 +1,1 @@
-export { GameProvider } from './GameContainer';
+export { GameContainer as GameProvider } from './GameContainer';
