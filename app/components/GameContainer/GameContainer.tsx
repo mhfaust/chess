@@ -1,16 +1,15 @@
 'use client'
 
 import { createGameStore, gameContext, GameStore } from './gameContext';
-import { ReactNode, useEffect, useRef } from 'react';
+import { ReactNode, useRef } from 'react';
+import Game from '../Game/Game';
 
-type GameContainerProps = { 
-  children: ReactNode,
+export type GameContainerProps = { 
   initialGamePlay?: string,
   initialPosition?: number | 'last'
 }
 
 export const GameContainer = ({ 
-  children,
   initialGamePlay = '',
   initialPosition = 0
 }: GameContainerProps) => {
@@ -20,13 +19,12 @@ export const GameContainer = ({
     gameStoreRef.current = createGameStore();
   }
 
-  useEffect(() => {
-
-  }, []);
-
   return (
     <gameContext.Provider value={gameStoreRef.current}>
-      {children}
+      <Game 
+        initialGamePlay={initialGamePlay}
+        initialPosition={initialPosition}
+      />
     </gameContext.Provider>
   )
 }

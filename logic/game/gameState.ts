@@ -20,6 +20,10 @@ export type GameState =  GamePlayAndCursor & {
 }
 
 export type Actions = {
+  init: (
+    initialGamePlay: string,
+    initialPosition: number,
+  ) => void;
   toggleSquare: (
     square: Square | null
   ) => void;

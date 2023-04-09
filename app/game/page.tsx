@@ -12,12 +12,8 @@ export default function GamePage() {
 
   
   return (<>
-    <GameProvider initialGamePlay=''>
-        <Game />
-    </GameProvider>
-    <GameProvider initialGamePlay='KasparovVeselin'>
-        <Game />
-    </GameProvider>
+    <GameProvider initialGamePlay='' />
+    <GameProvider initialGamePlay={KasparovVeselin} initialPosition='last' />
   </>
   );
 }
