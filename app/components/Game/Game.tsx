@@ -27,14 +27,14 @@ export default function Game({
   initialGamePlay, 
   initialPosition
 }: GameProps) {
-  
+
   const { toggleSquare, init } = useGameStore(game => game.actions);
 
   const [readyToRender, setReadyToRender] = useState(!initialGamePlay && !initialPosition);
   
   useEffect(() => {
-    const expectedGamePlayLength = initialGamePlay?.split(',').length ?? 0;
-    const pos = initialPosition === 'last' ? expectedGamePlayLength : 0;
+    const numPositions = initialGamePlay?.split(',').length ?? 0;
+    const pos = initialPosition === 'last' ? numPositions : 0;
     init(initialGamePlay!, pos);
     setReadyToRender(true);
   }, [init, initialGamePlay, initialPosition])

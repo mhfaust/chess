@@ -1,7 +1,7 @@
 'use client'
 
 import { createGameStore, gameContext, GameStore } from './gameContext';
-import { ReactNode, useRef } from 'react';
+import { useRef } from 'react';
 import Game from '../Game/Game';
 
 export type GameContainerProps = { 

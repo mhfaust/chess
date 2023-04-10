@@ -1,6 +1,10 @@
+@media (min-width: 768px) {
+  .game {
+    max-width: 500px;
+  }
+}
 .game {
   color: black;
-  max-width: 768px;
 }
 .tray {
   display: flex;
