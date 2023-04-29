@@ -3,7 +3,7 @@ import { Square } from 'logic/squares/square';
 import { Player } from 'logic/types/Player';
 import { GamePlayAndCursor, GameState } from 'logic/game/gameState';
 import { boardCursor } from 'logic/game/selectors/boards';
-import { promotions } from 'logic/board/move';
+import { promotions } from 'logic/position/move';
 import allPieceMoves from 'logic/moves/allPieceMoves';
 
 

@@ -1,12 +1,12 @@
 import { Position } from 'logic/types/Position';
 import { Move, moves } from 'logic/game/selectors/moves';
 import { canMoveTo } from 'logic/moves';
-import { initialBoard } from 'logic/board/initialPosition';
+import { initialBoard } from 'logic/position/initialPosition';
 import { castling } from 'logic/game/selectors/castling';
 import { RookStartSquare } from 'logic/types/CastlingPreclusions';
-import nextBoard from 'logic/board/move';
+import nextBoard from 'logic/position/move';
 import { epSquare } from 'logic/game/selectors/enPassant';
-import textRender from 'logic/board/textRender';
+import textRender from 'logic/position/textRender';
 import { GamePlayAndCursor } from 'logic/game/gameState';
 
 const emptyPreclusions = new Set<RookStartSquare>();

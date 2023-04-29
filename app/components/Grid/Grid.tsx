@@ -6,7 +6,7 @@ import { Position, PieceOrEmpty } from 'logic/types/Position';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
 import { Square, squareColor } from 'logic/squares/square';
-import { rotateCounterClockwise, rotateClockwise, rotate180 } from 'logic/board/rotate';
+import { rotateCounterClockwise, rotateClockwise, rotate180 } from 'logic/position/rotate';
 import { Player } from 'logic/types/Player';
 import isPieceKingInCheck from 'logic/check/isPieceKingInCheck';
 

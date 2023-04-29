@@ -1,5 +1,5 @@
 import allPlayerSquares, { PieceSquare }  from 'logic/squares/allPlayerSquares'
-import { initialBoard } from 'logic/board/initialPosition';
+import { initialBoard } from 'logic/position/initialPosition';
 import { Square }  from 'logic/squares/square';
 import { Piece }  from 'logic/squares/piece';
 

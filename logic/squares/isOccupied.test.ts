@@ -1,5 +1,5 @@
 import isOccupied  from 'logic/squares/isOccupied'
-import { initialBoard } from 'logic/board/initialPosition';
+import { initialBoard } from 'logic/position/initialPosition';
 
 describe('isOccupied', () => {
     it('reports true for rook on initial square', () => {

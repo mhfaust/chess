@@ -1,4 +1,4 @@
-import { move }  from 'logic/board';
+import { move }  from 'logic/position';
 import { isInCheck }  from 'logic/check';
 import { playerAt }  from 'logic/squares';
 import { Square }  from 'logic/squares/square';

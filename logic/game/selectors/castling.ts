@@ -1,4 +1,4 @@
-import nextCastlingPreclusions from 'logic/board/nextCastlingPreclusions';
+import nextCastlingPreclusions from 'logic/position/nextCastlingPreclusions';
 import { CastlingPreclusions, RookStartSquare } from 'logic/types/CastlingPreclusions';
 import { GamePlayAndCursor } from 'logic/game/gameState';
 import { moves } from 'logic/game/selectors/moves';

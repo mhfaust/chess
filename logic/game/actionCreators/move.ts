@@ -1,6 +1,6 @@
 import { Piece } from "logic/squares/piece";
 import { Square } from "logic/squares/square";
-import { moveHash } from 'logic/board/move';
+import { moveHash } from 'logic/position/move';
 import { GameState } from "../gameState";
 
 export type MoveParams = Parameters<typeof move>;

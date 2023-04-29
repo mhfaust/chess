@@ -1,5 +1,5 @@
 import { pieceSymbols }  from 'logic/constants/pieces';
-import { rotateCounterClockwise }  from 'logic/board/rotate';
+import { rotateCounterClockwise }  from 'logic/position/rotate';
 import chalk from 'chalk';
 import { Position, PieceOrEmpty }  from 'logic/types/Position';
 import { Piece }  from 'logic/squares/piece';

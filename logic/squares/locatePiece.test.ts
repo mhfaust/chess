@@ -1,5 +1,5 @@
 import locatePiece  from 'logic/squares/locatePiece';
-import { initialBoard } from 'logic/board/initialPosition';;
+import { initialBoard } from 'logic/position/initialPosition';;
 import COORDS  from 'logic/squares/coordinates'
 
 

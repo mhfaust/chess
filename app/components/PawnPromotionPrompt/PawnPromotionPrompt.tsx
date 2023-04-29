@@ -1,4 +1,4 @@
-import { blackPromotionOptions, whitePromotionOptions } from 'logic/board/pawnPromotionOptions';
+import { blackPromotionOptions, whitePromotionOptions } from 'logic/position/pawnPromotionOptions';
 import { pieceSymbols } from 'logic/constants/pieces';
 import currentPlayer from 'logic/game/selectors/players';
 import { useGameStore } from '../GameContainer/useGameStore';
