@@ -1,7 +1,7 @@
 import { pieceSymbols }  from 'logic/constants/pieces';
 import { rotateCounterClockwise }  from 'logic/board/rotate';
 import chalk from 'chalk';
-import { Board, PieceOrEmpty }  from 'logic/types/Board';
+import { Position, PieceOrEmpty }  from 'logic/types/Board';
 import { Piece }  from 'logic/squares/piece';
 
 const { bgWhite, black, blue } = chalk;
@@ -19,8 +19,8 @@ const pieceLine = (row: PieceOrEmpty[], i: number) => {
 };
 
 
-function asciiBoard(board: Board){
-    const pieceLines = rotateCounterClockwise<PieceOrEmpty>(board as any)
+function asciiBoard(position: Position){
+    const pieceLines = rotateCounterClockwise<PieceOrEmpty>(position as any)
         .map(pieceLine)
         .join(separLine);
 

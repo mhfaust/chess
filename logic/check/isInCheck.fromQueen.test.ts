@@ -1,10 +1,10 @@
 import isInCheck  from 'logic/check/isInCheck';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 describe('isInCheck: true', () => {
     it('White King at f3 is IN check from Black Queen at e4', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -16,11 +16,11 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__],
         ];
 
-        expect(isInCheck(board, 'White')).toBe(true)
+        expect(isInCheck(position, 'White')).toBe(true)
     });
 
     it('White King at f3 is IN check from Black Queen at f4', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -32,11 +32,11 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__],
         ];
 
-        expect(isInCheck(board, 'White')).toBe(true)
+        expect(isInCheck(position, 'White')).toBe(true)
     });
 
     it('White King at f3 is NOT in check from Black Queen at e5', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -48,11 +48,11 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__],
         ];
 
-        expect(isInCheck(board, 'White')).toBe(false)
+        expect(isInCheck(position, 'White')).toBe(false)
     });    
 
     it('White King at e1 is in check from Black Queen at e7', () => {
-        const board: Board = [
+        const position: Position = [
     /*         1  2  3  4  5  6  7  8  */
     /*  A  */ [WR,WP,__,__,__,__,BP,BR],
     /*  B  */ [WN,__,__,WP,__,__,BP,BN],
@@ -64,7 +64,7 @@ describe('isInCheck: true', () => {
     /*  H  */ [WR,WP,__,__,__,WB,BP,BR],
         ];  
 
-        expect(isInCheck(board, 'White')).toBe(true)
+        expect(isInCheck(position, 'White')).toBe(true)
     });    
 
 });

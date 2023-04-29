@@ -1,6 +1,6 @@
 import knightCanMove  from 'logic/moves/knightCanMove'
 import { __, WK, WN, BK, BQ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { initialBoard } from 'logic/board/initialBoard';
 
 describe('knightCanMove', () => {
@@ -31,7 +31,7 @@ describe('knightCanMove', () => {
     });
 
     it('cannot move pinned knight',() =>{
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [__,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,__,__,__],
@@ -43,7 +43,7 @@ describe('knightCanMove', () => {
             /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        const answer = knightCanMove(board, 'e4', 'c3')
+        const answer = knightCanMove(position, 'e4', 'c3')
         expect(answer).toBe(false);
 
     })

@@ -1,26 +1,26 @@
 import { generateLinesOfAttack }  from 'logic/check'
 import { Player }  from 'logic/types/Player';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import kingSquare  from 'logic/squares/kingSquare';
 import { otherPlayer } from 'logic/squares';
 
-const cache = new Map<Player, Map<Board, boolean>>()
+const cache = new Map<Player, Map<Position, boolean>>()
     .set('Black', new Map())
     .set('White', new Map())
 
 function isInCheck(
-    board: Board, 
+    position: Position, 
     player: Player
 ): boolean {
     const playerCache = cache.get(player);
-    if(playerCache?.get(board)){
-        return playerCache.get(board)!;
+    if(playerCache?.get(position)){
+        return playerCache.get(position)!;
     }
 
-    const attackLines = generateLinesOfAttack(board, otherPlayer(player), kingSquare(board, player));
+    const attackLines = generateLinesOfAttack(position, otherPlayer(player), kingSquare(position, player));
     const checkLine = attackLines.next()
     const isInCheck = checkLine.value !== null;
-    playerCache?.set(board, isInCheck);
+    playerCache?.set(position, isInCheck);
     return isInCheck;
 }
 

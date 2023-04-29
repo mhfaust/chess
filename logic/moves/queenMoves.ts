@@ -1,15 +1,15 @@
 import { Square }  from 'logic/squares/square';
 import { rookMoves, bishopMoves }  from 'logic/moves'
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 function queen(
-    board: Board, 
+    position: Position, 
     moveFrom: Square, 
 ): Set<Square> {
 
     return new Set([
-        ...Array.from(rookMoves(board, moveFrom)),
-        ...Array.from(bishopMoves(board, moveFrom))
+        ...Array.from(rookMoves(position, moveFrom)),
+        ...Array.from(bishopMoves(position, moveFrom))
     ]);
 }
 

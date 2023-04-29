@@ -1,12 +1,12 @@
 import { pieceAt }  from 'logic/squares';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square } from 'logic/squares/square';
 
 function isOccupied  (
-    board: Board, 
+    position: Position, 
     square: Square)
     : boolean {
-        return Boolean(pieceAt(board, square));
+        return Boolean(pieceAt(position, square));
     }
     
 export default isOccupied;

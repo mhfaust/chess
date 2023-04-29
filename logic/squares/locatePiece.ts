@@ -1,5 +1,5 @@
 import { pieceAt }  from 'logic/squares'
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import square, { Square } from 'logic/squares/square';
 
 export type UniquePiece = 
@@ -10,15 +10,15 @@ export type UniquePiece =
 
 /**
  * 
- * @param board 
+ * @param position 
  * @param piece 
  * @returns 
  */
-function locatePiece(board: Board, piece: UniquePiece) : Square | null {
+function locatePiece(position: Position, piece: UniquePiece) : Square | null {
     for(let file = 0; file < 8; file++){
         for (let rank = 0; rank < 8; rank++){
             const coords: ReadonlyArray<number> = [file, rank];
-            if(board[file][rank] === piece){
+            if(position[file][rank] === piece){
                 return square(coords);
             }
         }

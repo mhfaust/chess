@@ -1,10 +1,10 @@
 import isInCheck  from 'logic/check/isInCheck';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 describe('isInCheck: true', () => {
     it('rook checks king along a rank', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,WR,__,__,__,__,__],
@@ -16,11 +16,11 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        expect(isInCheck(board, 'Black')).toBe(true)
+        expect(isInCheck(position, 'Black')).toBe(true)
     });
 
     it('rook checks king along a file', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -32,6 +32,6 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        expect(isInCheck(board, 'Black')).toBe(true)
+        expect(isInCheck(position, 'Black')).toBe(true)
     });
 })

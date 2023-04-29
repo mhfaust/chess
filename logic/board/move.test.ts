@@ -1,11 +1,11 @@
 import move  from 'logic/board/move';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 describe('move', () => {
 
     it('is in checkmate (1)', () => {
-        const boardBefore: Board = [
+        const boardBefore: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -17,7 +17,7 @@ describe('move', () => {
 /*  H  */ [__,__,__,__,__,__,BP,__],
         ];
 
-        const boardAfter: Board = [
+        const boardAfter: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],

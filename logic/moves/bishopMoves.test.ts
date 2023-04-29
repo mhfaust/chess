@@ -1,12 +1,12 @@
 import bishopMoves from './bishopMoves';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 describe('bishop', () => {
 
     it(`provides all possible moves from bishop `, () => {
 
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [__,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,WP,__,__],
@@ -31,13 +31,13 @@ describe('bishop', () => {
             'c5'
         ]);
 
-        const foundLegalMoves = bishopMoves(board, 'd4');
+        const foundLegalMoves = bishopMoves(position, 'd4');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     })
 
     it('does not include moves putting self in check', () => {
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [WK,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,__,__,__],
@@ -58,7 +58,7 @@ describe('bishop', () => {
         ]);
 
 
-        const foundLegalMoves = bishopMoves(board, 'd4');
+        const foundLegalMoves = bishopMoves(position, 'd4');
 
         expect(foundLegalMoves).toEqual(expecteLegalMoves)   
     })

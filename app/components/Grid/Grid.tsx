@@ -2,7 +2,7 @@
 import styles from './Grid.module.css'
 import { BLACK_PIECES, pieceSymbols, WHITE_PIECES }  from 'logic/constants/pieces';
 import { square } from 'logic/squares';
-import { Board, PieceOrEmpty } from 'logic/types/Board';
+import { Position, PieceOrEmpty } from 'logic/types/Board';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
 import { Square, squareColor } from 'logic/squares/square';
@@ -19,8 +19,8 @@ type SquareWithPiece = {
   piece: PieceOrEmpty 
 }
 
-const mapToGridModel = (board: Board): SquareWithPiece[][] => {
-  return  board.map((row, file) => {
+const mapToGridModel = (position: Position): SquareWithPiece[][] => {
+  return  position.map((row, file) => {
     return row.map((piece, rank) => ({
       square: square([file, rank])!,
       piece
@@ -36,7 +36,7 @@ const rotate: Record<0 | 1 | 2 | 3, (s: SquareWithPiece[][]) => SquareWithPiece[
 }
 
 type GridProps = {
-  board: Board;
+  position: Position;
   orientation: number;
   onClickSquare: (square: Square) => void;
   selectedSquare: Square | null;
@@ -47,7 +47,7 @@ type GridProps = {
 const noMoves = new Set<Square>();
 
 const Grid = ({ 
-  board, 
+  position, 
   orientation = 0, 
   onClickSquare,
   selectedSquare,
@@ -59,8 +59,8 @@ const Grid = ({
   const rotated = useMemo(() => {
     const orientationMod4 = (0  +2) % 4 as 0 | 1 | 2 | 3;
     const rotateGrid = rotate[orientationMod4];
-    return rotateGrid(mapToGridModel(board));
-  }, [board]);
+    return rotateGrid(mapToGridModel(position));
+  }, [position]);
 
   const gridStyleAttr = { 
     transform: `rotate(${90 * (orientation)}deg)`,
@@ -105,7 +105,7 @@ const Grid = ({
                     [styles.canMoveTo]: isLatestBoard && validMoves.has(square),
                     [styles.whitePiece]: piece && WHITE_PIECES.has(piece),
                     [styles.blackPiece]: piece && BLACK_PIECES.has(piece),
-                    [styles.kingInCheck]: piece && isPieceKingInCheck(board, square),
+                    [styles.kingInCheck]: piece && isPieceKingInCheck(position, square),
                   },
                 )} 
                  key={j}

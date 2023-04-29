@@ -1,12 +1,12 @@
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import canMoveTo  from 'logic/moves/canMoveTo';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 
 describe('canMoveTo (Bishop)', () => {
     
     it('Can move bishop only along axis of potential check while blocking check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WK,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -18,15 +18,15 @@ describe('canMoveTo (Bishop)', () => {
         /*  H  */ [__,__,__,__,__,__,__,BR],
         ];
 
-        expect(canMoveTo(board, 'd4', 'c3', new Set(), null)).toBe(true);  
-        expect(canMoveTo(board, 'd4', 'c5', new Set(), null)).toBe(false);  
+        expect(canMoveTo(position, 'd4', 'c3', new Set(), null)).toBe(true);  
+        expect(canMoveTo(position, 'd4', 'c5', new Set(), null)).toBe(false);  
     });
 });
 
 
 describe('canMoveTo (King)', () => {
 
-    const board: Board = [
+    const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -38,7 +38,7 @@ describe('canMoveTo (King)', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        expect(canMoveTo(board, 'e1', 'g1', new Set<RookStartSquare>(['h8', 'a8']))).toBe(false)
+        expect(canMoveTo(position, 'e1', 'g1', new Set<RookStartSquare>(['h8', 'a8']))).toBe(false)
     
 });
 
@@ -52,7 +52,7 @@ describe('canMoveTo Knight', () => {
 describe('canMoveTo (Pawn)', () => {
 
     it('black pawn can attack a square passed by a white pawn moving from rank 2 to 4', () => {
-        const board : Board = [
+        const position : Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [WR,WP,__,__,__,__,BP,BR],
             /*  B  */ [WN,WP,__,__,__,__,BP,BN],
@@ -64,14 +64,14 @@ describe('canMoveTo (Pawn)', () => {
             /*  H  */ [WR,__,__,__,WP,__,BP,BR],
         ];
         
-        const answer = canMoveTo(board, 'd4', 'e3', new Set(), 'e3');
+        const answer = canMoveTo(position, 'd4', 'e3', new Set(), 'e3');
         expect(answer).toBe(true);
     });
 });
 
 
 describe('canMoveTo (Queen)', () => {
-    const board: Board = [
+    const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [__,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -84,7 +84,7 @@ describe('canMoveTo (Queen)', () => {
         ];
 
         it('can capture opponent piece, diagonally', () => {
-            expect(canMoveTo(board, 'c2', 'f5', new Set(), null)).toBe(true)
+            expect(canMoveTo(position, 'c2', 'f5', new Set(), null)).toBe(true)
         });
     
 });

@@ -1,10 +1,10 @@
 import isInCheck  from 'logic/check/isInCheck';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 describe('isInCheck: true', () => {
     it('White King  at d4 is in check from Black King at PIECE_Square', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -16,12 +16,12 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        expect(isInCheck(board, 'White')).toBe(true)
+        expect(isInCheck(position, 'White')).toBe(true)
 
     });
 
     it('White King  at d4 is in check from Black King at PIECE_Square', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -33,12 +33,12 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        expect(isInCheck(board, 'White')).toBe(true)
+        expect(isInCheck(position, 'White')).toBe(true)
 
     });
 
     it('White King  at d4 is in check from Black King at PIECE_Square', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -50,13 +50,13 @@ describe('isInCheck: true', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        expect(isInCheck(board, 'White')).toBe(true)
+        expect(isInCheck(position, 'White')).toBe(true)
     });
 })
 
 describe('isInCheck: false', () => {
     it('White King at d4 is NOT in check from Black King at d6', () => {
-        const board: Board = [
+        const position: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -68,7 +68,7 @@ describe('isInCheck: false', () => {
 /*  H  */ [__,__,__,__,__,__,__,__], 
         ];
 
-        expect(isInCheck(board, 'White')).toBe(false)
+        expect(isInCheck(position, 'White')).toBe(false)
 
     });
 

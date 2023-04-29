@@ -1,11 +1,11 @@
 import { file, pieceAt, rank }  from 'logic/squares'
 import square, { Square }  from 'logic/squares/square'
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 const blackPawnStartRank = 6;
 const whitePawnStartRank = 1;
 
-const cache: Map<Board, Square | null> = new Map();
+const cache: Map<Position, Square | null> = new Map();
 
 export const pawnSquareFromEpSquare: Map<Square, Square> = new Map([
   ['a3', 'a4'],
@@ -27,7 +27,7 @@ export const pawnSquareFromEpSquare: Map<Square, Square> = new Map([
 ]);
 
 const enPassantSquare = (
-  currentBoard: Board,
+  currentBoard: Position,
   lastMovedFrom: Square,
   lastMovedTo: Square,
 ): Square | null => {

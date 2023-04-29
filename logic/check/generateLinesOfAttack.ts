@@ -15,7 +15,7 @@ import {
 } from 'logic/constants/move-vectors'
 
 import { Square }  from 'logic/squares/square';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 
 import { Piece }  from 'logic/squares/piece';
@@ -52,7 +52,7 @@ const blackAttackPatterns: Array<AttackPattern> = [
 ];
 
 function * generateLinesOfAttack(
-    board: Board, 
+    position: Position, 
     attacker: Player, 
     target: Square)
     : IterableIterator<GridCoordinates[]>
@@ -72,12 +72,12 @@ function * generateLinesOfAttack(
             let step = 0;
             while (examinedSquare && ++step) {
                 attackLine.push(COORDS[examinedSquare]);
-                const pieceThere = pieceAt(board, examinedSquare);
+                const pieceThere = pieceAt(position, examinedSquare);
                 if (pieceThere) {
-                    if (playerAt(board, examinedSquare) === attacker
+                    if (playerAt(position, examinedSquare) === attacker
                         && canAttackLikeThis.has(pieceThere) 
                         && !attackLines.has(examinedSquare)
-                        && (!isPawn(pieceThere) || canMoveTo(board, examinedSquare, target))
+                        && (!isPawn(pieceThere) || canMoveTo(position, examinedSquare, target))
                     ){
                         yield attackLine; 
                         attackLines.set(examinedSquare, attackLine);

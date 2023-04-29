@@ -1,25 +1,25 @@
 import { Player }  from 'logic/types/Player';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square, squares } from 'logic/squares/square';
 import pieceAt from 'logic/squares/pieceAt';
 
-const whiteCache: Map<Board, Square> = new Map();
-const blackCache: Map<Board, Square> = new Map();
+const whiteCache: Map<Position, Square> = new Map();
+const blackCache: Map<Position, Square> = new Map();
 
-const kingSquare = (board: Board, player: Player): Square => {
+const kingSquare = (position: Position, player: Player): Square => {
   if(player === 'Black'){
-    if(blackCache.has(board)){
-      return blackCache.get(board) as Square;
+    if(blackCache.has(position)){
+      return blackCache.get(position) as Square;
     }
-    const found = squares.find(n =>  pieceAt(board, n) === 'Black King') as Square;
-    blackCache.set(board, found);
+    const found = squares.find(n =>  pieceAt(position, n) === 'Black King') as Square;
+    blackCache.set(position, found);
     return found;
   } else {
-    if(whiteCache.has(board)){
-      return whiteCache.get(board) as Square;
+    if(whiteCache.has(position)){
+      return whiteCache.get(position) as Square;
     }
-    const found = squares.find(n =>  pieceAt(board, n) === 'White King') as Square;
-    whiteCache.set(board, found);
+    const found = squares.find(n =>  pieceAt(position, n) === 'White King') as Square;
+    whiteCache.set(position, found);
     return found;
   }
 }

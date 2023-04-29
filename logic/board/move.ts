@@ -1,5 +1,5 @@
 import { file, rank, pieceAt, playerAt, otherPlayer }  from 'logic/squares';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
 import { pawnSquareFromEpSquare } from 'logic/moves/enPassantSquare';
 import COORDS from 'logic/squares/coordinates';
@@ -15,8 +15,8 @@ const castlings: Record<string, [Square, Square] | undefined> = {
     'Black King-e8g8': ['h8', 'f8'],
 };
 
-type MoveTuple = [Board, string]
-const cache = new Map<Board, Map<string, MoveTuple>>();
+type MoveTuple = [Position, string]
+const cache = new Map<Position, Map<string, MoveTuple>>();
 
 const { entries, fromEntries } = Object;
 export const promotions: Record<string, string> = {
@@ -38,7 +38,7 @@ export const moveHash = (move: Move): string => {
 
 /** Does not validate the move (to may be occupied, may be in check, etc.) */
 function move ( 
-    previousBoard: Board, 
+    previousBoard: Position, 
     from: Square, 
     to: Square,
     enPassantSquare: Square | null,
@@ -69,7 +69,7 @@ function move (
         return cachedBoard;
     }
 
-    const newBoard : Board = [
+    const newBoard : Position = [
         [...previousBoard[0]],
         [...previousBoard[1]],
         [...previousBoard[2]],

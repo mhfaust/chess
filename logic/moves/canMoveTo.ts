@@ -7,18 +7,18 @@ import {
     rookCanMove 
 } from 'logic/moves';
 import { pieceAt }  from 'logic/squares';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 
 //Each of the piece-specific can-move functions has a less-demanding signtaure for 
 //annotations than the combined canMoveTo, so we cury them to match it
-const bishop = (b: Board, f: Square, t: Square) => bishopCanMove(b, f, t);
-const knight = (b: Board, f: Square, t: Square) => knightCanMove(b, f, t);
-const rook = (b: Board, f: Square, t: Square) => rookCanMove(b, f, t);
-const pawn = (b: Board, f: Square, t: Square, _: unknown, a: Square) => pawnCanMove(b, f, t, a);
-const king = (b: Board, f: Square, t: Square, a: CastlingPreclusions) => kingCanMove(b, f, t, a);
-const queen = (b: Board, f: Square, t: Square) => queenCanMove(b, f, t);
+const bishop = (b: Position, f: Square, t: Square) => bishopCanMove(b, f, t);
+const knight = (b: Position, f: Square, t: Square) => knightCanMove(b, f, t);
+const rook = (b: Position, f: Square, t: Square) => rookCanMove(b, f, t);
+const pawn = (b: Position, f: Square, t: Square, _: unknown, a: Square) => pawnCanMove(b, f, t, a);
+const king = (b: Position, f: Square, t: Square, a: CastlingPreclusions) => kingCanMove(b, f, t, a);
+const queen = (b: Position, f: Square, t: Square) => queenCanMove(b, f, t);
 
 const strategies = new Map()
     .set('Black Bishop', bishop)
@@ -39,14 +39,14 @@ export type CanMoveTo =
 
 
 function canMoveTo (
-    board: Board,
+    position: Position,
     from: Square, 
     to: Square, 
     castlingPreclusions: CastlingPreclusions | null = null,
     enPassantSquare: Square | null = null,
 ): boolean {
-    const strategy = strategies.get(pieceAt(board, from));
-    return strategy(board, from, to, castlingPreclusions, enPassantSquare);
+    const strategy = strategies.get(pieceAt(position, from));
+    return strategy(position, from, to, castlingPreclusions, enPassantSquare);
 
 }
 

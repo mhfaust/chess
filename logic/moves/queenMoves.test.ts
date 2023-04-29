@@ -1,11 +1,11 @@
 import queenMoves from './queenMoves';
 import { BQ,BP,WK,WQ,WR,BK,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 describe('queen', () => {
 
     it(`provides all possible moves from queen on queen1board: `, () => {
 
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [__,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,__,__,__],
@@ -34,13 +34,13 @@ describe('queen', () => {
             'a4'
         ])
 
-        const foundattackedSquares = queenMoves(board, 'c2');
+        const foundattackedSquares = queenMoves(position, 'c2');
 
         expect(foundattackedSquares).toEqual(expectedattackedSquares)
     });
 
     it('does not include moves putting self in check', () => {
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [__,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,__,__,__],
@@ -59,7 +59,7 @@ describe('queen', () => {
             'e7',
         ]);
 
-        const foundLegalMoves = queenMoves(board, 'e4');
+        const foundLegalMoves = queenMoves(position, 'e4');
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });

@@ -7,11 +7,11 @@ import {
 } from 'logic/squares';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Square }  from 'logic/squares/square';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
-function rook(board: Board, moveFrom: Square): Set<Square> {
+function rook(position: Position, moveFrom: Square): Set<Square> {
     
-    const player = playerAt(board, moveFrom);
+    const player = playerAt(position, moveFrom);
     if (!player){
         return new Set();
     }
@@ -21,19 +21,19 @@ function rook(board: Board, moveFrom: Square): Set<Square> {
     directions.forEach((direction) => {
         let examinedSquare = displaceTo(moveFrom, direction);
 
-        while(examinedSquare && isUnOccupied(board, examinedSquare)){
+        while(examinedSquare && isUnOccupied(position, examinedSquare)){
             legalMoves.push(examinedSquare);
             examinedSquare = displaceTo(examinedSquare, direction);
         }
         if (examinedSquare && 
-            isOccupiedByPlayer(board, examinedSquare, otherPlayer(player))
+            isOccupiedByPlayer(position, examinedSquare, otherPlayer(player))
         ) {
             legalMoves.push(examinedSquare);
         }
     });
 
     return new Set(legalMoves
-        .filter(square => !movesIntoCheck(board, moveFrom, square))
+        .filter(square => !movesIntoCheck(position, moveFrom, square))
     );
 }
 

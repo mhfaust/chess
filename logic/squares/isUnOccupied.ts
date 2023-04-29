@@ -1,10 +1,10 @@
 import { ALL_PIECES }  from 'logic/constants/pieces';
 import { pieceAt }  from 'logic/squares';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square } from 'logic/squares/square';
 
-function isUnOccupied (board: Board, square: Square): boolean {
-    return !pieceAt(board, square);
+function isUnOccupied (position: Position, square: Square): boolean {
+    return !pieceAt(position, square);
 }
     
 

@@ -7,11 +7,11 @@ import {
     displaceTo } from 'logic/squares';
     
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
 
 function rookCanMove (
-    board: Board, 
+    position: Position, 
     from: Square, 
     to: Square, 
 ) : boolean {
@@ -21,7 +21,7 @@ function rookCanMove (
     }
            
     //can't move there if it's occupied by one of player's own pieces:
-    if (playerAt(board, to) === playerAt(board, from)){
+    if (playerAt(position, to) === playerAt(position, from)){
         return false;
     }
     
@@ -41,14 +41,14 @@ function rookCanMove (
         
     while(step && step !== to){
         
-        if(isOccupied(board, step)){
+        if(isOccupied(position, step)){
             return false;
         }
             
          step = displaceTo(step, moveVector);
     }
     
-    if(movesIntoCheck(board, from, to)){
+    if(movesIntoCheck(position, from, to)){
         return false;
     }
 

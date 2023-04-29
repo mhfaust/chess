@@ -1,7 +1,7 @@
 import { pieceAt, rank } from 'logic/squares';
 import { Piece } from 'logic/squares/piece';
 import { Square } from 'logic/squares/square';
-import { Board } from 'logic/types/Board';
+import { Position } from 'logic/types/Board';
 
 export const blackPromotionOptions: Piece[] =  [
   'Black Queen', 
@@ -18,11 +18,11 @@ export const whitePromotionOptions: Piece[] =  [
 ]
 
 const shouldPromptToPromotePawn = (
-  board: Board, 
+  position: Position, 
   from: Square, 
   to: Square
 ): boolean => {
-  const piece = pieceAt(board, from);
+  const piece = pieceAt(position, from);
   const toRank = rank(to);
   return (piece === 'Black Pawn' && toRank === 0)
     || (piece === 'White Pawn' && toRank === 7);

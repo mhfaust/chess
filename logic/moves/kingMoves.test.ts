@@ -1,13 +1,13 @@
 
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { kingMoves }  from 'logic/moves';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 
 
 describe('kingMoves', () => {
     it('Cannot move, initially', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,WP,__,__,__,__,BP,BR],
         /*  B  */ [WN,WP,__,__,__,__,BP,BN],
@@ -20,13 +20,13 @@ describe('kingMoves', () => {
         ];
         const expectedLegalMoves = new Set([]);
 
-        const foundLegalMoves = kingMoves(board, 'e1', new Set());
+        const foundLegalMoves = kingMoves(position, 'e1', new Set());
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves);
     });
 
     it('King moves any diection, only one square', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [__,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -39,13 +39,13 @@ describe('kingMoves', () => {
         ];
         const expectedLegalMoves = new Set(['c6','c7','c8','d6','d8','e6','e7','e8']);
 
-        const foundLegalMoves = kingMoves(board, 'd7', new Set<RookStartSquare>(['a1', 'h1', 'a8', 'h8']));
+        const foundLegalMoves = kingMoves(position, 'd7', new Set<RookStartSquare>(['a1', 'h1', 'a8', 'h8']));
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });
 
     it('Cannot put self in check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,BR],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -57,14 +57,14 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,BR], 
         ];
 
-        const foundLegalMoves = kingMoves(board, 'e1', new Set());
+        const foundLegalMoves = kingMoves(position, 'e1', new Set());
 
         expect(foundLegalMoves).toEqual(new Set([]));
     });
 
     describe('Preclusion', () => {
 
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,WP,__,__,__,__,BP,BR],
         /*  B  */ [WN,WP,__,__,__,__,BP,__],
@@ -78,14 +78,14 @@ describe('kingMoves', () => {
 
         it('White king can castle if not precluded', () => {
     
-            const foundLegalMoves = kingMoves(board, 'e1', new Set());
+            const foundLegalMoves = kingMoves(position, 'e1', new Set());
     
             expect(foundLegalMoves).toContain('g1')
         });  
     
         it('White king cannot castle if precluded', () => {
 
-            const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartSquare>(['h1']));
+            const foundLegalMoves = kingMoves(position, 'e1', new Set<RookStartSquare>(['h1']));
     
             expect(foundLegalMoves).not.toContain('g1')
         });  
@@ -94,7 +94,7 @@ describe('kingMoves', () => {
     
     
     it('White king cannot castle across check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -106,14 +106,14 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
     
-        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartSquare>(['a8', 'h8']));
+        const foundLegalMoves = kingMoves(position, 'e1', new Set<RookStartSquare>(['a8', 'h8']));
 
         expect(foundLegalMoves).not.toContain('g1')
     });
 
      
     it('White king cannot castle into check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -125,13 +125,13 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        const foundLegalMoves = kingMoves(board, 'e1', new Set<RookStartSquare>(['a8', 'h8']));
+        const foundLegalMoves = kingMoves(position, 'e1', new Set<RookStartSquare>(['a8', 'h8']));
 
         expect(foundLegalMoves).not.toContain('g1')
     });
 
     it('White king cannot castle when a piece is in between', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,BR],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -143,13 +143,13 @@ describe('kingMoves', () => {
         /*  H  */ [WR,__,__,__,__,__,__,BR], 
         ];
 
-        const foundLegalMoves = kingMoves(board, 'e1', new Set());
+        const foundLegalMoves = kingMoves(position, 'e1', new Set());
 
         expect(foundLegalMoves).not.toContain('c1')
     });
 
     it('Black king can castle, queen-side', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,WP,__,__,BP,BR],
         /*  B  */ [WN,WP,__,__,__,__,BP,__],
@@ -161,13 +161,13 @@ describe('kingMoves', () => {
         /*  H  */ [__,WP,__,__,__,__,BP,BR],
         ]; 
 
-        const foundLegalMoves = kingMoves(board, 'e8', new Set());
+        const foundLegalMoves = kingMoves(position, 'e8', new Set());
 
         expect(foundLegalMoves).toContain('c8')
     });  
 
     it('White king cannot castle out of check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,WP,__,__,__,__,BP,BR],
         /*  B  */ [WN,__,__,WP,__,__,BP,BN],
@@ -179,7 +179,7 @@ describe('kingMoves', () => {
         /*  H  */ [WR,WP,__,__,__,WB,BP,BR],
         ]; 
 
-        const foundLegalMoves = kingMoves(board, 'e1', new Set());
+        const foundLegalMoves = kingMoves(position, 'e1', new Set());
 
         expect(foundLegalMoves.has('g1')).toBe(false)
     });  

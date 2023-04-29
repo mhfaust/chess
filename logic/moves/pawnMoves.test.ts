@@ -1,11 +1,11 @@
 import pawnMoves from './pawnMoves';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
 
 type TestCases = { pawnSquare: Square, attackedSquares: Square[] }[];
 
-const pawn1Board: Board = [
+const pawn1Board: Position = [
     /*         1  2  3  4  5  6  7  8  */
     /*  A  */ [WR,WP,__,__,__,__,BP,BR],
     /*  B  */ [WN,WP,__,BP,__,__,__,BN],
@@ -33,8 +33,8 @@ describe('white pawn', () => {
     testCases.forEach((testCase) => {
         it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
 
-            const board =  pawn1Board;
-            const foundMoves = pawnMoves(board, testCase.pawnSquare, null);
+            const position =  pawn1Board;
+            const foundMoves = pawnMoves(position, testCase.pawnSquare, null);
     
             expect(foundMoves).toEqual(new Set(testCase.attackedSquares));
         })
@@ -58,8 +58,8 @@ describe('black pawn', () => {
     testCases.forEach((testCase) => {
         it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
 
-            const board =  pawn1Board;
-            const foundMoves = pawnMoves(board, testCase.pawnSquare, null);
+            const position =  pawn1Board;
+            const foundMoves = pawnMoves(position, testCase.pawnSquare, null);
     
             expect(foundMoves).toEqual(new Set(testCase.attackedSquares));
         })
@@ -68,7 +68,7 @@ describe('black pawn', () => {
 });
 
 describe('en passant', () => {
-    const board : Board = [
+    const position : Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,WP,__,__,__,__,BP,BR],
         /*  B  */ [WN,WP,__,__,__,__,BP,BN],
@@ -82,32 +82,32 @@ describe('en passant', () => {
 
     it('black pawn can attack a square passed by a white pawn moving from rank 2 to 4', () => {
 
-        const foundMoves = pawnMoves(board, 'd4', 'e3');
+        const foundMoves = pawnMoves(position, 'd4', 'e3');
         expect(foundMoves).toContain('e3');
     });
 
     it('black pawn cannot attack a passant-looking square if passant info is null', () => {
 
-        const foundMoves = pawnMoves(board, 'd4', null);
+        const foundMoves = pawnMoves(position, 'd4', null);
         expect(foundMoves).not.toContain('e3');
     });
 
     it('white pawn can attack a square passed by a black pawn moving from rank 2 to 4', () => {
 
-        const foundMoves = pawnMoves(board, 'h5', 'g6');
+        const foundMoves = pawnMoves(position, 'h5', 'g6');
         expect(foundMoves).toContain('g6');
     });
 
     it('white pawn cannot attack a passant-looking square if passant info is null', () => {
 
-        const foundMoves = pawnMoves(board, 'h5', null);
+        const foundMoves = pawnMoves(position, 'h5', null);
         expect(foundMoves).not.toContain('g6');
     });
 });
 
 describe('check', () => {
     it('Only move is capture', () => {
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [__,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,__,__,__],
@@ -122,13 +122,13 @@ describe('check', () => {
             'g3',
         ])
     
-        const foundLegalMoves = pawnMoves(board, 'f2', null);
+        const foundLegalMoves = pawnMoves(position, 'f2', null);
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });
 
     it('Pinned pawn cant move', () => {
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [__,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,__,__,__],
@@ -141,7 +141,7 @@ describe('check', () => {
         ];
         const expectedLegalMoves = new Set([])
 
-        const foundLegalMoves = pawnMoves(board, 'f2', null);
+        const foundLegalMoves = pawnMoves(position, 'f2', null);
 
         expect(foundLegalMoves).toEqual(expectedLegalMoves)
     });

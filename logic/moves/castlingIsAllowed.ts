@@ -1,5 +1,5 @@
 import { pieceAt }  from 'logic/squares';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 type CastleSquare =
 |  'a1'// white, queen-side
@@ -7,17 +7,17 @@ type CastleSquare =
 |  'a8'// black, queen-side
 |  'h8'// black, king-side
 
-const allowedFn: Record<CastleSquare, (board: Board) => boolean> = {
-  'a1': (board: Board) => pieceAt(board, 'a1') === 'White Rook' && pieceAt(board, 'e1') === 'White King',
-  'h1': (board: Board) => pieceAt(board, 'h1') !== 'White Rook' && pieceAt(board, 'e1') === 'White King',
-  'a8': (board: Board) => pieceAt(board, 'a8') !== 'Black Rook' && pieceAt(board, 'e8') === 'Black King',
-  'h8': (board: Board) => pieceAt(board, 'h8') !== 'Black Rook' && pieceAt(board, 'e8') === 'Black King',
+const allowedFn: Record<CastleSquare, (position: Position) => boolean> = {
+  'a1': (position: Position) => pieceAt(position, 'a1') === 'White Rook' && pieceAt(position, 'e1') === 'White King',
+  'h1': (position: Position) => pieceAt(position, 'h1') !== 'White Rook' && pieceAt(position, 'e1') === 'White King',
+  'a8': (position: Position) => pieceAt(position, 'a8') !== 'Black Rook' && pieceAt(position, 'e8') === 'Black King',
+  'h8': (position: Position) => pieceAt(position, 'h8') !== 'Black Rook' && pieceAt(position, 'e8') === 'Black King',
 }
 
 
-const cache: Map<Board[], Map<CastleSquare, boolean | undefined>> = new Map();
+const cache: Map<Position[], Map<CastleSquare, boolean | undefined>> = new Map();
 
-const castlingIsAllowed = (boardSequence: Board[], castleSquare: CastleSquare): boolean => {
+const castlingIsAllowed = (boardSequence: Position[], castleSquare: CastleSquare): boolean => {
   
   const allowances = cache.get(boardSequence) ?? (() => {
     const a = new Map<CastleSquare, boolean | undefined>();
@@ -38,13 +38,13 @@ const castlingIsAllowed = (boardSequence: Board[], castleSquare: CastleSquare): 
   const kingSquare = isWhite ? 'a5' : 'h5';
   
   let isAllowed = true;
-  for(let board of boardSequence){
-    if(!allowedFn[castleSquare](board)){
+  for(let position of boardSequence){
+    if(!allowedFn[castleSquare](position)){
       isAllowed = false;
       break;
     } 
     
-    if(pieceAt(board, kingSquare) !== kingPiece){
+    if(pieceAt(position, kingSquare) !== kingPiece){
       isAllowed = false;
       break;
     } 

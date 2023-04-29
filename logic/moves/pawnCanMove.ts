@@ -8,17 +8,17 @@ import {
     square
 } from 'logic/squares';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
 
 function pawnCanMove (
-        board: Board, 
+        position: Position, 
         from: Square, 
         to: Square, 
         enPassantSquare: Square | null)
     : boolean {
 
-    const player = playerAt(board, from);
+    const player = playerAt(position, from);
     if (!player) {
         return false;
     }
@@ -32,7 +32,7 @@ function pawnCanMove (
     //forward, can't capture or be blocked:
     if( stepsSideways === 0){
         
-        if(isOccupied(board, to)){
+        if(isOccupied(position, to)){
             return false;
         }
         if(stepsForward === 2){
@@ -44,7 +44,7 @@ function pawnCanMove (
             }
             //cannot jump over any piece
             const jumpedCoords = [file(from), rank(from) + forwardDirection];
-            if(isOccupied(board, square(jumpedCoords)!)){
+            if(isOccupied(position, square(jumpedCoords)!)){
                 return false;
             }
         }
@@ -55,15 +55,15 @@ function pawnCanMove (
         if(stepsForward !== 1){
             return false;
         }
-        if(isUnOccupied(board, to) && (to !== enPassantSquare)){
+        if(isUnOccupied(position, to) && (to !== enPassantSquare)){
             return false;
         }
-        if(isOccupiedByPlayer(board, to, player)){
+        if(isOccupiedByPlayer(position, to, player)){
             return false;
         }
     }
     
-    if (movesIntoCheck(board, from, to)) {
+    if (movesIntoCheck(position, from, to)) {
         return false;
     }
 

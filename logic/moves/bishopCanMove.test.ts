@@ -1,10 +1,10 @@
 import bishopCanMove  from 'logic/moves/bishopCanMove'
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
     
 describe('bishopCanMove', () => {
 
-    const bishop1Board : Board = [
+    const bishop1Board : Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [__,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,WP,__,__],
@@ -78,7 +78,7 @@ describe('bishopCanMove', () => {
 
     it('Cannot put self in check', () => {
 
-        const board: Board = [
+        const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [WK,__,__,__,__,__,__,__],
             /*  B  */ [__,__,__,__,__,__,__,__],
@@ -90,13 +90,13 @@ describe('bishopCanMove', () => {
             /*  H  */ [__,__,__,__,__,__,__,BR],
         ];
             
-        expect(bishopCanMove(board, 'd4', 'e3')).toBe(false);  
-        expect(bishopCanMove(board, 'd4', 'c5')).toBe(false);  
+        expect(bishopCanMove(position, 'd4', 'e3')).toBe(false);  
+        expect(bishopCanMove(position, 'd4', 'c5')).toBe(false);  
     });
 
 
     it('Can move along axis of potential check while blocking check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WK,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -109,10 +109,10 @@ describe('bishopCanMove', () => {
         ];
 
 
-        expect(bishopCanMove(board, 'd4', 'c3')).toBe(true);  
-        expect(bishopCanMove(board, 'd4', 'b2')).toBe(true);  
-        expect(bishopCanMove(board, 'd4', 'e5')).toBe(true);  
-        expect(bishopCanMove(board, 'd4', 'f6')).toBe(true);  
-        expect(bishopCanMove(board, 'd4', 'g7')).toBe(true);  
+        expect(bishopCanMove(position, 'd4', 'c3')).toBe(true);  
+        expect(bishopCanMove(position, 'd4', 'b2')).toBe(true);  
+        expect(bishopCanMove(position, 'd4', 'e5')).toBe(true);  
+        expect(bishopCanMove(position, 'd4', 'f6')).toBe(true);  
+        expect(bishopCanMove(position, 'd4', 'g7')).toBe(true);  
     });
 })

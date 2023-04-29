@@ -1,7 +1,7 @@
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { kingCanMove }  from 'logic/moves';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Square }  from 'logic/squares/square';
 
 const noPreclusions: CastlingPreclusions = new Set()
@@ -9,7 +9,7 @@ const noPreclusions: CastlingPreclusions = new Set()
 describe('kingCanMove', () => {
 
     it('Cannot move, initially', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,WP,__,__,__,__,BP,BR],
         /*  B  */ [WN,WP,__,__,__,__,BP,BN],
@@ -24,12 +24,12 @@ describe('kingCanMove', () => {
         const tries: Square[] = ['d1', 'd2', 'e2', 'f2', 'f1']
 
         tries.forEach(square => {
-            expect(kingCanMove(board, 'e1', square, noPreclusions)).toBe(false)
+            expect(kingCanMove(position, 'e1', square, noPreclusions)).toBe(false)
         })
     });
 
     it('Can move in every direction', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [__,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -48,12 +48,12 @@ describe('kingCanMove', () => {
         ];
 
         tries.forEach(square => {
-            expect(kingCanMove(board, 'e4', square, noPreclusions)).toBe(true)
+            expect(kingCanMove(position, 'e4', square, noPreclusions)).toBe(true)
         })
     });    
 
     it('Cannot put self in check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -65,11 +65,11 @@ describe('kingCanMove', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        expect(kingCanMove(board, 'e1', 'f1', noPreclusions)).toBe(false);
+        expect(kingCanMove(position, 'e1', 'f1', noPreclusions)).toBe(false);
     });
 
     it('White king can castle, king-side', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,WP,__,__,__,__,BP,BR],
         /*  B  */ [WN,WP,__,__,__,__,BP,__],
@@ -81,12 +81,12 @@ describe('kingCanMove', () => {
         /*  H  */ [WR,WP,__,__,__,__,BP,BR],
         ]; 
 
-        expect(kingCanMove(board, 'e1', 'g1', noPreclusions)).toBe(true)
+        expect(kingCanMove(position, 'e1', 'g1', noPreclusions)).toBe(true)
     });  
     
     
     it('White king cannot castle across check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -98,12 +98,12 @@ describe('kingCanMove', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
     
-        expect(kingCanMove(board, 'e1', 'g1', noPreclusions)).toBe(false)
+        expect(kingCanMove(position, 'e1', 'g1', noPreclusions)).toBe(false)
     });
 
      
     it('White king cannot castle into check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -115,11 +115,11 @@ describe('kingCanMove', () => {
         /*  H  */ [WR,__,__,__,__,__,__,__], 
         ];
 
-        expect(kingCanMove(board, 'e1', 'g1', noPreclusions)).toBe(false)
+        expect(kingCanMove(position, 'e1', 'g1', noPreclusions)).toBe(false)
     });
 
     it('Black king can castle, queen-side', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,__,__,WP,__,__,BP,BR],
         /*  B  */ [WN,WP,__,__,__,__,BP,__],
@@ -131,11 +131,11 @@ describe('kingCanMove', () => {
         /*  H  */ [__,WP,__,__,__,__,BP,BR],
         ]; 
 
-        expect(kingCanMove(board, 'e8', 'c8', noPreclusions)).toBe(true)
+        expect(kingCanMove(position, 'e8', 'c8', noPreclusions)).toBe(true)
     });  
 
     it('White king cannot castle out of check', () => {
-        const board: Board = [
+        const position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [WR,WP,__,__,__,__,BP,BR],
         /*  B  */ [WN,__,__,WP,__,__,BP,BN],
@@ -147,7 +147,7 @@ describe('kingCanMove', () => {
         /*  H  */ [WR,WP,__,__,__,WB,BP,BR],
         ]; 
 
-        const canMove = kingCanMove(board, 'e1', 'g1', new Set());
+        const canMove = kingCanMove(position, 'e1', 'g1', new Set());
 
         expect(canMove).toBe(false)
     }); 

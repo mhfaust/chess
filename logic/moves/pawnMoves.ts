@@ -9,17 +9,17 @@
 import { isInCheck }  from 'logic/check';
 import { move }  from 'logic/board';
 import { Square }  from 'logic/squares/square';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { MoveVector } from 'logic/types/MoveVector';
 
 const emptySet = new Set<Square>();
 
 function pawn(
-    board: Board, 
+    position: Position, 
     moveFrom: Square, 
     enPassantSquare: Square | null)
     : Set<Square> {
-    const player = playerAt(board, moveFrom);
+    const player = playerAt(position, moveFrom);
     if(!player){
         return emptySet;
     }
@@ -28,10 +28,10 @@ function pawn(
     const initialRank = rank(moveFrom);
     const forward1 = displaceTo(moveFrom, [0, forwardDirection]);
 
-    const moveNotInCheck = (moveTo: Square): boolean => !isInCheck(move(board, moveFrom, moveTo, null)[0], player)
+    const moveNotInCheck = (moveTo: Square): boolean => !isInCheck(move(position, moveFrom, moveTo, null)[0], player)
      
     //advance moves
-    if(forward1 && isUnOccupied(board, forward1) && moveNotInCheck(forward1)){
+    if(forward1 && isUnOccupied(position, forward1) && moveNotInCheck(forward1)){
         legalMoves.add(forward1);
         
         //can only advance if the pawn has never moved.
@@ -39,7 +39,7 @@ function pawn(
         const pawnHasNotMoved = (player === 'White' && initialRank === 1) || (player === 'Black' && initialRank === 6)
         if(pawnHasNotMoved){
             const forward2 = displaceTo(moveFrom, [0, 2 * forwardDirection]);
-            if(forward1 && forward2 && isUnOccupied(board, forward2) && moveNotInCheck(forward2)){
+            if(forward1 && forward2 && isUnOccupied(position, forward2) && moveNotInCheck(forward2)){
                 legalMoves.add(forward2);
             }
         }
@@ -54,7 +54,7 @@ function pawn(
             return;
         }
         if(
-            isOccupiedByPlayer(board, attackedSquare, opponent)
+            isOccupiedByPlayer(position, attackedSquare, opponent)
             || (attackedSquare === enPassantSquare)
         ){
                 if(moveNotInCheck(attackedSquare)){

@@ -13,7 +13,7 @@ export type BoardFile = [
     PieceOrEmpty
 ];
 
-export type Board = [
+export type Position = [
     BoardFile,
     BoardFile,
     BoardFile,

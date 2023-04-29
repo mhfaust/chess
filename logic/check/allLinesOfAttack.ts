@@ -1,15 +1,15 @@
 import { Square }  from 'logic/squares/square';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 import { Player }  from 'logic/types/Player';
 import generateLinesOfAttack from 'logic/check/generateLinesOfAttack';
 
 const allLinesOfAttack = (
-  board: Board, 
+  position: Position, 
   attacker: Player, 
   target: Square
 ) => {
   const lines = [];
-  const iterable = generateLinesOfAttack(board, attacker, target);
+  const iterable = generateLinesOfAttack(position, attacker, target);
   let { value, done } = iterable.next();
 
   while (!done) {

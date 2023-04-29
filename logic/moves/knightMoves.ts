@@ -7,16 +7,16 @@ import {
 import { knightVectors }  from 'logic/constants/move-vectors'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Square }  from 'logic/squares/square';
-import { Board }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Board';
 
 const emptySet = new Set<Square>();
 
 function knight(
-    board: Board, 
+    position: Position, 
     moveFrom: Square, 
 ): Set<Square> {
 
-    const player = playerAt(board, moveFrom);
+    const player = playerAt(position, moveFrom);
     if(!player){
         return emptySet;
     }
@@ -24,8 +24,8 @@ function knight(
         knightVectors
             .map(vector => displaceTo(moveFrom, vector))
             .filter(i => i !== null)
-            .filter(targetSquare => isUnOccupiedByPlayer(board, targetSquare!, player))
-            .filter(square => !movesIntoCheck(board, moveFrom, square!))
+            .filter(targetSquare => isUnOccupiedByPlayer(position, targetSquare!, player))
+            .filter(square => !movesIntoCheck(position, moveFrom, square!))
     ) as Set<Square>;
 }
 

@@ -58,7 +58,7 @@ export default function Game({
   return (<>
     <div className={styles.game}>
       <Grid 
-        board={thisBoard} 
+        position={thisBoard} 
         orientation={orientation}
         onClickSquare={toggleSquare}
         selectedSquare={selectedSquare}
