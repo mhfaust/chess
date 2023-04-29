@@ -1,5 +1,5 @@
 import { Player }  from 'logic/types/Player';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Square, squares } from 'logic/squares/square';
 import pieceAt from 'logic/squares/pieceAt';
 

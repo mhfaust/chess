@@ -9,7 +9,7 @@ import {
 import { bishopVectors }  from 'logic/constants/move-vectors'
 import { movesIntoCheck }  from 'logic/check';
 import { Square }  from 'logic/squares/square';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { MoveVector } from 'logic/types/MoveVector';
 
 const emptySet = new Set<Square>();

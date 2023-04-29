@@ -1,6 +1,6 @@
 import { file, pieceAt, rank }  from 'logic/squares'
 import square, { Square }  from 'logic/squares/square'
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 const blackPawnStartRank = 6;
 const whitePawnStartRank = 1;

@@ -1,4 +1,4 @@
-import { Position } from 'logic/types/Board';
+import { Position } from 'logic/types/Position';
 import { Move, moves } from 'logic/game/selectors/moves';
 import { canMoveTo } from 'logic/moves';
 import { initialBoard } from 'logic/board/initialPosition';

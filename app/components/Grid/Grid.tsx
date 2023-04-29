@@ -2,7 +2,7 @@
 import styles from './Grid.module.css'
 import { BLACK_PIECES, pieceSymbols, WHITE_PIECES }  from 'logic/constants/pieces';
 import { square } from 'logic/squares';
-import { Position, PieceOrEmpty } from 'logic/types/Board';
+import { Position, PieceOrEmpty } from 'logic/types/Position';
 import { MouseEventHandler, useMemo } from 'react';
 import clsx from 'clsx';
 import { Square, squareColor } from 'logic/squares/square';

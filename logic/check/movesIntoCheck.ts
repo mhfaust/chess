@@ -2,7 +2,7 @@ import { move }  from 'logic/board';
 import { isInCheck }  from 'logic/check';
 import { playerAt }  from 'logic/squares';
 import { Square }  from 'logic/squares/square';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 function movesIntoCheck(
     position: Position, 

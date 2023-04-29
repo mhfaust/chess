@@ -7,7 +7,7 @@ import { kingVectors }  from 'logic/constants/move-vectors'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 import { Square }  from 'logic/squares/square';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import areEmpty from 'logic/moves/areEmpty';
 import { isInCheck } from 'logic/check';
 

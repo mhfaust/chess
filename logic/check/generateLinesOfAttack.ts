@@ -15,7 +15,7 @@ import {
 } from 'logic/constants/move-vectors'
 
 import { Square }  from 'logic/squares/square';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Player }  from 'logic/types/Player';
 
 import { Piece }  from 'logic/squares/piece';

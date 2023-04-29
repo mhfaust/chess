@@ -1,6 +1,6 @@
 import { square }  from 'logic/squares';
 import { BLACK_PIECES, WHITE_PIECES }  from 'logic/constants/pieces';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Player }  from 'logic/types/Player';
 import { Piece }  from 'logic/squares/piece';
 import { Square }  from 'logic/squares/square';

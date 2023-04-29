@@ -1,6 +1,6 @@
 import rookCanMove  from 'logic/moves/rookCanMove';
 import { WK,BK,BR,BP,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 const rook1Board: Position = [
 /*         1  2  3  4  5  6  7  8  */

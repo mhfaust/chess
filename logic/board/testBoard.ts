@@ -1,9 +1,9 @@
-import { Position, BoardFile }  from 'logic/types/Board';
+import { Position, PositionFile }  from 'logic/types/Position';
 import { shorthand } from 'logic/squares/pieces-shorthand';
 
 const files = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
 
-const pieceLine = (row: BoardFile, i: number) => {
+const pieceLine = (row: PositionFile, i: number) => {
     return `/*  ${files[i]}  */ [${row.map(shorthand).join(',')}],`
 };
 

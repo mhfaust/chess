@@ -2,7 +2,7 @@ import { Piece }  from 'logic/squares/piece';
 
 export type PieceOrEmpty = Piece | null;
 
-export type BoardFile = [
+export type PositionFile = [
     PieceOrEmpty, 
     PieceOrEmpty, 
     PieceOrEmpty, 
@@ -14,14 +14,14 @@ export type BoardFile = [
 ];
 
 export type Position = [
-    BoardFile,
-    BoardFile,
-    BoardFile,
-    BoardFile,
-    BoardFile,
-    BoardFile,
-    BoardFile,
-    BoardFile
+    PositionFile,
+    PositionFile,
+    PositionFile,
+    PositionFile,
+    PositionFile,
+    PositionFile,
+    PositionFile,
+    PositionFile
 ];
  
 //note: if a Piece is null --> empty square.

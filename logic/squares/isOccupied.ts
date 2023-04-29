@@ -1,5 +1,5 @@
 import { pieceAt }  from 'logic/squares';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Square } from 'logic/squares/square';
 
 function isOccupied  (

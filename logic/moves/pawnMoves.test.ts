@@ -1,6 +1,6 @@
 import pawnMoves from './pawnMoves';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Square }  from 'logic/squares/square';
 
 type TestCases = { pawnSquare: Square, attackedSquares: Square[] }[];

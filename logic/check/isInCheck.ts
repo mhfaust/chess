@@ -1,6 +1,6 @@
 import { generateLinesOfAttack }  from 'logic/check'
 import { Player }  from 'logic/types/Player';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import kingSquare  from 'logic/squares/kingSquare';
 import { otherPlayer } from 'logic/squares';
 

@@ -1,6 +1,6 @@
 import playerAt from 'logic/squares/playerAt';
 import isUnOccupied from 'logic/squares/isUnOccupied';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Player }  from 'logic/types/Player';
 import { Square } from 'logic/squares/square';
 

@@ -1,5 +1,5 @@
 import { Piece }  from 'logic/squares/piece';
-import { PieceOrEmpty } from 'logic/types/Board';
+import { PieceOrEmpty } from 'logic/types/Position';
 
 export const __ : PieceOrEmpty = null;
 export const WK : Piece = 'White King';

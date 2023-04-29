@@ -1,5 +1,5 @@
 import { pieceAt }  from 'logic/squares'
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import square, { Square } from 'logic/squares/square';
 
 export type UniquePiece = 

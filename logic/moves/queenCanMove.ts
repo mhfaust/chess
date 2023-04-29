@@ -2,7 +2,7 @@ import {
     rookCanMove,
     bishopCanMove } from 'logic/moves';
 import { Square }  from 'logic/squares/square';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 function queenCanMove (
     position: Position, 

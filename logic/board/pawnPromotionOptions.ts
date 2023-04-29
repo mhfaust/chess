@@ -1,7 +1,7 @@
 import { pieceAt, rank } from 'logic/squares';
 import { Piece } from 'logic/squares/piece';
 import { Square } from 'logic/squares/square';
-import { Position } from 'logic/types/Board';
+import { Position } from 'logic/types/Position';
 
 export const blackPromotionOptions: Piece[] =  [
   'Black Queen', 

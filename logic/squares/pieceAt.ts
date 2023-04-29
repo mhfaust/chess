@@ -1,4 +1,4 @@
-import { Position, PieceOrEmpty }  from 'logic/types/Board';
+import { Position, PieceOrEmpty }  from 'logic/types/Position';
 import { Square } from 'logic/squares/square';
 import COORDS from 'logic/squares/coordinates';
 

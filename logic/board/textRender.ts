@@ -1,7 +1,7 @@
 import { pieceSymbols }  from 'logic/constants/pieces';
 import { rotateCounterClockwise }  from 'logic/board/rotate';
 import chalk from 'chalk';
-import { Position, PieceOrEmpty }  from 'logic/types/Board';
+import { Position, PieceOrEmpty }  from 'logic/types/Position';
 import { Piece }  from 'logic/squares/piece';
 
 const { bgWhite, black, blue } = chalk;

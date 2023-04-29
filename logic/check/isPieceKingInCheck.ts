@@ -1,6 +1,6 @@
 import { pieceAt, playerAt } from 'logic/squares';
 import { Square } from 'logic/squares/square';
-import { Position, PieceOrEmpty } from 'logic/types/Board';
+import { Position, PieceOrEmpty } from 'logic/types/Position';
 import isInCheck from './isInCheck';
 
 const kings: [PieceOrEmpty, PieceOrEmpty] = ['Black King', 'White King'];

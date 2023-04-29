@@ -7,7 +7,7 @@ import {
     rookCanMove 
 } from 'logic/moves';
 import { pieceAt }  from 'logic/squares';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Square }  from 'logic/squares/square';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
 

@@ -6,7 +6,7 @@ import {
     isOccupied, 
     displaceTo } from 'logic/squares'
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Square }  from 'logic/squares/square';
 
 function bishopCanMove (

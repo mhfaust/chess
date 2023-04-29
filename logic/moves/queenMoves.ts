@@ -1,6 +1,6 @@
 import { Square }  from 'logic/squares/square';
 import { rookMoves, bishopMoves }  from 'logic/moves'
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 function queen(
     position: Position, 

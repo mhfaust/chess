@@ -1,7 +1,7 @@
 import { rank, file, playerAt, pieceAt }  from 'logic/squares';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Square }  from 'logic/squares/square';
 import areEmpty from 'logic/moves/areEmpty';
 import { isInCheck } from 'logic/check';

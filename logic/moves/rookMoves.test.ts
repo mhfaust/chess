@@ -1,6 +1,6 @@
 import rook from './rookMoves';
 import { WK,BK,BR,BP,WP,WR,__ }  from 'logic/squares/pieces-shorthand';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 describe('rook', () => {
 

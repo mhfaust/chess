@@ -1,5 +1,5 @@
 import { pieceAt }  from 'logic/squares';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 type CastleSquare =
 |  'a1'// white, queen-side

@@ -10,7 +10,7 @@ import {
 } from 'logic/squares';
     
 import { kingVectors }  from 'logic/constants/move-vectors';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Player }  from 'logic/types/Player';
 import kingSquare  from 'logic/squares/kingSquare';
 import { Square } from 'logic/squares/square';

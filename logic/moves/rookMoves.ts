@@ -7,7 +7,7 @@ import {
 } from 'logic/squares';
 import movesIntoCheck  from 'logic/check/movesIntoCheck';
 import { Square }  from 'logic/squares/square';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 
 function rook(position: Position, moveFrom: Square): Set<Square> {
     

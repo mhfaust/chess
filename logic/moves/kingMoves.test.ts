@@ -1,7 +1,7 @@
 
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { kingMoves }  from 'logic/moves';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 
 

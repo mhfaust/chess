@@ -1,7 +1,7 @@
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { kingCanMove }  from 'logic/moves';
 import { CastlingPreclusions }  from 'logic/types/CastlingPreclusions';
-import { Position }  from 'logic/types/Board';
+import { Position }  from 'logic/types/Position';
 import { Square }  from 'logic/squares/square';
 
 const noPreclusions: CastlingPreclusions = new Set()
