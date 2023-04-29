@@ -1,4 +1,4 @@
-import { initialBoard } from 'logic/board/initialBoard';
+import { initialBoard } from 'logic/board/initialPosition';
 import { pieceAt } from 'logic/squares';
 import { boards } from 'logic/game/selectors/boards';
 import { moves } from 'logic/game/selectors/moves';

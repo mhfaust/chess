@@ -1,7 +1,7 @@
 import { Position } from 'logic/types/Board';
 import { Move, moves } from 'logic/game/selectors/moves';
 import { canMoveTo } from 'logic/moves';
-import { initialBoard } from 'logic/board/initialBoard';
+import { initialBoard } from 'logic/board/initialPosition';
 import { castling } from 'logic/game/selectors/castling';
 import { RookStartSquare } from 'logic/types/CastlingPreclusions';
 import nextBoard from 'logic/board/move';

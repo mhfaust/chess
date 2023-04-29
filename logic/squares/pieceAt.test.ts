@@ -1,5 +1,5 @@
 import pieceAt  from 'logic/squares/pieceAt'
-import { initialBoard } from 'logic/board/initialBoard';
+import { initialBoard } from 'logic/board/initialPosition';
 
 
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
