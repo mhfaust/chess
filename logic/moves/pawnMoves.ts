@@ -7,7 +7,7 @@
     rank
 } from 'logic/squares';
 import { isInCheck }  from 'logic/check';
-import { move }  from 'logic/position';
+import { nextPosition }  from 'logic/position';
 import { Square }  from 'logic/squares/square';
 import { Position }  from 'logic/types/Position';
 import { MoveVector } from 'logic/types/MoveVector';
@@ -28,7 +28,7 @@ function pawn(
     const initialRank = rank(moveFrom);
     const forward1 = displaceTo(moveFrom, [0, forwardDirection]);
 
-    const moveNotInCheck = (moveTo: Square): boolean => !isInCheck(move(position, moveFrom, moveTo, null)[0], player)
+    const moveNotInCheck = (moveTo: Square): boolean => !isInCheck(nextPosition(position, moveFrom, moveTo, null)[0], player)
      
     //advance moves
     if(forward1 && isUnOccupied(position, forward1) && moveNotInCheck(forward1)){

@@ -1,4 +1,4 @@
-import move  from 'logic/position/move';
+import nextPosition  from 'logic/position/move';
 import { BK,BQ,BR,BN,BB,BP,WK,WQ,WR,WN,WB,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { Position }  from 'logic/types/Position';
 
@@ -29,8 +29,8 @@ describe('move', () => {
 /*  H  */ [__,__,__,__,__,__,BP,BK],
         ];   
         
-        const [nextBoard] = move(boardBefore, 'g8', 'h8', null);
+        const [next] = nextPosition(boardBefore, 'g8', 'h8', null);
 
-        expect(nextBoard).toEqual(boardAfter)
+        expect(next).toEqual(boardAfter)
     })
 })

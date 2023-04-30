@@ -5,7 +5,7 @@ import { Square }  from 'logic/squares/square';
 
 type TestCases = { pawnSquare: Square, attackedSquares: Square[] }[];
 
-const pawn1Board: Position = [
+const pawn1Position: Position = [
     /*         1  2  3  4  5  6  7  8  */
     /*  A  */ [WR,WP,__,__,__,__,BP,BR],
     /*  B  */ [WN,WP,__,BP,__,__,__,BN],
@@ -33,7 +33,7 @@ describe('white pawn', () => {
     testCases.forEach((testCase) => {
         it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
 
-            const position =  pawn1Board;
+            const position =  pawn1Position;
             const foundMoves = pawnMoves(position, testCase.pawnSquare, null);
     
             expect(foundMoves).toEqual(new Set(testCase.attackedSquares));
@@ -58,7 +58,7 @@ describe('black pawn', () => {
     testCases.forEach((testCase) => {
         it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
 
-            const position =  pawn1Board;
+            const position =  pawn1Position;
             const foundMoves = pawnMoves(position, testCase.pawnSquare, null);
     
             expect(foundMoves).toEqual(new Set(testCase.attackedSquares));

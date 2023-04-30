@@ -1,32 +1,32 @@
 import clsx from "clsx";
-import { boardCursor, boardIndexes, latestBoardCursor } from "logic/game/selectors/boards";
+import { positionCursor, positionIndexes, latestPositionCursor } from "logic/game/selectors/positions";
 import { useGameStore } from '../GameContainer/useGameStore';
 import { useCallback, useEffect } from "react";
 import styles from './HistoryNav.module.css';
 
 const HistoryNav = () => {
 
-  const { toggleBoard } = useGameStore(game => game.actions);
-  const currentBoardIndex = useGameStore(boardCursor);
-  const indexes = useGameStore(boardIndexes);
-  const latestBoardIndex = useGameStore(latestBoardCursor);
+  const { togglePosition } = useGameStore(game => game.actions);
+  const currentPositionIndex = useGameStore(positionCursor);
+  const indexes = useGameStore(positionIndexes);
+  const latestPositionIndex = useGameStore(latestPositionCursor);
 
 
   const onBodyClick = useCallback((e: KeyboardEvent) => {
     switch (e.key) {
       case 'ArrowLeft': {
-        toggleBoard(Math.max(currentBoardIndex - 1, 0));
+        togglePosition(Math.max(currentPositionIndex - 1, 0));
         break;
       }
       case 'ArrowRight': {
-        toggleBoard(Math.min(currentBoardIndex + 1, latestBoardIndex));
+        togglePosition(Math.min(currentPositionIndex + 1, latestPositionIndex));
         break;
       }
       default: {
         break;
       }
     }
-  }, [currentBoardIndex, latestBoardIndex, toggleBoard])
+  }, [currentPositionIndex, latestPositionIndex, togglePosition])
 
   useEffect(() => {
     window.addEventListener('keyup', onBodyClick );
@@ -40,9 +40,9 @@ const HistoryNav = () => {
       {indexes.map((i) => (
         <div 
           key={i}
-          onClick={() => toggleBoard(i)}
+          onClick={() => togglePosition(i)}
           className={clsx(styles.boardIndex, {
-            [styles.currentIndex]: i === currentBoardIndex
+            [styles.currentIndex]: i === currentPositionIndex
           })}
         >
           {i}

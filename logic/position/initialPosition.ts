@@ -3,7 +3,7 @@ import { Position, PositionFile }  from 'logic/types/Position';
 
 const { freeze } = Object;
 
-export const initialBoard: Position = Object.freeze([
+export const initialPosition: Position = Object.freeze([
   /*                 1  2  3  4  5  6  7  8  */
   /*  A  */ freeze([WR,WP,__,__,__,__,BP,BR]) as PositionFile,
   /*  B  */ freeze([WN,WP,__,__,__,__,BP,BN]) as PositionFile,

@@ -3,11 +3,11 @@
 import Grid from 'app/components/Grid/Grid';
 import Captures from 'app/components/Captures';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { boards, currentBoard } from 'logic/game/selectors/boards';
+import { positions, currentPosition } from 'logic/game/selectors/positions';
 import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
 import HistoryNav from 'app/components/HistoryNav';
-import { isViewingLatestMove } from 'logic/game/selectors/game';
+import { isViewingLatestPosition } from 'logic/game/selectors/game';
 import Rotator from 'app/components/Rotator/Rotator';
 import styles from './Game.module.css';
 import GameStatus from 'app/components/GameStatus';
@@ -45,26 +45,26 @@ export default function Game({
   const thisPlayer = useGameStore(currentPlayer);
   const whiteCaptures = useGameStore(currentWhiteCaptures);
   const blackCaptures = useGameStore(currentBlackCaptures);
-  const isLatestBoard = useGameStore(isViewingLatestMove);
-  const thisBoard = useGameStore(currentBoard);
+  const isLatestPosition = useGameStore(isViewingLatestPosition);
+  const thisPosition = useGameStore(currentPosition);
   const validMoves = useGameStore(currentValidMoves);
 
   const isFlat = useDeviceOrientation(20);
   
-  if(!thisBoard || !readyToRender){
+  if(!thisPosition || !readyToRender){
     return null;
   }
 
   return (<>
     <div className={styles.game}>
       <Grid 
-        position={thisBoard} 
+        position={thisPosition} 
         orientation={orientation}
         onClickSquare={toggleSquare}
         selectedSquare={selectedSquare}
         validMoves={validMoves}
         currentPlayer={thisPlayer}
-        isLatestBoard={isLatestBoard}
+        isLatestPosition={isLatestPosition}
       />
       <div className={styles.tray}>
         <Captures captures={whiteCaptures} player='white' />

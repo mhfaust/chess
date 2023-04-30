@@ -1,12 +1,12 @@
 import { GamePlayAndCursor } from 'logic/game/gameState';
 import { Player } from 'logic/types/Player';
-import { boardCursor } from 'logic/game/selectors/boards';
+import { positionCursor } from 'logic/game/selectors/positions';
 
 const players = ['White', 'Black'] as const;
 
 const currentPlayer = (game: GamePlayAndCursor): Player => {
 
-  const ord = boardCursor(game) % 2;
+  const ord = positionCursor(game) % 2;
   return players[ord]; 
 };
 

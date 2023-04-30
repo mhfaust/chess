@@ -4,7 +4,7 @@ import { Actions, GameState } from '../gameState';
 import { currentCastling } from '../selectors/castling';
 import { currentEnPassantSquare } from '../selectors/enPassant';
 import currentPlayer from '../selectors/players';
-import { currentBoard } from '../selectors/boards';
+import { currentPosition } from '../selectors/positions';
 import { Square } from 'logic/squares/square';
 import canMoveTo from 'logic/moves/canMoveTo';
 
@@ -17,7 +17,7 @@ const toggleSquare = (targetSquare: Square | null) => (gameView: TArgs): Partial
   const precludedCastling = currentCastling(gameView);
   const epSquare = currentEnPassantSquare(gameView);
   const thisPlayer = currentPlayer(gameView);
-  const thisBoard = currentBoard(gameView);
+  const thisPosition = currentPosition(gameView);
   const { selectedSquare } = gameView;
   const { move, promptToPromotePawn } = gameView.actions;
 
@@ -33,7 +33,7 @@ const toggleSquare = (targetSquare: Square | null) => (gameView: TArgs): Partial
     };
   }
   //clicking one's own piece (select):
-  if (thisPlayer === playerAt(thisBoard, targetSquare)) {
+  if (thisPlayer === playerAt(thisPosition, targetSquare)) {
     return {
       selectedSquare: targetSquare
     }
@@ -48,7 +48,7 @@ const toggleSquare = (targetSquare: Square | null) => (gameView: TArgs): Partial
   //There's already a selection, and they're clicking another square, 
   //so it's a move attempt. If it's a legit move, do it (unless pawn promo):
   if (canMoveTo(
-    thisBoard, 
+    thisPosition, 
     selectedSquare, 
     targetSquare,
     precludedCastling,
@@ -56,7 +56,7 @@ const toggleSquare = (targetSquare: Square | null) => (gameView: TArgs): Partial
   )) {
     //If it's a pawn promotion, we don't do the move yet  because 
     //we need to prompt them for which piece to promote to:
-    if (shouldPromptToPromotePawn(thisBoard, selectedSquare, targetSquare)) {
+    if (shouldPromptToPromotePawn(thisPosition, selectedSquare, targetSquare)) {
       return {
         onPromotePawn: (promotePawnTo) => {
           move(selectedSquare, targetSquare, promotePawnTo);

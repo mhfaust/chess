@@ -6,7 +6,7 @@ import toggleSquare from 'logic/game/actionCreators/toggleSquare';
 import promptToPromotePawn from 'logic/game/actionCreators/promptToPromotePawn';
 import move from 'logic/game/actionCreators/move';
 import rotateBoard from 'logic/game/actionCreators/rotateBoard';
-import toggleBoard from 'logic/game/actionCreators/toggleBoard';
+import togglePosition from 'logic/game/actionCreators/togglePosition';
 import { createContext } from 'react';
 import init from 'logic/game/actionCreators/init';
 
@@ -27,8 +27,8 @@ export const createGameStore = () => createStore<GameState>((set) => {
       move: (from, to, promoteTo) => {
         return set(move(from, to, promoteTo))
       },
-      toggleBoard: (boardCursor) => {
-        return set(toggleBoard(boardCursor))
+      togglePosition: (boardCursor) => {
+        return set(togglePosition(boardCursor))
       },
       rotateBoard: () => {
         return set(rotateBoard())

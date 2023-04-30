@@ -3,7 +3,7 @@ import { BP,WK,WQ,WR,BK,__ }  from 'logic/squares/pieces-shorthand';
 import { Position }  from 'logic/types/Position';
 
 describe('queenCanMove', () => {
-    const queen1Board: Position = [
+    const queen1Position: Position = [
         /*         1  2  3  4  5  6  7  8  */
         /*  A  */ [__,__,__,__,__,__,__,__],
         /*  B  */ [__,__,__,__,__,__,__,__],
@@ -16,14 +16,14 @@ describe('queenCanMove', () => {
         ];
 
     it('can move right one', () => {
-        expect(queenCanMove(queen1Board, 'c2', 'c3')).toBe(true)
+        expect(queenCanMove(queen1Position, 'c2', 'c3')).toBe(true)
     });
 
     it('cannot take own piece', () => {
-        expect(queenCanMove(queen1Board, 'c2', 'c4')).toBe(false)
+        expect(queenCanMove(queen1Position, 'c2', 'c4')).toBe(false)
     });
 
     it('can capture opponent piece, diagonally', () => {
-        expect(queenCanMove(queen1Board, 'c2', 'f5')).toBe(true)
+        expect(queenCanMove(queen1Position, 'c2', 'f5')).toBe(true)
     });
 })

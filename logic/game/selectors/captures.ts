@@ -1,6 +1,6 @@
 import { Piece } from "logic/squares/piece";
 import { GamePlayAndCursor } from "logic/game/gameState";
-import { boards } from "logic/game/selectors/boards";
+import { positions } from "logic/game/selectors/positions";
 import { moves } from "logic/game/selectors/moves";
 import { pieceAt } from "logic/squares";
 import { epSquare } from "logic/game/selectors//enPassant";
@@ -28,7 +28,7 @@ export const gamePlayCaptures = (gamePlay: string) => {
     return cache.get(gamePlay)!;
   }
 
-  const gameBoards = boards({ gamePlay });
+  const gamePositions = positions({ gamePlay });
   const gameMoves = moves({ gamePlay });
 
   const capts = gameMoves.reduce<Captures>((acc, move, i) => {
@@ -36,9 +36,9 @@ export const gamePlayCaptures = (gamePlay: string) => {
       return acc;
     }
     const [_, to] = move;
-    const prevBoard = gameBoards[i];
+    const prevPosition = gamePositions[i];
 
-    const captured = pieceAt(prevBoard, to);
+    const captured = pieceAt(prevPosition, to);
     const isBlacksTurn = i % 2 === 1;
 
     const newBlackList = [...acc.black];

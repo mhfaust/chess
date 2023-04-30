@@ -27,23 +27,23 @@ export const pawnSquareFromEpSquare: Map<Square, Square> = new Map([
 ]);
 
 const enPassantSquare = (
-  currentBoard: Position,
+  currentPosition: Position,
   lastMovedFrom: Square,
   lastMovedTo: Square,
 ): Square | null => {
 
-  if(cache.has(currentBoard)){
-    return cache.get(currentBoard)!;
+  if(cache.has(currentPosition)){
+    return cache.get(currentPosition)!;
   }
 
-  const piece = pieceAt(currentBoard, lastMovedTo) ;
+  const piece = pieceAt(currentPosition, lastMovedTo) ;
 
   if (piece === 'Black Pawn' 
     && rank(lastMovedFrom) === blackPawnStartRank 
     && rank(lastMovedTo) === blackPawnStartRank - 2
   ) {
     const epSquare = square([file(lastMovedFrom), blackPawnStartRank - 1])
-    cache.set(currentBoard, epSquare)
+    cache.set(currentPosition, epSquare)
     return epSquare;
   }
 
@@ -52,7 +52,7 @@ const enPassantSquare = (
     && rank(lastMovedTo) === whitePawnStartRank + 2
   ){
     const epSquare = square([file(lastMovedFrom), whitePawnStartRank + 1]);
-    cache.set(currentBoard, epSquare);
+    cache.set(currentPosition, epSquare);
     return epSquare;
   }
 

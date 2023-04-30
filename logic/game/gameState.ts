@@ -32,7 +32,7 @@ export type Actions = {
     to: Square, 
     promoteTo?: Piece, 
   ) => void;
-  toggleBoard: (
+  togglePosition: (
     boardIndex: number
   ) => void;
   rotateBoard: () => void;

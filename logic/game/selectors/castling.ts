@@ -2,12 +2,12 @@ import nextCastlingPreclusions from 'logic/position/nextCastlingPreclusions';
 import { CastlingPreclusions, RookStartSquare } from 'logic/types/CastlingPreclusions';
 import { GamePlayAndCursor } from 'logic/game/gameState';
 import { moves } from 'logic/game/selectors/moves';
-import { boardCursor } from 'logic/game/selectors/boards';
+import { positionCursor } from 'logic/game/selectors/positions';
 
 const emptyPreclusions = new Set<RookStartSquare>();
 
-// const boardCache = new Map<Board, CastlingPreclusions>([
-//   [firstBoard, emptyPreclusions]
+// const positionCache = new Map<Position, CastlingPreclusions>([
+//   [firstPosition, emptyPreclusions]
 // ]);
 
 const recurse = (gamePlay: string, i: number): CastlingPreclusions => {
@@ -16,9 +16,9 @@ const recurse = (gamePlay: string, i: number): CastlingPreclusions => {
     return emptyPreclusions;
   };
 
-  // const gameBoards = boards(state);
-  // if (boardCache.has(gameBoards[i])) {
-  //   return boardCache.get(gameBoards[i])!;
+  // const gamePositions = positions(state);
+  // if (positionCache.has(gamePositions[i])) {
+  //   return positionCache.get(gamePositions[i])!;
   // }
   
   const prev = recurse(gamePlay, i -1);
@@ -29,7 +29,7 @@ const recurse = (gamePlay: string, i: number): CastlingPreclusions => {
   const [from] = move;
   const newCastling = nextCastlingPreclusions(from, prev)
 
-  // boardCache.set(gameBoards[i], newCastling);
+  // positionCache.set(gamePositions[i], newCastling);
 
   return newCastling;
 }
@@ -47,6 +47,6 @@ export const castling = ({ gamePlay }: Pick<GamePlayAndCursor, 'gamePlay'>) => {
 }
 
 export const currentCastling = (state: GamePlayAndCursor) => {
-  const cursor = boardCursor(state);
+  const cursor = positionCursor(state);
   return recurse(state.gamePlay, cursor)
 }

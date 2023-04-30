@@ -19,7 +19,7 @@ const pieceLine = (row: PieceOrEmpty[], i: number) => {
 };
 
 
-function asciiBoard(position: Position){
+function plainTextDrawnPosition(position: Position){
     const pieceLines = rotateCounterClockwise<PieceOrEmpty>(position as any)
         .map(pieceLine)
         .join(separLine);
@@ -29,4 +29,4 @@ function asciiBoard(position: Position){
     ));
 }
 
-export default asciiBoard;
+export default plainTextDrawnPosition;

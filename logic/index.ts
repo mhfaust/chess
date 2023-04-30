@@ -1,15 +1,15 @@
 // import { canMoveTo }  from 'logic/moves'
-// import { initialBoard, move }  from 'logic/board'
+// import { initialPosition, move }  from 'logic/position'
 // import { isInCheck, isCheckmate }  from 'logic/check'
 
 export { canMoveTo } from 'logic/moves';
-// export { initialBoard }  from 'logic/board'
+// export { initialPosition }  from 'logic/position'
 export { isInCheck, isCheckmate }  from 'logic/check'
 
 
 // export default {
 //     canMoveTo,
-//     initialBoard,
+//     initialPosition,
 //     move,
 //     isInCheck,
 //     isCheckmate, 

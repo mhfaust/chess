@@ -1,7 +1,7 @@
 import { file, rank } from 'logic/squares';
 import square, { Square } from 'logic/squares/square';
 import { GamePlayAndCursor } from 'logic/game/gameState';
-import { boardCursor } from 'logic/game/selectors/boards';
+import { positionCursor } from 'logic/game/selectors/positions';
 import { moves } from './moves';
 import { currentGamePlay, gamePlayAt } from './game';
 
@@ -49,7 +49,7 @@ export const epSquare = (state: Pick<GamePlayAndCursor, 'gamePlay'>, i: number) 
 
 
 export const currentEnPassantSquare = (state: GamePlayAndCursor) => {
-  const cursor = boardCursor(state)
+  const cursor = positionCursor(state)
   if(cursor === 0){
     return null;
   }

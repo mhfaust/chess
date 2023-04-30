@@ -42,7 +42,7 @@ type GridProps = {
   selectedSquare: Square | null;
   validMoves?: Set<Square>;
   currentPlayer: Player;
-  isLatestBoard: boolean;
+  isLatestPosition: boolean;
 }
 const noMoves = new Set<Square>();
 
@@ -53,7 +53,7 @@ const Grid = ({
   selectedSquare,
   validMoves = noMoves,
   currentPlayer,
-  isLatestBoard
+  isLatestPosition
  }: GridProps) => {
 
   const rotated = useMemo(() => {
@@ -73,13 +73,13 @@ const Grid = ({
 
   const handleSquareClick = (pos: Square): MouseEventHandler => {
     return () => {
-      if (isLatestBoard) {
+      if (isLatestPosition) {
         onClickSquare(pos)};
       } 
   };
 
   const turnStyle = (() => {
-    if (!isLatestBoard) {
+    if (!isLatestPosition) {
       return null
     }
     return currentPlayer === 'Black' 
@@ -101,8 +101,8 @@ const Grid = ({
                   styles.square, 
                   styles[squareColor(square!)!],
                   { 
-                    [styles.selected]: isLatestBoard && validMoves.size && selectedSquare === square,
-                    [styles.canMoveTo]: isLatestBoard && validMoves.has(square),
+                    [styles.selected]: isLatestPosition && validMoves.size && selectedSquare === square,
+                    [styles.canMoveTo]: isLatestPosition && validMoves.has(square),
                     [styles.whitePiece]: piece && WHITE_PIECES.has(piece),
                     [styles.blackPiece]: piece && BLACK_PIECES.has(piece),
                     [styles.kingInCheck]: piece && isPieceKingInCheck(position, square),

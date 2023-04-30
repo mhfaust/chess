@@ -1,6 +1,6 @@
 import allPieceMoves from "logic/moves/allPieceMoves";
 import { GameState } from "logic/game/gameState";
-import { currentBoard } from "logic/game/selectors/boards";
+import { currentPosition } from "logic/game/selectors/positions";
 import { currentCastling } from "logic/game/selectors/castling";
 import currentEnPassantSquare from "logic/game/selectors/enPassant";
 import { Square } from "logic/squares/square";
@@ -8,7 +8,7 @@ import { Square } from "logic/squares/square";
 const noMoves = new Set<Square>();
 
 export const currentValidMoves = (game: Pick<GameState, 'gamePlay' | 'boardCursor' | 'selectedSquare'>) => {
-  const thisBoard = currentBoard(game);
+  const thisPosition = currentPosition(game);
   const { selectedSquare } = game;
   const precludedCastling = currentCastling(game);
   const epSquare = currentEnPassantSquare(game);
@@ -16,7 +16,7 @@ export const currentValidMoves = (game: Pick<GameState, 'gamePlay' | 'boardCurso
     return noMoves;
   }
   const moves = allPieceMoves(
-    thisBoard, 
+    thisPosition, 
     selectedSquare, 
     precludedCastling, 
     epSquare 

@@ -1,4 +1,4 @@
-import { move }  from 'logic/position';
+import { nextPosition }  from 'logic/position';
 import { isInCheck }  from 'logic/check';
 import { playerAt }  from 'logic/squares';
 import { Square }  from 'logic/squares/square';
@@ -11,9 +11,9 @@ function movesIntoCheck(
     : boolean {
    
     const player = playerAt(position, moveFrom);
-    const [nextBoard] = move(position, moveFrom, moveTo, null);
+    const [next] = nextPosition(position, moveFrom, moveTo, null);
     
-    return player ? isInCheck(nextBoard, player) : false;
+    return player ? isInCheck(next, player) : false;
 }
 
 export default movesIntoCheck;
