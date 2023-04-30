@@ -66,8 +66,8 @@ export const gamePlayCaptures = (gamePlay: string) => {
 
 
 export const currentBlackCaptures = (game: GamePlayAndCursor): Piece[] => {
-  return gamePlayCaptures(gamePlayAt(game.gamePlay, game.boardCursor)).black;
+  return gamePlayCaptures(gamePlayAt(game.gamePlay, game.positionCursor)).black;
 }
 export const currentWhiteCaptures = (game: GamePlayAndCursor): Piece[] => {
-  return gamePlayCaptures(gamePlayAt(game.gamePlay, game.boardCursor)).white;
+  return gamePlayCaptures(gamePlayAt(game.gamePlay, game.positionCursor)).white;
 }

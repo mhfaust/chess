@@ -8,7 +8,7 @@ import { currentPosition } from '../selectors/positions';
 import { Square } from 'logic/squares/square';
 import canMoveTo from 'logic/moves/canMoveTo';
 
-type TArgs = Pick<GameState, 'gamePlay' | 'boardCursor' | 'onPromotePawn' | 'selectedSquare'> & {
+type TArgs = Pick<GameState, 'gamePlay' | 'positionCursor' | 'onPromotePawn' | 'selectedSquare'> & {
   actions: Pick<Actions, 'move' | 'promptToPromotePawn'>
 }
 

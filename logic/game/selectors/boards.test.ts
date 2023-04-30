@@ -3,7 +3,7 @@ import { pieceAt } from 'logic/squares';
 import { positions } from 'logic/game/selectors/positions';
 import { moves } from 'logic/game/selectors/moves';
 
-describe('boards', () => {
+describe('positions', () => {
 
   it('gets an array with just the initial board if history is empty', () => {
 
@@ -15,7 +15,7 @@ describe('boards', () => {
     expect(gamePositions[0]).toBe(initialPosition);
   });
 
-  it('presents a number of boards equal to the number of moves + 1', () => {
+  it('presents a number of positions equal to the number of moves + 1', () => {
 
     const gameState = {
       gamePlay: 'e2e4,e7e5',

@@ -9,14 +9,14 @@ const move = (
   from: Square, 
   to: Square, 
   promoteTo: Piece | undefined
-) => (gameView: Pick<GameState, 'gamePlay' |  'boardCursor'>) => {
+) => (gameView: Pick<GameState, 'gamePlay' |  'positionCursor'>) => {
 
   const newHash = moveHash([from, to, promoteTo]);
   
-  const { gamePlay, boardCursor } = gameView;
+  const { gamePlay, positionCursor } = gameView;
   return {
     gamePlay: gamePlay ? gamePlay + ',' + newHash : newHash,
-    boardCursor: boardCursor + 1
+    positionCursor: positionCursor + 1
   };
 };
 

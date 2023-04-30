@@ -9,7 +9,7 @@ export type PawnPromotionCallback =
 
 export type GamePlayAndCursor = {
   gamePlay: string;
-  boardCursor: number;
+  positionCursor: number;
 };
 
 export type GameState =  GamePlayAndCursor & {
@@ -33,7 +33,7 @@ export type Actions = {
     promoteTo?: Piece, 
   ) => void;
   togglePosition: (
-    boardIndex: number
+    positionIndex: number
   ) => void;
   rotateBoard: () => void;
   promptToPromotePawn: (t: PawnPromoteTuple | null) => void;

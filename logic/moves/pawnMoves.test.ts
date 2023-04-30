@@ -31,7 +31,7 @@ describe('white pawn', () => {
     ] ;
 
     testCases.forEach((testCase) => {
-        it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
+        it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1Position: `, () => {
 
             const position =  pawn1Position;
             const foundMoves = pawnMoves(position, testCase.pawnSquare, null);
@@ -56,7 +56,7 @@ describe('black pawn', () => {
     ] ;
 
     testCases.forEach((testCase) => {
-        it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1board: `, () => {
+        it(`provides all possible moves from pawn at ${(testCase.pawnSquare)} on pawn1Position: `, () => {
 
             const position =  pawn1Position;
             const foundMoves = pawnMoves(position, testCase.pawnSquare, null);

@@ -4,7 +4,7 @@ import { Position }  from 'logic/types/Position';
 
 describe('rook', () => {
 
-    it(`provides all possible moves from rook on rook1board: `, () => {
+    it(`provides all possible moves from rook on rook1Position: `, () => {
         const position: Position = [
             /*         1  2  3  4  5  6  7  8  */
             /*  A  */ [__,__,__,__,__,__,__,__],

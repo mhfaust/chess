@@ -7,7 +7,7 @@ import { Square } from "logic/squares/square";
 
 const noMoves = new Set<Square>();
 
-export const currentValidMoves = (game: Pick<GameState, 'gamePlay' | 'boardCursor' | 'selectedSquare'>) => {
+export const currentValidMoves = (game: Pick<GameState, 'gamePlay' | 'positionCursor' | 'selectedSquare'>) => {
   const thisPosition = currentPosition(game);
   const { selectedSquare } = game;
   const precludedCastling = currentCastling(game);

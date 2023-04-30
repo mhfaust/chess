@@ -45,7 +45,7 @@ function nextPosition (
     promoteTo?: Piece,
 ) : MoveTuple {
 
-    const boardCache = cache.get(previousPosition) 
+    const positionCache = cache.get(previousPosition) 
         ?? cache.set(previousPosition, new Map())
             .get(previousPosition) as Map<string, MoveTuple>;
 
@@ -64,7 +64,7 @@ function nextPosition (
     
     const moveHash = `${from}${to}${captStr}${promoStr}`;
 
-    const cachedPosition = boardCache.get(moveHash);
+    const cachedPosition = positionCache.get(moveHash);
     if(cachedPosition){
         return cachedPosition;
     }
@@ -89,7 +89,7 @@ function nextPosition (
     if(castling){
         const [castlingPosition] = nextPosition(newPosition, castling[0], castling[1], null);
         const castlingTuple: MoveTuple = [castlingPosition, moveHash];
-        boardCache.set(moveHash, castlingTuple);
+        positionCache.set(moveHash, castlingTuple);
         return castlingTuple;
     }
 
@@ -104,7 +104,7 @@ function nextPosition (
         newPosition[file][rank] = promoteTo; //mutate
     }
     const moveTupple: MoveTuple = [newPosition, moveHash];
-    boardCache.set(moveHash, moveTupple);
+    positionCache.set(moveHash, moveTupple);
     return moveTupple;
 }
 

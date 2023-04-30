@@ -1,3 +1,3 @@
-const togglePosition = (boardCursor: number) => () => ({ boardCursor });
+const togglePosition = (positionCursor: number) => () => ({ positionCursor });
 
 export default togglePosition;

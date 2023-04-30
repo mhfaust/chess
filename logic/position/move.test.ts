@@ -5,7 +5,7 @@ import { Position }  from 'logic/types/Position';
 describe('move', () => {
 
     it('is in checkmate (1)', () => {
-        const boardBefore: Position = [
+        const positionBefore: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -17,7 +17,7 @@ describe('move', () => {
 /*  H  */ [__,__,__,__,__,__,BP,__],
         ];
 
-        const boardAfter: Position = [
+        const positionAfter: Position = [
 /*         1  2  3  4  5  6  7  8  */
 /*  A  */ [__,__,__,__,__,__,__,__],
 /*  B  */ [__,__,__,__,__,__,__,__],
@@ -29,8 +29,8 @@ describe('move', () => {
 /*  H  */ [__,__,__,__,__,__,BP,BK],
         ];   
         
-        const [next] = nextPosition(boardBefore, 'g8', 'h8', null);
+        const [next] = nextPosition(positionBefore, 'g8', 'h8', null);
 
-        expect(next).toEqual(boardAfter)
+        expect(next).toEqual(positionAfter)
     })
 })

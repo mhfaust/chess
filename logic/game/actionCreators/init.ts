@@ -3,9 +3,9 @@ import { GameState } from "../gameState";
 const init = (
   initialGamePlay: string, 
   initialPosition: number
-) => (): Pick<GameState, 'gamePlay' | 'boardCursor'> => ({
+) => (): Pick<GameState, 'gamePlay' | 'positionCursor'> => ({
   gamePlay: initialGamePlay,
-  boardCursor: initialPosition,
+  positionCursor: initialPosition,
 });
 
 export default init;

@@ -63,7 +63,7 @@ export const previousPosition = (state: GamePlayAndCursor): Position | null => {
 };
 
 export const positionCursor = (game: GamePlayAndCursor) => {
-  return game.boardCursor ?? positions(game).length - 1;
+  return game.positionCursor ?? positions(game).length - 1;
 }
 
 export const latestPositionCursor = (game: GamePlayAndCursor) => {

@@ -5,7 +5,7 @@ import { moves } from "./moves";
 import currentPlayer from "./players";
 
 export const isViewingLatestPosition = (game: GamePlayAndCursor) => {
-  return game.boardCursor === positions(game).length - 1;
+  return game.positionCursor === positions(game).length - 1;
 }
 
 export const isGameComplete = (game: GamePlayAndCursor) => {
@@ -28,5 +28,5 @@ export const gamePlayAt = (gamePlay: string, i: number) => {
 }
 
 export const currentGamePlay = (game: GamePlayAndCursor) => {
-  return gamePlayAt(game.gamePlay, game.boardCursor);
+  return gamePlayAt(game.gamePlay, game.positionCursor);
 }

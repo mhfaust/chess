@@ -3,7 +3,7 @@ import { BQ,BP,WK,WQ,WR,BK,WP,__ }  from 'logic/squares/pieces-shorthand';
 import { Position }  from 'logic/types/Position';
 describe('queen', () => {
 
-    it(`provides all possible moves from queen on queen1board: `, () => {
+    it(`provides all possible moves from queen on queen1Position: `, () => {
 
         const position: Position = [
             /*         1  2  3  4  5  6  7  8  */

@@ -17,11 +17,11 @@ const allowedFn: Record<CastleSquare, (position: Position) => boolean> = {
 
 const cache: Map<Position[], Map<CastleSquare, boolean | undefined>> = new Map();
 
-const castlingIsAllowed = (boardSequence: Position[], castleSquare: CastleSquare): boolean => {
+const castlingIsAllowed = (positionSequence: Position[], castleSquare: CastleSquare): boolean => {
   
-  const allowances = cache.get(boardSequence) ?? (() => {
+  const allowances = cache.get(positionSequence) ?? (() => {
     const a = new Map<CastleSquare, boolean | undefined>();
-    cache.set(boardSequence, a);
+    cache.set(positionSequence, a);
     return a;
   })();
   
@@ -30,7 +30,7 @@ const castlingIsAllowed = (boardSequence: Position[], castleSquare: CastleSquare
   if(memoized !== undefined){
     return memoized;
   }
-  //else iterate over the boards sequence to see if that piece ever moved
+  //else iterate over the positions sequence to see if that piece ever moved
   //or if the king ever moved
   const isWhite = castleSquare === 'a1' || castleSquare === 'h1' ;
   const kingPiece = isWhite
@@ -38,7 +38,7 @@ const castlingIsAllowed = (boardSequence: Position[], castleSquare: CastleSquare
   const kingSquare = isWhite ? 'a5' : 'h5';
   
   let isAllowed = true;
-  for(let position of boardSequence){
+  for(let position of positionSequence){
     if(!allowedFn[castleSquare](position)){
       isAllowed = false;
       break;

@@ -13,7 +13,7 @@ import init from 'logic/game/actionCreators/init';
 export const createGameStore = () => createStore<GameState>((set) => {
   return {
     gamePlay: '',
-    boardCursor: 0,
+    positionCursor: 0,
     selectedSquare: null,
     orientation: 0,
     onPromotePawn: null,
@@ -27,8 +27,8 @@ export const createGameStore = () => createStore<GameState>((set) => {
       move: (from, to, promoteTo) => {
         return set(move(from, to, promoteTo))
       },
-      togglePosition: (boardCursor) => {
-        return set(togglePosition(boardCursor))
+      togglePosition: (positionCursor) => {
+        return set(togglePosition(positionCursor))
       },
       rotateBoard: () => {
         return set(rotateBoard())
