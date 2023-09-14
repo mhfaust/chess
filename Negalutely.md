@@ -1,4 +1,0 @@
-POS L-AHEAD:  X(?=Y)
-NEG L-AHEAD:  X(?!Y)
-POS L-BEHIND: (?<=Y)X
-NEG L-BEHIND: (?<!Y)X
