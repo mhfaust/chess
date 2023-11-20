@@ -9,3 +9,10 @@
 .black {
   flex-direction: row-reverse;
 }
+.white {
+
+}
+
+.testClass {
+  display: none;
+}
