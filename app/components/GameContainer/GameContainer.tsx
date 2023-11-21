@@ -6,12 +6,14 @@ import Game from '../Game/Game';
 
 export type GameContainerProps = { 
   initialGamePlay?: string,
-  initialPosition?: number | 'last'
+  initialPosition?: number | 'last',
+  className?: string
 }
 
-export const GameContainer = ({ 
+const GameContainer = ({ 
   initialGamePlay = '',
-  initialPosition = 0
+  initialPosition = 0,
+  className
 }: GameContainerProps) => {
   const gameStoreRef = useRef<GameStore>();
 
@@ -24,7 +26,10 @@ export const GameContainer = ({
       <Game 
         initialGamePlay={initialGamePlay}
         initialPosition={initialPosition}
+        className={className}
       />
     </gameContext.Provider>
   )
 }
+
+export default GameContainer;

@@ -1,1 +1,1 @@
-export { GameContainer as GameProvider } from './GameContainer';
+export { default } from './GameContainer';

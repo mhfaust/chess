@@ -16,16 +16,20 @@ import { currentValidMoves } from 'logic/game/selectors/validMoves';
 import { useGameStore } from '../GameContainer/useGameStore';
 import { GameContainerProps } from '../GameContainer/GameContainer';
 import { useEffect, useState } from 'react';
+import clsx from 'clsx';
 
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
  */
 
-type GameProps = Pick<GameContainerProps, 'initialGamePlay' | 'initialPosition'>
+type GameProps = {
+  className?: string
+} & Pick<GameContainerProps, 'initialGamePlay' | 'initialPosition'>
 
 export default function Game({ 
   initialGamePlay, 
-  initialPosition
+  initialPosition,
+  className
 }: GameProps) {
 
   const { toggleSquare, init } = useGameStore(game => game.actions);
@@ -56,7 +60,7 @@ export default function Game({
   }
 
   return (<>
-    <div className={styles.game}>
+    <div className={clsx(styles.game, className)}>
       <Grid 
         position={thisPosition} 
         orientation={orientation}
@@ -71,9 +75,9 @@ export default function Game({
         <Rotator />
         <Captures captures={blackCaptures} player='black'/>
       </div>
-      <div>
+      {/* <div>
         Device is flat: {isFlat === true ? 'TRUE' : isFlat === false ? 'FALSE' : 'UNKOWN'}
-      </div>
+      </div> */}
       <GameStatus />
       <PawnPromotionPrompt onSelectPiece={onPromotePawn} />
     </div>
