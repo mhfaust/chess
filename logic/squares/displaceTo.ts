@@ -10,7 +10,8 @@ import square, { Square } from 'logic/squares/square';
     
 function displaceTo  (
     origin: Square, 
-    vector: MoveVector)
+    vector: MoveVector
+)
     : Square | null {
 
     const newFile = file(origin) + vector[0];

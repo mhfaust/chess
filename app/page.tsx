@@ -9,6 +9,6 @@ import Game from './components/Game';
 export default function Home() {
 
   return (
-     <Link href="/game">Play Game</Link>
+     <Link href="/play">Play Game</Link>
   )
 }
