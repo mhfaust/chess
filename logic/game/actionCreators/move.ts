@@ -15,7 +15,7 @@ const move = (
   
   const { gamePlay, positionCursor } = gameView;
   return {
-    gamePlay: gamePlay ? gamePlay + ',' + newHash : newHash,
+    gamePlay: (gamePlay && `${gamePlay},`) + newHash,
     positionCursor: positionCursor + 1
   };
 };

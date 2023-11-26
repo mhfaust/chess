@@ -11,13 +11,13 @@ datasource db {
 }
 
 model Game {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
   gamePlay String
   white String
   black String
 }
 
 model PayerProfile {
-  id Int @id @default(autoincrement())
+  id String @id @default(uuid())
 
 }
