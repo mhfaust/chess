@@ -64,3 +64,7 @@ export const currentMove = (state: GamePlayAndCursor) => {
   const cursor = positionCursor(state)
   return moves(state)[cursor - 1];
 }
+
+export const numMoves = (state: GamePlayAndCursor) => {
+  return moves(state).length;
+}

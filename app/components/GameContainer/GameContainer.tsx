@@ -3,6 +3,8 @@
 import { createGameStore, gameContext, GameStore } from './gameContext';
 import { useRef } from 'react';
 import Game from '../Game/Game';
+import { recordMove } from 'app/actions';
+import { useParams } from 'next/navigation';
 
 export type GameContainerProps = { 
   initialGamePlay?: string,
@@ -13,12 +15,13 @@ export type GameContainerProps = {
 const GameContainer = ({ 
   initialGamePlay = '',
   initialPosition = 0,
-  className
+  className,
 }: GameContainerProps) => {
   const gameStoreRef = useRef<GameStore>();
+  const { id } = useParams<{ id: string }>()
 
   if(!gameStoreRef.current){
-    gameStoreRef.current = createGameStore();
+    gameStoreRef.current = createGameStore((gamePlay) => recordMove(id, gamePlay));
   }
 
   return (

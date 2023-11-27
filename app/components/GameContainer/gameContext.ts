@@ -10,7 +10,7 @@ import togglePosition from 'logic/game/actionCreators/togglePosition';
 import { createContext } from 'react';
 import init from 'logic/game/actionCreators/init';
 
-export const createGameStore = () => createStore<GameState>((set) => {
+export const createGameStore = (onMove: (move: string) => void) => createStore<GameState>((set) => {
   return {
     gamePlay: '',
     positionCursor: 0,
@@ -25,7 +25,7 @@ export const createGameStore = () => createStore<GameState>((set) => {
         return set(toggleSquare(square))
       },
       move: (from, to, promoteTo) => {
-        return set(move(from, to, promoteTo))
+        return set(move(from, to, promoteTo, onMove))
       },
       togglePosition: (positionCursor) => {
         return set(togglePosition(positionCursor))

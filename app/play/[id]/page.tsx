@@ -19,6 +19,8 @@ export default async function PlayPage({ params }: PlayProps) {
   if(!game) {
     return notFound()
   }
+
+  console.log(game.gamePlay)
   
   return (
     <div className={styles.playWrapper}>

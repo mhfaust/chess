@@ -1,16 +1,28 @@
 'use server'
-import { db } from 'app/db'
- 
-export async function createGame(formData: FormData) {
-  'use server'
 
-  const title = formData.get('title') as string
+import { db } from 'app/db'
+import { redirect } from "next/navigation"
+ 
+export async function createGame() {
 
   const game = await db.game.create({
     data: {
       gamePlay: '',
       white: '',
       black: ''
+    }
+  })
+
+  redirect(`/play/${game.id}`)
+}
+
+export async function recordMove(gameId: string, newGamePlay: string) {
+  return db.game.update({
+    where: {
+      id: gameId,
+    },
+    data: {
+      gamePlay: newGamePlay
     }
   })
 }

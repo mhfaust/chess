@@ -1,25 +1,6 @@
-import { db } from "./db"
-import { redirect } from "next/navigation"
+import { createGame } from "app/actions"
 
 export default function Home() {
-  
-  async function createGame(formData: FormData) {
-    'use server'
-  
-    // const title = formData.get('title') as string
-  
-    const game = await db.game.create({
-      data: {
-        gamePlay: '',
-        white: '',
-        black: ''
-      }
-    })
-
-    console.log(game)
-
-    redirect(`/play/${game.id}`)
-  }
 
   return (
     <form action={createGame}>

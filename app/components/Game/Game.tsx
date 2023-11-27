@@ -3,7 +3,7 @@
 import Grid from 'app/components/Grid/Grid';
 import Captures from 'app/components/Captures';
 import PawnPromotionPrompt from '../PawnPromotionPrompt';
-import { positions, currentPosition } from 'logic/game/selectors/positions';
+import { currentPosition } from 'logic/game/selectors/positions';
 import currentPlayer from 'logic/game/selectors/players';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
 import HistoryNav from 'app/components/HistoryNav';
@@ -18,21 +18,24 @@ import { GameContainerProps } from '../GameContainer/GameContainer';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
+// import { positionCursor } from 'logic/game/selectors/positions';
+// import { numMoves } from 'logic/game/selectors/moves';
+
 /*
  * think about this lib: https://github.com/Quramy/typed-css-modules
  */
 
 type GameProps = {
-  className?: string
+  className?: string,
 } & Pick<GameContainerProps, 'initialGamePlay' | 'initialPosition'>
 
 export default function Game({ 
   initialGamePlay, 
   initialPosition,
-  className
+  className,
 }: GameProps) {
 
-  const { toggleSquare, init } = useGameStore(game => game.actions);
+  const { toggleSquare, init, togglePosition } = useGameStore(game => game.actions);
 
   const [readyToRender, setReadyToRender] = useState(!initialGamePlay && !initialPosition);
   
@@ -54,6 +57,11 @@ export default function Game({
   const validMoves = useGameStore(currentValidMoves);
 
   const isFlat = useDeviceOrientation(20);
+
+  useEffect(() => {
+    const numPlays = initialGamePlay?.split(',').length || 0
+    togglePosition(numPlays);
+  }, [togglePosition, initialGamePlay])
   
   if(!thisPosition || !readyToRender){
     return null;
