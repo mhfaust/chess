@@ -18,13 +18,6 @@ import { GameContainerProps } from '../GameContainer/GameContainer';
 import { useEffect, useState } from 'react';
 import clsx from 'clsx';
 
-// import { positionCursor } from 'logic/game/selectors/positions';
-// import { numMoves } from 'logic/game/selectors/moves';
-
-/*
- * think about this lib: https://github.com/Quramy/typed-css-modules
- */
-
 type GameProps = {
   className?: string,
 } & Pick<GameContainerProps, 'initialGamePlay' | 'initialPosition'>
@@ -58,11 +51,6 @@ export default function Game({
 
   const isFlat = useDeviceOrientation(20);
 
-  useEffect(() => {
-    const numPlays = initialGamePlay?.split(',').length || 0
-    togglePosition(numPlays);
-  }, [togglePosition, initialGamePlay])
-  
   if(!thisPosition || !readyToRender){
     return null;
   }

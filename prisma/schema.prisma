@@ -17,7 +17,7 @@ model Game {
   black String
 }
 
-model PayerProfile {
+model PlayerProfile {
   id String @id @default(uuid())
 
 }
