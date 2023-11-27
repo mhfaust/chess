@@ -13,6 +13,8 @@ export async function createGame() {
     }
   })
 
+  console.log(game)
+
   redirect(`/play/${game.id}`)
 }
 

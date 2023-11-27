@@ -33,8 +33,11 @@ export default function Game({
   const [readyToRender, setReadyToRender] = useState(!initialGamePlay && !initialPosition);
   
   useEffect(() => {
-    const numPositions = initialGamePlay?.split(',').length ?? 0;
+    const numPositions = initialGamePlay?.length
+      ? initialGamePlay.split(',').length
+      : 0
     const pos = initialPosition === 'last' ? numPositions : 0;
+
     init(initialGamePlay!, pos);
     setReadyToRender(true);
   }, [init, initialGamePlay, initialPosition])
