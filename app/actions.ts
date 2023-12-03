@@ -2,7 +2,8 @@
 
 import { db } from 'app/db'
 import { redirect } from "next/navigation"
- 
+import * as auth from 'app/auth'
+
 export async function createGame() {
 
   const game = await db.game.create({
@@ -27,4 +28,12 @@ export async function recordMove(gameId: string, newGamePlay: string) {
       gamePlay: newGamePlay
     }
   })
+}
+
+export async function signIn() {
+  return auth.signIn('github')
+}
+
+export async function signOut() {
+  return auth.signOut()
 }
