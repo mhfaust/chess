@@ -1,9 +1,15 @@
 import NextAuth from "next-auth";
 import Github from 'next-auth/providers/github'
+import GoogleProvider from "next-auth/providers/google";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from 'app/db'
 
-const { GITHUB_CLIENT_ID, GITHUB_CLIENT_SECRET } = process.env
+const { 
+  GITHUB_CLIENT_ID, 
+  GITHUB_CLIENT_SECRET,
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET
+} = process.env
 
 if(!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
   throw Error('Missing github OAuth Credentials')
@@ -20,6 +26,10 @@ export const {
     Github({
       clientId: GITHUB_CLIENT_ID,
       clientSecret: GITHUB_CLIENT_SECRET
+    }),
+    GoogleProvider({
+      clientId: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET
     })
   ],
   callbacks: {

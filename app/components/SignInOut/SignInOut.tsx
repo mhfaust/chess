@@ -1,6 +1,7 @@
 import Image from "next/image";
-import { signIn, signOut } from "app/actions"
+import { githubSignIn, signOut } from "app/actions"
 import { auth } from 'app/auth';
+import Link from "next/link";
 
 const SignInOut = async () => {
 
@@ -19,9 +20,7 @@ const SignInOut = async () => {
   }
 
   return (
-    <form action={signIn}>
-      <button type="submit">Sign In</button>
-    </form>
+    <Link href="/sign-in" >Sign In</Link>
   )
 }
 

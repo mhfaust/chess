@@ -30,8 +30,11 @@ export async function recordMove(gameId: string, newGamePlay: string) {
   })
 }
 
-export async function signIn() {
+export async function githubSignIn() {
   return auth.signIn('github')
+}
+export async function googleSignIn() {
+  return auth.signIn('google')
 }
 
 export async function signOut() {

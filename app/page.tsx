@@ -1,5 +1,4 @@
 import { createGame } from "app/actions"
-import SignInOut from "app/components/SignInOut"
 import Providers from "app/Providers"
 
 export default function Home() {
