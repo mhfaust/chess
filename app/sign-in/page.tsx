@@ -1,4 +1,4 @@
-import { githubSignIn, googleSignIn } from "app/actions"
+import { githubSignIn, googleSignIn, facebookSignIn } from "app/actions"
 import { auth } from 'app/auth';
 
 const SignInPage = () => {
@@ -7,11 +7,14 @@ const SignInPage = () => {
 
   return (
     <div>
-      <form action={githubSignIn}>
-        <button type="submit">GitHub</button>
-      </form>
       <form action={googleSignIn}>
         <button type="submit">Google</button>
+      </form>
+      <form action={facebookSignIn}>
+        <button type="submit">Facebook</button>
+      </form>
+      <form action={githubSignIn}>
+        <button type="submit">GitHub</button>
       </form>
     </div>
   )

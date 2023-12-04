@@ -1,18 +1,27 @@
 import NextAuth from "next-auth";
 import Github from 'next-auth/providers/github'
 import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";
 import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from 'app/db'
 
 const { 
+  GOOGLE_CLIENT_ID,
+  GOOGLE_CLIENT_SECRET,
+  FACEBOOK_CLIENT_ID,
+  FACEBOOK_CLIENT_SECRET,
   GITHUB_CLIENT_ID, 
   GITHUB_CLIENT_SECRET,
-  GOOGLE_CLIENT_ID,
-  GOOGLE_CLIENT_SECRET
 } = process.env
 
+if(!GOOGLE_CLIENT_ID || !GOOGLE_CLIENT_SECRET) {
+  throw Error('Missing Google OAuth Credentials')
+}
+if(!FACEBOOK_CLIENT_ID || !FACEBOOK_CLIENT_SECRET) {
+  throw Error('Missing Facebook OAuth Credentials')
+}
 if(!GITHUB_CLIENT_ID || !GITHUB_CLIENT_SECRET) {
-  throw Error('Missing github OAuth Credentials')
+  throw Error('Missing Github OAuth Credentials')
 }
 
 export const { 
@@ -23,14 +32,18 @@ export const {
 } = NextAuth({
   adapter: PrismaAdapter(db),
   providers: [
+    GoogleProvider({
+      clientId: GOOGLE_CLIENT_ID,
+      clientSecret: GOOGLE_CLIENT_SECRET
+    }),
+    FacebookProvider({
+      clientId: FACEBOOK_CLIENT_ID,
+      clientSecret: FACEBOOK_CLIENT_SECRET
+    }),
     Github({
       clientId: GITHUB_CLIENT_ID,
       clientSecret: GITHUB_CLIENT_SECRET
     }),
-    GoogleProvider({
-      clientId: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET
-    })
   ],
   callbacks: {
     //Usually not needed, here we are fixing a bug in nextauth
