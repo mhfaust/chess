@@ -9,7 +9,7 @@ type ProvidersProps = {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <SessionProvider>
-      {children}
+        {children}
     </SessionProvider>
   )
 }

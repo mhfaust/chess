@@ -1,3 +1,4 @@
+import Providers from "app/Providers"
 import SignInOut from 'app/components/SignInOut'
 import './globals.css'
 
@@ -14,9 +15,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-      <SignInOut />
+        <Providers >
+          <SignInOut />
+          {children}
+        </Providers>
         
-        {children}</body>
+      </body>
     </html>
   )
 }
