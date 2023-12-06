@@ -1,5 +1,6 @@
 'use client'
 
+import { Theme } from '@radix-ui/themes'
 import { SessionProvider } from 'next-auth/react'
 
 type ProvidersProps = {
@@ -9,7 +10,9 @@ type ProvidersProps = {
 const Providers = ({ children }: ProvidersProps) => {
   return (
     <SessionProvider>
-        {children}
+        <Theme>
+          {children}
+        </Theme>
     </SessionProvider>
   )
 }

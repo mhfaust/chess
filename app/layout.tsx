@@ -1,5 +1,6 @@
 import Providers from "app/Providers"
 import SignInOut from 'app/components/SignInOut'
+import '@radix-ui/themes/styles.css';
 import './globals.css'
 
 export const metadata = {
