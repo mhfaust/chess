@@ -1,6 +1,6 @@
 'use client';
 
-import { recordMove } from 'app/actions';
+import { recordMove } from 'app/serverActions';
 import { useParams } from 'next/navigation';
 import { useRef } from 'react';
 import Game from '../Game/Game';

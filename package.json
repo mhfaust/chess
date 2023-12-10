@@ -50,10 +50,5 @@
 		"typed-css-modules": "^0.8.1",
 		"typescript": "^5",
 		"husky": "^8.0.0"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "./scripts/pre-commit.sh"
-		}
 	}
 }

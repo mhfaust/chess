@@ -1,5 +1,5 @@
-import { createGame } from 'app/actions';
 import Providers from 'app/Providers';
+import { createGame } from 'app/serverActions';
 
 export default function Home() {
 	return (
@@ -12,3 +12,5 @@ export default function Home() {
 		</Providers>
 	);
 }
+
+// testing pre-commit hook.

@@ -1,5 +1,5 @@
-import { facebookSignIn, githubSignIn, googleSignIn } from 'app/actions';
 import { auth } from 'app/auth';
+import { facebookSignIn, githubSignIn, googleSignIn } from 'app/serverActions';
 
 const SignInPage = () => {
 	// TODO: if already signed in, redirect somewhere.
