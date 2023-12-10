@@ -7,10 +7,9 @@ if [ ! -z "$UNSTAGED_CHANGES_IN_STAGED_FILES" ]; then
     echo "There are unstaged changes in the following staged files:"
     echo "$UNSTAGED_CHANGES_IN_STAGED_FILES"
     exit 1
-
 fi
 
-if git diff --quiet; then
+if ! git diff --quiet; then
   echo "Stashing unstaged changes..."
   git stash save --keep-index --include-untracked
   STASH_CREATED=1
@@ -20,6 +19,8 @@ echo "Formatting staged changes..."
 npx dprint fmt
 
 git add .
+
+npm run test
 
 if [ "$STASH_CREATED" = 1 ]; then
   echo "Popped stashed, unstaged changes..."
