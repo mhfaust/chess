@@ -12,9 +12,9 @@ export type GameContainerProps = {
 	className?: string;
 };
 
-const GameContainer = ({
+const GameContainer = ({ 
 	initialGamePlay = '',
-	initialPosition = 0,
+	initialPosition = 0,  
 	className,
 }: GameContainerProps) => {
 	const gameStoreRef = useRef<GameStore>();
