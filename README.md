@@ -7,11 +7,13 @@ Chess is under development. Currently you may only play in god-mode (you play bo
 ## Getting Started
 
 Install
+
 ```bash
 npm i
 ```
 
 Run in dev mode:
+
 ```bash
 npm run dev
 ```

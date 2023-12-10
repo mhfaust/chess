@@ -3,8 +3,8 @@
 export { default as allPlayerSquares } from './allPlayerSquares';
 export { default as areSameCoordinates } from './areSameCoordinates';
 export { default as coordinates } from './coordinates';
-export { default as displaceTo } from './displaceTo';
 export { default as displaceFrom } from './displaceFrom';
+export { default as displaceTo } from './displaceTo';
 export { default as file } from './file';
 export { default as isOccupied } from './isOccupied';
 export { default as isOccupiedByPlayer } from './isOccupiedByPlayer';

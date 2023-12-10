@@ -1,27 +1,24 @@
-import Image from "next/image";
-import { githubSignIn, signOut } from "app/actions"
+import { githubSignIn, signOut } from 'app/actions';
 import { auth } from 'app/auth';
-import Link from "next/link";
+import Image from 'next/image';
+import Link from 'next/link';
 
 const SignInOut = async () => {
+	const session = await auth();
 
-  const session = await auth()
+	if (session?.user) {
+		const { user: { name, image } } = session;
 
-  if(session?.user) {
-    const { user: {name, image} } = session
+		return (
+			<form action={signOut}>
+				{name}
+				{image && <Image src={image} alt='user images' height={32} width={32} />}
+				<button type='submit'>Sign Out</button>
+			</form>
+		);
+	}
 
-    return (
-      <form action={signOut}>
-        {name}
-        {image && <Image src={image} alt='user images'  height={32} width={32}/>}
-        <button type="submit">Sign Out</button>
-      </form>
-    )
-  }
+	return <Link href='/sign-in'>Sign In</Link>;
+};
 
-  return (
-    <Link href="/sign-in" >Sign In</Link>
-  )
-}
-
-export default SignInOut
+export default SignInOut;

@@ -1,1 +1,1 @@
-export { default } from "./PawnPromotionPrompt";
+export { default } from './PawnPromotionPrompt';

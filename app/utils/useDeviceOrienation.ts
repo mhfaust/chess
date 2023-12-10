@@ -1,43 +1,42 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 type OrientationEvent = {
-  alpha: number | null;
-  beta: number | null;
-  gamma: number | null;
+	alpha: number | null;
+	beta: number | null;
+	gamma: number | null;
 };
 
 const { abs } = Math;
 
 function useDeviceOrientation(threshold: number) {
+	const isClient = typeof window === 'object';
 
-  const isClient = typeof window === 'object';
+	const [isDeviceFlat, setIsDeviceFlat] = useState<boolean | undefined>(undefined);
 
-  const [isDeviceFlat, setIsDeviceFlat] = useState<boolean | undefined>(undefined);
+	useEffect(() => {
+		const handleDeviceOrientation = (eventData: OrientationEvent) => {
+			const beta = eventData.beta ?? 0;
+			const gamma = eventData.gamma ?? 0;
 
-  useEffect(() => {
-    const handleDeviceOrientation = (eventData: OrientationEvent) => {
-      const beta = eventData.beta ?? 0;
-      const gamma = eventData.gamma ?? 0;
+			if (abs(beta) <= threshold && abs(gamma) <= threshold) {
+				setIsDeviceFlat(true);
+			} else {
+				setIsDeviceFlat(false);
+			}
+		};
 
-      if (abs(beta) <= threshold && abs(gamma) <= threshold) {
-        setIsDeviceFlat(true);
-      } else {
-        setIsDeviceFlat(false);
-      }
-    }
+		if (isClient && window.DeviceOrientationEvent) {
+			window.addEventListener('deviceorientation', handleDeviceOrientation);
+		}
 
-    if (isClient && window.DeviceOrientationEvent) {
-      window.addEventListener('deviceorientation', handleDeviceOrientation);
-    }
+		return () => {
+			if (isClient && window.DeviceOrientationEvent) {
+				window.removeEventListener('deviceorientation', handleDeviceOrientation);
+			}
+		};
+	}, [isClient, threshold]);
 
-    return () => {
-      if (isClient && window.DeviceOrientationEvent) {
-        window.removeEventListener('deviceorientation', handleDeviceOrientation);
-      }
-    };
-  }, [isClient, threshold]);
-
-  return isDeviceFlat;
+	return isDeviceFlat;
 }
 
 export default useDeviceOrientation;

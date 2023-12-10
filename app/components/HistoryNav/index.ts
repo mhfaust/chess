@@ -1,1 +1,1 @@
-export { default } from './HistoryNav'
+export { default } from './HistoryNav';

@@ -1,5 +1,5 @@
-import { GameState } from "../gameState";
+import { GameState } from '../gameState';
 
 export const selectedSquare = (state: Pick<GameState, 'selectedSquare'>) => {
-  return state.selectedSquare;
-}
+	return state.selectedSquare;
+};

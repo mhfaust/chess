@@ -1,1 +1,1 @@
-export { default } from './SignInOut'
+export { default } from './SignInOut';

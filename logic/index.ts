@@ -4,13 +4,12 @@
 
 export { canMoveTo } from 'logic/moves';
 // export { initialPosition }  from 'logic/position'
-export { isInCheck, isCheckmate }  from 'logic/check'
-
+export { isCheckmate, isInCheck } from 'logic/check';
 
 // export default {
 //     canMoveTo,
 //     initialPosition,
 //     move,
 //     isInCheck,
-//     isCheckmate, 
+//     isCheckmate,
 // }

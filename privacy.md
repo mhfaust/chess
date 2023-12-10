@@ -1,0 +1,2 @@
+Chess uses the OAuth protocol to piggy-back on the Security of big social media.
+Chess will not see your social media password. You will be temporarily redirected to a page hosted by your social media organization, and then redirected back here with credential provided for us to verify your identity on subsequent visits. Chess will only store your email address and (if public) your profile picture. We will never share or your email address with any party.

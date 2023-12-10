@@ -1,27 +1,26 @@
-import Providers from "app/Providers"
-import SignInOut from 'app/components/SignInOut'
+import SignInOut from 'app/components/SignInOut';
+import Providers from 'app/Providers';
 import '@radix-ui/themes/styles.css';
-import './globals.css'
+import './globals.css';
 
 export const metadata = {
-  title: 'Chess',
-  description: 'Author: Mike Hildebrand-Faust',
-}
+	title: 'Chess',
+	description: 'Author: Mike Hildebrand-Faust',
+};
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode;
 }) {
-  return (
-    <html lang="en">
-      <body>
-        <Providers >
-          <SignInOut />
-          {children}
-        </Providers>
-        
-      </body>
-    </html>
-  )
+	return (
+		<html lang='en'>
+			<body>
+				<Providers>
+					<SignInOut />
+					{children}
+				</Providers>
+			</body>
+		</html>
+	);
 }
