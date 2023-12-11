@@ -1,4 +1,4 @@
-import SignInOut from 'app/components/SignInOut';
+import SignInOut from 'app/_components/SignInOut';
 import Providers from 'app/Providers';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
