@@ -10,9 +10,5 @@
   flex-direction: row-reverse;
 }
 .white {
-
-}
-
-.testClass {
-  display: none;
+  flex-direction: row;
 }

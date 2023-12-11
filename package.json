@@ -4,7 +4,7 @@
 	"private": true,
 	"scripts": {
 		"build": "next build",
-		"css-types": "tcm app",
+		"css-types": "./scripts/generate-css-types.sh",
 		"dev": "next dev",
 		"format": "dprint fmt",
 		"gen-prisma-client": "npx prisma generate",
