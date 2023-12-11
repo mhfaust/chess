@@ -1,7 +1,7 @@
 'use server';
 
+import * as auth from 'app/_auth/auth';
 import { db } from 'app/_db';
-import * as auth from 'app/auth';
 import { redirect } from 'next/navigation';
 
 export async function createGame() {

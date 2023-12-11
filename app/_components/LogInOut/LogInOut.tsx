@@ -1,5 +1,5 @@
-import { auth } from 'app/auth';
-import { githubLogIn, logOut } from 'app/serverActions';
+import { auth } from 'app/_auth/auth';
+import { logOut } from 'app/serverActions';
 import Image from 'next/image';
 import Link from 'next/link';
 

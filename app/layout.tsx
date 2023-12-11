@@ -1,5 +1,5 @@
 import LogInOut from 'app/_components/LogInOut';
-import Providers from 'app/Providers';
+import Providers from 'app/_components/Providers';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
 
@@ -22,5 +22,5 @@ export default function RootLayout({
 				</Providers>
 			</body>
 		</html>
-	);
+	); //
 }

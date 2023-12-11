@@ -1,4 +1,4 @@
-import { auth } from 'app/auth';
+import { auth } from 'app/_auth/auth';
 import { facebookLogIn, githubLogIn, googleLogIn } from 'app/serverActions';
 
 const LogInPage = () => {

@@ -1,4 +1,4 @@
-import Providers from 'app/Providers';
+import Providers from 'app/_components/Providers';
 import { createGame } from 'app/serverActions';
 
 export default function Home() {
@@ -12,5 +12,3 @@ export default function Home() {
 		</Providers>
 	);
 }
-
-// testing pre-commit hook.
