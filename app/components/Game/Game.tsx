@@ -1,11 +1,11 @@
 'use client';
 
+import useDeviceOrientation from 'app/_utils/useDeviceOrienation';
 import Captures from 'app/components/Captures';
 import GameStatus from 'app/components/GameStatus';
 import Grid from 'app/components/Grid/Grid';
 import HistoryNav from 'app/components/HistoryNav';
 import Rotator from 'app/components/Rotator/Rotator';
-import useDeviceOrientation from 'app/utils/useDeviceOrienation';
 import clsx from 'clsx';
 import { currentBlackCaptures, currentWhiteCaptures } from 'logic/game/selectors/captures';
 import { isViewingLatestPosition } from 'logic/game/selectors/game';
