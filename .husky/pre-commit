@@ -4,8 +4,16 @@
 UNSTAGED_CHANGES_IN_STAGED_FILES=$(git diff --name-only --cached | xargs git diff --name-only)
 
 if [ ! -z "$UNSTAGED_CHANGES_IN_STAGED_FILES" ]; then
-    echo "There are unstaged changes in the following staged files:"
-    echo "$UNSTAGED_CHANGES_IN_STAGED_FILES"
+    echo "\033[33mThere are unstaged changes in the following staged files:\033[0m"
+    echo "$UNSTAGED_CHANGES_IN_STAGED_FILES" | while read line; do
+      echo " - $line"
+    done
+    echo ""
+    echo "This is a problem because the pre-commit hook formats all staged changes\
+ and adds those formatting adjustments to the staged files.\
+ If you include un-staged changes on top of staged files, there will likely be conflicts.\
+ So it is not allowed."
+    echo ""
     exit 1
 fi
 
