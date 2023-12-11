@@ -1,4 +1,4 @@
-import SignInOut from 'app/_components/LogInOut';
+import LogInOut from 'app/_components/LogInOut';
 import Providers from 'app/Providers';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
@@ -17,7 +17,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body>
 				<Providers>
-					<SignInOut />
+					<LogInOut />
 					{children}
 				</Providers>
 			</body>

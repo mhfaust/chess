@@ -1,22 +1,22 @@
 import { auth } from 'app/auth';
-import { facebookSignIn, githubSignIn, googleSignIn } from 'app/serverActions';
+import { facebookLogIn, githubLogIn, googleLogIn } from 'app/serverActions';
 
-const SignInPage = () => {
+const LogInPage = () => {
 	// TODO: if already signed in, redirect somewhere.
 
 	return (
 		<div>
-			<form action={googleSignIn}>
+			<form action={googleLogIn}>
 				<button type='submit'>Google</button>
 			</form>
-			<form action={facebookSignIn}>
+			<form action={facebookLogIn}>
 				<button type='submit'>Facebook</button>
 			</form>
-			<form action={githubSignIn}>
+			<form action={githubLogIn}>
 				<button type='submit'>GitHub</button>
 			</form>
 		</div>
 	);
 };
 
-export default SignInPage;
+export default LogInPage;

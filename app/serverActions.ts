@@ -29,18 +29,18 @@ export async function recordMove(gameId: string, newGamePlay: string) {
 	});
 }
 
-export async function githubSignIn() {
+export async function githubLogIn() {
 	return auth.signIn('github');
 }
 
-export async function googleSignIn() {
+export async function googleLogIn() {
 	return auth.signIn('google');
 }
 
-export async function facebookSignIn() {
+export async function facebookLogIn() {
 	return auth.signIn('facebook');
 }
 
-export async function signOut() {
+export async function logOut() {
 	return auth.signOut();
 }

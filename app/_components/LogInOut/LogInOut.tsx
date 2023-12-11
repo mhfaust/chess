@@ -1,5 +1,5 @@
 import { auth } from 'app/auth';
-import { githubSignIn, signOut } from 'app/serverActions';
+import { githubLogIn, logOut } from 'app/serverActions';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -10,15 +10,15 @@ const LogInOut = async () => {
 		const { user: { name, image } } = session;
 
 		return (
-			<form action={signOut}>
+			<form action={logOut}>
 				{name}
 				{image && <Image src={image} alt='user images' height={32} width={32} />}
-				<button type='submit'>Sign Out</button>
+				<button type='submit'>Log Out</button>
 			</form>
 		);
 	}
 
-	return <Link href='/sign-in'>Sign In</Link>;
+	return <Link href='/log-in'>Log In</Link>;
 };
 
 export default LogInOut;
