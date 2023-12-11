@@ -1,5 +1,6 @@
 declare const styles: {
-	readonly 'game': string;
-	readonly 'tray': string;
+  readonly "game": string;
+  readonly "tray": string;
 };
 export = styles;
+

@@ -24,7 +24,9 @@ if ! git diff --quiet; then
 fi
 
 echo "Formatting staged changes..."
-npx dprint fmt
+
+npm run format
+npm run css-types
 
 git add .
 

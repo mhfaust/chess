@@ -1,4 +1,5 @@
 declare const styles: {
-	readonly 'rotator': string;
+  readonly "rotator": string;
 };
 export = styles;
+
