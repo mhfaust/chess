@@ -3,7 +3,7 @@ import { githubSignIn, signOut } from 'app/serverActions';
 import Image from 'next/image';
 import Link from 'next/link';
 
-const SignInOut = async () => {
+const LogInOut = async () => {
 	const session = await auth();
 
 	if (session?.user) {
@@ -21,4 +21,4 @@ const SignInOut = async () => {
 	return <Link href='/sign-in'>Sign In</Link>;
 };
 
-export default SignInOut;
+export default LogInOut;
