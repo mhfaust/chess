@@ -46,6 +46,14 @@ export const {
 		}),
 	],
 	callbacks: {
+		// async signIn({user, account, profile}) {
+		// },
+		async jwt({ token, user, account, profile, isNewUser }) {
+			if (isNewUser) {
+				token.firstTimeLogin = true;
+			}
+			return token;
+		},
 		// Usually not needed, here we are fixing a bug in nextauth
 		async session({ session, user }) {
 			if (session?.user && user) {
@@ -56,3 +64,12 @@ export const {
 	},
 	debug: process.env.NODE_ENV === 'development',
 });
+
+async function checkIfUserIsNew(email?: string) {
+	const user = await db.user.findUnique({
+		where: { email },
+	});
+
+	// If user is not found, it means it's a new user
+	return !user;
+}

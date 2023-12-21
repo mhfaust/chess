@@ -2,6 +2,7 @@ import LogInOut from 'app/_components/LogInOut';
 import Providers from 'app/_components/Providers';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
+import { Avatar } from './_components/Avatar/Avatar';
 
 export const metadata = {
 	title: 'Chess',
@@ -17,6 +18,7 @@ export default function RootLayout({
 		<html lang='en'>
 			<body>
 				<Providers>
+					<Avatar />
 					<LogInOut />
 					{children}
 				</Providers>
