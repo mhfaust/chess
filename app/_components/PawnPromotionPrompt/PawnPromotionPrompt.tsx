@@ -5,11 +5,11 @@ import { Piece } from 'logic/squares/piece';
 import { useGameStore } from '../GameContainer/useGameStore';
 import styles from './PawnPromotionPrompt.module.css';
 
-export type PawnPromotionOptionsProps = {
+export type PawnPromotionPromptProps = {
 	onSelectPiece: ((selection: Piece) => void) | null;
 };
 
-const PawnPromotionOptions = ({ onSelectPiece }: PawnPromotionOptionsProps) => {
+const PawnPromotionPrompt = ({ onSelectPiece }: PawnPromotionPromptProps) => {
 	const thisPlayer = useGameStore(currentPlayer);
 
 	if (!onSelectPiece) {
@@ -38,4 +38,4 @@ const PawnPromotionOptions = ({ onSelectPiece }: PawnPromotionOptionsProps) => {
 	);
 };
 
-export default PawnPromotionOptions;
+export default PawnPromotionPrompt;

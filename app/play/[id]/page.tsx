@@ -1,4 +1,4 @@
-import GameContainer from 'app/_components/GameContainer';
+import GameContainer from 'app/_components/GameContainer/GameContainer';
 import { db } from 'app/_db';
 import { notFound } from 'next/navigation';
 import styles from './play.module.css';

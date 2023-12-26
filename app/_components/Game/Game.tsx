@@ -1,6 +1,6 @@
 'use client';
 
-import Captures from 'app/_components/Captures';
+import Captures from 'app/_components/Captures/Captures';
 import GameStatus from 'app/_components/GameStatus';
 import Grid from 'app/_components/Grid/Grid';
 import HistoryNav from 'app/_components/HistoryNav';
