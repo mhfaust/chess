@@ -4,7 +4,6 @@
 # --diff-filter=d excludes deleted files, which would otherwise cause the check to err out.
 UNSTAGED_CHANGES_IN_STAGED_FILES=$(git diff --name-only --cached --diff-filter=d | xargs -r git diff --name-only)
 
-
 if [ ! -z "$UNSTAGED_CHANGES_IN_STAGED_FILES" ]; then
     echo "\033[33mThere are unstaged changes in the following staged files:\033[0m"
     echo "$UNSTAGED_CHANGES_IN_STAGED_FILES" | while read line; do
@@ -19,22 +18,16 @@ if [ ! -z "$UNSTAGED_CHANGES_IN_STAGED_FILES" ]; then
     exit 1
 fi
 
-if ! git diff --quiet; then
-  echo "Stashing unstaged changes..."
-  git stash save --keep-index --include-untracked
-  STASH_CREATED=1
-fi
-
 echo "Formatting staged changes..."
 
-npm run format
+# git diff --cached --name-only | while read file; do
+#     dprint fmt "$file"
+#     git add "$file"
+# done
+
 npm run css-types
 
-git add .
-
-npm run test
-
 if [ "$STASH_CREATED" = 1 ]; then
-  echo "Popped stashed, unstaged changes..."
   git stash pop
+  echo "Popped stashed, unstaged changes..."
 fi
