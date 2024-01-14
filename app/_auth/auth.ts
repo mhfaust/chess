@@ -65,11 +65,11 @@ export const {
 	debug: process.env.NODE_ENV === 'development',
 });
 
-async function checkIfUserIsNew(email?: string) {
-	const user = await db.user.findUnique({
-		where: { email },
-	});
+// async function checkIfUserIsNew(email?: string) {
+// 	const user = await db.user.findUnique({
+// 		where: { email },
+// 	});
 
-	// If user is not found, it means it's a new user
-	return !user;
-}
+// 	// If user is not found, it means it's a new user
+// 	return !user;
+// }

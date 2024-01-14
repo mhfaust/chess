@@ -14,7 +14,7 @@ export default async function Home() {
 			{session
 				? (
 					<>
-						<Link href='/play'>Play</Link>
+						<Link href='/new-game'>New Game</Link>
 						<LogOut />
 					</>
 				)
