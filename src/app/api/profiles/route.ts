@@ -1,4 +1,4 @@
-import { db } from "@/app/_db"
+import { db } from "@/db"
 import { NextResponse, NextRequest } from "next/server"
 import { NextApiRequest, NextApiResponse } from "next";
 

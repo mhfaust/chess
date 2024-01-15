@@ -1,5 +1,5 @@
 import { PrismaAdapter } from '@auth/prisma-adapter';
-import { db } from '@/app/_db';
+import { db } from '@/db';
 import NextAuth from 'next-auth';
 import FacebookProvider from 'next-auth/providers/facebook';
 import Github from 'next-auth/providers/github';

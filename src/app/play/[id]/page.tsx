@@ -1,5 +1,5 @@
 import GameContainer from '@/components/GameContainer/GameContainer';
-import { db } from '@/app/_db';
+import { db } from '@/db';
 import { notFound } from 'next/navigation';
 import styles from './play.module.css';
 

@@ -5,7 +5,7 @@ import GameStatus from '@/components/GameStatus';
 import Grid from '@/components/Grid/Grid';
 import HistoryNav from '@/components/HistoryNav';
 import Rotator from '@/components/Rotator/Rotator';
-import useDeviceOrientation from '@/app/_utils/useDeviceOrienation';
+import useDeviceOrientation from '@/utils/useDeviceOrienation';
 import clsx from 'clsx';
 import { currentBlackCaptures, currentWhiteCaptures } from '@/logic/game/selectors/captures';
 import { isViewingLatestPosition } from '@/logic/game/selectors/game';
