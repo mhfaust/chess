@@ -1,8 +1,8 @@
-import LogInOut from '@/app/_components/LogInOut';
-import Providers from '@/app/_components/Providers';
+import LogInOut from '@/components/LogInOut';
+import Providers from '@/components/Providers';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
-import { Avatar } from './_components/Avatar/Avatar';
+import { Avatar } from '../components/Avatar/Avatar';
 
 export const metadata = {
 	title: 'Chess',

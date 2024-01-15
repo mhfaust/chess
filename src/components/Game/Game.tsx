@@ -1,10 +1,10 @@
 'use client';
 
-import Captures from '@/app/_components/Captures/Captures';
-import GameStatus from '@/app/_components/GameStatus';
-import Grid from '@/app/_components/Grid/Grid';
-import HistoryNav from '@/app/_components/HistoryNav';
-import Rotator from '@/app/_components/Rotator/Rotator';
+import Captures from '@/components/Captures/Captures';
+import GameStatus from '@/components/GameStatus';
+import Grid from '@/components/Grid/Grid';
+import HistoryNav from '@/components/HistoryNav';
+import Rotator from '@/components/Rotator/Rotator';
 import useDeviceOrientation from '@/app/_utils/useDeviceOrienation';
 import clsx from 'clsx';
 import { currentBlackCaptures, currentWhiteCaptures } from '@/logic/game/selectors/captures';
