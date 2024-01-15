@@ -1,7 +1,7 @@
 import { Button, Flex, Text } from '@radix-ui/themes';
 import { createGame } from '@/app/serverActions';
 import Link from 'next/link';
-import { auth } from './_auth/auth';
+import { auth } from '@/auth/auth';
 import { Logo } from './_components/Logo/Logo';
 import LogOut from './_components/Logout/Logout';
 

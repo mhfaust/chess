@@ -1,4 +1,4 @@
-import { auth } from '@/app/_auth/auth';
+import { auth } from '@/auth/auth';
 import LogIn from '../Login/Login';
 import LogOut from '../Logout/Logout';
 

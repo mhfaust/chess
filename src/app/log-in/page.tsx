@@ -1,6 +1,6 @@
 'use client';
 import { Flex } from '@radix-ui/themes';
-import { auth } from '@/app/_auth/auth';
+import { auth } from '@/auth/auth';
 import { facebookLogIn, githubLogIn, googleLogIn } from '@/app/serverActions';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';

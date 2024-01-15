@@ -1,4 +1,4 @@
-import { auth } from '@/app/_auth/auth';
+import { auth } from '@/auth/auth';
 import { logOut } from '@/app/serverActions';
 import Image from 'next/image';
 

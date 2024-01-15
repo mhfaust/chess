@@ -1,6 +1,6 @@
 'use server';
 
-import * as auth from '@/app/_auth/auth';
+import * as auth from '@/auth/auth';
 import { db } from '@/app/_db';
 import { redirect } from 'next/navigation';
 
