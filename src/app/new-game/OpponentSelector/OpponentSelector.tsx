@@ -42,9 +42,6 @@ const OpponentSelector = ({ onSelect }: OpponentSelectorProps) => {
 
   return (
     <Flex direction='row' align='center' justify='between' gap='1'>
-        <h1 className="text-3xl font-bold underline">
-          Hello world!
-        </h1>
       Opponent: 
 
       <Root onValueChange={handleSelectOpponent}>

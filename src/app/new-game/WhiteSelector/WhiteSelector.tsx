@@ -27,7 +27,7 @@ const WhiteSelector = ({
       </Flex>
       
       <Flex direction='row' align='center' gap='2'>
-        <Item value="opponoent" className={styles.item}>
+        <Item value="opponent" className={styles.item}>
           <Indicator className={styles.indicator}/>
         </Item>
         <label>Your opponent</label>
