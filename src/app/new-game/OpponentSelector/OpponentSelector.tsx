@@ -21,7 +21,8 @@ const OpponentSelector = ({ onSelect }: OpponentSelectorProps) => {
 
 
   useEffect(() => {
-    if (!userId || search.length < 2) return
+    if (!userId) return
+    // if (!userId || search.length < 2) return
 
     fetch('/api/profiles')
       .then(res => res.json())
@@ -41,23 +42,26 @@ const OpponentSelector = ({ onSelect }: OpponentSelectorProps) => {
 
   return (
     <Flex direction='row' align='center' justify='between' gap='1'>
-    Opponent: 
+        <h1 className="text-3xl font-bold underline">
+          Hello world!
+        </h1>
+      Opponent: 
 
-    <Root onValueChange={handleSelectOpponent}>
-      <Trigger placeholder="Select an opponent">
-        <Label>Opponent</Label>
-      </Trigger>
-      <Content>
-        {filteredProfiles.map((profile: User) => (
-          <Item 
-            key={profile.id} 
-            value={profile.id}
-          >
-            {profile.name}
-          </Item>
-        ))}
-      </Content>
-    </Root>
+      <Root onValueChange={handleSelectOpponent}>
+        <Trigger placeholder="Select an opponent">
+          <Label>Opponent</Label>
+        </Trigger>
+        <Content>
+          {filteredProfiles.map((profile: User) => (
+            <Item 
+              key={profile.id} 
+              value={profile.id}
+            >
+              {profile.name}
+            </Item>
+          ))}
+        </Content>
+      </Root>
     </Flex>
   )
 }

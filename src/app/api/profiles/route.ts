@@ -6,13 +6,13 @@ export const GET = async (request: NextRequest) => {
   request
   const search = request.nextUrl.searchParams.get('search')
 
-  const users = search ? await db.user.findMany({
+  const users = await db.user.findMany({
     where: { 
       name: { 
-        contains: search, 
+        contains: 'faust', 
         mode: 'insensitive' 
       } 
     } 
-  }) : []
+  })
   return NextResponse.json({ profiles: users }, { status: 200 })
 }
