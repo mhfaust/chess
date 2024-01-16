@@ -14,20 +14,21 @@ type OpponentSelectorProps = {
 const OpponentSelector = ({ onSelect }: OpponentSelectorProps) => {
 
   const [profiles, setProfiles] = useState([])
+  const [search, setSearch] = useState('')
 
   const session = useSession()
   const userId = session?.data?.user?.id
 
 
   useEffect(() => {
-    if (!userId) return
+    if (!userId || search.length < 2) return
 
     fetch('/api/profiles')
       .then(res => res.json())
       .then(({ profiles }) => {
         setProfiles(profiles)
       })
-  }, [userId])
+  }, [search.length, userId])
 
   const filteredProfiles = profiles.filter((profile: User) => profile.id !== userId)
 
@@ -41,6 +42,7 @@ const OpponentSelector = ({ onSelect }: OpponentSelectorProps) => {
   return (
     <Flex direction='row' align='center' justify='between' gap='1'>
     Opponent: 
+
     <Root onValueChange={handleSelectOpponent}>
       <Trigger placeholder="Select an opponent">
         <Label>Opponent</Label>
