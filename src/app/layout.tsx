@@ -1,8 +1,15 @@
 import LogInOut from '@/components/LogInOut';
 import Providers from '@/components/Providers';
+import { Inter as FontSans } from "next/font/google"
 import '@radix-ui/themes/styles.css';
 import './globals.css';
 import { Avatar } from '../components/Avatar/Avatar';
+import { cn } from '@/utils/tailwind'
+
+export const fontSans = FontSans({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata = {
 	title: 'Chess',
@@ -16,7 +23,12 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='en'>
-			<body>
+			<body
+				className={cn(
+          "min-h-screen bg-background font-sans antialiased",
+          fontSans.variable
+        )}
+			>
 				<Providers>
 					<Avatar />
 					<LogInOut />
