@@ -4,7 +4,7 @@ import { Inter as FontSans } from "next/font/google"
 import '@radix-ui/themes/styles.css';
 import './globals.css';
 import { Avatar } from '../components/Avatar/Avatar';
-import { cn } from '@/utils/tailwind'
+import { cn } from '@/utils/shadcn'
 
 export const fontSans = FontSans({
   subsets: ["latin"],
