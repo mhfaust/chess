@@ -18,22 +18,28 @@ import {
 } from "@/components/ui/popover"
 import { useState, useMemo } from "react"
 
-
 type AutocompleteSelectProps<T> = {
   options: T[],
   getLabel: (value: T) => string,
-  onSelect: (value: T) => void
+  onSelect: (value: T) => void,
+  onSearch?: ((value: string, prevValue: string) => void )| ((value: string) => void),
 }
 
-function AutocompleteSelect<T>({ options, onSelect, getLabel }: AutocompleteSelectProps<T>) {
+function AutocompleteSelect<T>({ options, onSelect, getLabel, onSearch }: AutocompleteSelectProps<T>) {
   const [open, setOpen] = useState(false)
   const [selectedValue, setSeletedValue] = useState('')
+  const [searchString, setSearchString] = useState('')
 
   const commandOptions = useMemo(() => options.map(option => ({ 
     option,
     label: getLabel(option), 
     value: getLabel(option).toLowerCase()
   })), [getLabel, options])
+
+  const handleSearch = (value: string) => {
+    onSearch?.(value, searchString)
+    setSearchString(value)
+  }
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -52,7 +58,7 @@ function AutocompleteSelect<T>({ options, onSelect, getLabel }: AutocompleteSele
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command shouldFilter={false}>
-          <CommandInput placeholder="Search framework..." onValueChange={console.log}/>
+          <CommandInput placeholder="Search framework..." onValueChange={handleSearch}/>
           <CommandEmpty>No framework found.</CommandEmpty>
           <CommandGroup>
             {commandOptions.map(({ value, option, label }) => {
